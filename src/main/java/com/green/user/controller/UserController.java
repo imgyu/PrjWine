@@ -14,7 +14,7 @@ public class UserController {
 	//로그인화면
 	@RequestMapping("/UserLoginForm")
 	public String userloginform() {
-		return  "/user/userform";
+		return  "/login/userloginform";
 	}
 	//로그인후
 	@RequestMapping("/UserLogin")
@@ -24,12 +24,12 @@ public class UserController {
 	//가입화면
 	@RequestMapping("/UserJoinForm")
 	public String userjoinform() {
-		return "/user/userjoinform";
+		return "/login/userjoinform";
 	}
 	//가입후
 	@RequestMapping("/UserJoin")
 	public String userjoin( UserVo  vo ) {
 		userService.insertUser(vo);
-		return "/user/userform";
+		return "/login/userloginform";
 	}
 }
