@@ -33,14 +33,17 @@
         }
 
         .store-image {
-            max-width: 100%;
+            max-width: 40%;
             border-radius: 10px;
             flex-basis: 50%; /* 왼쪽 위 */
+            margin-bottom: 30px;
         }
 
         .store-content {
-            flex-basis: 50%; /* 오른쪽 위 */
-            padding: 20px;
+            flex-basis: 40%; /* 오른쪽 위 */
+            padding: 5%;
+            margin-left: 50px;
+            
         }
 
         .store-name {
@@ -78,7 +81,7 @@
     border-radius: 5px;
     font-weight: bold;
     font-size: 20px;
-    margin-left: auto; /* 오른쪽 아래 */
+    margin: 10px 20px 15px 55px;
 }
     </style>
 <%@include file="/WEB-INF/include/nav.jsp" %>
@@ -94,7 +97,7 @@
             <div class="store-phone">매장 전화번호: 123-456-7890</div>
         </div>
         <iframe class="store-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d102460.15656306557!2d-74.00661062525746!3d40.712775410728714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c2589e2bde4b93%3A0xde1d3d6e5c60703b!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1577490317840!5m2!1sen!2sin" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
-        <a class="store-button" href="#">매장이 보유한와인리스트</a>
+        <a class="store-button" href="#">보유한와인리스트 보기</a>
     </div>
     </div>
     </body>
