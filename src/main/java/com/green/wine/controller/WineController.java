@@ -11,9 +11,22 @@ public class WineController {
 //	@Autowired
 //	private  StoreService   storeService;
 	
+	//와인리스트 페이지 이동
 	@RequestMapping("/WineList")
 	public String winelist() {
 		return "/wine/winelist";
+	}
+
+	//와인정보 페이지 이동	
+	@RequestMapping("/WineInfo")
+	public String wineinfo() {
+		return "/wine/wineinfo";
+	}
+	
+	//와인 등록 페이지 이동
+	@RequestMapping("/WineJoinForm")
+	public String winejoin() {
+		return "/wine/winejoinform";
 	}
 	
 
