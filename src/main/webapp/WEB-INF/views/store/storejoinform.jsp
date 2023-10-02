@@ -85,7 +85,7 @@ textarea {
 					</td>
 				</tr>
 				<tr>
-					<td>사업자 등록 번호:</td>
+					<td>사업자등록번호:</td>
 					<td>
 						<div>
 							<input type="number" id="s_sn" placeholder="(-)빼고 입력"
