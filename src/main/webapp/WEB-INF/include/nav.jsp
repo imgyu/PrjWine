@@ -15,10 +15,10 @@
 <!-- 아래nav -->
 <ul class="nav justify-content-center">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="#"><b>매장찾기</b></a>
+    <a class="nav-link active" aria-current="page" href="/StoreList"><b>매장찾기</b></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#"><b>전체와인</b></a>
+    <a class="nav-link" href="/WineList"><b>전체와인</b></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#"><b>프로모션/이벤트</b></a>
