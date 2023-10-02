@@ -17,7 +17,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            h
+            
         }
 
         .store-container {
@@ -87,7 +87,7 @@
 <h1 style="text-align: center; margin-top: 60px;">매장찾기</h1>
   <div class="store-allconatiner">
     <div class="store-container">
-        <img class="store-image" src="매장사진.jpg" alt="매장 사진">
+        <img class="store-image" src="/img/test.jpg" alt="매장 사진">
         <div class="store-content">
             <div class="store-name">매장 이름</div>
             <div class="store-description">매장 설명 Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
