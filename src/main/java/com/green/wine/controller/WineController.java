@@ -1,4 +1,4 @@
-package com.green.store.controller;
+package com.green.wine.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,17 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.green.user.service.UserService;
 
 @Controller
-public class StoreController {
+public class WineController {
 //	@Autowired
 //	private  StoreService   storeService;
 	
-	@RequestMapping("/StoreList")
-	public String storelist() {
-		return "/store/storelist";
+	@RequestMapping("/WineList")
+	public String winelist() {
+		return "/wine/winelist";
 	}
 	
-	@RequestMapping("/Storegoinfo")
-	public String storegoinfo() {
-		return "/store/storeinfo";
-	}
+
+	
 }
