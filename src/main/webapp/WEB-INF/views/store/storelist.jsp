@@ -29,7 +29,8 @@
 	      	<li class="list-group-item">매장번호(store.phone)</li>
 	      	<li class="list-group-item"></li>
 	    </ul>    
-	    <a href="/Storegoinfo" class="btn btn-primary">매장페이지 가기</a>
+	    <a href="/Storegoinfo" class="btn btn-primary">매장 정보</a>
+	    <a href="/Storegoinfo" class="btn btn-primary">매장 와인</a>
 	  </div>
 	</div>
 	
