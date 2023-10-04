@@ -124,7 +124,7 @@ textarea {
 				<tr>
 					<td colspan="2">
 						<div>
-							<button type="submit">와인정보 수정하기</button>
+							<button type="submit">와인정보 수정</button>
 						</div>
 					</td>
 				</tr>
