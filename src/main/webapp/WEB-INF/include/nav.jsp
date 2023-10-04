@@ -26,5 +26,8 @@
   <li class="nav-item">
     <a class="nav-link" href="#"><b>시음회 정보</b></a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/StoreWineManage"><b>와인목록</b></a>
+  </li>
 </ul>
 <!-- 아래nav -->
