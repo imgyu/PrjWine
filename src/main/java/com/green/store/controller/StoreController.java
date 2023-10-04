@@ -25,4 +25,9 @@ public class StoreController {
 	public String storewinemanage() {
 		return "/store/storewinemanage";
 	}
+	
+	@RequestMapping("/StoreWineRegister")
+	public String storewineregister() {
+		return "/store/storewineregister";
+	}
 }
