@@ -32,4 +32,16 @@ public class UserController {
 		userService.insertUser(vo);
 		return "/login/userloginform";
 	}
+	@RequestMapping("/User/FavoriteStores")
+	public String favoritestores() {
+		return "/user/favoritestores";
+	}
+	@RequestMapping("/Store/SalesHistory")
+	public String saleshistory() {
+		return "/store/saleshistory";
+	}
+	@RequestMapping("/User/PurchaseHistory")
+	public String purchasehistory() {
+		return "/user/purchasehistory";
+	}
 }

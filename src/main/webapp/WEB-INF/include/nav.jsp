@@ -1,19 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<!-- 위nav  -->
+<!-- 위 nav -->
 <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="/UserLoginForm" ><b>고객로그인</b></a>
+    <a class="nav-link active" aria-current="page" href="/UserLoginForm"><b>고객로그인</b></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/StoreLoginForm"><b>가게로그인</b></a>
   </li>
 </ul>
-<!-- 위nav -->
+<!-- 위 nav -->
 
-<!-- 아래nav -->
-<ul class="nav justify-content-center" >
+<!-- 아래 nav -->
+<ul class="nav justify-content-center">
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="/StoreList"><b>매장찾기</b></a>
   </li>
@@ -26,5 +25,16 @@
   <li class="nav-item">
     <a class="nav-link" href="#"><b>시음회 정보</b></a>
   </li>
+  <!-- 임시 -->
+   <li class="nav-item">
+    <a class="nav-link" href="/User/FavoriteStores"><b>관심매장</b></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/Store/SalesHistory"><b>판매기록</b></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/User/PurchaseHistory"><b>구매기록</b></a>
+  </li>
 </ul>
-<!-- 아래nav -->
+<!-- 아래 nav -->
+
