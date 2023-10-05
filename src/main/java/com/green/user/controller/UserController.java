@@ -43,6 +43,7 @@ public class UserController {
 	@RequestMapping("/User/PurchaseHistory")
 	public String purchasehistory() {
 		return "/user/purchasehistory";
+	}
 	//유저정보 확인페이지 이동
 	@RequestMapping("/UserInfo")
 	public String userinfo() {
