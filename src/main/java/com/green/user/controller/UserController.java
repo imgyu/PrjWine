@@ -32,14 +32,17 @@ public class UserController {
 		userService.insertUser(vo);
 		return "/login/userloginform";
 	}
+	//관심매장 이동
 	@RequestMapping("/User/FavoriteStores")
 	public String favoritestores() {
 		return "/user/favoritestores";
 	}
+	//판매기록 이동
 	@RequestMapping("/Store/SalesHistory")
 	public String saleshistory() {
 		return "/store/saleshistory";
 	}
+	//구매기록 이동
 	@RequestMapping("/User/PurchaseHistory")
 	public String purchasehistory() {
 		return "/user/purchasehistory";
