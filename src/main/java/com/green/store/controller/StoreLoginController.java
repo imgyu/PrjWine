@@ -30,5 +30,10 @@ public class StoreLoginController {
 	public String storejoin() {
 		return "/user/sotoreform";
 	}
+	//판매기록 이동
+		@RequestMapping("/Store/SalesHistory")
+		public String saleshistory() {
+			return "/store/saleshistory";
+	}
 
 }
