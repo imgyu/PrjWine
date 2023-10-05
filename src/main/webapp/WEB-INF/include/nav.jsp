@@ -35,6 +35,13 @@
   <li class="nav-item">
     <a class="nav-link" href="/User/PurchaseHistory"><b>구매기록</b></a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/UserInfo"><b>유저 정보확인</b></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/UserCart"><b>장바구니</b></a>
+  </li>
+  
 </ul>
 <!-- 아래 nav -->
 
