@@ -41,7 +41,12 @@
   <li class="nav-item">
     <a class="nav-link" href="/UserCart"><b>장바구니</b></a>
   </li>
-  
+  <li class="nav-item">
+    <a class="nav-link" href="/StoreWineManage"><b>와인목록</b></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/StoreWineRegister"><b>와인등록</b></a>
+  </li>
 </ul>
 <!-- 아래 nav -->
 
