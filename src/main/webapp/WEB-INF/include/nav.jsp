@@ -13,7 +13,6 @@
 
 
 <!-- 아래 nav -->
-<ul class="nav justify-content-center">
 <!-- 아래nav -->
 <ul class="nav justify-content-center" >
   <li class="nav-item">
@@ -45,7 +44,7 @@
     <a class="nav-link" href="/UserCart"><b>장바구니</b></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/StoreWineManage"><b>와인목록</b></a>
+    <a class="nav-link" href="/StoreWineManage?s_no=1"><b>와인목록</b></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/StoreWineRegister"><b>와인등록</b></a>
