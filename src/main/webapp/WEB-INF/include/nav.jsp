@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+
 <!-- 위 nav -->
 <ul class="nav justify-content-end">
   <li class="nav-item">
@@ -10,6 +11,13 @@
   </li>
 </ul>
 <!-- 위 nav -->
+
+<!-- 홈으로 가는 버튼 (화면 제일 좌측) -->
+<ul class="nav justify-content-left">
+  <li class="nav-item">
+     <a class="nav-link" href="/"><h2>와인이야기</h2></a>
+  </li>
+</ul>
 
 <!-- 아래 nav -->
 <ul class="nav justify-content-center">
@@ -26,7 +34,7 @@
     <a class="nav-link" href="#"><b>시음회 정보</b></a>
   </li>
   <!-- 임시 -->
-   <li class="nav-item">
+  <li class="nav-item">
     <a class="nav-link" href="/User/FavoriteStores"><b>관심매장</b></a>
   </li>
   <li class="nav-item">
@@ -36,5 +44,4 @@
     <a class="nav-link" href="/User/PurchaseHistory"><b>구매기록</b></a>
   </li>
 </ul>
-<!-- 아래 nav -->
 
