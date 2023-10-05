@@ -26,6 +26,7 @@ public class WineController {
 	//와인 등록 페이지 이동
 	@RequestMapping("/WineJoinForm")
 	public String winejoin() {
+		
 		return "/wine/winejoinform";
 	}
 	

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Store">  
+  	<!-- SELECT * FROM WINE
+    <where>
+            <choose>
+                <when test="vo.searchOption == '종류'">
+   					 AND W_KIND = #{vo.searchValue}
+				</when>
+                <when test="searchOption == '국가'">
+                    AND W_LOCATION = #{vo.searchValue}
+                </when>
+                <when test="searchOption == '이름'">
+                    AND W_NAME = #{vo.searchValue}
+                </when>
+                <when test="searchOption == '빈티지'">
+                    AND W_VINTAGE = #{vo.searchValue}
+                </when>
+            </choose> 
+        </where>-->
+	<select id         = "SearchList"
+  		  resultType = "com.green.store.vo.RegVo">
+  		  SELECT W_KIND,
+  		         W_LOCATION,
+  		         W_NAME,
+  		         W_VINTAGE
+  		  FROM   WINE
+  		  WHERE  W_KIND      =   #{w_kind}       AND 
+  		         W_LOCATION  =   #{w_location}   AND 
+  		         W_NAME      =   #{w_name}      
+  </select> 
+  
+  <insert id="InsertSearch">
+    INSERT INTO WINELIST ( S_NO, W_NO, W_AMOUNT, W_PRICE)
+    VALUES ( #{s_no}, #{w_no}, #{w_amount}, #{w_price})
+</insert>
+
+</mapper>
+
+
+
+
+
+   

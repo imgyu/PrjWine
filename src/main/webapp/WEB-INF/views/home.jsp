@@ -3,11 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-<title>home</title>
-=======
-<title>HOME</title>
->>>>>>> branch 'master' of https://github.com/BBOLBBOL/PrjWine.git
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
@@ -19,13 +14,6 @@
 <body>
  <%@include file="/WEB-INF/include/nav.jsp" %>
  
- 
-
-
-
-		
-
-
 </body>
 </html>
 
