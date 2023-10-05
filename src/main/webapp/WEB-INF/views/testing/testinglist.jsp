@@ -51,42 +51,38 @@
    <link rel="stylesheet"  href="/css/common.css" />
 </head>
 <body>
-<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">신청한 시음회</h1>
+<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">시음회 정보</h1>
    <main>
       
    <!-- 메뉴 목록 -->
       
    <!-- 게시물 목록 -->
+   <div class="mb-3"><a href="#" class="btn btn-secondary ml-auto">새글작성</a></div>
    <table id="table">
-   
    <tr>
      <th>주최매장</th>
      <th>시음회이름</th>
-     <th>날짜</th>
-     <th>신청자</th>
-     <th></th> <!-- 취소요청 버튼 셀 -->
+     <th>날짜/시간</th>
+     <th>참가비</th>     
    </tr>
    
     <tr>
      <td>서면와인</td>
      <td>와인시음회3</td>
      <td>2023-10-25</td>
-     <td>관리자3</td>
-     <td><input type="button" value="취소요청"></td>
+     <td>10000</td>
    </tr>
    <tr>
      <td>부전와인</td>
      <td>와인시음회2</td>
      <td>2023-11-11</td>
-     <td>관리자2</td>
-     <td><input type="button" value="취소요청"></td>
+     <td>10000</td>
    </tr>
    <tr>
      <td>덕천와인</td>
      <td>와인시음회1</td>
      <td>2029-12-31</td>
-     <td>관리자1</td>
-     <td><input type="button" value="취소요청"></td>
+     <td>10000</td>
    </tr>
    </table>   
    
