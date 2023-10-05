@@ -6,14 +6,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <%@include file="/WEB-INF/include/nav.jsp" %>
+ 
 <title>Insert title here</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
       /* 전체 테이블 스타일 */
       #table { 
          width: 70%; 
-         margin: 0 auto; /* 수평 가운데 정렬 */
+         margin: 10px; /* 수평 가운데 정렬 */
          border-collapse: collapse; /* 테이블 셀 경계를 합칩니다. */
       }
 
@@ -53,6 +53,7 @@
 <link rel="stylesheet"  href="/css/common.css" />
 </head>
 <body>
+  <%@include file="/WEB-INF/include/nav.jsp" %>
 <h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">매장 와인 등록</h1>
    <main>
       

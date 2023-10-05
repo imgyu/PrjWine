@@ -26,7 +26,7 @@ public class UserController {
 	public String userjoinform() {
 		return "/login/userjoinform";
 	}
-	//가입후
+	//가입버튼 누른후
 	@RequestMapping("/UserJoin")
 	public String userjoin( UserVo  vo ) {
 		userService.insertUser(vo);
