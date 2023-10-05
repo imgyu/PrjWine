@@ -14,7 +14,7 @@
 </head>
 <body>
  <%@include file="/WEB-INF/include/nav.jsp" %>
- <a href="/">home11</a>
+ <a href="/">home</a>
  
  
 
