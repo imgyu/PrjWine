@@ -72,7 +72,8 @@ button[type="submit"] {
     border-radius: 3px;
     cursor: pointer;
     font-weight: bold;
-    margin-top: 20px;
+    margin: 20px auto;
+    display: block;
 }
 
 button[type="submit"]:hover {

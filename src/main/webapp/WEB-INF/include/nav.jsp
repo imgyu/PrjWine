@@ -23,7 +23,7 @@
     <a class="nav-link" href="/CouponForm"><b>쿠폰 발급</b></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#"><b>시음회 정보</b></a>
+    <a class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
   </li>
   <!-- 임시 -->
    <li class="nav-item">
@@ -35,6 +35,13 @@
   <li class="nav-item">
     <a class="nav-link" href="/User/PurchaseHistory"><b>구매기록</b></a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/UserInfo"><b>유저 정보확인</b></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/UserCart"><b>장바구니</b></a>
+  </li>
+  
 </ul>
 <!-- 아래 nav -->
 

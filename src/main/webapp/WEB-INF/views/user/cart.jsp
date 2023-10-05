@@ -5,7 +5,7 @@
 <html>
 <head>
    <%@include file="/WEB-INF/include/nav.jsp" %>
-   <title>신청한 시음회 목록</title>
+   <title>장바 구니</title>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
    <style>
       /* 전체 테이블 스타일 */
@@ -51,41 +51,62 @@
    <link rel="stylesheet"  href="/css/common.css" />
 </head>
 <body>
-<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">시음회 정보</h1>
+<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">장바구니</h1>
    <main>
       
-   <!-- 메뉴 목록 -->
       
    <!-- 게시물 목록 -->
-   <div class="mb-3"><a href="#" class="btn btn-secondary ml-auto">새글작성</a></div>
    <table id="table">
+   
    <tr>
-     <th>주최매장</th>
-     <th>시음회이름</th>
-     <th>날짜/시간</th>
-     <th>참가비</th>     
+     <th></th>   <!-- 체크박스추가 -->
+     <th>No.</th>
+     <th>와인이름</th>
+     <th>와인매장</th>
+     <th>수량</th>
+     <th>단가</th>
+     <th>총가격</th>
    </tr>
    
     <tr>
-     <td>서면와인</td>
-     <td>와인시음회3</td>
-     <td>2023-10-25</td>
-     <td>10000</td>
+     <th>   <!-- 체크박스추가 -->
+     <label for="checkBox">체크박스:</label>
+    <input type="checkbox" id="checkBox" name="checkBox">
+    </th>     
+    <th>1</th>
+     <th>와인3</th>
+     <th>부전와인</th>
+     <th>3</th>
+     <th>30000</th>
+     <th>90000</th>
    </tr>
-   <tr>
-     <td>부전와인</td>
-     <td>와인시음회2</td>
-     <td>2023-11-11</td>
-     <td>10000</td>
+    <tr>
+     <th>   <!-- 체크박스추가 -->
+     <label for="checkBox">체크박스:</label>
+    <input type="checkbox" id="checkBox" name="checkBox">
+    </th>     
+    <th>2</th>
+     <th>와인3</th>
+     <th>덕천와인</th>
+     <th>3</th>
+     <th>30000</th>
+     <th>90000</th>
    </tr>
-   <tr>
-     <td>덕천와인</td>
-     <td>와인시음회1</td>
-     <td>2029-12-31</td>
-     <td>10000</td>
+      <tr>
+     <th>   <!-- 체크박스추가 -->
+     <label for="checkBox">체크박스:</label>
+    <input type="checkbox" id="checkBox" name="checkBox">
+    </th>     
+    <th>3</th>
+     <th>와인3</th>
+     <th>서면와인</th>
+     <th>3</th>
+     <th>30000</th>
+     <th>90000</th>
    </tr>
    </table>   
-   
+    <button id="paymentButton">결제</button>
+      <button id="deleteButton">삭제</button>
    </main>
 </body>
 </html>

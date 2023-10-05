@@ -20,15 +20,21 @@ public class TastingWineController {
 			
 			return "/testing/tastingwriteform";
 		}
-	
-	
-	
+		
 		// 신청한 시음회 
 		@RequestMapping("/UserTasting")
 		public String userTasting() {
 			
 			
 			return "/testing/usertasting";
+		}
+		
+		// 시음회 정보
+		@RequestMapping("/TastingList")
+		public String tastingList() {
+			
+			
+			return "/testing/testinglist";
 		}
 		
 }
