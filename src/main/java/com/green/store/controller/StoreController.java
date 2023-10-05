@@ -20,4 +20,14 @@ public class StoreController {
 	public String storegoinfo() {
 		return "/store/storeinfo";
 	}
+	
+	@RequestMapping("/StoreWineManage")
+	public String storewinemanage() {
+		return "/store/storewinemanage";
+	}
+	
+	@RequestMapping("/StoreWineRegister")
+	public String storewineregister() {
+		return "/store/storewineregister";
+	}
 }

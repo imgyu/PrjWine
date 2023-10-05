@@ -43,5 +43,19 @@ public class UserController {
 	@RequestMapping("/User/PurchaseHistory")
 	public String purchasehistory() {
 		return "/user/purchasehistory";
+	//유저정보 확인페이지 이동
+	@RequestMapping("/UserInfo")
+	public String userinfo() {
+		return "/user/userinfo";
+	}
+	//유저정보 업데이트 페이지 이동
+	@RequestMapping("/UserUpdateForm")
+	public String userupdateform() {
+		return "/user/userupdateform";
+	}
+	//유저장바구니
+	@RequestMapping("/UserCart")
+	public String usercart() {
+		return "/user/cart";
 	}
 }

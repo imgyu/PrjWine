@@ -29,6 +29,10 @@ public class WineController {
 		return "/wine/winejoinform";
 	}
 	
+	@RequestMapping("/WineInfo")
+	public String wineinfo() {
+		return "/wine/wineinfo";
+	}
 
 	
 }

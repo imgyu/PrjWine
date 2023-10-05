@@ -12,15 +12,20 @@
 </ul>
 <!-- 위 nav -->
 
+<<<<<<< HEAD
 <!-- 홈으로 가는 버튼 (화면 제일 좌측) -->
 <ul class="nav justify-content-left">
   <li class="nav-item">
      <a class="nav-link" href="/"><h2>와인이야기</h2></a>
   </li>
 </ul>
+=======
+>>>>>>> branch 'master' of https://github.com/BBOLBBOL/PrjWine.git
 
 <!-- 아래 nav -->
 <ul class="nav justify-content-center">
+<!-- 아래nav -->
+<ul class="nav justify-content-center" >
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="/StoreList"><b>매장찾기</b></a>
   </li>
@@ -42,6 +47,18 @@
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/User/PurchaseHistory"><b>구매기록</b></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/UserInfo"><b>유저 정보확인</b></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/UserCart"><b>장바구니</b></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/StoreWineManage"><b>와인목록</b></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/StoreWineRegister"><b>와인등록</b></a>
   </li>
 </ul>
 
