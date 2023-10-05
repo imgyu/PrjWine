@@ -12,15 +12,13 @@
 </ul>
 <!-- 위 nav -->
 
-<<<<<<< HEAD
 <!-- 홈으로 가는 버튼 (화면 제일 좌측) -->
 <ul class="nav justify-content-left">
   <li class="nav-item">
      <a class="nav-link" href="/"><h2>와인이야기</h2></a>
   </li>
 </ul>
-=======
->>>>>>> branch 'master' of https://github.com/BBOLBBOL/PrjWine.git
+<!-- 홈으로 가는 버튼 (화면 제일 좌측) -->
 
 <!-- 아래 nav -->
 <ul class="nav justify-content-center">
