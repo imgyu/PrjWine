@@ -11,8 +11,11 @@
 </ul>
 <!-- 위 nav -->
 
+
 <!-- 아래 nav -->
 <ul class="nav justify-content-center">
+<!-- 아래nav -->
+<ul class="nav justify-content-center" >
   <li class="nav-item">
     <a class="nav-link active" aria-current="page" href="/StoreList"><b>매장찾기</b></a>
   </li>

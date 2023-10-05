@@ -31,6 +31,7 @@
  	<button type="button" onclick="location.href=''" class="btn btn-outline-secondary">스파클링</button>
  	<button type="button" onclick="location.href=''" class="btn btn-outline-secondary">로제</button>
  	<button type="button" onclick="location.href=''" class="btn btn-outline-secondary">기타와인</button>
+
   </div>
   <br><br>
   <!-- input 검색 -->
@@ -134,14 +135,107 @@
 	
 </div>
 <!--  와인 리스트  -->	
+</div>
 
 
-		
+
+<!--  와인 리스트  -->
+<div class="container" style="margin-top: 60px; display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">   
+   <div class="card" style="width: 18rem;">
+     <img src="/img/test.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5 class="card-title">와인이름(wine.name)</h5>
+       <p class="card-text">와인설명(wine.cont)</p>
+       <ul class="list-group list-group-flush">
+          <li class="list-group-item">가격</li>
+            <li class="list-group-item">입고수량</li>
+            <li class="list-group-item"></li>
+       </ul>    
+       <a href="/WineInfo" class="btn btn-primary">와인 보기</a>
+     </div>
+   </div>
+
+   <div class="card" style="width: 18rem;">
+     <img src="/img/test.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5 class="card-title">와인이름(wine.name)</h5>
+       <p class="card-text">와인설명(wine.cont)</p>
+       <ul class="list-group list-group-flush">
+          <li class="list-group-item">가격</li>
+            <li class="list-group-item">입고수량</li>
+            <li class="list-group-item"></li>
+       </ul>    
+       <a href="/Storegoinfo" class="btn btn-primary">매장페이지 가기</a>
+     </div>
+   </div>
+   
+   <div class="card" style="width: 18rem;">
+     <img src="/img/test.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5 class="card-title">와인이름(wine.name)</h5>
+       <p class="card-text">와인설명(wine.cont)</p>
+       <ul class="list-group list-group-flush">
+          <li class="list-group-item">가격</li>
+            <li class="list-group-item">입고수량</li>
+            <li class="list-group-item"></li>
+       </ul>    
+       <a href="/Storegoinfo" class="btn btn-primary">매장페이지 가기</a>
+     </div>
+   </div>
+   
+   <div class="card" style="width: 18rem;">
+     <img src="/img/test.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5 class="card-title">와인이름(wine.name)</h5>
+       <p class="card-text">와인설명(wine.cont)</p>
+       <ul class="list-group list-group-flush">
+          <li class="list-group-item">가격</li>
+            <li class="list-group-item">입고수량</li>
+            <li class="list-group-item"></li>
+       </ul>    
+       <a href="/Storegoinfo" class="btn btn-primary">매장페이지 가기</a>
+     </div>
+   </div>
+   
+   <div class="card" style="width: 18rem;">
+     <img src="/img/test.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5 class="card-title">와인이름(wine.name)</h5>
+       <p class="card-text">와인설명(wine.cont)</p>
+       <ul class="list-group list-group-flush">
+          <li class="list-group-item">가격</li>
+            <li class="list-group-item">입고수량</li>
+            <li class="list-group-item"></li>
+       </ul>    
+       <a href="/Storegoinfo" class="btn btn-primary">매장페이지 가기</a>
+     </div>
+   </div>
+   
+   <div class="card" style="width: 18rem;">
+     <img src="/img/test.jpg" class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5 class="card-title">와인이름(wine.name)</h5>
+       <p class="card-text">와인설명(wine.cont)</p>
+       <ul class="list-group list-group-flush">
+          <li class="list-group-item">가격</li>
+            <li class="list-group-item">입고수량</li>
+            <li class="list-group-item"></li>
+       </ul>    
+       <a href="/Storegoinfo" class="btn btn-primary">매장페이지 가기</a>
+     </div>
+   </div>
+   
+   
+</div>
+<!--  와인 리스트  -->   
+
+
+      
 
 
 </body>
 </html>
-
 
 
 
