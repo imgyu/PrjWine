@@ -30,12 +30,6 @@
          text-align: center; /* 가운데 정렬 */
       }
 
-      /* 테이블 내용 중 텍스트가 왼쪽 정렬되어야 하는 셀 */
-      #table td:nth-child(2) { 
-         text-align: center; /* 왼쪽 정렬 */
-      }
-       select { padding: 5px; }
-      
       /* 첫번째 열의 td들 색변경 */
       .first-row td {
       background-color: #f2f2f2;

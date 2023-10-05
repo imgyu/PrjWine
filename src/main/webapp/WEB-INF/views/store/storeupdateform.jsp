@@ -56,7 +56,7 @@ textarea {
 <body>
 	<%@include file="/WEB-INF/include/nav.jsp"%>
 
-	<h2 class="logintitle">매장 정보수정</h2>
+	<h2 class="logintitle">매장 회원가입</h2>
 	<div class="container">
 		<form action="/UserJoin" method="POST">
 			<table>
