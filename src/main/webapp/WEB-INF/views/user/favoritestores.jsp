@@ -25,7 +25,7 @@
 
       /* 테이블 내용 스타일 */
       #table td { 
-         border: 1px solid #dddddd; /* 테두리 선 스타일 */
+         border: 2px solid #dddddd; /* 테두리 선 스타일 */
          padding: 10px; /* 셀 안 여백 */
          text-align: center; /* 가운데 정렬 */
       }
@@ -34,12 +34,17 @@
       #table td:nth-child(2) { 
          text-align: center; /* 왼쪽 정렬 */
       }
+      
+      /* 첫번째 열의 td들 색변경 */
+      .first-row td {
+      background-color: #f2f2f2;
+      } 
 </style>
 </head>
 <body>
 	<h2 style="text-align: center; margin: 60px;">관심매장</h2>
 	<table id="table">
-	<tr>
+	<tr class="first-row">
 		<td>매장이름</td>
 		<td>매장주소</td>
 	</tr>

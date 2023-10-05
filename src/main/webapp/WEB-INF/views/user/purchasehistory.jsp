@@ -25,7 +25,7 @@
 
       /* 테이블 내용 스타일 */
       #table td { 
-         border: 1px solid #dddddd; /* 테두리 선 스타일 */
+         border: 2px solid #dddddd; /* 테두리 선 스타일 */
          padding: 10px; /* 셀 안 여백 */
          text-align: center; /* 가운데 정렬 */
       }
@@ -35,6 +35,11 @@
          text-align: center; /* 왼쪽 정렬 */
       }
        select { padding: 5px; }
+      
+      /* 첫번째 열의 td들 색변경 */
+      .first-row td {
+      background-color: #f2f2f2;
+      } 
 </style>
 </head>
 <body>
@@ -50,7 +55,7 @@
     </select>
   </div>
 	<table id="table">
-	<tr>
+	<tr class="first-row">
 		<td>날짜</td>
 		<td>구매매장</td>
 		<td>와인이름</td>
