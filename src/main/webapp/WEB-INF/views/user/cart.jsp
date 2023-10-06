@@ -4,9 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <%@include file="/WEB-INF/include/nav.jsp" %>
-   <title>장바 구니</title>
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+   <link rel="stylesheet"  href="/css/common.css" />
+   <title>장바 구니</title>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
    <style>
       /* 전체 테이블 스타일 */
       #table { 
@@ -47,10 +49,9 @@
    </style>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-   <link rel="stylesheet"  href="/css/common.css" />
 </head>
 <body>
+<%@include file="/WEB-INF/include/nav.jsp" %>
 <h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">장바구니</h1>
    <main>
       

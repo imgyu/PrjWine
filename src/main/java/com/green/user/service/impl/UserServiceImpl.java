@@ -17,9 +17,17 @@ public class UserServiceImpl implements UserService {
 	public void insertUser(UserVo vo) {
 		
 		userDao.insertUser( vo );
-		System.out.println(vo);
 
 	}
+
+	@Override
+	public UserVo userlogin(UserVo vo) {
+
+		UserVo loginVo = userDao.userlogin( vo );
+		
+		return loginVo;
+	}
+
 	
 	
 	

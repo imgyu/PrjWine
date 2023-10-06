@@ -1,5 +1,8 @@
 package com.green.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,28 +14,55 @@ import com.green.user.vo.UserVo;
 public class UserController {
 	@Autowired
 	private  UserService   userService;
-	//로그인화면
+	//유저 로그인폼 이동
 	@RequestMapping("/UserLoginForm")
 	public String userloginform() {
 		return  "/login/userloginform";
 	}
-	//로그인후
+	//유저 로그인
 	@RequestMapping("/UserLogin")
-	public String userlogin() {
-		return "/home";
+	public String userlogin( UserVo vo , HttpServletRequest request ) {
+		
+		// 세션 생성
+		HttpSession session = request.getSession();
+		String returnURL = "";
+				
+		// 기존의 로그인정보가 존재한다면 기존정보를 제거
+		if( session.getAttribute("loginVo") != null  ) {
+			session.removeAttribute("loginVo");
+		}
+		
+		// 로그인 입력값으로 DB조회후 확인
+		UserVo loginVo = userService.userlogin( vo );
+		System.out.println(loginVo);
+		if( loginVo  !=  null  ) {
+			session.setAttribute("loginVo", loginVo);
+			returnURL = "redirect:/";        //  Home 으로 보낸다	
+		} else {
+			returnURL = "redirect:/UserLoginForm";   //  Loginform 으로 보낸다
+		}
+		return returnURL;
 	}
-	//가입화면
+	//유저 로그아웃
+	@RequestMapping("/UserLogOut")
+	public String userlogout( HttpSession session ) {
+		
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	//유저 회원가입화면 가기
 	@RequestMapping("/UserJoinForm")
 	public String userjoinform() {
 		return "/login/userjoinform";
 	}
-	//가입후
+	//유저 회원가입
 	@RequestMapping("/UserJoin")
 	public String userjoin( UserVo  vo ) {
 		userService.insertUser(vo);
 		return "/login/userloginform";
 	}
-	@RequestMapping("/User/FavoriteStores")
+	@RequestMapping("/UserFavoriteStores")
 	public String favoritestores() {
 		return "/user/favoritestores";
 	}
@@ -40,7 +70,7 @@ public class UserController {
 	public String saleshistory() {
 		return "/store/saleshistory";
 	}
-	@RequestMapping("/User/PurchaseHistory")
+	@RequestMapping("/UserPurchaseHistory")
 	public String purchasehistory() {
 		return "/user/purchasehistory";
 	}
