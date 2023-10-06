@@ -9,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
+import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineListVo;
-import com.green.store.vo.WineVo;
 
 
 
@@ -44,14 +44,6 @@ public class StoreController {
 		return mv;
 	}
 
-	//매장와인등록
-	@RequestMapping("/StoreWineRegister")
-	public ModelAndView storewineregister() {
-		
-		ModelAndView  mv  =  new ModelAndView();
-		mv.setViewName("/store/storewineregister");
-		return mv;
-	}	
 		
 	// 와인 수정 기능 
 	@RequestMapping("/WineUpdateForm")
