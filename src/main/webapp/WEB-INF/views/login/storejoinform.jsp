@@ -52,13 +52,16 @@ textarea {
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 	crossorigin="anonymous"></script>
+
+
+
 </head>
 <body>
 	<%@include file="/WEB-INF/include/nav.jsp"%>
 
-	<h2 class="logintitle">매장 정보수정</h2>
+	<h2 class="logintitle">매장 회원가입</h2>
 	<div class="container">
-		<form action="/UserJoin" method="POST">
+		<form action="/StoreJoin" method="POST">
 			<table>
 				<colgroup>
 					<col width="25%">
@@ -72,7 +75,7 @@ textarea {
 				<tr>
 					<td><span class="redFont">*</span>아이디:</td>
 					<td><input type="text" name="s_id" style="width: 200px">
-						<input type="button" value="아이디 검사"></td>
+						<input type="button" value="중복확인"></td>
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>비밀번호:</td>
@@ -88,7 +91,7 @@ textarea {
 					<td>사업자 등록 번호:</td>
 					<td>
 						<div>
-							<input type="number" id="s_sn" placeholder="(-)빼고 입력"
+							<input type="text" name="s_sn" placeholder="(-)빼고 입력"
 								style="width: 200px" class="redFont">
 						</div>
 					</td>
@@ -118,7 +121,7 @@ textarea {
 					<td>매장소개:</td>
 					<td>
 						<div>
-							<textarea cols="50" rows="10" style="width: 200px"
+							<textarea cols="50" rows="10" style="width: 200px" name="s_cont"
 								placeholder="매장소개를 입력해주세요 (120자내)"></textarea>
 						</div>
 					</td>
@@ -137,14 +140,20 @@ textarea {
 				<tr>
 					<td colspan="2">
 						<div>
-							<button type="submit">회원가입 하기</button>
+							<button class="btn btn-primary" type="submit">회원가입</button>
+							<a class="btn btn-primary" href="/" role="button">홈으로가기</a>
 						</div>
 					</td>
 				</tr>
-			</table>
+			</table>					
 		</form>
+	<script>
+   
+
+	</script>
+		
 	</div>
-	<input type="button" value="뒤로가기" onclick="location.href=''"
+	<input type="button" value="뒤로가기" onclick="location.href='/'"
 		style="margin: auto">
 
 

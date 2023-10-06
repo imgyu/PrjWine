@@ -57,31 +57,39 @@
    <main>
       
    <!-- 메뉴 목록 -->
+   <style>
+  	.dropdown {
+   	 display: flex;
+   	 justify-content: center; /* 수평 가운데 정렬 */
+   	 align-items: center; /* 수직 가운데 정렬 */
+  	}
+  	
+
+  	.dropdown button {
+    	margin: 0 30px; /* 버튼 사이의 간격을 조절할 수 있습니다. */
+  	}
+ </style>
    <form action="/search" method="get">
-    <input type="text" name="query" placeholder="검색어 입력">
     <div class="dropdown">
+    <input type="text" name="query" placeholder="검색어 입력">
      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
      국가
      </button>
-     </div>
-      <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
      종류
      </button>
-     </div>
-      <div class="dropdown">
       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
      빈티지
      </button>
+      <button type="submit">검색</button>
      </div>
-    <button type="submit">검색</button>
   </form>
       
    <!-- 게시물 목록 -->
    <table id="table">
    
    <tr>
-     <th>공란</th>
+     <th></th>
      <th>Name</th>
      <th>Value</th>
      <th>수량</th>
@@ -137,9 +145,18 @@
   </tr>
 </table>
 
-    <a href="/Board/WriteForm?menu_id=${ param.menu_id }&bnum=0">
-       [등록]
-       </a>   
+    <style>
+  .center-link {
+    text-align: center; /* 텍스트 가운데 정렬 */
+  }
+</style>
+
+<div class="center-link">
+  <a href="/Board/WriteForm?menu_id=${param.menu_id}&bnum=0">
+    [등록]
+  </a>
+</div>
+ 
    
    </main>
 </body>

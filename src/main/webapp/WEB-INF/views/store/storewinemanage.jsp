@@ -27,10 +27,12 @@
       }
 
       /* 테이블 내용 스타일 */
-      #table td { 
+      #table td {
+       
          border: 1px solid #dddddd; /* 테두리 선 스타일 */
          padding: 10px; /* 셀 안 여백 */
          text-align: center; /* 가운데 정렬 */
+         
       }
 
       /* 테이블 내용 중 텍스트가 왼쪽 정렬되어야 하는 셀 */
@@ -46,6 +48,8 @@
          padding: 5px 10px; /* 여백 */
          cursor: pointer; /* 포인터로 마우스 커서 변경 */
       }
+      
+      
    </style>
 
 <meta charset="UTF-8">
@@ -60,25 +64,38 @@
    <!-- 메뉴 목록 -->
   
   <form action="/search" method="get">
-    <input type="text" name="query" placeholder="검색어 입력">
-    <button type="submit">검색</button>
+    
   </form>
+  <style>
+  	.dropdown {
+   	 display: flex;
+   	 justify-content: center; /* 수평 가운데 정렬 */
+   	 align-items: center; /* 수직 가운데 정렬 */
+  	}
+  	
+
+  	.dropdown button {
+    	margin: 0 30px; /* 버튼 사이의 간격을 조절할 수 있습니다. */
+  	}
+ </style>
    
-   
+
  <div class="dropdown">
+ 
+ <input type="text" name="query" placeholder="검색어 입력">
+ 
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
     국가
   </button>
-</div>
-<div class="dropdown">
+
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
     품종
   </button>
-</div>
-<div class="dropdown">
+
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
     가격순
   </button>
+  <button type="submit">검색</button>
 </div>
    <!-- 게시물 목록 -->
    <table id="table">
