@@ -49,7 +49,7 @@ public class StoreController {
 	public ModelAndView storewineregister() {
 		
 		ModelAndView  mv  =  new ModelAndView();
-		mv.setViewName("/store/storewineupdate");
+		mv.setViewName("/store/storewineregister");
 		return mv;
 	}	
 		

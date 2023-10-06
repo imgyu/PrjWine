@@ -153,106 +153,35 @@
     국가
   </button>
 
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-    품종
-  </button>
+    <!-- 와인 목록 테이블 -->
+    <table id="table">
+        <tr>
+            <th>와인명</th>
+            <th>국가</th>
+            <th>품종</th>
+            <th>수량</th>
+            <th>가격</th>
+            <th>빈티지</th>
+        </tr>
 
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-    가격순
-  </button>
-  <button type="submit">검색</button>
-</div>
-   <!-- 게시물 목록 -->
-   <table id="table">
-   
-   	<tr>
-     <th>와인명</th>
-     <th>국가</th>
-     <th>품종</th>
-     <th>수량</th>
-     <th>가격</th>
-     <th>추천항목</th>
-     <th>수정/삭제</th>
-   </tr>
-   
-   <tr>
-   </tr>
-    <tr>
-     <th>00와인</th>
-     <th>프랑스</th>
-     <th>멜롯</th>
-     <th>50</th>
-     <th>5000</th>
-     <th>추천항목</th>
-     <td>
-       <form action="/edit" method="post">
-          <input type="hidden" name="itemId" value="아이템_고유_ID_1">
-          <button type="submit">수정</button>
-       </form>
-        <form action="/delete" method="post">
-            <input type="hidden" name="itemId" value="아이템_고유_ID_1">
-            <button type="submit">삭제</button>
-        </form>
-     </td>
-   </tr>
-   <tr>
-     <th>00와인2</th>
-     <th>이탈리아</th>
-     <th>멜롯</th>
-     <th>15</th>
-     <th>3000</th>
-     <th>추천항목</th>
-     <td>
-       <form action="/edit" method="post">
-          <input type="hidden" name="itemId" value="아이템_고유_ID_1">
-          <button type="submit">수정</button>
-       </form>
-        <form action="/delete" method="post">
-            <input type="hidden" name="itemId" value="아이템_고유_ID_1">
-            <button type="submit">삭제</button>
-        </form>
-     </td>
-   </tr>
-   <tr>
-     <th>와인명</th>
-     <th>국가</th>
-     <th>품종</th>
-     <th>수량</th>
-     <th>가격</th>
-     <th>추천항목</th>
-     <td>
-       <form action="/edit" method="post">
-          <input type="hidden" name="itemId" value="아이템_고유_ID_1">
-          <button type="submit">수정</button>
-       </form>
-        <form action="/delete" method="post">
-            <input type="hidden" name="itemId" value="아이템_고유_ID_1">
-            <button type="submit">삭제</button>
-        </form>
-     </td>
-   </tr>
-   <tr>
-     <th>와인명</th>
-     <th>국가</th>
-     <th>품종</th>
-     <th>수량</th>
-     <th>가격</th>
-     <th>추천항목</th>
-   <td>
-       <form action="/edit" method="post">
-          <input type="hidden" name="itemId" value="아이템_고유_ID_1">
-          <button type="submit">수정</button>
-       </form>
-        <form action="/delete" method="post">
-            <input type="hidden" name="itemId" value="아이템_고유_ID_1">
-            <button type="submit">삭제</button>
-        </form>
-     </td>
-   </tr>
-   </table>
-   
-   <a href="/your-homepage-url" class="btn btn-primary">매장 홈으로</a>   
-   
-   </main>
+        <!-- 예시 와인 데이터 -->
+        <c:forEach var="wine" items="${wineList }">
+        <tr>
+            <td>${wine.w_name }</td>
+            <td>${wine.w_location}</td>
+            <td>${wine.w_kind}</td>
+            <td>${wine.w_amount}</td>
+            <td>${wine.w_price }</td>
+            <td>${wine.w_vintage}</td>
+            
+            
+        </c:forEach>
+        
+        <!-- 다른 와인 데이터 추가 -->
+    </table>
+	<a href="/WineUpdateForm?s_no=1&wl_idx=1&w_no=1" class="btn btn-primary">수정</a>
+    <!-- 매장 홈으로 버튼 -->
+    <a href="/" class="btn btn-primary " style="">매장 홈으로</a>
+</main>
 </body>
 </html>

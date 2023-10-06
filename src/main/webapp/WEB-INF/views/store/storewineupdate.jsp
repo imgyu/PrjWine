@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>와인 목록</title>
+    <title>와인 수정</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <style>
@@ -132,7 +132,7 @@
     </div>
 
     <!-- 와인 목록 테이블 -->
-   	<form action="WineUpdate?s_no=1" method="POST">
+   	<form action="/WineUpdate?s_no=1" method="POST">
     <table id="table">
         <tr>
             <th>와인명</th>
@@ -146,12 +146,12 @@
 
         <!-- 예시 와인 데이터 -->
         <tr>
-            <td>${wine.w_name }</td>
-            <td>${wine.w_location}</td>
-            <td>${wine.w_kind}</td>
-            <td>${wine.w_vintage}</td>
-            <td><input type="text" name="w_amount" value="${wine.w_amount}"></td>
-            <td><input type="text" name="w_price" value="${wine.w_price }"></td>
+            <td>${wineList.w_name }</td>
+            <td>${wineList.w_location}</td>
+            <td>${wineList.w_kind}</td>
+            <td>${wineList.w_vintage}</td>
+            <td><input type="text" name="w_amount" value="${wineList.w_amount}"></td>
+            <td><input type="text" name="w_price" value="${wineList.w_price }"></td>
             
              <td class="edit-delete-buttons">
                     <button type="submit">수정</button>

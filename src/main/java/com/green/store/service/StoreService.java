@@ -21,5 +21,6 @@ public interface StoreService {
 
 	StoreVo storelogin(StoreVo vo);
 
+
 	
 }
