@@ -9,17 +9,19 @@ import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineListVo;
 
 public interface StoreDao {
-
-	List<RegVo> getSearchList(RegVo vo);
-
+	// (영태)
 	void insertSearch(RegVo vo);
-
-	List<HavingWineVo> getWineList(StoreVo vo);
-
-	void updatrWine(WineListVo vo);
-
+	// (영태)
+	List<RegVo> getSearchList(RegVo vo);
+	// (병규)
 	void insertStore(StoreVo vo);
-
+	// (병규)
 	StoreVo storelogin(StoreVo vo);
+	// (임규)
+	List<HavingWineVo> getWineList(StoreVo vo);
+	// (임규)
+	void updateWineList(HavingWineVo havingVo);
+
+
 
 }
