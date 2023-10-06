@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -74,26 +75,6 @@
             text-align: center;
         }
 
-        /* 수정/삭제 버튼 스타일 */
-        .edit-delete-buttons {
-            display: flex;
-            justify-content: center;
-        }
-
-        .edit-delete-buttons form {
-            display: inline-block;
-            margin-right: 5px;
-        }
-
-        .edit-delete-buttons button {
-            padding: 5px 10px;
-            background-color: #ff0000;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
         /* 매장 홈으로 버튼 스타일 */
         .back-home-button {
             display: block;
@@ -132,7 +113,7 @@
     </div>
 
     <!-- 와인 목록 테이블 -->
-   	<form action="/WineUpdate?s_no=1" method="POST">
+      <form action="/WineUpdate?s_no=1&wl_idx=1" method="POST">
     <table id="table">
         <tr>
             <th>와인명</th>
@@ -145,20 +126,24 @@
         </tr>
 
         <!-- 예시 와인 데이터 -->
+        <c:forEach var="wine" items="${ wineList }">
         <tr>
-            <td>${wineList.w_name }</td>
-            <td>${wineList.w_location}</td>
-            <td>${wineList.w_kind}</td>
-            <td>${wineList.w_vintage}</td>
-            <td><input type="text" name="w_amount" value="${wineList.w_amount}"></td>
-            <td><input type="text" name="w_price" value="${wineList.w_price }"></td>
+            <td>${wine.w_name }</td>
+            <td>${wine.w_location}</td>
+            <td>${wine.w_kind}</td>
+            <td><input type="text" name="w_amount" value="${wine.w_amount}"></td>
+            <td><input type="text" name="w_price" value="${wine.w_price }"></td>
+            <td>${wine.w_vintage}</td>
             
              <td class="edit-delete-buttons">
-                    <button type="submit">수정</button>
+             <button type="submit" class="btn btn-primary">수정</button>       
+             <a class="btn btn-danger" href="/WineDelete">삭제</a>
+             
           
             </td>
             
         </tr>
+        </c:forEach>
         <!-- 다른 와인 데이터 추가 -->
     </table>
     </form>

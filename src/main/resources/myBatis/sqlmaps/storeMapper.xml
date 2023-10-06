@@ -3,17 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="Store">  
-
-  
-  <select id="Storelogin"
+<mapper namespace="Store">
+	
+	<!-- 영태 -->
+	<select id="SearchList" resultType="com.green.store.vo.RegVo">
+   		<![CDATA[
+  			SELECT CONCAT( W_KIND, W_LOCATION, W_NAME, W_VINTAGE ) AS DATA
+  			FROM WINE
+ 		 	WHERE CONCAT( W_KIND, W_LOCATION, W_NAME, W_VINTAGE ) LIKE '%' || #{data} || '%';
+  		]]>
+	</select>
+	<!-- 영태 -->
+	<insert id="InsertSearch">
+		INSERT INTO WINELIST ( S_NO, W_NO, W_AMOUNT, W_PRICE)
+		VALUES ( #{s_no}, #{w_no}, #{w_amount}, #{w_price})
+	</insert>
+	
+	 <select id="Storelogin"
       resultType="com.green.store.vo.StoreVo">
 		SELECT *
 		 FROM  STORE
 		WHERE S_ID = #{ s_id }
 		 AND  S_PW = #{ s_pw }
    </select>
-
+	<!-- 병규 -->
 	<insert id="StoreInsert">
 
 		INSERT INTO STORE (
@@ -37,35 +50,11 @@
 		#{ s_phone },
 		#{ s_cont }
 		)
-
 	</insert>
-<!--
-   <delete id="UserDelete">
-   
-      DELETE  FROM   TUSER
-        WHERE  USERID = #{ userid }  
-           
-   </delete>
- -->
- 
-	
-	<!-- <select id="WineList" resultType="com.green.store.vo.HavingWineVo">
-	
-		SELECT  W.W_NAME,
-				W.W_LOCATION,
-				W.W_KIND,
-				W.W_VINTAGE,
-		        WL.W_AMOUNT,
-		        WL.W_PRICE,
-		        S.S_NAME
-		FROM    WINELIST WL, WINE W, STORE S
-		WHERE   WL.S_NO  = S.S_NO AND W.W_NO = WL.W_NO
-	
-	</select> -->
-	
+	<!-- 임규 -->
 	<select id="WineList" resultType="com.green.store.vo.HavingWineVo">
-	
-		SELECT W.W_NAME,
+   
+      SELECT W.W_NAME,
        W.W_LOCATION,
        W.W_KIND,
        W.W_VINTAGE,
@@ -75,25 +64,19 @@
        WL.WL_IDX,
        S.S_NO,
        W.W_NO
-	   FROM WINELIST WL
+      FROM WINELIST WL
        INNER JOIN WINE W ON WL.W_NO = W.W_NO
        INNER JOIN STORE S ON S.S_NO = WL.S_NO
        WHERE S.S_NO = #{s_no}
-	
-	</select> 
-				
-	
-	<update id="UpdateWine">
-	
-	UPDATE WINELIST
-	SET    W_AMOUNT  =  #{w_amount},
-	       W_PRICE   =  #{w_price}
-	WHERE  WL_IDX      =  #{wl_idx}
-	
-	
-	</update>
-	
-	
+   
+   </select> 
+   <!-- 임규 -->
+   <update id="UpdateWineList">
+   UPDATE WINELIST
+   SET    W_AMOUNT  =  #{w_amount},
+          W_PRICE   =  #{w_price}
+   WHERE  S_NO      =  #{s_no} AND WL_IDX  =  #{wl_idx}
+   </update>
 </mapper>
 
 

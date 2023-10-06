@@ -8,53 +8,52 @@ import org.springframework.stereotype.Repository;
 
 import com.green.store.dao.StoreDao;
 import com.green.store.vo.HavingWineVo;
-import com.green.store.vo.StoreVo;
-import com.green.store.vo.WineListVo;
-	
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineListVo;
 
-@Repository("storedao")
-public class StoreDaoImpl implements StoreDao{
+@Repository("storeDao")
+public class StoreDaoImpl implements StoreDao {
 	
 	@Autowired
-	SqlSession sqlSession;
+	private SqlSession sqlSession;
 
+	//(영태)
 	@Override
-	public void insertStore(StoreVo vo) {
-		
-		System.out.println(vo);
-		sqlSession.insert("Store.StoreInsert", vo );
-		
+	public void insertSearch(RegVo vo) {
+		sqlSession.insert("Store.InsertSearch",vo);
 	}
-
-	@Override
-	public StoreVo storelogin(StoreVo vo) {
-		StoreVo loginVo = sqlSession.selectOne("Store.Storelogin", vo );
-		return loginVo;
-	}
+	//(영태)
 	@Override
 	public List<RegVo> getSearchList(RegVo vo) {
 		List<RegVo> searchList = sqlSession.selectList("Store.SearchList", vo);
 		return searchList;
 	}
+	//(병규)
 	@Override
-	public void insertSearch(RegVo vo) {
-		sqlSession.insert("Store.InsertSearch",vo);
+	public void insertStore(StoreVo vo) {
+		System.out.println(vo);
+		sqlSession.insert("Store.StoreInsert", vo );
+		
 	}
+	//(병규)
+	@Override
+	public StoreVo storelogin(StoreVo vo) {
+		StoreVo loginVo = sqlSession.selectOne("Store.Storelogin", vo );
+		return loginVo;
+	}
+	// (임규)
+	   @Override
+	   public List<HavingWineVo> getWineList(StoreVo vo) {
+	      List<HavingWineVo> wineList  =  sqlSession.selectList("Store.WineList",vo);
+	      return wineList;
+	   }
+	 // (임규)
+	 @Override
+	 public void updateWineList(HavingWineVo havingVo) {
+	      sqlSession.update("Store.UpdateWineList", havingVo);
+	      
+	  }
+	
 
-	@Override
-	public List<HavingWineVo> getWineList(StoreVo vo) {
-		
-		List<HavingWineVo> wineList  =  sqlSession.selectList("Store.WineList",vo);
-		
-		return wineList;
-	}
-
-	@Override
-	public void updatrWine(WineListVo vo) {
-		
-		sqlSession.update("Store.UpdateWine", vo);
-		
-	}
 }

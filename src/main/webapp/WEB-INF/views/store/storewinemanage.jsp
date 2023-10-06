@@ -27,14 +27,6 @@
             text-align: center;
             margin-bottom: 20px;
         }
-         /* 테이블 내용 스타일 */
-         #table td {
-       
-         border: 1px solid #dddddd; /* 테두리 선 스타일 */
-         padding: 10px; /* 셀 안 여백 */
-         text-align: center; /* 가운데 정렬 */
-         
-      }
 
         form#search-form input[type="text"] {
             width: 300px;
@@ -52,37 +44,90 @@
             border-radius: 5px;
             cursor: pointer;
         }
-         /* 취소요청 버튼 스타일 */
-         #table input[type="button"] { 
-         background-color: #ff0000; /* 배경색 */
-         color: #ffffff; /* 글자색 */
-         border: none; /* 테두리 없음 */
-         padding: 5px 10px; /* 여백 */
-         cursor: pointer; /* 포인터로 마우스 커서 변경 */
-      }
-      
-      
-   </style>
 
+        /* 드롭다운 버튼 스타일 */
+        .dropdown {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        /* 테이블 스타일 */
+        #table {
+            width: 70%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        /* 테이블 헤더 스타일 */
+        #table th {
+            background-color: #f2f2f2;
+            border: 1px solid #dddddd;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* 테이블 셀 스타일 */
+        #table td {
+            border: 1px solid #dddddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* 수정/삭제 버튼 스타일 */
+        .edit-delete-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        .edit-delete-buttons form {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .edit-delete-buttons button {
+            padding: 5px 10px;
+            background-color: #ff0000;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* 매장 홈으로 버튼 스타일 */
+        .back-home-button {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 
 <body>
-<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">보유 와인 확인/수정</h1>
-   <main>
-      
-   <!-- 메뉴 목록 -->
-  
-  <form action="/search" method="get">
-    
-  </form>
+     <%@ include file="/WEB-INF/include/nav.jsp" %> 
+     
+<h1> 보유 와인 </h1>
 
- <div class="dropdown">
- 
- <input type="text" name="query" placeholder="검색어 입력">
- 
-  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
-    국가
-  </button>
+<main>
+    <!-- 검색 폼 -->
+    <form id="search-form" action="/search" method="get">
+        <input type="text" name="query" placeholder="검색어 입력">
+        <button type="submit">검색</button>
+    </form>
+
+    <!-- 검색 조건 드롭다운 버튼 -->
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">국가</button>
+        <!-- 국가 드롭다운 메뉴 내용 -->
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">품종</button>
+        <!-- 품종 드롭다운 메뉴 내용 -->
+    </div>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">가격순</button>
+        <!-- 가격순 드롭다운 메뉴 내용 -->
+    </div>
 
     <!-- 와인 목록 테이블 -->
     <table id="table">
@@ -110,7 +155,7 @@
         
         <!-- 다른 와인 데이터 추가 -->
     </table>
-	<a href="/WineUpdateForm?s_no=1&wl_idx=1&w_no=1" class="btn btn-primary">수정</a>
+   <a href="/WineUpdateForm?s_no=1&wl_idx=1" class="btn btn-primary">수정</a>
     <!-- 매장 홈으로 버튼 -->
     <a href="/" class="btn btn-primary " style="">매장 홈으로</a>
 </main>

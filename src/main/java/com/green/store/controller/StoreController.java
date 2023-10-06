@@ -31,97 +31,12 @@ public class StoreController {
 		return "/store/storeinfo";
 	}
 
-	//매장와인목록
-	@RequestMapping("/StoreWineManage")
-	public ModelAndView storewinemanage(StoreVo vo) {
-		
-		List<HavingWineVo> wineList  =  storeService.getWineList(vo);  
-		
-		
-		ModelAndView  mv  =  new ModelAndView();
-		mv.setViewName("/store/storewinemanage");
-		mv.addObject("wineList", wineList );
-		return mv;
-	}
-
-		
-	// 와인 수정 기능 
-	@RequestMapping("/WineUpdateForm")
-	public ModelAndView windUpdateForm(StoreVo vo) {
-		
-		// 수정할 정보 조회
-		List<HavingWineVo> wineList  =  storeService.getWineList(vo);
-		
-		
-		
-		ModelAndView  mv  =  new ModelAndView();
-		mv.setViewName("/store/storewineupdate");
-		mv.addObject("wine", wineList);
-		return mv;
-	}
-		
-	@RequestMapping("/WineUpdate") 
-	public ModelAndView wineUpdate(WineListVo vo ) {
-		
-		// 매장 와인 재고 수정 
-		storeService.updateWine(vo);
-		
-		ModelAndView mv  =  new ModelAndView();
-		mv.setViewName("redirect:/StoreWineManage" );
-		
-		
-		return mv;
-	}
-		
-	@RequestMapping("/WineDelete")
-	public String wineDelete() {
-		
-		// Wine 데이터 삭제 
-		
-		
-		return "redirect:/StoreWineManage";
-	}
-	
 	//판매기록 이동
 	@RequestMapping("/Store/SalesHistory")
 	public String saleshistory() {
 				return "/store/saleshistory";
 	}
-	
-	//와인등록
-	 @RequestMapping("/StoreWineRegister") 
-	 public ModelAndView storewineregister(RegVo vo) {
 	 
-		 storeService.insertSearch(vo);
-		 ModelAndView mv = new ModelAndView();
-		 mv.addObject("vo", vo );
-		 mv.setViewName("redirect:/store/storewinemanage");
-		 return mv;
-	 }
-	 
-	 //와인등록폼
-	 @RequestMapping("/StoreWineRegisterForm") 
-	 public String storewineregisterform() {
-		 return "/store/storewineregisterform"; 
-	 }
-	 
-	 //와인검색
-	 @RequestMapping("/StoreWineSearch")
-	 public ModelAndView searchWine(RegVo vo) {
-		 List<RegVo> searchList = storeService.getSearchList(vo);
-		 
-		 ModelAndView  mv = new ModelAndView();
-		 mv.addObject("searchList", searchList);
-		 mv.setViewName("/store/storewineregisterform");
-		 
-		 System.out.println(mv);
-		 return mv;
-	 }
-	 
-
-
-	 
-	
 	//매장 정보 확인 페이지 이동
 	@RequestMapping("/StoreCheck")
 	public String storecheck() {
