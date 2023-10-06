@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
     
 <!DOCTYPE html>
 <html>
 <head>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-   <link rel="stylesheet"  href="/css/common.css" />
-   <title>장바 구니</title>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>장바 구니</title>
+<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="stylesheet" href="/css/common.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
    <style>
       /* 전체 테이블 스타일 */
       #table { 
@@ -47,8 +51,6 @@
          cursor: pointer; /* 포인터로 마우스 커서 변경 */
       }
    </style>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp" %>
@@ -68,43 +70,17 @@
      <th>단가</th>
      <th>총가격</th>
    </tr>
-   
-    <tr>
-     <th>   <!-- 체크박스추가 -->
-     <label for="checkBox">체크박스:</label>
-    <input type="checkbox" id="checkBox" name="checkBox">
-    </th>     
-    <th>1</th>
-     <th>와인3</th>
-     <th>부전와인</th>
-     <th>3</th>
-     <th>30000</th>
-     <th>90000</th>
-   </tr>
-    <tr>
-     <th>   <!-- 체크박스추가 -->
-     <label for="checkBox">체크박스:</label>
-    <input type="checkbox" id="checkBox" name="checkBox">
-    </th>     
-    <th>2</th>
-     <th>와인3</th>
-     <th>덕천와인</th>
-     <th>3</th>
-     <th>30000</th>
-     <th>90000</th>
-   </tr>
-      <tr>
-     <th>   <!-- 체크박스추가 -->
-     <label for="checkBox">체크박스:</label>
-    <input type="checkbox" id="checkBox" name="checkBox">
-    </th>     
-    <th>3</th>
-     <th>와인3</th>
-     <th>서면와인</th>
-     <th>3</th>
-     <th>30000</th>
-     <th>90000</th>
-   </tr>
+   <c:forEach var="cart" items="${cartList}">
+     <tr>
+        <th>${cart.c_idx}</th>
+        <th>${cart.w_name}</th>
+        <th>${cart.s_name}</th>
+        <th>${cart.c_count}</th>
+        <th>${cart.w_price}</th>
+        <th>${cart.c_allprice}</th>
+</tr>
+
+    </c:forEach>
    </table>   
     <button id="paymentButton">결제</button>
       <button id="deleteButton">삭제</button>
