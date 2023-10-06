@@ -31,8 +31,7 @@ public class StoreController {
 		return "/store/storeinfo";
 	}
 
-	 
-	// 와인 리스트 
+	//매장와인목록
 	@RequestMapping("/StoreWineManage")
 	public ModelAndView storewinemanage(StoreVo vo) {
 		
@@ -45,7 +44,7 @@ public class StoreController {
 		return mv;
 	}
 
-	
+	//매장와인등록
 	@RequestMapping("/StoreWineRegister")
 	public ModelAndView storewineregister() {
 		
@@ -54,42 +53,43 @@ public class StoreController {
 		return mv;
 	}	
 		
-		// 와인 수정 기능 
-		@RequestMapping("/WineUpdateForm")
-		public ModelAndView windUpdateForm(StoreVo vo) {
-			
-			// 수정할 정보 조회
-			List<HavingWineVo> wineList  =  storeService.getWineList(vo);
-			
-			
-			
-			ModelAndView  mv  =  new ModelAndView();
-			mv.setViewName("/store/storewineupdate");
-			mv.addObject("wine", wineList);
-			return mv;
-		}
+	// 와인 수정 기능 
+	@RequestMapping("/WineUpdateForm")
+	public ModelAndView windUpdateForm(StoreVo vo) {
 		
-		@RequestMapping("/WineUpdate") 
-		public ModelAndView wineUpdate(WineListVo vo ) {
-			
-			// 매장 와인 재고 수정 
-			storeService.updateWine(vo);
-			
-			ModelAndView mv  =  new ModelAndView();
-			mv.setViewName("redirect:/StoreWineManage" );
-			
-			
-			return mv;
-		}
+		// 수정할 정보 조회
+		List<HavingWineVo> wineList  =  storeService.getWineList(vo);
 		
-		@RequestMapping("/WineDelete")
-		public String wineDelete() {
-			
-			// Wine 데이터 삭제 
-			
-			
-			return "redirect:/StoreWineManage";
-		}
+		
+		
+		ModelAndView  mv  =  new ModelAndView();
+		mv.setViewName("/store/storewineupdate");
+		mv.addObject("wine", wineList);
+		return mv;
+	}
+		
+	@RequestMapping("/WineUpdate") 
+	public ModelAndView wineUpdate(WineListVo vo ) {
+		
+		// 매장 와인 재고 수정 
+		storeService.updateWine(vo);
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("redirect:/StoreWineManage" );
+		
+		
+		return mv;
+	}
+		
+	@RequestMapping("/WineDelete")
+	public String wineDelete() {
+		
+		// Wine 데이터 삭제 
+		
+		
+		return "redirect:/StoreWineManage";
+	}
+	
 	//판매기록 이동
 	@RequestMapping("/Store/SalesHistory")
 	public String saleshistory() {
@@ -130,4 +130,15 @@ public class StoreController {
 
 	 
 	
+	//매장 정보 확인 페이지 이동
+	@RequestMapping("/StoreCheck")
+	public String storecheck() {
+		return "/store/storecheck";
+	}
+	
+	//매장 정보 수정 페이지 이동
+	@RequestMapping("/StoreCheckUpdate")
+	public String storecheckupdate() {
+		return "/store/storeupdateform";
+	}
 }

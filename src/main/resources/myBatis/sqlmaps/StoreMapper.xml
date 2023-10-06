@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Store">  
+
+  
+  <select id="Storelogin"
+      resultType="com.green.store.vo.StoreVo">
+		SELECT *
+		 FROM  STORE
+		WHERE S_ID = #{ s_id }
+		 AND  S_PW = #{ s_pw }
+   </select>
+
+	<insert id="StoreInsert">
+
+		INSERT INTO STORE (
+			S_NO,
+			S_ID,
+			S_PW,
+			S_NAME,
+			S_SN,
+			S_SI,
+			S_GU,
+			S_PHONE,
+			S_CONT
+		) VALUES (
+		( SELECT NVL(MAX(S_NO),0)+1 FROM STORE),
+		#{ s_id },
+		#{ s_pw },
+		#{ s_name },
+		#{ s_sn },
+		#{ s_si },
+		#{ s_gu },
+		#{ s_phone },
+		#{ s_cont }
+		)
+
+	</insert>
+<!--
+   <delete id="UserDelete">
+   
+      DELETE  FROM   TUSER
+        WHERE  USERID = #{ userid }  
+           
+   </delete>
+ -->
+ 
+</mapper>
+
+
+
+
+
+   

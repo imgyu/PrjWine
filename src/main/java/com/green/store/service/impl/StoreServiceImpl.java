@@ -13,11 +13,28 @@ import com.green.store.vo.WineListVo;
 import com.green.store.vo.WineVo;
 import com.green.store.vo.RegVo;
 
+
+import com.green.store.vo.StoreVo;
+
 @Service("storeService")
 public class StoreServiceImpl implements StoreService {
+
 	@Autowired
-	private StoreDao storeDao;
-	
+	private  StoreDao storeDao  ;
+
+	@Override
+	public void insertStore(StoreVo vo) {
+		
+		storeDao.insertStore( vo );
+		
+	}
+
+	@Override
+	public StoreVo storelogin(StoreVo vo) {
+		StoreVo loginVo = storeDao.storelogin( vo );
+		return loginVo;
+	}
+
 	@Override
 	public List<RegVo> getSearchList(RegVo vo) {
 		List<RegVo> searchList = storeDao.getSearchList(vo);
@@ -40,6 +57,5 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	public void updateWine(WineListVo vo) {
 		storeDao.updatrWine(vo);
-		
 	}
 }

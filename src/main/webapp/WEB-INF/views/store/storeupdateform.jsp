@@ -56,9 +56,9 @@ textarea {
 <body>
 	<%@include file="/WEB-INF/include/nav.jsp"%>
 
-	<h2 class="logintitle">매장 회원가입</h2>
+	<h2 class="logintitle">매장 정보수정</h2>
 	<div class="container">
-		<form action="/UserJoin" method="POST">
+		<form action="" method="POST">
 			<table>
 				<colgroup>
 					<col width="25%">
@@ -137,15 +137,34 @@ textarea {
 				<tr>
 					<td colspan="2">
 						<div>
-							<button type="submit">회원가입 하기</button>
+							<button type="submit">매장정보 수정</button>
 						</div>
 					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
-	<input type="button" value="뒤로가기" onclick="location.href=''"
-		style="margin: auto">
+<style>
+  .center-align {
+    display: flex;
+    justify-content: center; /* 수평 가운데 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    height: 10vh; /* 화면 높이에 맞게 정렬 */
+  }
+</style>
+
+<div class="center-align">
+  <input type="button" value="뒤로가기" onclick="goBack()" style="margin: auto">
+</div>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+
+
 
 
 

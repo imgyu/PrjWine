@@ -12,10 +12,27 @@ import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineListVo;
 	
 import com.green.store.vo.RegVo;
-@Repository("storeDao")
-public class StoreDaoImpl implements StoreDao {
+import com.green.store.vo.StoreVo;
+
+@Repository("storedao")
+public class StoreDaoImpl implements StoreDao{
+	
 	@Autowired
-	private SqlSession sqlSession;
+	SqlSession sqlSession;
+
+	@Override
+	public void insertStore(StoreVo vo) {
+		
+		System.out.println(vo);
+		sqlSession.insert("Store.StoreInsert", vo );
+		
+	}
+
+	@Override
+	public StoreVo storelogin(StoreVo vo) {
+		StoreVo loginVo = sqlSession.selectOne("Store.Storelogin", vo );
+		return loginVo;
+	}
 	@Override
 	public List<RegVo> getSearchList(RegVo vo) {
 		List<RegVo> searchList = sqlSession.selectList("Store.SearchList", vo);
@@ -40,5 +57,4 @@ public class StoreDaoImpl implements StoreDao {
 		sqlSession.update("Store.UpdateWine", vo);
 		
 	}
-
 }

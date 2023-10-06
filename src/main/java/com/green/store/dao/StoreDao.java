@@ -6,7 +6,7 @@ import java.util.List;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineListVo;
-
+import com.green.store.vo.StoreVo;
 
 public interface StoreDao {
 
@@ -18,5 +18,8 @@ public interface StoreDao {
 
 	void updatrWine(WineListVo vo);
 
+	void insertStore(StoreVo vo);
+
+	StoreVo storelogin(StoreVo vo);
 
 }

@@ -16,4 +16,10 @@ public interface StoreService {
 	List<HavingWineVo> getWineList(StoreVo vo);
 
 	void updateWine(WineListVo vo);
+
+	void insertStore(StoreVo vo);
+
+	StoreVo storelogin(StoreVo vo);
+
+	
 }

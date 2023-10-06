@@ -27,6 +27,14 @@
             text-align: center;
             margin-bottom: 20px;
         }
+         /* 테이블 내용 스타일 */
+         #table td {
+       
+         border: 1px solid #dddddd; /* 테두리 선 스타일 */
+         padding: 10px; /* 셀 안 여백 */
+         text-align: center; /* 가운데 정렬 */
+         
+      }
 
         form#search-form input[type="text"] {
             width: 300px;
@@ -44,6 +52,17 @@
             border-radius: 5px;
             cursor: pointer;
         }
+         /* 취소요청 버튼 스타일 */
+         #table input[type="button"] { 
+         background-color: #ff0000; /* 배경색 */
+         color: #ffffff; /* 글자색 */
+         border: none; /* 테두리 없음 */
+         padding: 5px 10px; /* 여백 */
+         cursor: pointer; /* 포인터로 마우스 커서 변경 */
+      }
+      
+      
+   </style>
 
         /* 드롭다운 버튼 스타일 */
         .dropdown {
@@ -104,70 +123,136 @@
 </head>
 
 <body>
-     <%@ include file="/WEB-INF/include/nav.jsp" %> 
-     
-<h1> 보유 와인 </h1>
+<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">보유 와인 확인/수정</h1>
+   <main>
+      
+   <!-- 메뉴 목록 -->
+  
+  <form action="/search" method="get">
+    
+  </form>
+  <style>
+  	.dropdown {
+   	 display: flex;
+   	 justify-content: center; /* 수평 가운데 정렬 */
+   	 align-items: center; /* 수직 가운데 정렬 */
+  	}
+  	
 
-<main>
-    <!-- 검색 폼 -->
-    <form id="search-form" action="/search" method="get">
-        <input type="text" name="query" placeholder="검색어 입력">
-        <button type="submit">검색</button>
-    </form>
+  	.dropdown button {
+    	margin: 0 30px; /* 버튼 사이의 간격을 조절할 수 있습니다. */
+  	}
+ </style>
+   
 
-    <!-- 검색 조건 드롭다운 버튼 -->
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">국가</button>
-        <!-- 국가 드롭다운 메뉴 내용 -->
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">품종</button>
-        <!-- 품종 드롭다운 메뉴 내용 -->
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">가격순</button>
-        <!-- 가격순 드롭다운 메뉴 내용 -->
-    </div>
+ <div class="dropdown">
+ 
+ <input type="text" name="query" placeholder="검색어 입력">
+ 
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+    국가
+  </button>
 
-    <!-- 와인 목록 테이블 -->
-    <table id="table">
-        <tr>
-            <th>와인명</th>
-            <th>국가</th>
-            <th>품종</th>
-            <th>수량</th>
-            <th>가격</th>
-            <th>빈티지</th>
-            <th>수정/삭제</th>
-        </tr>
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+    품종
+  </button>
 
-        <!-- 예시 와인 데이터 -->
-        <c:forEach var="wine" items="${wineList }">
-        <tr>
-            <td>${wine.w_name }</td>
-            <td>${wine.w_location}</td>
-            <td>${wine.w_kind}</td>
-            <td>${wine.w_vintage}</td>
-            <td>${wine.w_amount}</td>
-            <td>${wine.w_price }</td>
-            
-            <td class="edit-delete-buttons">
-                <form action="/WineUpdateForm?s_no=1" method="post">
-                    <%-- <input type="hidden" name="s_no" value="${vo.s_no }"> --%>
-                    <button type="submit">수정</button>
-                </form>
-                <form action="/WineDelete" method="post">
-                    <input type="hidden" name="delete" value="아이템_고유_ID_1">
-                    <button type="submit">삭제</button>
-                </form>
-            </td>
-        </tr>
-        </c:forEach>
-        <!-- 다른 와인 데이터 추가 -->
-    </table>
-
-    <!-- 매장 홈으로 버튼 -->
-    <a href="/" class="btn btn-primary " style="">매장 홈으로</a>
-</main>
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+    가격순
+  </button>
+  <button type="submit">검색</button>
+</div>
+   <!-- 게시물 목록 -->
+   <table id="table">
+   
+   	<tr>
+     <th>와인명</th>
+     <th>국가</th>
+     <th>품종</th>
+     <th>수량</th>
+     <th>가격</th>
+     <th>추천항목</th>
+     <th>수정/삭제</th>
+   </tr>
+   
+   <tr>
+   </tr>
+    <tr>
+     <th>00와인</th>
+     <th>프랑스</th>
+     <th>멜롯</th>
+     <th>50</th>
+     <th>5000</th>
+     <th>추천항목</th>
+     <td>
+       <form action="/edit" method="post">
+          <input type="hidden" name="itemId" value="아이템_고유_ID_1">
+          <button type="submit">수정</button>
+       </form>
+        <form action="/delete" method="post">
+            <input type="hidden" name="itemId" value="아이템_고유_ID_1">
+            <button type="submit">삭제</button>
+        </form>
+     </td>
+   </tr>
+   <tr>
+     <th>00와인2</th>
+     <th>이탈리아</th>
+     <th>멜롯</th>
+     <th>15</th>
+     <th>3000</th>
+     <th>추천항목</th>
+     <td>
+       <form action="/edit" method="post">
+          <input type="hidden" name="itemId" value="아이템_고유_ID_1">
+          <button type="submit">수정</button>
+       </form>
+        <form action="/delete" method="post">
+            <input type="hidden" name="itemId" value="아이템_고유_ID_1">
+            <button type="submit">삭제</button>
+        </form>
+     </td>
+   </tr>
+   <tr>
+     <th>와인명</th>
+     <th>국가</th>
+     <th>품종</th>
+     <th>수량</th>
+     <th>가격</th>
+     <th>추천항목</th>
+     <td>
+       <form action="/edit" method="post">
+          <input type="hidden" name="itemId" value="아이템_고유_ID_1">
+          <button type="submit">수정</button>
+       </form>
+        <form action="/delete" method="post">
+            <input type="hidden" name="itemId" value="아이템_고유_ID_1">
+            <button type="submit">삭제</button>
+        </form>
+     </td>
+   </tr>
+   <tr>
+     <th>와인명</th>
+     <th>국가</th>
+     <th>품종</th>
+     <th>수량</th>
+     <th>가격</th>
+     <th>추천항목</th>
+   <td>
+       <form action="/edit" method="post">
+          <input type="hidden" name="itemId" value="아이템_고유_ID_1">
+          <button type="submit">수정</button>
+       </form>
+        <form action="/delete" method="post">
+            <input type="hidden" name="itemId" value="아이템_고유_ID_1">
+            <button type="submit">삭제</button>
+        </form>
+     </td>
+   </tr>
+   </table>
+   
+   <a href="/your-homepage-url" class="btn btn-primary">매장 홈으로</a>   
+   
+   </main>
 </body>
 </html>
