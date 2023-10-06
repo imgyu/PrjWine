@@ -138,7 +138,6 @@
             <th>수량</th>
             <th>가격</th>
             <th>빈티지</th>
-            <th>수정/삭제</th>
         </tr>
 
         <!-- 예시 와인 데이터 -->
@@ -147,25 +146,16 @@
             <td>${wine.w_name }</td>
             <td>${wine.w_location}</td>
             <td>${wine.w_kind}</td>
-            <td>${wine.w_vintage}</td>
             <td>${wine.w_amount}</td>
             <td>${wine.w_price }</td>
+            <td>${wine.w_vintage}</td>
             
-            <td class="edit-delete-buttons">
-                <form action="/WineUpdateForm?s_no=1" method="post">
-                    <%-- <input type="hidden" name="s_no" value="${vo.s_no }"> --%>
-                    <button type="submit">수정</button>
-                </form>
-                <form action="/WineDelete" method="post">
-                    <input type="hidden" name="delete" value="아이템_고유_ID_1">
-                    <button type="submit">삭제</button>
-                </form>
-            </td>
-        </tr>
+            
         </c:forEach>
+        
         <!-- 다른 와인 데이터 추가 -->
     </table>
-
+	<a href="/WineUpdateForm?s_no=1&wl_idx=1&w_no=1" class="btn btn-primary">수정</a>
     <!-- 매장 홈으로 버튼 -->
     <a href="/" class="btn btn-primary " style="">매장 홈으로</a>
 </main>

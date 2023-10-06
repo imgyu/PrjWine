@@ -42,64 +42,16 @@ public class StoreController {
 	}
 	*/
 	 
-	 
-	// 와인 리스트 
-	@RequestMapping("/StoreWineManage")
-	public ModelAndView storewinemanage(StoreVo vo) {
-		
-		List<HavingWineVo> wineList  =  storeService.getWineList(vo);  
-		
-		
-		ModelAndView  mv  =  new ModelAndView();
-		mv.setViewName("/store/storewinemanage");
-		mv.addObject("wineList", wineList );
-		return mv;
-	}
+
 
 	
 	@RequestMapping("/StoreWineRegister")
 	public ModelAndView storewineregister() {
 		
 		ModelAndView  mv  =  new ModelAndView();
-		mv.setViewName("/store/storewineupdate");
+		mv.setViewName("/store/storewineregister");
 		return mv;
 	}	
 		
-		// 와인 수정 기능 
-		@RequestMapping("/WineUpdateForm")
-		public ModelAndView windUpdateForm(StoreVo vo) {
-			
-			// 수정할 정보 조회
-			List<HavingWineVo> wineList  =  storeService.getWineList(vo);
-			
-			
-			
-			ModelAndView  mv  =  new ModelAndView();
-			mv.setViewName("/store/storewineupdate");
-			mv.addObject("wine", wineList);
-			return mv;
-		}
 		
-		@RequestMapping("/WineUpdate") 
-		public ModelAndView wineUpdate(WineListVo vo ) {
-			
-			// 매장 와인 재고 수정 
-			storeService.updateWine(vo);
-			
-			ModelAndView mv  =  new ModelAndView();
-			mv.setViewName("redirect:/StoreWineManage" );
-			
-			
-			return mv;
-		}
-		
-		@RequestMapping("/WineDelete")
-		public String wineDelete() {
-			
-			// Wine 데이터 삭제 
-			
-			
-			return "redirect:/StoreWineManage";
-		}
-	
 }
