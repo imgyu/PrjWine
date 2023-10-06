@@ -64,62 +64,6 @@
       
    </style>
 
-        /* 드롭다운 버튼 스타일 */
-        .dropdown {
-            display: inline-block;
-            margin-right: 10px;
-        }
-
-        /* 테이블 스타일 */
-        #table {
-            width: 70%;
-            margin: 0 auto;
-            border-collapse: collapse;
-        }
-
-        /* 테이블 헤더 스타일 */
-        #table th {
-            background-color: #f2f2f2;
-            border: 1px solid #dddddd;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        /* 테이블 셀 스타일 */
-        #table td {
-            border: 1px solid #dddddd;
-            padding: 10px;
-            text-align: center;
-        }
-
-        /* 수정/삭제 버튼 스타일 */
-        .edit-delete-buttons {
-            display: flex;
-            justify-content: center;
-        }
-
-        .edit-delete-buttons form {
-            display: inline-block;
-            margin-right: 5px;
-        }
-
-        .edit-delete-buttons button {
-            padding: 5px 10px;
-            background-color: #ff0000;
-            color: #ffffff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        /* 매장 홈으로 버튼 스타일 */
-        .back-home-button {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -131,19 +75,6 @@
   <form action="/search" method="get">
     
   </form>
-  <style>
-  	.dropdown {
-   	 display: flex;
-   	 justify-content: center; /* 수평 가운데 정렬 */
-   	 align-items: center; /* 수직 가운데 정렬 */
-  	}
-  	
-
-  	.dropdown button {
-    	margin: 0 30px; /* 버튼 사이의 간격을 조절할 수 있습니다. */
-  	}
- </style>
-   
 
  <div class="dropdown">
  

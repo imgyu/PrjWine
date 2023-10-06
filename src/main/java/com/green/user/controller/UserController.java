@@ -67,10 +67,7 @@ public class UserController {
 	public String favoritestores() {
 		return "/user/favoritestores";
 	}
-	@RequestMapping("/Store/SalesHistory")
-	public String saleshistory() {
-		return "/store/saleshistory";
-	}
+	
 	@RequestMapping("/UserPurchaseHistory")
 	public String purchasehistory() {
 		return "/user/purchasehistory";
