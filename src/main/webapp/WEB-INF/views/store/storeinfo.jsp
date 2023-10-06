@@ -84,8 +84,9 @@
     margin: 10px 20px 15px 55px;
 }
     </style>
-<%@include file="/WEB-INF/include/nav.jsp" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
+<%@include file="/WEB-INF/include/nav.jsp" %>
   <body>
 <h1 style="text-align: center; margin-top: 60px;">매장찾기</h1>
   <div class="store-allconatiner">

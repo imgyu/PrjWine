@@ -51,24 +51,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 <link rel="stylesheet"  href="/css/common.css" />
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
 <h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">매장 와인 등록</h1>
    <main>
       
    <!-- 메뉴 목록 -->
-   <style>
-  	.dropdown {
-   	 display: flex;
-   	 justify-content: center; /* 수평 가운데 정렬 */
-   	 align-items: center; /* 수직 가운데 정렬 */
-  	}
-  	
-
-  	.dropdown button {
-    	margin: 0 30px; /* 버튼 사이의 간격을 조절할 수 있습니다. */
-  	}
- </style>
    <form action="/search" method="get">
     <div class="dropdown">
     <input type="text" name="query" placeholder="검색어 입력">
