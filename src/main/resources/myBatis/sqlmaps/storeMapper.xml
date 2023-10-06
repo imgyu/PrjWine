@@ -7,20 +7,6 @@
 
 
 	
-	<!-- <select id="WineList" resultType="com.green.store.vo.HavingWineVo">
-	
-		SELECT  W.W_NAME,
-				W.W_LOCATION,
-				W.W_KIND,
-				W.W_VINTAGE,
-		        WL.W_AMOUNT,
-		        WL.W_PRICE,
-		        S.S_NAME
-		FROM    WINELIST WL, WINE W, STORE S
-		WHERE   WL.S_NO  = S.S_NO AND W.W_NO = WL.W_NO
-	
-	</select> -->
-	
 	<select id="WineList" resultType="com.green.store.vo.HavingWineVo">
 	
 		SELECT W.W_NAME,
@@ -30,7 +16,7 @@
        WL.W_AMOUNT,
        WL.W_PRICE,
        S.S_NAME
-	   FROM WINELIST WL
+	   FROM WINELIST WLs
        INNER JOIN WINE W ON WL.W_NO = W.W_NO
        INNER JOIN STORE S ON S.S_NO = WL.S_NO
        WHERE S.S_NO = #{s_no}
@@ -41,15 +27,30 @@
 	
 	<update id="UpdateWine">
 	
-	UPDATE WINELIST
-	SET    W_AMOUNT  =  #{w_amount},
+	    UPDATE WINELIST
+	    SET    W_AMOUNT  =  #{w_amount},
 	       W_PRICE   =  #{w_price}
-	WHERE  WL_IDX      =  #{wl_idx}
+	    WHERE  WL_IDX      =  #{wl_idx}
 	
-	
+	s
 	</update>
 	
 	
+	<select id         = "SearchList"
+  		  resultType = "com.green.store.vo.RegVo">
+         SELECT CONCAT(W_KIND, W_LOCATION, W_NAME, W_VINTAGE) AS DATA
+		  FROM WINE
+         WHERE W_KIND LIKE '%${your_w_kind}%'
+           AND W_LOCATION LIKE '%${your_w_location}%'
+           AND W_NAME LIKE '%${your_w_name}%'
+           AND W_VINTAGE LIKE '%${your_w_vintage}%';      
+    </select> 
+  
+    <insert id="InsertSearch">
+    INSERT INTO WINELIST ( S_NO, W_NO, W_AMOUNT, W_PRICE)
+    VALUES ( #{s_no}, #{w_no}, #{w_amount}, #{w_price})
+    </insert>
+
 </mapper>
 
 

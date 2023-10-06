@@ -36,6 +36,13 @@
 </c:choose>
 <!-- 위 nav -->
 
+<!-- 홈으로 가는 버튼 (화면 제일 좌측) -->
+<ul class="nav justify-content-left">
+  <li class="nav-item">
+     <a class="nav-link" href="/"><h2>와인이야기</h2></a>
+  </li>
+</ul>
+<!-- 홈으로 가는 버튼 (화면 제일 좌측) -->
 
 <!-- 아래nav -->
 <ul class="nav justify-content-center" >
@@ -49,8 +56,7 @@
     <a class="nav-link" href="/CouponForm"><b>쿠폰 발급</b></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
+    <a class="nav-link" href="#"><b>시음회 정보</b></a>
   </li>
 </ul>
-<!-- 아래 nav -->
 

@@ -4,12 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.green.user.service.UserService;
+import com.green.store.service.StoreService;
 
 @Controller
 public class StoreLoginController {
-//	@Autowired
-//	private  StoreService   storeService;
+	@Autowired
+	private  StoreService   storeService;
 	
 	@RequestMapping("/StoreLoginForm")
 	public String storeloginform() {
@@ -30,5 +30,5 @@ public class StoreLoginController {
 	public String storejoin() {
 		return "/user/sotoreform";
 	}
-
+	
 }

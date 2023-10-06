@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>HOME</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
@@ -15,15 +14,7 @@
 </head>
 <body>
  <%@include file="/WEB-INF/include/nav.jsp" %>
- <a href="/">home</a>
  
- 
-
-
-
-		
-
-
 </body>
 </html>
 
