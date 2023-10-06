@@ -34,8 +34,6 @@
 	</ul>
   </c:when>
 </c:choose>
-
-
 <!-- 위 nav -->
 
 
@@ -51,7 +49,7 @@
     <a class="nav-link" href="/CouponForm"><b>쿠폰 발급</b></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#"><b>시음회 정보</b></a>
+    <a class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
   </li>
 </ul>
 <!-- 아래 nav -->

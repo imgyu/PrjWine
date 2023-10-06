@@ -37,6 +37,7 @@
 </style>
 </head>
 <body>
+ <%@include file="/WEB-INF/include/nav.jsp" %>
 	<h2 style="text-align: center; margin-top: 60px;">구매기록</h2>
 	<div style="text-align: left;">
     <select>
