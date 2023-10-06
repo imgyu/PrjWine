@@ -97,13 +97,7 @@
             <option value="SPARKLING">SPARKLING</option>
             <!-- 추가 종류 옵션들 -->
         </select>
-        <!-- 빈티지 선택 셀렉트 박스 -->
-        <select class="form-select" >
-            <option value="">빈티지 선택</option>
-            <option value="빈티지1">빈티지1</option>
-        </select>
-
-
+        	<input type="text" name="w_vintage" class="form-control" placeholder="빈티지 입력">
                 <button type="submit" class="btn btn-primary">검색</button>
             </form>
         </div>

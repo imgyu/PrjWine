@@ -23,14 +23,12 @@
         </where>-->
 	<select id         = "SearchList"
   		  resultType = "com.green.store.vo.RegVo">
-  		  SELECT W_KIND,
-  		         W_LOCATION,
-  		         W_NAME,
-  		         W_VINTAGE
-  		  FROM   WINE
-  		  WHERE  W_KIND      =   #{w_kind}       AND 
-  		         W_LOCATION  =   #{w_location}   AND 
-  		         W_NAME      =   #{w_name}      
+ SELECT CONCAT(W_KIND, W_LOCATION, W_NAME, W_VINTAGE) AS DATA
+		  FROM WINE
+         WHERE W_KIND LIKE '%${your_w_kind}%'
+           AND W_LOCATION LIKE '%${your_w_location}%'
+           AND W_NAME LIKE '%${your_w_name}%'
+           AND W_VINTAGE LIKE '%${your_w_vintage}%';      
   </select> 
   
   <insert id="InsertSearch">

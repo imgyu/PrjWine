@@ -60,7 +60,7 @@ public class StoreController {
 	 public ModelAndView searchWine(RegVo vo) {
 		 List<RegVo> searchList = storeService.getSearchList(vo);
 		 
-		 ModelAndView  mv = new ModelAndView("wine-search-result");
+		 ModelAndView  mv = new ModelAndView();
 		 mv.addObject("searchList", searchList);
 		 mv.setViewName("/store/storewineregisterform");
 		 
