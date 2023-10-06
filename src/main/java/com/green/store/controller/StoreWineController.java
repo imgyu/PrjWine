@@ -70,4 +70,13 @@ public class StoreWineController {
 				return "redirect:/StoreWineManage";
 			}
 		
+			
+			
+			
+			
+			
+			
+			
+			
+			
 }
