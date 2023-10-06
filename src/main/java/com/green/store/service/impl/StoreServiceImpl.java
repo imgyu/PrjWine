@@ -10,6 +10,7 @@ import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.user.vo.UserVo;
 
 @Service("storeService")
 public class StoreServiceImpl implements StoreService {
@@ -50,6 +51,18 @@ public class StoreServiceImpl implements StoreService {
     public void updateWineList(HavingWineVo havingVo) {
 	      storeDao.updateWineList(havingVo);
 	   }
+    // (민규)
+	@Override
+	public List<StoreVo> selectstrli( UserVo vo ) {
+		List<StoreVo> strvo = storeDao.selectstrli( vo );
+		return strvo;
+	}
+	// (민규)
+	@Override
+	public StoreVo selectstr(StoreVo vo) {
+		StoreVo svo = storeDao.selectstr( vo );
+		return svo;
+	}
 
 
 

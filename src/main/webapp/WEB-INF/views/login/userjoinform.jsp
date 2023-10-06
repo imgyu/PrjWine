@@ -138,7 +138,7 @@ textarea{
 	function itemChange(){
 		 
 		var seoul = ["강남","서초","송파"];
-		var busan = ["중구","서구","동구","영도구","부산진구"];
+		var busan = ["서면","해운대","동래","광안리"];
 		 
 		var selectItem = $("#u_si").val();
 		 
