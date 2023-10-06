@@ -2,6 +2,7 @@ package com.green.user.vo;
 
 public class UserVo {
 	// Field
+	private int     u_no;
 	private String  u_id;
 	private String  u_pw;
 	private String  u_name;
@@ -9,8 +10,30 @@ public class UserVo {
 	private String  u_si;
 	private String  u_gu;
 	private String  u_phone;
+	private int     u_point;
 	
-	// Getter&Setter
+	// Constructor
+	public UserVo() {}
+	public UserVo(int u_no, String u_id, String u_pw, String u_name, String u_birth, String u_si, String u_gu,
+			String u_phone, int u_point) {
+		this.u_no = u_no;
+		this.u_id = u_id;
+		this.u_pw = u_pw;
+		this.u_name = u_name;
+		this.u_birth = u_birth;
+		this.u_si = u_si;
+		this.u_gu = u_gu;
+		this.u_phone = u_phone;
+		this.u_point = u_point;
+	}
+	
+	// Getter/Setter
+	public int getU_no() {
+		return u_no;
+	}
+	public void setU_no(int u_no) {
+		this.u_no = u_no;
+	}
 	public String getU_id() {
 		return u_id;
 	}
@@ -53,25 +76,23 @@ public class UserVo {
 	public void setU_phone(String u_phone) {
 		this.u_phone = u_phone;
 	}
-	
-	// Constructor 
-	public UserVo() {
-		
+	public int getU_point() {
+		return u_point;
 	}
-	public UserVo(String u_id, String u_pw, String u_name, String u_birth, String u_si, String u_gu, String u_phone) {
-		this.u_id = u_id;
-		this.u_pw = u_pw;
-		this.u_name = u_name;
-		this.u_birth = u_birth;
-		this.u_si = u_si;
-		this.u_gu = u_gu;
-		this.u_phone = u_phone;
+	public void setU_point(int u_point) {
+		this.u_point = u_point;
 	}
 	
 	// toString
 	@Override
 	public String toString() {
-		return "UserVo [u_id=" + u_id + ", u_pw=" + u_pw + ", u_name=" + u_name + ", u_birth=" + u_birth + ", u_si="
-				+ u_si + ", u_gu=" + u_gu + ", u_phone=" + u_phone + "]";
+		return "UserVo [u_no=" + u_no + ", u_id=" + u_id + ", u_pw=" + u_pw + ", u_name=" + u_name + ", u_birth="
+				+ u_birth + ", u_si=" + u_si + ", u_gu=" + u_gu + ", u_phone=" + u_phone + ", u_point=" + u_point + "]";
 	}
+	
+	
+	
+
+	
+
 }

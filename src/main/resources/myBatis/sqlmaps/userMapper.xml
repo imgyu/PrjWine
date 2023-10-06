@@ -5,15 +5,17 @@
 
 <mapper namespace="User">  
 
-<!--  
-  <select id="UserList"
+  	<!-- 유저로그인/세션 구현 -->
+  	<select id="UserLogin"
       resultType="com.green.user.vo.UserVo">
-      SELECT USERID, USERNAME, 
-             TO_CHAR(INDATE, 'YYYY-MM-DD HH24:MI:SS') INDATE 
-        FROM TUSER
-       ORDER BY INDATE ASC
-   </select>
--->
+      SELECT *
+      FROM TUSER
+      WHERE U_ID = #{ u_id }
+       AND  U_PW = #{ u_pw }
+  	</select>
+
+
+	<!-- 유저 회원가입 구현 -->
 	<insert id="UserInsert">
 
 		INSERT INTO TUSER (

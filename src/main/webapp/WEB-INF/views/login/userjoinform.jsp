@@ -63,8 +63,8 @@ textarea{
             <span class="redFont">*</span>아이디:
          </td>
          <td>
-            <input type="text" name="u_id" style="width: 200px">
-            <input type="button" value="아이디 검사">
+            <input type="text"  name="u_id" style="width: 200px">
+            <button class="btn btn-primary" href="/UserIdCheck" role="button">아이디 확인</a>
          </td>
       </tr>
       <tr>
@@ -85,7 +85,7 @@ textarea{
       </tr>
       <tr>
          <td>
-            생일:
+            <span class="redFont">*</span>생일:
          </td>
          <td>
             <div>
@@ -95,14 +95,13 @@ textarea{
       </tr>
       <tr>
          <td>
-            주소:
+            <span class="redFont">*</span>주소:
          </td>
          <td>
             <div>
 		   		<select name="u_si" id="u_si" onchange="itemChange()">
 		     		<option value="서울">서울</option>
 		     		<option value="부산">부산</option>
-		     		<option value="제주">제주</option>
 		   		</select>
 		   		&nbsp;
 		   		<select name="u_gu" id="u_gu">
@@ -112,7 +111,7 @@ textarea{
       </tr>
       <tr>
       	<td>
-      	   연락처:
+      	   <span class="redFont">*</span>연락처:
       	</td>
       	<td>
       	   <div>
@@ -123,14 +122,15 @@ textarea{
       <tr>
       	<td colspan="2">
       	    <div>
-      	    	<button type="submit">회원가입 하기</button>
+      	    	<button class="btn btn-primary" type="submit">회원가입</button>
+      	    	<a class="btn btn-primary" href="/" role="button">홈으로가기</a>
       	    </div>
       	</td>
       </tr>
    </table>
  </form>
 </div>
-  <input type="button" value="뒤로가기" onclick="location.href=''" style="margin: auto">
+
 
 		
 
@@ -138,8 +138,7 @@ textarea{
 	function itemChange(){
 		 
 		var seoul = ["강남","서초","송파"];
-		var busan = ["동래","서면","광안리","해운대"];
-		var zezu = ["애월","서귀포","땡땡"];
+		var busan = ["중구","서구","동구","영도구","부산진구"];
 		 
 		var selectItem = $("#u_si").val();
 		 
@@ -150,9 +149,6 @@ textarea{
 		}
 		else if(selectItem == "부산"){
 		  changeItem = busan;
-		}
-		else if(selectItem == "제주"){
-		  changeItem =  zezu;
 		}
 		 
 		$('#u_gu').empty();

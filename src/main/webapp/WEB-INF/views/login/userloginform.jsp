@@ -63,7 +63,8 @@ tr, td{
             <td><input type="password" name="u_pw" placeholder="Input your password"></td>
         </tr>
         <tr>
-            <td colspan="2"> <button type="submit">로그인</button> <button type="button" onclick="location.href='/UserJoinForm'"> 회원가입</button></td>
+            <td colspan="2"> <button type="submit">로그인</button>
+            <button type="button" onclick="location.href='/UserJoinForm'"> 회원가입</button></td>
             
         </tr>
     </table>
