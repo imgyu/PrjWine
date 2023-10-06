@@ -48,6 +48,52 @@
    </delete>
  -->
  
+	
+	<!-- <select id="WineList" resultType="com.green.store.vo.HavingWineVo">
+	
+		SELECT  W.W_NAME,
+				W.W_LOCATION,
+				W.W_KIND,
+				W.W_VINTAGE,
+		        WL.W_AMOUNT,
+		        WL.W_PRICE,
+		        S.S_NAME
+		FROM    WINELIST WL, WINE W, STORE S
+		WHERE   WL.S_NO  = S.S_NO AND W.W_NO = WL.W_NO
+	
+	</select> -->
+	
+	<select id="WineList" resultType="com.green.store.vo.HavingWineVo">
+	
+		SELECT W.W_NAME,
+       W.W_LOCATION,
+       W.W_KIND,
+       W.W_VINTAGE,
+       WL.W_AMOUNT,
+       WL.W_PRICE,
+       S.S_NAME,
+       WL.WL_IDX,
+       S.S_NO,
+       W.W_NO
+	   FROM WINELIST WL
+       INNER JOIN WINE W ON WL.W_NO = W.W_NO
+       INNER JOIN STORE S ON S.S_NO = WL.S_NO
+       WHERE S.S_NO = #{s_no}
+	
+	</select> 
+				
+	
+	<update id="UpdateWine">
+	
+	UPDATE WINELIST
+	SET    W_AMOUNT  =  #{w_amount},
+	       W_PRICE   =  #{w_price}
+	WHERE  WL_IDX      =  #{wl_idx}
+	
+	
+	</update>
+	
+	
 </mapper>
 
 
