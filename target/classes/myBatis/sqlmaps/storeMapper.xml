@@ -58,7 +58,7 @@
 		 AND  S_PW = #{ s_pw }
    </select>
    
-	<!-- 병규 -->
+	<!--  매장가입 -->
 	<insert id="StoreInsert">
 
 		INSERT INTO STORE (
@@ -67,20 +67,26 @@
 			S_PW,
 			S_NAME,
 			S_SN,
-			S_SI,
-			S_GU,
+		    S_POSTCODE,
+	        S_ADDRESS,
+            S_DETAILADDRESS,
+	        S_EXTRAADDRESS,
 			S_PHONE,
-			S_CONT
+			S_CONT,
+			S_IMG
 		) VALUES (
 		( SELECT NVL(MAX(S_NO),0)+1 FROM STORE),
 		#{ s_id },
 		#{ s_pw },
 		#{ s_name },
 		#{ s_sn },
-		#{ s_si },
-		#{ s_gu },
+		#{ s_postcode },
+		#{ s_address },
+		#{ s_detailAddress },
+		#{ s_extraAddress },
 		#{ s_phone },
-		#{ s_cont }
+		#{ s_cont },
+		#{ s_img }
 		)
 	</insert>
 	

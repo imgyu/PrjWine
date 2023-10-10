@@ -12,6 +12,7 @@
 	rel="stylesheet"
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous">
+		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
 .logintitle {
 	text-align: center;
@@ -61,7 +62,7 @@ textarea {
 
 	<h2 class="logintitle">매장 회원가입</h2>
 	<div class="container">
-		<form action="/StoreJoin" method="POST">
+		<form action="/StoreJoin" method="POST" enctype="multipart/form-data">
 			<table>
 				<colgroup>
 					<col width="25%">
@@ -100,12 +101,11 @@ textarea {
 					<td>주소:</td>
 					<td>
 						<div>
-							<select name="s_si" id="s_si" onchange="itemChange()" class="redFont">
-								<option value="서울">서울</option>
-								<option value="부산">부산</option>
-								<option value="제주">제주</option>
-							</select> &nbsp; <select name="s_gu" id="s_gu">
-							</select>
+							<input type="text" id="s_postcode" name="s_postcode" placeholder="우편번호">
+							<input type="button" onclick="s_execDaumPostcode()"	value="우편번호 찾기"><br> <input type="text"
+								id="s_address" name="s_address" placeholder="주소"><br> <input
+								type="text" id="s_detailAddress" name="s_detailAddress" placeholder="상세주소">
+							<input type="text" id="s_extraAddress" name="s_extraAddress" placeholder="참고항목">
 						</div>
 					</td>
 				</tr>
@@ -130,10 +130,8 @@ textarea {
 					<td>매장사진:</td>
 					<td>
 						<div>
-							<input type="file" id="s_img" accept="image/*" /><br> <img
-								id="previewImage" src="#" alt="미리 보기"
-								style="max-width: 300px; display: none;">
-
+							<input type="file" id="s_img" accept="image/*" onchange="readURL(this)"/><br> 
+							<img id="preview" style="max-width: 300px;">
 						</div>
 					</td>
 				</tr>
@@ -148,7 +146,6 @@ textarea {
 			</table>					
 		</form>
 	<script>
-   
 
 	</script>
 		
@@ -158,53 +155,68 @@ textarea {
 
 
 
+
 	<script>
-		function itemChange() {
-			// 주소 등록
-			var seoul = [ "강남", "서초", "송파" ];
-			var busan = [ "동래", "서면", "광안리", "해운대" ];
-			var zezu = [ "애월", "서귀포", "땡땡" ];
+		 function s_execDaumPostcode() {
+		        new daum.Postcode({
+		            oncomplete: function(data) {
+		                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-			var selectItem = $("#s_si").val();
+		                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+		                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+		                var addr = ''; // 주소 변수
+		                var extraAddr = ''; // 참고항목 변수
 
-			var changeItem;
+		                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+		                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+		                    addr = data.roadAddress;
+		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+		                    addr = data.jibunAddress;
+		                }
 
-			if (selectItem == "서울") {
-				changeItem = seoul;
-			} else if (selectItem == "부산") {
-				changeItem = busan;
-			} else if (selectItem == "제주") {
-				changeItem = zezu;
-			}
+		                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+		                if(data.userSelectedType === 'R'){
+		                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+		                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+		                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+		                        extraAddr += data.bname;
+		                    }
+		                    // 건물명이 있고, 공동주택일 경우 추가한다.
+		                    if(data.buildingName !== '' && data.apartment === 'Y'){
+		                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+		                    }
+		                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+		                    if(extraAddr !== ''){
+		                        extraAddr = ' (' + extraAddr + ')';
+		                    }
+		                    // 조합된 참고항목을 해당 필드에 넣는다.
+		                    document.getElementById("s_extraAaddress").value = extraAddr;
+		                
+		                } else {
+		                    document.getElementById("s_extraAddress").value = '';
+		                }
 
-			$('#s_gu').empty();
-
-			for (var count = 0; count < changeItem.length; count++) {
-				var option = $("<option>" + changeItem[count] + "</option>");
-				$('#s_gu').append(option);
-			}
-		}
-		//이미지 파일 미리보기
-		const imageInput = document.getElementById('s_img');
-        const previewImage = document.getElementById('previewImage');
-        
-        imageInput.addEventListener('change', (event) => {
-            const selectedFile = event.target.files[0];
-            
-            if (selectedFile) {
-                const reader = new FileReader();
-                
-                reader.onload = (e) => {
-                    previewImage.src = e.target.result;
-                    previewImage.style.display = 'block';
-                };
-                
-                reader.readAsDataURL(selectedFile);
-            } else {
-                previewImage.src = '#';
-                previewImage.style.display = 'none';
-            }
-        });
+		                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+		                document.getElementById('s_postcode').value = data.zonecode;
+		                document.getElementById("s_address").value = addr;
+		                // 커서를 상세주소 필드로 이동한다.
+		                document.getElementById("s_detailAddress").focus();
+		            }
+		        }).open();
+		    }
+		 
+			function readURL(input) {
+				  if (input.files && input.files[0]) {
+				    var reader = new FileReader();
+				    reader.onload = function(e) {
+				      document.getElementById('preview').src = e.target.result;
+				    };
+				    reader.readAsDataURL(input.files[0]);
+				  } else {
+				    document.getElementById('preview').src = "";
+				  }
+				}
+		
 	</script>
 </body>
 </html>
