@@ -14,7 +14,7 @@ public interface StoreService {
 	void insertWine(int selectedOption, int w_amount, int w_price, int s_no, int w_no);
 
 	// (영태)
-	List<RegVo> searchList(String searchKeyword);
+	List<RegVo> searchList(String searchKeyword, String searchOption);
 
 	// (병규)
 	StoreVo storelogin(StoreVo vo);
@@ -40,6 +40,8 @@ public interface StoreService {
 	
 	// (민규)
 	StoreVo selectstr(StoreVo vo);
+
+	List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption);
 
 
 

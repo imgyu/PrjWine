@@ -1,5 +1,6 @@
 package com.green.store.dao.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,15 +31,26 @@ public class StoreDaoImpl implements StoreDao {
 	      map.put("w_price", w_price);
 	      map.put("s_no", s_no);
 	      map.put("w_no", w_no);
-	      System.out.println("map:"+map);
-	       sqlSession.insert("Store.InsertWine", map);
+	      sqlSession.insert("Store.InsertWine", map);
 	   }
 	
 	 //(영태)
 	   @Override
-	   public List<RegVo> getSearchList(String searchKeyword) {
-	      List<RegVo> searchList = sqlSession.selectList("Store.SearchList", searchKeyword);
-	      return searchList;
+	   public List<RegVo> getSearchList(String searchKeyword, String searchOption) {
+	       List<RegVo> searchList = new ArrayList<>();
+	       
+	       Map<String, Object> map = new HashMap<>();
+	       map.put("searchKeyword", searchKeyword);
+	       
+	       if ("w_name".equals(searchOption)) {
+	           searchList = sqlSession.selectList("Store.SearchList1", map);
+	       } else if ("w_location".equals(searchOption)) {
+	           searchList = sqlSession.selectList("Store.SearchList2", map);
+	       } else if ("w_vintage".equals(searchOption)) {
+	           searchList = sqlSession.selectList("Store.SearchList3", map);
+	       }
+	       
+	       return searchList;
 	   }
 	
 	//(병규)
@@ -96,6 +108,31 @@ public class StoreDaoImpl implements StoreDao {
 	public StoreVo selectstr(StoreVo vo) {
 		StoreVo svo = sqlSession.selectOne("Store.SelectStrVo", vo);
 		return svo;
+	}
+
+	@Override
+	public List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption) {
+		
+		List<RegVo> getStoreListSearch  =  new ArrayList<>();
+		
+		Map<String, Object> map  =  new HashMap<>();
+		map.put("s_no", s_no);
+		map.put("searchKeyword", searchKeyword);
+		map.put("searchOption", searchOption);
+		
+		if(searchOption.equals("")) {
+			getStoreListSearch  =  sqlSession.selectList("Store.WineList", map);	
+		} else if("w_name".equals(searchOption)) {
+			getStoreListSearch  =  sqlSession.selectList("Store.GetName", map);
+		} else if ("w_location".equals(searchOption)) {
+			getStoreListSearch  =  sqlSession.selectList("Store.GetLocation", map);
+		} else if("w_kind".equals(searchOption)) {
+			getStoreListSearch  =  sqlSession.selectList("Store.GetKind", map);
+		} else if("w_kind".equals(searchOption)) {
+			getStoreListSearch  =  sqlSession.selectList("Store.GetAmount",map);
+		}
+		
+		return getStoreListSearch;
 	}
 
 		

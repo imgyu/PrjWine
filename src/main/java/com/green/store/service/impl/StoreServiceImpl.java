@@ -25,11 +25,11 @@ public class StoreServiceImpl implements StoreService {
 	      storeDao.insertwine(selectedOption, w_amount, w_price, s_no, w_no);
 	   }
 	// (영태)
-	   @Override
-	   public List<RegVo> searchList(String searchKeyword) {
-	      List<RegVo> searchList = storeDao.getSearchList(searchKeyword);
-	      return searchList;
-	   }
+		@Override
+		public List<RegVo> searchList(String searchKeyword, String searchOption) {
+			List<RegVo> searchList = storeDao.getSearchList(searchKeyword,searchOption);
+			return searchList;
+		}
 	   
 	// (병규)
 	@Override
@@ -84,6 +84,11 @@ public class StoreServiceImpl implements StoreService {
 	public StoreVo selectstr(StoreVo vo) {
 		StoreVo svo = storeDao.selectstr( vo );
 		return svo;
+	}
+	@Override
+	public List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption) {
+		List<RegVo> getStoreListSearch  =  storeDao.getStoreListSearch(s_no, searchKeyword, searchOption);
+		return getStoreListSearch;
 	}
 
 }

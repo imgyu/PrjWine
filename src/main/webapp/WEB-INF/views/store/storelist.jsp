@@ -49,34 +49,6 @@
 		</div>
 	</c:forEach>
 </div>
-
-
-
- <script>
-	function itemChange(){
-		 
-		var seoul = ["강남","서초","송파"];
-		var busan = ["서면","해운대","동래","광안리"];
-		 
-		var selectItem = $("#u_si").val();
-		 
-		var changeItem;
-		  
-		if(selectItem == "서울"){
-		  changeItem = seoul;
-		}
-		else if(selectItem == "부산"){
-		  changeItem = busan;
-		}
-		 
-		$('#u_gu').empty();
-		 
-		for(var count = 0; count < changeItem.length; count++){                
-		                var option = $("<option>"+changeItem[count]+"</option>");
-		                $('#u_gu').append(option);
-		            }
-	}
-  </script>
   
 </body>
 </html>
