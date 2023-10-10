@@ -61,8 +61,10 @@
 			S_PW,
 			S_NAME,
 			S_SN,
-			S_SI,
-			S_GU,
+		    S_POSTCODE,
+	        S_ADDRESS,
+            S_DETAILADDRESS,
+	        S_EXTRAADDRESS,
 			S_PHONE,
 			S_CONT
 		) VALUES (
@@ -71,8 +73,10 @@
 		#{ s_pw },
 		#{ s_name },
 		#{ s_sn },
-		#{ s_si },
-		#{ s_gu },
+		#{ s_postcode },
+		#{ s_address },
+		#{ s_detailaddress },
+		#{ s_extraaddress },
 		#{ s_phone },
 		#{ s_cont }
 		)
