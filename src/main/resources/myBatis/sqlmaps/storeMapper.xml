@@ -6,29 +6,35 @@
 <mapper namespace="Store">
 	
 	<!-- 영태 -->
-	<select id="SearchList" resultType="com.green.store.vo.RegVo">
-   SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
-   FROM WINE W
-   LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
-   LEFT JOIN STORE S ON WL.S_NO = S.S_NO
-   WHERE
-   UPPER(W.W_KIND) LIKE '%' || UPPER(#{searchKeyword}) || '%'
-   OR UPPER(W.W_VINTAGE) LIKE '%' || UPPER(#{searchKeyword}) || '%'
-   OR UPPER(W.W_NAME) LIKE '%' || UPPER(#{searchKeyword}) || '%'
-   OR UPPER(W.W_LOCATION) LIKE '%' || UPPER(#{searchKeyword}) || '%'
-   OR LOWER(W.W_KIND) LIKE '%' || LOWER(#{searchKeyword}) || '%'
-   OR LOWER(W.W_VINTAGE) LIKE '%' || LOWER(#{searchKeyword}) || '%'
-   OR LOWER(W.W_NAME) LIKE '%' || LOWER(#{searchKeyword}) || '%'
-   OR LOWER(W.W_LOCATION) LIKE '%' || LOWER(#{searchKeyword}) || '%'
-   </select>
+<select id="SearchList1" resultType="com.green.store.vo.RegVo">
+    SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
+    FROM WINE W
+    LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
+    LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
+    WHERE     W.W_NAME     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
+</select>
+<select id="SearchList2" resultType="com.green.store.vo.RegVo">
+    SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
+    FROM WINE W
+    LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
+    LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
+    WHERE     W.W_LOCATION     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
+</select>
+<select id="SearchList3" resultType="com.green.store.vo.RegVo">
+    SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
+    FROM WINE W
+    LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
+    LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
+    WHERE     W.W_VINTAGE     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
+</select>
    
 	<!-- 민규 -->
 	<select id="SelectStoreList" resultType="com.green.store.vo.StoreVo">
 		SELECT *
 		 FROM  STORE
-		WHERE  S_SI = #{ u_si }
-		 AND   S_GU = #{ u_gu }
-	</select>
+		WHERE  S_ADDRESS= #{ u_address }
+		
+	</select> 
 	
 	<!-- 민규 -->
 	<select id="SelectStrVo" resultType="com.green.store.vo.StoreVo">
@@ -52,7 +58,7 @@
 		 AND  S_PW = #{ s_pw }
    </select>
    
-	<!-- 병규 -->
+	<!--  매장가입 -->
 	<insert id="StoreInsert">
 
 		INSERT INTO STORE (
@@ -61,20 +67,26 @@
 			S_PW,
 			S_NAME,
 			S_SN,
-			S_SI,
-			S_GU,
+		    S_POSTCODE,
+	        S_ADDRESS,
+            S_DETAILADDRESS,
+	        S_EXTRAADDRESS,
 			S_PHONE,
-			S_CONT
+			S_CONT,
+			S_IMG
 		) VALUES (
 		( SELECT NVL(MAX(S_NO),0)+1 FROM STORE),
 		#{ s_id },
 		#{ s_pw },
 		#{ s_name },
 		#{ s_sn },
-		#{ s_si },
-		#{ s_gu },
+		#{ s_postcode },
+		#{ s_address },
+		#{ s_detailAddress },
+		#{ s_extraAddress },
 		#{ s_phone },
-		#{ s_cont }
+		#{ s_cont },
+		#{ s_img }
 		)
 	</insert>
 	
