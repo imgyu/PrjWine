@@ -13,12 +13,11 @@ public class StoreVo {
 	private String  s_extraAddress;
 	private String  s_phone;
 	private String  s_cont;
-	private String  s_img;
 	
 	//  Constructor
 	public StoreVo() {}
 	public StoreVo(int s_no, String s_id, String s_pw, String s_name, String s_sn, String s_postcode, String s_address,
-			String s_detailAddress, String s_extraAddress, String s_phone, String s_cont, String s_img) {
+			String s_detailAddress, String s_extraAddress, String s_phone, String s_cont) {
 		this.s_no = s_no;
 		this.s_id = s_id;
 		this.s_pw = s_pw;
@@ -30,15 +29,13 @@ public class StoreVo {
 		this.s_extraAddress = s_extraAddress;
 		this.s_phone = s_phone;
 		this.s_cont = s_cont;
-		this.s_img = s_img;
 	}
 	//toString
 	@Override
 	public String toString() {
 		return "StoreVo [s_no=" + s_no + ", s_id=" + s_id + ", s_pw=" + s_pw + ", s_name=" + s_name + ", s_sn=" + s_sn
 				+ ", s_postcode=" + s_postcode + ", s_address=" + s_address + ", s_detailAddress=" + s_detailAddress
-				+ ", s_extraAddress=" + s_extraAddress + ", s_phone=" + s_phone + ", s_cont=" + s_cont + ", s_img="
-				+ s_img + "]";
+				+ ", s_extraAddress=" + s_extraAddress + ", s_phone=" + s_phone + ", s_cont=" + s_cont + "]";
 	}
 	
 	// Getter&Setter
@@ -108,14 +105,6 @@ public class StoreVo {
 	public void setS_cont(String s_cont) {
 		this.s_cont = s_cont;
 	}
-	public String getS_img() {
-		return s_img;
-	}
-	public void setS_img(String s_img) {
-		this.s_img = s_img;
-	}
-	
-	
 	
 
 }

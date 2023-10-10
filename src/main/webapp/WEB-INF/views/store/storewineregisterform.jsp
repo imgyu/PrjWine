@@ -51,13 +51,32 @@ form#search-form {
 }
 
 form#search-form input[type="text"] {
-	width: 300px;
+	width: 218px;
 	padding: 5px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
 	margin-right: 10px;
 }
-
+input#text1 {
+	width: 150px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+input#text2 {
+	width: 150px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-right: 10px;
+}
+form#search-form #select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
 form#search-form button[type="submit"] {
 	padding: 5px 10px;
 	background-color: #007bff;
@@ -65,6 +84,14 @@ form#search-form button[type="submit"] {
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+}
+button#btn1 {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
 </style>
 <meta charset="UTF-8">
@@ -88,9 +115,9 @@ form#search-form button[type="submit"] {
 						<option value="w_location">국가</option>
 						<option value="w_vintage">빈티지</option>
 					</select>
-				</div>
 				<input type="text" name="searchKeyword" placeholder="검색어 입력">
 				<button type="submit">검색</button>
+				</div>
 			</form>
 		</div>
 		<!-- 게시물 목록 -->
@@ -103,7 +130,7 @@ form#search-form button[type="submit"] {
 					<th>국가</th>
 					<th>빈티지</th>
 				</tr>
-					<form action="/StoreWineRegister" method="POST">
+					<form action="/StoreWineRegister" method="POST" id="list-form">
 				<c:forEach var="store" items="${searchList}" varStatus="loop">
 						<tr>
 							<td colspan="1" style="text-align: center;">
@@ -123,9 +150,9 @@ form#search-form button[type="submit"] {
 				</c:forEach>
 			</table>
 			<div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
-				<input type="text" name="w_amount" placeholder="수량 입력"> 
-				 <input type="text" name="w_price" placeholder="가격 입력">
-				<button type="submit" class="btn btn-primary">등록</button>
+					<input id="text1" type="text" name="w_amount" placeholder="수량 입력"> 
+					<input id="text2" type="text" name="w_price" placeholder="가격 입력">
+				<button id="btn1" type="submit" class="btn btn-primary">등록</button>
 			</div>
 			</form>
 

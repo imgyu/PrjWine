@@ -82,13 +82,9 @@ public class StoreWineController {
 			) {
 
 		List<RegVo> searchList = storeService.searchList(searchKeyword,searchOption);
-		System.out.println("searchList:1"+searchList);
-		System.out.println("searchKeyword2:"+searchKeyword);
-		System.out.println("searchOption3:"+searchOption);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("searchList", searchList);
 		mv.addObject("searchOption", searchOption);
-		System.out.println("mv4:"+mv);
 		mv.setViewName("/store/storewineregisterform");
 		return mv;
 	}
@@ -109,12 +105,10 @@ public class StoreWineController {
 		
 		s_no = vo.getS_no();
 
-		System.out.println("0"+s_no);
 		storeService.insertWine(selectedOption, w_amount, w_price, s_no, w_no);
-		System.out.println("1"+s_no);
 		ModelAndView mv = new ModelAndView();
-		System.out.println("2"+s_no);
 		mv.setViewName("redirect:/StoreWineManage?s_no="+vo.getS_no());
 		return mv;
 	}
+	
 }
