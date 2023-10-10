@@ -66,7 +66,7 @@
 <!-- 아래nav -->
 <ul class="nav justify-content-center" >
   <li class="nav-item">
-    <a class="nav-link active" aria-current="page" href="/StoreList?u_si=${ loginVo.u_si }&u_gu=${ loginVo.u_gu }"><b>매장찾기</b></a>
+    <a class="nav-link active" aria-current="page" href="/StoreList"><b>매장찾기</b></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/WineList"><b>전체와인</b></a>
