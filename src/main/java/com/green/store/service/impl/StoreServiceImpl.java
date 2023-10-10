@@ -87,8 +87,8 @@ public class StoreServiceImpl implements StoreService {
 	}
 	@Override
 	public List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption) {
-		List<RegVo> getStoreListSearch  =  storeDao.getStoreListSearch(s_no, searchKeyword, searchOption);
-		return getStoreListSearch;
+		List<RegVo> storeListSearch  =  storeDao.getStoreListSearch(s_no, searchKeyword, searchOption);
+		return storeListSearch;
 	}
 
 }

@@ -113,26 +113,26 @@ public class StoreDaoImpl implements StoreDao {
 	@Override
 	public List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption) {
 		
-		List<RegVo> getStoreListSearch  =  new ArrayList<>();
+		List<RegVo> storeListSearch  =  new ArrayList<>();
 		
 		Map<String, Object> map  =  new HashMap<>();
 		map.put("s_no", s_no);
 		map.put("searchKeyword", searchKeyword);
 		map.put("searchOption", searchOption);
 		
-		if(searchOption.equals("")) {
-			getStoreListSearch  =  sqlSession.selectList("Store.WineList", map);	
+		if("All".equals(searchOption)) {
+			storeListSearch  =  sqlSession.selectList("Store.WineList", map);	
 		} else if("w_name".equals(searchOption)) {
-			getStoreListSearch  =  sqlSession.selectList("Store.GetName", map);
+			storeListSearch  =  sqlSession.selectList("Store.GetName", map);
 		} else if ("w_location".equals(searchOption)) {
-			getStoreListSearch  =  sqlSession.selectList("Store.GetLocation", map);
+			storeListSearch  =  sqlSession.selectList("Store.GetLocation", map);
 		} else if("w_kind".equals(searchOption)) {
-			getStoreListSearch  =  sqlSession.selectList("Store.GetKind", map);
-		} else if("w_kind".equals(searchOption)) {
-			getStoreListSearch  =  sqlSession.selectList("Store.GetAmount",map);
+			storeListSearch  =  sqlSession.selectList("Store.GetKind", map);
+		} else if("w_amount".equals(searchOption)) {
+			storeListSearch  =  sqlSession.selectList("Store.GetAmount",map);
 		}
 		
-		return getStoreListSearch;
+		return storeListSearch;
 	}
 
 		

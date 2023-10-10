@@ -121,7 +121,7 @@
 			    <input type="hidden" name="s_no" value="${ s_no }" />
 				<div>
 					<select id="select" name="searchOption">
-						<option value="">선택</option>
+						<option value="All">전체</option>
 						<option value="w_name">이름</option>
 						<option value="w_location">국가</option>
 						<option value="w_kind">품종</option>
@@ -135,7 +135,7 @@
 <br>
 <br>
 
-    <!-- 와인 목록 테이블 -->
+    
     <table id="table">
         <tr>
             <th>와인명</th>
@@ -147,7 +147,8 @@
             <th>수정</th>
         </tr>
 
-        <!-- 전체와인 리스트 -->
+        <!-- 검색하지 않았을  -->
+        <c:if test="${not empty wineList }">
         <c:forEach var="wine" items="${wineList }">
         <tr>
             <td>${wine.w_name }</td>
@@ -159,9 +160,26 @@
             <td>
    				<a href="/WineUpdateForm?s_no=${wine.s_no }&wl_idx=${wine.wl_idx}" class="btn btn-primary">수정</a>            
             </td>          
-        
+        </tr>
         </c:forEach>
-        <!-- 다른 와인 데이터 추가 -->
+        </c:if>
+        
+        <c:if test="${not empty storeListSearch }">
+        <c:forEach var="Search" items="${storeListSearch }">
+        <tr>
+            <td>${Search.w_name }</td>
+            <td>${Search.w_location}</td>
+            <td>${Search.w_kind}</td>
+            <td>${Search.w_amount}</td>
+            <td>${Search.w_price }</td>
+            <td>${Search.w_vintage}</td>
+            <td>
+   				<a href="/WineUpdateForm?s_no=${Search.s_no }&wl_idx=${Search.wl_idx}" class="btn btn-primary">수정</a>            
+            </td>          
+          </tr>
+        </c:forEach>
+        </c:if>
+        
     </table>
    
     <!-- 매장 홈으로 버튼 -->

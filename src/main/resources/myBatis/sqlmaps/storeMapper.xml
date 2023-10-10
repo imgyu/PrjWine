@@ -162,14 +162,14 @@
    </select>
    
    <select id="GetKind" resultType="com.green.store.vo.RegVo">
-   
+    <![CDATA[
     SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO, WL.WL_IDX
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
-    LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
-    WHERE     W.W_KIND     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-    AND S.S_NO  =  #{s_no}
-   
+    LEFT JOIN STORE S ON WL.S_NO = S.S_NO
+    WHERE UPPER(W.W_KIND) LIKE '%' || UPPER(#{w_kind}) || '%'
+    AND S.S_NO = #{s_no}
+     ]]>
    </select>
    
    <select id="GetAmount" resultType="com.green.store.vo.RegVo">
