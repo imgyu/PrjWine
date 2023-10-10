@@ -44,6 +44,11 @@
             border-radius: 5px;
             cursor: pointer;
         }
+        
+        .dropdown-group {
+        	text-align: center;
+        	margin-top: 20px;
+        }
 
         /* 드롭다운 버튼 스타일 */
         .dropdown {
@@ -111,24 +116,68 @@
 
 <main>
     <!-- 검색 폼 -->
-    <form id="search-form" action="/search" method="get">
-        <input type="text" name="query" placeholder="검색어 입력">
-        <button type="submit">검색</button>
-    </form>
+	<form id="search-form" action="/search" method="get" class="text-center">
+   	 <input type="text" name="query" placeholder="검색어 입력">
+     <button type="submit">검색</button>
+	
 
-    <!-- 검색 조건 드롭다운 버튼 -->
+	<!-- 검색 조건 드롭다운 버튼 -->
+	<div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
     <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">국가</button>
-        <!-- 국가 드롭다운 메뉴 내용 -->
+         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    	 국가
+ 	     </button>
+        <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="StoreWineManage">Argentina</a></li>
+        <li><a class="dropdown-item" href="#">Australia</a></li>
+        <li><a class="dropdown-item" href="#">Austria</a></li>
+        <li><a class="dropdown-item" href="#">Canada</a></li>
+        <li><a class="dropdown-item" href="#">Chile</a></li>
+        <li><a class="dropdown-item" href="#">Georgia</a></li>
+        <li><a class="dropdown-item" href="#">Greece</a></li>
+        <li><a class="dropdown-item" href="#">Hungary</a></li>
+        <li><a class="dropdown-item" href="#">Israel</a></li>
+        <li><a class="dropdown-item" href="#">Italy</a></li>
+        <li><a class="dropdown-item" href="#">Macedonia</a></li>
+        <li><a class="dropdown-item" href="#">Moldova</a></li>
+        <li><a class="dropdown-item" href="#">New Zealand</a></li>
+        <li><a class="dropdown-item" href="#">Portugal</a></li>
+        <li><a class="dropdown-item" href="#">Romania</a></li>
+        <li><a class="dropdown-item" href="#">Slovenia</a></li>
+        <li><a class="dropdown-item" href="#">South Africa</a></li>
+        <li><a class="dropdown-item" href="#">Spain</a></li>
+        <li><a class="dropdown-item" href="#">Switzerland</a></li>
+        <li><a class="dropdown-item" href="#">Turkey</a></li>
+        <li><a class="dropdown-item" href="#">United States</a></li>
+        <li><a class="dropdown-item" href="#">Uruguay</a></li>
+        </ul>
     </div>
     <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">품종</button>
-        <!-- 품종 드롭다운 메뉴 내용 -->
+       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    	 품종
+ 	     </button>
+ 	     <ul class="dropdown-menu"> 
+        <li><a class="dropdown-item" href="#">RED</a></li>
+        <li><a class="dropdown-item" href="#">DESSERT</a></li>        
+        <li><a class="dropdown-item" href="#">ROSE</a></li>        
+        <li><a class="dropdown-item" href="#">PORT</a></li>        
+        <li><a class="dropdown-item" href="#">WHITE</a></li>        
+        <li><a class="dropdown-item" href="#">SPARKLING</a></li>        
+        </ul>
     </div>
     <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">가격순</button>
-        <!-- 가격순 드롭다운 메뉴 내용 -->
+      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    	 수량
+ 	     </button>
+         <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">수량 ↑</a></li>
+          <li><a class="dropdown-item" href="#">수량 ↓</a></li>
+         </ul>
     </div>
+</div>
+</form>
+<br>
+<br>
 
     <!-- 와인 목록 테이블 -->
     <table id="table">
@@ -139,6 +188,7 @@
             <th>수량</th>
             <th>가격</th>
             <th>빈티지</th>
+            <th>수정</th>
         </tr>
 
         <!-- 예시 와인 데이터 -->
@@ -150,15 +200,16 @@
             <td>${wine.w_amount}</td>
             <td>${wine.w_price }</td>
             <td>${wine.w_vintage}</td>
-            
-            
-        </c:forEach>
+            <td>
+   				<a href="/WineUpdateForm?s_no=${wine.s_no }&wl_idx=${wine.wl_idx}" class="btn btn-primary">수정</a>            
+            </td>          
         
+        </c:forEach>
         <!-- 다른 와인 데이터 추가 -->
     </table>
-   <a href="/WineUpdateForm?s_no=1&wl_idx=1" class="btn btn-primary">수정</a>
+   
     <!-- 매장 홈으로 버튼 -->
-    <a href="/" class="btn btn-primary " style="">매장 홈으로</a>
+    <a href="/" class="btn btn-primary mx-auto " >매장 홈으로</a>
 </main>
 </body>
 </html>

@@ -5,12 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
-import com.green.store.vo.StoreVo;
 
 @Controller
 public class StoreWineController {
@@ -20,23 +20,36 @@ public class StoreWineController {
 
 	// 와인 리스트 (임규)
 	@RequestMapping("/StoreWineManage")
-	public ModelAndView storewinemanage(StoreVo vo) {
+	public ModelAndView storewinemanage(HavingWineVo vo) {
+
+		// 각 매장별 보유 와인 조회
 		List<HavingWineVo> wineList = storeService.getWineList(vo);
+
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/store/storewinemanage");
 		mv.addObject("wineList", wineList);
+
 		return mv;
 	}
 
 	// 와인 수정 화면 (임규)
 	@RequestMapping("/WineUpdateForm")
-	public ModelAndView windUpdateForm(StoreVo vo) {
-		// 정보 조회
-		List<HavingWineVo> wineList = storeService.getWineList(vo);
-		System.out.println(wineList);
+	public ModelAndView windUpdateForm(HavingWineVo vo) {
+
+		int idx = vo.getWl_idx();
+
+		int s_no = vo.getS_no();
+
+		List<HavingWineVo> selectList = storeService.selectList(vo);
+		System.out.println("선택한 와인 정보" + selectList);
+
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/store/storewineupdate");
-		mv.addObject("wineList", wineList);
+		mv.addObject("selectList", selectList);
+		mv.addObject("idx", idx);
+		mv.addObject("s_no", s_no);
+
 		return mv;
 	}
 
@@ -45,47 +58,53 @@ public class StoreWineController {
 	public ModelAndView wineUpdate(HavingWineVo havingVo) {
 
 		storeService.updateWineList(havingVo);
+		System.out.println(havingVo);
 
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/StoreWineManage");
+		mv.setViewName("redirect:/StoreWineManage?s_no=" + havingVo.getS_no());
 
 		return mv;
 	}
 
 	// Wine 데이터 삭제 (임규)
 	@RequestMapping("/WineDelete")
-	public String wineDelete() {
-		return "redirect:/StoreWineManage";
-	}
+	public String wineDelete(HavingWineVo havingVo) {
 
-	// 와인등록 (영태)
-	@RequestMapping("/StoreWineRegister")
-	public ModelAndView storewineregister(RegVo vo) {
+		storeService.deleteWineList(havingVo);
 
-		storeService.insertSearch(vo);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("vo", vo);
-		mv.setViewName("redirect:/store/storewinemanage");
-		return mv;
-	}
-
-	// 와인등록폼 (영태)
-	@RequestMapping("/StoreWineRegisterForm")
-	public String storewineregisterform() {
-		return "/store/storewineregisterform";
+		return "redirect:/StoreWineManage?s_no=" + havingVo.getS_no();
 	}
 
 	// 와인검색 (영태)
 	@RequestMapping("/StoreWineSearch")
-	public ModelAndView searchWine(RegVo vo) {
-		List<RegVo> searchList = storeService.getSearchList(vo);
+	public ModelAndView winesearch(@RequestParam("searchKeyword") String searchKeyword) {
+
+		List<RegVo> searchList = storeService.searchList(searchKeyword);
 
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("searchList", searchList);
+		System.out.println("조회:" + mv);
 		mv.setViewName("/store/storewineregisterform");
-
-		System.out.println(mv);
 		return mv;
 	}
+	
+	// 와인등록폼 (영태)
+	   @RequestMapping("/StoreWineRegisterForm")
+	   public String storewineregisterform() {
+	      return "/store/storewineregisterform";
+	   }
+	
+	// 와인등록 (영태)
+	@RequestMapping("/StoreWineRegister")
+	public ModelAndView storewineregister(@RequestParam("selectedOption") int selectedOption,
+			@RequestParam("w_amount") int w_amount, @RequestParam("w_price") int w_price,
+			@RequestParam("s_no") int s_no, @RequestParam("w_no") int w_no, @RequestParam("w_name") String w_name,
+			@RequestParam("w_location") String w_location, @RequestParam("w_vintage") String w_vintage,
+			@RequestParam("w_kind") String w_kind) {
 
+		storeService.insertWine(selectedOption, w_amount, w_price, s_no, w_no);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/StoreWineManage");
+		return mv;
+	}
 }

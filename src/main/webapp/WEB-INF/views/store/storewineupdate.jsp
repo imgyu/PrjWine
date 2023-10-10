@@ -92,29 +92,9 @@
 
 <main>
 
-
-    <!-- 검색 폼 -->
-    <form id="search-form" action="/search" method="get">
-        <input type="text" name="query" placeholder="검색어 입력">
-        <button type="submit">검색</button>
-    </form>
-
-    <!-- 검색 조건 드롭다운 버튼 -->
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">국가</button>
-        <!-- 국가 드롭다운 메뉴 내용 -->
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">품종</button>
-        <!-- 품종 드롭다운 메뉴 내용 -->
-    </div>
-    <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">가격순</button>
-        <!-- 가격순 드롭다운 메뉴 내용 -->
-    </div>
-
     <!-- 와인 목록 테이블 -->
-      <form action="/WineUpdate?s_no=1&wl_idx=1" method="POST">
+      <form action="/WineUpdate?s_no=${s_no }&wl_idx=${idx}" method="POST">
+      <%-- <input type="hidden" name="wl_idx" value="${idx.wl_idx }"> --%>
     <table id="table">
         <tr>
             <th>와인명</th>
@@ -127,20 +107,19 @@
         </tr>
 
         <!-- 예시 와인 데이터 -->
-        <c:forEach var="wine" items="${ wineList }">
+        <c:forEach var="select" items="${ selectList }">
         <tr>
-            <td>${wine.w_name }</td>
-            <td>${wine.w_location}</td>
-            <td>${wine.w_kind}</td>
-            <td><input type="text" name="w_amount" value="${wine.w_amount}"></td>
-            <td><input type="text" name="w_price" value="${wine.w_price }"></td>
-            <td>${wine.w_vintage}</td>
+            <td>${select.w_name }</td>
+            <td>${select.w_location}</td>
+            <td>${select.w_kind}</td>
+            <td><input type="text" name="w_amount" value="${select.w_amount}"></td>
+            <td><input type="text" name="w_price" value="${select.w_price }"></td>
+            <td>${select.w_vintage}</td>
             
              <td class="edit-delete-buttons">
-             <button type="submit" class="btn btn-primary">수정</button>       
-             <a class="btn btn-danger" href="/WineDelete">삭제</a>
-             
-          
+             <button type="submit"class="btn btn-primary">수정</button>    
+             <a class="btn btn-danger" href="/WineDelete?s_no=${select.s_no }&wl_idx=${select.wl_idx}">삭제</a>
+                       
             </td>
             
         </tr>
