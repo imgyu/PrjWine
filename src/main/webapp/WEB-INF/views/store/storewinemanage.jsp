@@ -119,7 +119,6 @@
 	<form id="search-form" action="/search" method="get" class="text-center">
    	 <input type="text" name="query" placeholder="검색어 입력">
      <button type="submit">검색</button>
-	
 
 	<!-- 검색 조건 드롭다운 버튼 -->
 	<div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">

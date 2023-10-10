@@ -64,8 +64,8 @@
    <div class="container">
       <!-- 버튼 검색 -->
       <div>
-          <button type="button" onclick="location.href='/All_Click'"       name="all_click" class="btn btn-outline-secondary">all</button>
-             <button type="button" onclick="location.href='/Red_Click'"       name="red_click" class="btn btn-outline-secondary">레드와인</button>
+           <button type="button" onclick="location.href='/All_Click'"       name="all_click" class="btn btn-outline-secondary">all</button>
+           <button type="button" onclick="location.href='/Red_Click'"       name="red_click" class="btn btn-outline-secondary">레드와인</button>
            <button type="button" onclick="location.href='/White_Click'"     name="white_click" class="btn btn-outline-secondary">화이트와인</button>
            <button type="button" onclick="location.href='/Sparkling_Click'" name="sparkling_click" class="btn btn-outline-secondary">스파클링</button>
            <button type="button" onclick="location.href='/Rose_Click'"      name="rose_click" class="btn btn-outline-secondary">로제</button>

@@ -77,13 +77,18 @@ public class StoreWineController {
 
 	// 와인검색 (영태)
 	@RequestMapping("/StoreWineSearch")
-	public ModelAndView winesearch(@RequestParam("searchKeyword") String searchKeyword) {
+	public ModelAndView winesearch(@RequestParam("searchKeyword") String searchKeyword
+			,@RequestParam("searchOption") String searchOption
+			) {
 
-		List<RegVo> searchList = storeService.searchList(searchKeyword);
-
+		List<RegVo> searchList = storeService.searchList(searchKeyword,searchOption);
+		System.out.println("searchList:1"+searchList);
+		System.out.println("searchKeyword2:"+searchKeyword);
+		System.out.println("searchOption3:"+searchOption);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("searchList", searchList);
-		System.out.println("조회:" + mv);
+		mv.addObject("searchOption", searchOption);
+		System.out.println("mv4:"+mv);
 		mv.setViewName("/store/storewineregisterform");
 		return mv;
 	}
@@ -96,15 +101,20 @@ public class StoreWineController {
 	
 	// 와인등록 (영태)
 	@RequestMapping("/StoreWineRegister")
-	public ModelAndView storewineregister(@RequestParam("selectedOption") int selectedOption,
+	public ModelAndView storewineregister(RegVo vo,@RequestParam("selectedOption") int selectedOption,
 			@RequestParam("w_amount") int w_amount, @RequestParam("w_price") int w_price,
 			@RequestParam("s_no") int s_no, @RequestParam("w_no") int w_no, @RequestParam("w_name") String w_name,
 			@RequestParam("w_location") String w_location, @RequestParam("w_vintage") String w_vintage,
 			@RequestParam("w_kind") String w_kind) {
+		
+		s_no = vo.getS_no();
 
+		System.out.println("0"+s_no);
 		storeService.insertWine(selectedOption, w_amount, w_price, s_no, w_no);
+		System.out.println("1"+s_no);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/StoreWineManage");
+		System.out.println("2"+s_no);
+		mv.setViewName("redirect:/StoreWineManage?s_no="+vo.getS_no());
 		return mv;
 	}
 }
