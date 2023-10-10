@@ -19,38 +19,59 @@ public class StoreServiceImpl implements StoreService {
 	private StoreDao storeDao;
 
 	// (영태)
-	@Override
-	public void insertSearch(RegVo vo) {
-		storeDao.insertSearch(vo);
-	}
+	   @Override
+	   public void insertWine(int selectedOption, int w_amount, int w_price, int s_no, int w_no) {
+	      storeDao.insertwine(selectedOption, w_amount, w_price, s_no, w_no);
+	   }
 	// (영태)
-	@Override
-	public List<RegVo> getSearchList(RegVo vo) {
-		List<RegVo> searchList = storeDao.getSearchList(vo);
-		return searchList;
-	}
+	   @Override
+	   public List<RegVo> searchList(String searchKeyword) {
+	      List<RegVo> searchList = storeDao.getSearchList(searchKeyword);
+	      return searchList;
+	   }
+	   
 	// (병규)
 	@Override
 	public void insertStore(StoreVo vo) {
 		storeDao.insertStore( vo );
 	}
+	
 	// (병규)
 	@Override
 	public StoreVo storelogin(StoreVo vo) {
 		StoreVo loginVo = storeDao.storelogin( vo );
 		return loginVo;
 	}
+	
 	// (임규)
 	@Override
-	public List<HavingWineVo> getWineList(StoreVo vo) {
+	public List<HavingWineVo> getWineList(HavingWineVo vo) {
 	      List<HavingWineVo> wineList  =  storeDao.getWineList(vo);
 	      return wineList;
 	   }
+	
 	// (임규)
     @Override
     public void updateWineList(HavingWineVo havingVo) {
 	      storeDao.updateWineList(havingVo);
 	   }
+    
+    @Override
+	public void deleteWineList(HavingWineVo havingVo) {
+		
+		storeDao.deleteWineList(havingVo);
+		
+	}
+    
+    @Override
+	public List<HavingWineVo> selectList(HavingWineVo vo) {
+		
+		List<HavingWineVo> selectList  =  storeDao.selectList(vo);
+		
+		return selectList;
+	}
+    
+    
     // (민규)
 	@Override
 	public List<StoreVo> selectstrli( UserVo vo ) {

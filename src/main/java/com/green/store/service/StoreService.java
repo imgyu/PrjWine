@@ -10,10 +10,10 @@ import com.green.user.vo.UserVo;
 public interface StoreService {
 
 	// (영태)
-	void insertSearch(RegVo vo);
+	void insertWine(int selectedOption, int w_amount, int w_price, int s_no, int w_no);
 
 	// (영태)
-	List<RegVo> getSearchList(RegVo vo);
+	List<RegVo> searchList(String searchKeyword);
 
 	// (병규)
 	StoreVo storelogin(StoreVo vo);
@@ -22,10 +22,17 @@ public interface StoreService {
 	void insertStore(StoreVo vo);
 
 	// (임규)
-	List<HavingWineVo> getWineList(StoreVo vo);
+	List<HavingWineVo> getWineList(HavingWineVo vo);
 
 	// (임규)
 	void updateWineList(HavingWineVo havingVo);
+	
+	// (임규)
+	void deleteWineList(HavingWineVo havingVo);
+	
+	// (임규)
+	List<HavingWineVo> selectList(HavingWineVo vo);
+	
 	
 	// (민규)
 	List<StoreVo> selectstrli( UserVo vo);
