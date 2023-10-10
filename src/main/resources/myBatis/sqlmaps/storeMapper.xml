@@ -7,12 +7,21 @@
 	
 	<!-- 영태 -->
 	<select id="SearchList" resultType="com.green.store.vo.RegVo">
-   		<![CDATA[
-  			SELECT CONCAT( W_KIND, W_LOCATION, W_NAME, W_VINTAGE ) AS DATA
-  			FROM WINE
- 		 	WHERE CONCAT( W_KIND, W_LOCATION, W_NAME, W_VINTAGE ) LIKE '%' || #{data} || '%';
-  		]]>
-	</select>
+   SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
+   FROM WINE W
+   LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
+   LEFT JOIN STORE S ON WL.S_NO = S.S_NO
+   WHERE
+   UPPER(W.W_KIND) LIKE '%' || UPPER(#{searchKeyword}) || '%'
+   OR UPPER(W.W_VINTAGE) LIKE '%' || UPPER(#{searchKeyword}) || '%'
+   OR UPPER(W.W_NAME) LIKE '%' || UPPER(#{searchKeyword}) || '%'
+   OR UPPER(W.W_LOCATION) LIKE '%' || UPPER(#{searchKeyword}) || '%'
+   OR LOWER(W.W_KIND) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+   OR LOWER(W.W_VINTAGE) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+   OR LOWER(W.W_NAME) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+   OR LOWER(W.W_LOCATION) LIKE '%' || LOWER(#{searchKeyword}) || '%'
+   </select>
+   
 	<!-- 민규 -->
 	<select id="SelectStoreList" resultType="com.green.store.vo.StoreVo">
 		SELECT *
@@ -20,17 +29,20 @@
 		WHERE  S_SI = #{ u_si }
 		 AND   S_GU = #{ u_gu }
 	</select>
+	
 	<!-- 민규 -->
 	<select id="SelectStrVo" resultType="com.green.store.vo.StoreVo">
 		SELECT *
 		 FROM  STORE
 		WHERE  S_NO = #{ s_no }
 	</select>
+	
 	<!-- 영태 -->
-	<insert id="InsertSearch">
-		INSERT INTO WINELIST ( S_NO, W_NO, W_AMOUNT, W_PRICE)
-		VALUES ( #{s_no}, #{w_no}, #{w_amount}, #{w_price})
-	</insert>
+	<insert id="InsertWine" parameterType="map">
+    
+    INSERT INTO WINELIST (W_NO, W_AMOUNT, W_PRICE, S_NO, WL_IDX)
+    VALUES (#{selectedOption}, #{w_amount}, #{w_price}, #{s_no}, ( SELECT NVL(MAX(WL_IDX),0)+1 FROM WINELIST))
+   </insert>
 	
 	 <select id="Storelogin"
       resultType="com.green.store.vo.StoreVo">
@@ -39,6 +51,7 @@
 		WHERE S_ID = #{ s_id }
 		 AND  S_PW = #{ s_pw }
    </select>
+   
 	<!-- 병규 -->
 	<insert id="StoreInsert">
 
@@ -64,6 +77,7 @@
 		#{ s_cont }
 		)
 	</insert>
+	
 	<!-- 임규 -->
 	<select id="WineList" resultType="com.green.store.vo.HavingWineVo">
    
@@ -83,13 +97,42 @@
        WHERE S.S_NO = #{s_no}
    
    </select> 
+    
    <!-- 임규 -->
    <update id="UpdateWineList">
    UPDATE WINELIST
    SET    W_AMOUNT  =  #{w_amount},
           W_PRICE   =  #{w_price}
-   WHERE  S_NO      =  #{s_no} AND WL_IDX  =  #{wl_idx}
+   WHERE  WL_IDX  =  #{wl_idx}
    </update>
+   
+   <delete id="DeleteWineList">
+   
+   DELETE FROM WINELIST
+   WHERE  WL_IDX  =  #{wl_idx}
+   
+   </delete>
+   
+   <select id="SelectList" resultType="com.green.store.vo.HavingWineVo">
+   
+   SELECT W.W_NAME,
+       W.W_LOCATION,
+       W.W_KIND,
+       W.W_VINTAGE,
+       WL.W_AMOUNT,
+       WL.W_PRICE,
+       WL.WL_IDX,
+       S.S_NO,
+       W.W_NO
+      FROM WINELIST WL
+       INNER JOIN WINE W ON WL.W_NO = W.W_NO
+       INNER JOIN STORE S ON S.S_NO = WL.S_NO
+       WHERE WL.WL_IDX  =  #{wl_idx}
+   
+   
+   </select>
+   
+   
 </mapper>
 
 

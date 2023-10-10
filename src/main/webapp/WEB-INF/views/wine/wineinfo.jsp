@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
@@ -32,11 +33,10 @@
         }
 
         .wine-image {
-            max-width: 40%; /* 이미지의 가로 크기를 최대 50%로 제한 */
-            max-height: 50vh; /* 이미지의 세로 크기를 화면 높이의 최대 50%로 제한 */
-            object-fit: cover; /* 이미지를 비율을 유지하면서 컨테이너에 맞춥니다. */
-            border-radius: 10px;
-            flex-basis: 50%; /* 왼쪽 위 */
+            max-width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 10px 10px 0 0;
         }
 
         .wine-details {
@@ -77,25 +77,26 @@
 </head>
 <body>
     <%@include file="/WEB-INF/include/nav.jsp" %>
+    <c:forEach var="info" items="${wineInfo }">
     <h1 style="text-align: center; margin-top: 60px;">와인 정보</h1>
     <div class="wine-container">
-        <img class="wine-image" src="/img/test.jpg" alt="와인 사진">
+        <img class="wine-image" src="${info.w_image}" alt="와인 사진">
         <div class="wine-details">
-            <div class="wine-name">와인 이름</div>
-            <div class="wine-description">와인 설명 Lorem ipsum dolor sit amet, consectetur adipiscing elit
-            Lorem ipsum dolor sit amet, consectetur adipiscing elitLorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-            <div class="wine-price">와인 가격</div>
-            <div class="wine-amount">와인 수량</div>
-       
-            <ul>
-        <li><a class="store-link" href="/매장페이지">와인을 보유한 매장1</a></li>
-        <li><a class="store-link" href="/매장페이지">와인을 보유한 매장2</a></li>
-        <li><a class="store-link" href="/매장페이지">와인을 보유한 매장3</a></li>
-        <li><a class="store-link" href="/매장페이지">와인을 보유한 매장4</a></li>
-        <li><a class="store-link" href="/매장페이지">와인을 보유한 매장5</a></li>
-    </ul>      
- </div>
-  </div>
+            <div class="wine-name">${info.w_name }</div>
+            <div class="wine-winery">${info.w_winery}</div>
+            <div class="wine-location">${info.w_location }</div>
+            <div class="wine-vintage">${info.w_vintage }</div>
+        </div>
+        </c:forEach>
+        
+        <c:forEach var="storeList" items="${storeList }">
+         <ul> <!-- forEach  -->
+        <li><a class="store-link" href="/매장페이지">매장 이름 : ${storeList.s_name }</a><span>가격 : ${storeList.w_price }</span></li>
+    </ul> 
+ 		 </c:forEach>
+ 		 </div>
+ 		 
+                
 
 </body>
 </html>
