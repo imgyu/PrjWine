@@ -125,54 +125,14 @@
 	<div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
     <div class="dropdown">
          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    	 국가
+    	 전체
  	     </button>
         <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="StoreWineManage">Argentina</a></li>
-        <li><a class="dropdown-item" href="#">Australia</a></li>
-        <li><a class="dropdown-item" href="#">Austria</a></li>
-        <li><a class="dropdown-item" href="#">Canada</a></li>
-        <li><a class="dropdown-item" href="#">Chile</a></li>
-        <li><a class="dropdown-item" href="#">Georgia</a></li>
-        <li><a class="dropdown-item" href="#">Greece</a></li>
-        <li><a class="dropdown-item" href="#">Hungary</a></li>
-        <li><a class="dropdown-item" href="#">Israel</a></li>
-        <li><a class="dropdown-item" href="#">Italy</a></li>
-        <li><a class="dropdown-item" href="#">Macedonia</a></li>
-        <li><a class="dropdown-item" href="#">Moldova</a></li>
-        <li><a class="dropdown-item" href="#">New Zealand</a></li>
-        <li><a class="dropdown-item" href="#">Portugal</a></li>
-        <li><a class="dropdown-item" href="#">Romania</a></li>
-        <li><a class="dropdown-item" href="#">Slovenia</a></li>
-        <li><a class="dropdown-item" href="#">South Africa</a></li>
-        <li><a class="dropdown-item" href="#">Spain</a></li>
-        <li><a class="dropdown-item" href="#">Switzerland</a></li>
-        <li><a class="dropdown-item" href="#">Turkey</a></li>
-        <li><a class="dropdown-item" href="#">United States</a></li>
-        <li><a class="dropdown-item" href="#">Uruguay</a></li>
+        <li><a class="dropdown-item" href="/StoreLocationList?s_no">국가</a></li>
+        <li><a class="dropdown-item" href="#">품종</a></li>
+        <li><a class="dropdown-item" href="#">수량↑</a></li>
+        <li><a class="dropdown-item" href="#">수량↓</a></li>
         </ul>
-    </div>
-    <div class="dropdown">
-       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    	 품종
- 	     </button>
- 	     <ul class="dropdown-menu"> 
-        <li><a class="dropdown-item" href="#">RED</a></li>
-        <li><a class="dropdown-item" href="#">DESSERT</a></li>        
-        <li><a class="dropdown-item" href="#">ROSE</a></li>        
-        <li><a class="dropdown-item" href="#">PORT</a></li>        
-        <li><a class="dropdown-item" href="#">WHITE</a></li>        
-        <li><a class="dropdown-item" href="#">SPARKLING</a></li>        
-        </ul>
-    </div>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    	 수량
- 	     </button>
-         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">수량 ↑</a></li>
-          <li><a class="dropdown-item" href="#">수량 ↓</a></li>
-         </ul>
     </div>
 </div>
 </form>

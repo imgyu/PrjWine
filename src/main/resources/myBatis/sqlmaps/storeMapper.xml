@@ -130,7 +130,8 @@
        WHERE WL.WL_IDX  =  #{wl_idx}
    
    
-   </select>
+   </select>   
+   
    
    
 </mapper>

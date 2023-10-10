@@ -11,21 +11,23 @@ import org.springframework.web.servlet.ModelAndView;
 import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
+import com.green.store.vo.WineListVo;
+import com.green.store.vo.WineVo;
 
 @Controller
 public class StoreWineController {
 
 	@Autowired
 	private StoreService storeService;
-
+				
 	// 와인 리스트 (임규)
 	@RequestMapping("/StoreWineManage")
 	public ModelAndView storewinemanage(HavingWineVo vo) {
-
+		
 		// 각 매장별 보유 와인 조회
 		List<HavingWineVo> wineList = storeService.getWineList(vo);
-
-
+		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/store/storewinemanage");
 		mv.addObject("wineList", wineList);

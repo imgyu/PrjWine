@@ -10,6 +10,7 @@ import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 @Service("storeService")
@@ -84,7 +85,5 @@ public class StoreServiceImpl implements StoreService {
 		StoreVo svo = storeDao.selectstr( vo );
 		return svo;
 	}
-
-
 
 }

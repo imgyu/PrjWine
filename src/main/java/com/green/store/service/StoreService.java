@@ -5,6 +5,7 @@ import java.util.List;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 public interface StoreService {
@@ -39,5 +40,8 @@ public interface StoreService {
 	
 	// (민규)
 	StoreVo selectstr(StoreVo vo);
+
+
+
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 public interface StoreDao {
@@ -31,6 +32,10 @@ public interface StoreDao {
 	List<StoreVo> selectstrli( UserVo vo );
 	// (민규)
 	StoreVo selectstr(StoreVo vo);
+
+
+
+
 
 
 

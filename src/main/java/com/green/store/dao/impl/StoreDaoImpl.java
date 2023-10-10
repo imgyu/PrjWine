@@ -12,6 +12,7 @@ import com.green.store.dao.StoreDao;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 @Repository("storeDao")
@@ -96,6 +97,7 @@ public class StoreDaoImpl implements StoreDao {
 		StoreVo svo = sqlSession.selectOne("Store.SelectStrVo", vo);
 		return svo;
 	}
-	
+
+		
 
 }
