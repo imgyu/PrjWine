@@ -11,6 +11,7 @@ import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineListVo;
+import com.green.user.vo.UserVo;
 
 @Repository("storeDao")
 public class StoreDaoImpl implements StoreDao {
@@ -54,6 +55,18 @@ public class StoreDaoImpl implements StoreDao {
 	      sqlSession.update("Store.UpdateWineList", havingVo);
 	      
 	  }
+	 // (민규)
+	@Override
+	public List<StoreVo> selectstrli( UserVo vo ) {
+		List<StoreVo> strvo = sqlSession.selectList("Store.SelectStoreList", vo);
+		return strvo;
+	}
+	 // (민규)
+	@Override
+	public StoreVo selectstr(StoreVo vo) {
+		StoreVo svo = sqlSession.selectOne("Store.SelectStrVo", vo);
+		return svo;
+	}
 	
 
 }
