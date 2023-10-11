@@ -49,13 +49,13 @@
                 <span id="userId" class="form-text">${user.u_id }</span>
             </div>
             <div class="mb-3">
-                 <label for="userpw" class="form-label" id="user_pw1" >변경할 비밀번호</label>
-                 <input type="password" name="u_pw" minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합" >
+                 <label for="userpw" class="form-label"  >변경할 비밀번호</label>
+                 <input type="password" name="u_pw" id="user_pw1" minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합" ><br>
                  <span id=pwdcheck_1 ></span>
             </div>
             <div class="mb-3">
-                <label for="userpw" class="form-label" id="user_pw2" onKeyUp="fn_compare_pwd();">비밀번호 확인</label>
-                <input type="password" name="u_pwChk" minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합" >
+                <label for="userpw" class="form-label"  >비밀번호 확인</label>
+                <input type="password" name="u_pwChk" id="user_pw2" onKeyUp="fn_compare_pwd();" minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합" ><br>
                 <span id="pwdcheck_2"></span>
             </div>
             <div class="mb-3">
@@ -92,7 +92,7 @@ $("#user_pw1").blur(function () {
 		user_pwd1  =  false;
 	}
 	else if (!pwdCheck.test($("#user_pw1").val())) {
-		$("#pwdcheck_1").text("부적합한 비밀번호 ");
+		$("#pwdcheck_1").text("이건 틀린거 ");
 		user_pwd1  =  false;
 	} else {
 		$("#pwdcheck_1").text("안전한 비밀번호 입니다")
@@ -117,6 +117,7 @@ $("#user_pw2").blur(function() {
 		user_pw2 = false;
 	}
 });
+
 
 
 </script>
