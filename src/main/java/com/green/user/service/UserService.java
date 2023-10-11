@@ -13,6 +13,8 @@ public interface UserService {
 
 	List<UserVo> getUserList(UserVo vo);
 
+	void updateUser(UserVo vo);
+
 
 
 }

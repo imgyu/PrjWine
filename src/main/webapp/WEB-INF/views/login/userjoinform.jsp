@@ -45,7 +45,6 @@ tr, td {
 textarea {
 	resize: none;
 }
-<<<<<<< HEAD
 
 .id_ok{
 color:#008000;
@@ -57,8 +56,6 @@ color:#6A82FB;
 display: none;
 }
  
-=======
->>>>>>> branch 'YT' of https://github.com/BBOLBBOL/PrjWine.git
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -71,7 +68,7 @@ display: none;
 <body>
 	<%@include file="/WEB-INF/include/nav.jsp"%>
 
-<<<<<<< HEAD
+
 <h2 class="logintitle">고객 회원가입</h2>
 <div class="container">
  <form action="/UserJoin" method="POST">

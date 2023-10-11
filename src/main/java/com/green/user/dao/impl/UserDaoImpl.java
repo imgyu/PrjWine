@@ -44,4 +44,11 @@ public class UserDaoImpl implements UserDao {
 		return userList;
 	}
 
+	@Override
+	public void updateUser(UserVo vo) {
+		
+		sqlSession.update("User.UpdateUser", vo);
+		
+	}
+
 }

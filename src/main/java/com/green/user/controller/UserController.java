@@ -92,19 +92,38 @@ public class UserController {
 	//유저정보 확인페이지 이동
 	@RequestMapping("/UserInfo")
 	public ModelAndView userinfo(UserVo vo) {
-		
+		int u_no  =  vo.getU_no();
 		// 유저 정보 조회하기 
 		List<UserVo> userList  =  userService.getUserList(vo);
 		
 		ModelAndView  mv  =  new ModelAndView();
 		mv.setViewName("user/userinfo");
+		mv.addObject("userList", userList);
+		mv.addObject("u_no", u_no);
 		return mv;
 	}
 	//유저정보 업데이트 페이지 이동
 	@RequestMapping("/UserUpdateForm")
-	public String userupdateform() {
-		return "/user/userupdateform";
+	public ModelAndView userupdateform(UserVo vo) {
+		
+		List<UserVo> userList  =  userService.getUserList(vo);
+		
+		ModelAndView  mv  =  new  ModelAndView();
+		mv.setViewName("user/userupdate");
+		mv.addObject("userList", userList);
+		return mv;
 	}
+	
+	@RequestMapping("/UserUpdate")
+	public ModelAndView userUpdate(UserVo vo) {
+		
+		userService.updateUser(vo);
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("redirect:/UserInfo?u_no=" + vo.getU_no());
+		return mv;
+	}
+	
 	//유저장바구니
 	@RequestMapping("/UserCart")
 	public String usercart() {

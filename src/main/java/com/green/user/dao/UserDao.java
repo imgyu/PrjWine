@@ -13,4 +13,6 @@ public interface UserDao {
 
 	List<UserVo> getUserList(UserVo vo);
 
+	void updateUser(UserVo vo);
+
 }
