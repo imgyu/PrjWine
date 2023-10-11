@@ -59,7 +59,7 @@
       
    <!-- 게시물 목록 -->
    <div class="mb-3"><a href="#" class="btn btn-secondary ml-auto">새글작성</a></div>
-   <table id="table">
+   
    <tr>
      <th>주최매장</th>
      <th>시음회이름</th>
@@ -73,19 +73,6 @@
      <td>2023-10-25</td>
      <td>10000</td>
    </tr>
-   <tr>
-     <td>부전와인</td>
-     <td>와인시음회2</td>
-     <td>2023-11-11</td>
-     <td>10000</td>
-   </tr>
-   <tr>
-     <td>덕천와인</td>
-     <td>와인시음회1</td>
-     <td>2029-12-31</td>
-     <td>10000</td>
-   </tr>
-   </table>   
    
    </main>
 </body>

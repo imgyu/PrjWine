@@ -22,7 +22,7 @@
      <li class="nav-item">
        <img src="/img/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#"><b>신청한 시음회</b></a></li>
+            <li><a class="dropdown-item" href="/UserTasting"><b>신청한 시음회</b></a></li>
             <li><a class="dropdown-item" href="/UserFavoriteStores"><b>관심 매장</b></a></li>
             <li><a class="dropdown-item" href="/UserInfo"><b>내정보 확인/수정</b></a></li>
             <li><a class="dropdown-item" href="/UserCart"><b>장바구니</b></a></li>
@@ -75,7 +75,7 @@
     <a class="nav-link" href="/CouponForm"><b>쿠폰 발급</b></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#"><b>시음회 정보</b></a>
+    <a class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
   </li>
 
 </ul>
