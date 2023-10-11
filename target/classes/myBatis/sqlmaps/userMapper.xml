@@ -24,8 +24,10 @@
 		U_PW,
 		U_NAME,
 		U_BIRTH,
-		U_SI,
-		U_GU,
+		U_POSTCODE,
+		U_ADDRESS,
+		U_DETAILADDRESS,
+		U_EXTRAADDRESS,
 		U_PHONE
 		) VALUES (
 		( SELECT NVL(MAX(U_NO),0)+1 FROM TUSER),
@@ -33,8 +35,10 @@
 		#{ u_pw },
 		#{ u_name },
 		#{ u_birth },
-		#{ u_si },
-		#{ u_gu },
+		#{ u_postcode },
+		#{ u_address },
+		#{ u_detailAddress },
+		#{ u_extraAddress },
 		#{ u_phone }
 		)
 
@@ -49,9 +53,3 @@
 
  
 </mapper>
-
-
-
-
-
-   

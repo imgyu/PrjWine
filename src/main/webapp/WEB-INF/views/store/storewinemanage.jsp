@@ -123,10 +123,22 @@
 					<select id="select" name="searchOption">
 						<option value="All">전체</option>
 						<option value="w_name">이름</option>
-						<option value="w_location">국가</option>
-						<option value="w_kind">품종</option>
-						<option value="w_amount">수량↑</option>
-						<option value="w_amountDown">수량↓</option>
+						<option value="w_location">국가</option>	
+	                    <option value="w_vintage">빈티지</option>
+					</select>
+					<select id="select2" name="kindOption">
+					 <option value="w_kind">품종</option>
+					 <option value="PORT">PORT</option>
+				     <option value="DESSERT">DESSERT</option>
+					 <option value="RED">RED</option>
+					 <option value="ROSE">ROSE</option>
+					 <option value="WHITE">WHITE</option>
+					 <option value="SPARKLING">SPARKLING</option>
+					</select>
+					<select id="amount" name="amountOption">
+					 <option value="choose">선택</option>
+					 <option value="w_amount">수량↑</option>
+					 <option value="w_amountDown">수량↓</option>
 					</select>
 				</div>
 				<input type="text" name="searchKeyword" placeholder="검색어 입력">

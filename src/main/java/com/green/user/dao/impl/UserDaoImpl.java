@@ -1,5 +1,7 @@
 package com.green.user.dao.impl;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -34,6 +36,12 @@ public class UserDaoImpl implements UserDao {
 		int cnt  =  sqlSession.selectOne("User.IdCheck", u_id);
 		
 		return cnt;
+	}
+
+	@Override
+	public List<UserVo> getUserList(UserVo vo) {
+		List<UserVo> userList  =  sqlSession.selectList("User.UserList", vo);
+		return userList;
 	}
 
 }

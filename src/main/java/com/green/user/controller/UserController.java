@@ -1,5 +1,7 @@
 package com.green.user.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.green.user.service.UserService;
 import com.green.user.vo.UserVo;
@@ -88,8 +91,14 @@ public class UserController {
 	}
 	//유저정보 확인페이지 이동
 	@RequestMapping("/UserInfo")
-	public String userinfo() {
-		return "/user/userinfo";
+	public ModelAndView userinfo(UserVo vo) {
+		
+		// 유저 정보 조회하기 
+		List<UserVo> userList  =  userService.getUserList(vo);
+		
+		ModelAndView  mv  =  new ModelAndView();
+		mv.setViewName("user/userinfo");
+		return mv;
 	}
 	//유저정보 업데이트 페이지 이동
 	@RequestMapping("/UserUpdateForm")

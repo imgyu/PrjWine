@@ -80,6 +80,7 @@ public class WineController {
        List<RegVo> redClick = wineService.redClick(red_click);
        ModelAndView mv = new ModelAndView();
        mv.addObject("redClick",redClick);
+       System.out.println("redClick:"+redClick);
        mv.setViewName("/wine/winelist");
        return mv;
     }

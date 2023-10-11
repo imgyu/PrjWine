@@ -1,5 +1,7 @@
 package com.green.user.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,14 @@ public class UserServiceImpl implements UserService {
 		int cnt  =  userDao.idCheck(u_id);
 		
 		return cnt;
+	}
+
+	@Override
+	public List<UserVo> getUserList(UserVo vo) {
+		
+		List<UserVo> userList  =  userDao.getUserList(vo);
+		
+		return userList;
 	}
 
 	

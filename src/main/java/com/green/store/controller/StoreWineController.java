@@ -25,12 +25,14 @@ public class StoreWineController {
 	@RequestMapping("/StoreListSearch")
 	public ModelAndView storeListSearch(   HavingWineVo vo,	 
 			@RequestParam("searchKeyword") String searchKeyword, 
-			@RequestParam("searchOption")  String searchOption, 
+			@RequestParam("searchOption")  String searchOption,
+			@RequestParam("kindOption")    String kindOption,
+			@RequestParam("amountOption")  String amountOption,
 			HttpSession session) {
 		
 		System.out.println("searchOption:" + searchOption);
 		int s_no  =  vo.getS_no();
-		List<RegVo> storeListSearch  =  storeService.getStoreListSearch( s_no, searchKeyword, searchOption);
+		List<RegVo> storeListSearch  =  storeService.getStoreListSearch( s_no, searchKeyword, searchOption, kindOption, amountOption);
 		
 		System.out.println("searchKeyword2:"+searchKeyword);
 		System.out.println("searchOption3:"+searchOption);
@@ -108,16 +110,12 @@ public class StoreWineController {
 	@RequestMapping("/StoreWineSearch")
 	public ModelAndView winesearch(@RequestParam("searchKeyword") String searchKeyword
 			,@RequestParam("searchOption") String searchOption
+			,@RequestParam("kindOption") String kindOption
 			) {
 
-		List<RegVo> searchList = storeService.searchList(searchKeyword,searchOption);
-		System.out.println("searchList:1"+searchList);
-		System.out.println("searchKeyword2:"+searchKeyword);
-		System.out.println("searchOption3:"+searchOption);
+		List<RegVo> searchList = storeService.searchList(searchKeyword, searchOption, kindOption);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("searchList", searchList);
-		mv.addObject("searchOption", searchOption);
-		System.out.println("mv4:"+mv);
 		mv.setViewName("/store/storewineregisterform");
 		return mv;
 	}
@@ -138,12 +136,10 @@ public class StoreWineController {
 		
 		s_no = vo.getS_no();
 
-		System.out.println("0"+s_no);
 		storeService.insertWine(selectedOption, w_amount, w_price, s_no, w_no);
-		System.out.println("1"+s_no);
 		ModelAndView mv = new ModelAndView();
-		System.out.println("2"+s_no);
 		mv.setViewName("redirect:/StoreWineManage?s_no="+vo.getS_no());
 		return mv;
 	}
+	
 }

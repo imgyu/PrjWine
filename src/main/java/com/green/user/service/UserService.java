@@ -1,5 +1,7 @@
 package com.green.user.service;
 
+import java.util.List;
+
 import com.green.user.vo.UserVo;
 
 public interface UserService {
@@ -8,6 +10,8 @@ public interface UserService {
 	UserVo userlogin(UserVo vo);
 
 	int idCheck(String u_id);
+
+	List<UserVo> getUserList(UserVo vo);
 
 
 

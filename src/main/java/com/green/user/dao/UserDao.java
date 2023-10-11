@@ -1,5 +1,7 @@
 package com.green.user.dao;
 
+import java.util.List;
+
 import com.green.user.vo.UserVo;
 
 public interface UserDao {
@@ -8,5 +10,7 @@ public interface UserDao {
 	UserVo userlogin(UserVo vo);
 
 	int idCheck(String u_id);
+
+	List<UserVo> getUserList(UserVo vo);
 
 }
