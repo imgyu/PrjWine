@@ -12,7 +12,7 @@ public interface StoreDao {
 	void insertwine(int selectedOption, int w_amount, int w_price, int s_no, int w_no);
 	
 	// (영태)
-	List<RegVo> getSearchList(String searchKeyword, String searchOption);
+	List<RegVo> getSearchList(String searchKeyword, String searchOption, String kindOption);
 	
 	// (병규)
 	void insertStore(StoreVo vo);

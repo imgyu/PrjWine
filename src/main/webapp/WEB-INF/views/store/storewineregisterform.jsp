@@ -77,6 +77,12 @@ form#search-form #select {
     border-radius: 5px;
     margin-right: 10px;
 }
+form#search-form #select2 {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
 form#search-form button[type="submit"] {
 	padding: 5px 10px;
 	background-color: #007bff;
@@ -114,6 +120,15 @@ button#btn1 {
 						<option value="w_name">이름</option>
 						<option value="w_location">국가</option>
 						<option value="w_vintage">빈티지</option>
+					</select>
+					<select id="select2" name="kindOption">
+						<option value="w_kind">전체</option>
+						<option value="1">PORT</option>
+						<option value="2">DESSERT</option>
+						<option value="3">RED</option>
+						<option value="4">ROSE</option>
+						<option value="5">WHITE</option>
+						<option value="6">SPARKLING</option>
 					</select>
 				<input type="text" name="searchKeyword" placeholder="검색어 입력">
 				<button type="submit">검색</button>

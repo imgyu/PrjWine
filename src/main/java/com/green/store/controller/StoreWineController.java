@@ -79,12 +79,12 @@ public class StoreWineController {
 	@RequestMapping("/StoreWineSearch")
 	public ModelAndView winesearch(@RequestParam("searchKeyword") String searchKeyword
 			,@RequestParam("searchOption") String searchOption
+			,@RequestParam("kindOption") String kindOption
 			) {
 
-		List<RegVo> searchList = storeService.searchList(searchKeyword,searchOption);
+		List<RegVo> searchList = storeService.searchList(searchKeyword, searchOption, kindOption);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("searchList", searchList);
-		mv.addObject("searchOption", searchOption);
 		mv.setViewName("/store/storewineregisterform");
 		return mv;
 	}
