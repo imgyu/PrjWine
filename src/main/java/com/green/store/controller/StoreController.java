@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.green.store.service.StoreService;
@@ -22,31 +23,31 @@ public class StoreController {
 	@Autowired
 	private  StoreService storeService;
 	
+	//매장 검색
+	@RequestMapping("/SnameSearch")
+    public ModelAndView sname_Search(
+          @RequestParam("sname_Search") String sname_Search
+          ) {
+       List<StoreVo> snameSearch = storeService.snameSearch(sname_Search);
+       ModelAndView mv = new ModelAndView();
+       mv.addObject("snameSearch",snameSearch);
+       mv.setViewName("/store/storelist");
+       return mv;
+       
+    }
+	
 	//매장리스트
 	@RequestMapping("/StoreList")
-	public ModelAndView storelist( UserVo vo ) {
-		
+	public ModelAndView storelist(StoreVo vo) {
+		List<StoreVo> storeList = storeService.storeList(vo);
 		ModelAndView mv = new ModelAndView();
-		
-		List<StoreVo> strvo = storeService.selectstrli( vo );
 		
 		mv.setViewName("/store/storelist");
-		mv.addObject("strvoli", strvo );
+		mv.addObject("storeList", storeList );
 		
 		return mv;
 	}
-	//매장정보
-	@RequestMapping("/Storegoinfo")
-	public ModelAndView storegoinfo( StoreVo vo ) {
-		
-		ModelAndView mv = new ModelAndView();
-		
-		StoreVo svo = storeService.selectstr( vo );
-		
-		mv.setViewName("/store/storeinfo");
-		mv.addObject("svo", svo);
-		return mv;
-	}
+	
 
 	//판매기록 이동
 	@RequestMapping("/Store/SalesHistory")

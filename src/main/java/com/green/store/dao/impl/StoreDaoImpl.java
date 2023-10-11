@@ -89,24 +89,38 @@ public class StoreDaoImpl implements StoreDao {
 			return selectList;
 		}
 	 
-	 // (민규)
-	@Override
-	public List<StoreVo> selectstrli( UserVo vo ) {
-		List<StoreVo> strvo = sqlSession.selectList("Store.SelectStoreList", vo);
-		return strvo;
-	}
-	 // (민규)
-	@Override
-	public StoreVo selectstr(StoreVo vo) {
-		StoreVo svo = sqlSession.selectOne("Store.SelectStrVo", vo);
-		return svo;
-	}
+		/*
+		 * // (민규)
+		 * 
+		 * @Override public List<StoreVo> selectstrli( UserVo vo ) { List<StoreVo> strvo
+		 * = sqlSession.selectList("Store.SelectStoreList", vo); return strvo; } // (민규)
+		 * 
+		 * @Override public StoreVo selectstr(StoreVo vo) { StoreVo svo =
+		 * sqlSession.selectOne("Store.SelectStrVo", vo); return svo; }
+		 */
 
 	@Override
 	public void setJoin(HashMap<String, Object> map) {
 		System.out.println(map);
 		sqlSession.insert("Store.StoreInsert",  map );		
 	}
+
+	@Override
+	public List<StoreVo> getSnameSearch(String sname_Search) {
+		List<StoreVo> snameSearch = sqlSession.selectList("Store.SnameSearch", sname_Search);
+		return snameSearch;
+	}
+
+	@Override
+	public List<StoreVo> storeList(StoreVo vo) {
+		List<StoreVo> storeList = sqlSession.selectList("Store.StoreList", vo); 
+		System.out.println(storeList);
+		return storeList; }
 	
 
-}
+	} 
+	
+	
+
+	
+

@@ -68,19 +68,6 @@ public class StoreServiceImpl implements StoreService {
 		return selectList;
 	}
     
-    
-    // (민규)
-	@Override
-	public List<StoreVo> selectstrli( UserVo vo ) {
-		List<StoreVo> strvo = storeDao.selectstrli( vo );
-		return strvo;
-	}
-	// (민규)
-	@Override
-	public StoreVo selectstr(StoreVo vo) {
-		StoreVo svo = storeDao.selectstr( vo );
-		return svo;
-	}
 	@Override
 	public void setJoin(HashMap<String, Object> map, HttpServletRequest request) {
 	
@@ -89,5 +76,17 @@ public class StoreServiceImpl implements StoreService {
 		storeDao.setJoin( map );
 		
 	}
+	@Override
+	public List<StoreVo> snameSearch(String sname_Search) {
+		List<StoreVo> snameSearch = storeDao.getSnameSearch(sname_Search);
+		return snameSearch;
 	}
+	@Override
+	public List<StoreVo> storeList(StoreVo vo) {
+	  List<StoreVo> vo1 = storeDao.storeList( vo );
+
+			return vo1;
+		}
+	}
+	
 

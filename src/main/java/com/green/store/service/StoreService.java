@@ -33,13 +33,13 @@ public interface StoreService {
 	// (임규)
 	List<HavingWineVo> selectList(HavingWineVo vo);
 	
-	
-	// (민규)
-	List<StoreVo> selectstrli( UserVo vo);
-	
-	// (민규)
-	StoreVo selectstr(StoreVo vo);
-
 	void setJoin(HashMap<String, Object> map, HttpServletRequest request);
+
+	List<StoreVo> snameSearch(String sname_Search);
+
+	List<StoreVo> storeList(StoreVo vo);
+
+	// 매장이름검색기능
+
 
 }

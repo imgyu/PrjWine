@@ -25,13 +25,12 @@ public interface StoreDao {
 	void deleteWineList(HavingWineVo havingVo);
 	
 	List<HavingWineVo> selectList(HavingWineVo vo);	
-		
-	// (민규)
-	List<StoreVo> selectstrli( UserVo vo );
-	// (민규)
-	StoreVo selectstr(StoreVo vo);
 
 	void setJoin(HashMap<String, Object> map);
+
+	List<StoreVo> getSnameSearch(String sname_Search);
+
+	List<StoreVo> storeList(StoreVo vo);
 	
 
 
