@@ -6,4 +6,7 @@ public interface UserDao {
 	void insertUser(UserVo vo);
 
 	UserVo userlogin(UserVo vo);
+
+	int idCheck(String u_id);
+
 }

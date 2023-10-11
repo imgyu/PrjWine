@@ -36,6 +36,16 @@ tr, td{
 textarea{
    resize: none;
 }
+
+.id_ok{
+color:#008000;
+display: none;
+}
+
+.id_already{
+color:#6A82FB; 
+display: none;
+}
  
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -63,8 +73,9 @@ textarea{
             <span class="redFont">*</span>아이디:
          </td>
          <td>
-            <input type="text"  name="u_id" style="width: 200px">
-            <button class="btn btn-primary" href="/UserIdCheck" role="button">아이디 확인</a>
+            <input type="text" name="u_id" id="u_id" style="width: 200px" oninput="checkId()">
+            <span class="id_ok">사용 가능한 아이디입니다.</span>
+            <span class="id_already">사용 불가능 아이디입니다.</span>
          </td>
       </tr>
       <tr>
@@ -72,20 +83,28 @@ textarea{
             <span class="redFont">*</span>비밀번호:
          </td>
          <td>
-            <input type="password" name="u_pw" style="width: 200px">
+            <input type="password" name="u_pw" id="user_pw1" style="width: 200px">
+            <span id=pwdcheck_1 ></span>
          </td>
+      </tr>
+      <tr>
+        <td><span class="redFont">*</span>비밀번호 확인:
+        </td>
+        <td><input type="password" name="u_pw" id="user_pw2" style="width: 200px" onKeyUp="fn_compare_pwd();">
+            <span id="pwdcheck_2"></span>
+        </td>
       </tr>
       <tr>
          <td>
             <span class="redFont">*</span>이름:
          </td>
          <td>
-            <input type="text" name="u_name" style="width: 200px">
+            <input type="text" name="u_name" id="u_name" style="width: 200px">
          </td>
       </tr>
       <tr>
          <td>
-            <span class="redFont">*</span>생일:
+            생일:
          </td>
          <td>
             <div>
@@ -95,13 +114,14 @@ textarea{
       </tr>
       <tr>
          <td>
-            <span class="redFont">*</span>주소:
+            주소:
          </td>
          <td>
             <div>
 		   		<select name="u_si" id="u_si" onchange="itemChange()">
 		     		<option value="서울">서울</option>
 		     		<option value="부산">부산</option>
+		     		<option value="제주">제주</option>
 		   		</select>
 		   		&nbsp;
 		   		<select name="u_gu" id="u_gu">
@@ -111,7 +131,7 @@ textarea{
       </tr>
       <tr>
       	<td>
-      	   <span class="redFont">*</span>연락처:
+      	   연락처:
       	</td>
       	<td>
       	   <div>
@@ -122,15 +142,14 @@ textarea{
       <tr>
       	<td colspan="2">
       	    <div>
-      	    	<button class="btn btn-primary" type="submit">회원가입</button>
-      	    	<a class="btn btn-primary" href="/" role="button">홈으로가기</a>
+      	    	<button type="submit" >회원가입 하기</button>
       	    </div>
       	</td>
       </tr>
    </table>
  </form>
 </div>
-
+  <input type="button" value="뒤로가기" onclick="location.href=''" style="margin: auto">
 
 		
 
@@ -138,7 +157,8 @@ textarea{
 	function itemChange(){
 		 
 		var seoul = ["강남","서초","송파"];
-		var busan = ["서면","해운대","동래","광안리"];
+		var busan = ["동래","서면","광안리","해운대"];
+		var zezu = ["애월","서귀포","땡땡"];
 		 
 		var selectItem = $("#u_si").val();
 		 
@@ -150,6 +170,9 @@ textarea{
 		else if(selectItem == "부산"){
 		  changeItem = busan;
 		}
+		else if(selectItem == "제주"){
+		  changeItem =  zezu;
+		}
 		 
 		$('#u_gu').empty();
 		 
@@ -158,6 +181,66 @@ textarea{
 		                $('#u_gu').append(option);
 		            }
 	}
+	
+	$("#user_pw1").blur(function () {
+		let pwdCheck= /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+		
+		if($("#user_pw1").val() == "") {
+			$("#pwdcheck_1").text("비밀번호를 입력하세요.");
+			user_pwd1  =  false;
+		}
+		else if (!pwdCheck.test($("#user_pw1").val())) {
+			$("#pwdcheck_1").text("부적합한 비밀번호 ");
+			user_pwd1  =  false;
+		} else {
+			$("#pwdcheck_1").text("안전한 비밀번호 입니다")
+			user_pwd1  =  true;
+		}
+	});
+	
+	$("#user_pw2").blur(function() {
+		if($("user_pw2").val() == "") {
+			$("#pwdcheck_2").css("color", "red");
+			$("#pwdcheck_2").text("필수정보입니다");
+			user_pw2 = false;
+		}
+		else if(user_pwd1 == true && $("#user_pw1").val() == $("#user_pw2").val()) {
+			$("#pwdcheck_2").css("color", "blue");
+			$("#pwdcheck_2").text("비밀번호 일치");
+			user_pw2 = true;
+		} else {
+			$("#pwdcheck_2").text("비밀번호 다시 확인해주세요");
+			$("#pwdcheck_2").css("color", "red");
+			$("#user_pw2").val("");
+			user_pw2 = false;
+		}
+	});
+	
+	function checkId() {
+		
+		var u_id  =  $('#u_id').val();
+		$.ajax({
+			url : '/UserIdChk',
+			type : 'post',
+			data : {u_id:u_id},
+			success : function(cnt) {
+				if(cnt == 0) {
+					$('.id_ok').css("display", "inline-block");
+					$('.id_already').css("display", "none");
+				} else {
+					$('.id_already').css("display", "inline-block");
+					$('.id_ok').css("display", "none");
+					alert("아이디를 다시 입력해주세요");
+					$('#u_id').val('');
+				}
+			},
+			error:function() {
+				alert("에러입니다!");
+			}
+		});
+	};
+	
+	
   </script>
 </body>
 </html>

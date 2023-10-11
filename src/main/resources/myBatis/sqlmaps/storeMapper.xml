@@ -180,7 +180,18 @@
     LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
     WHERE     WL.W_AMOUNT     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
     AND S.S_NO  =  #{s_no}
-    ORDER WL.W_PRICE ASC
+    ORDER BY WL.W_PRICE ASC
+   </select>
+   
+   <select id="GetAmountDown" resultType="com.green.store.vo.RegVo">
+   
+    SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO, WL.WL_IDX
+    FROM WINE W
+    LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
+    LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
+    WHERE     WL.W_AMOUNT     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
+    AND S.S_NO  =  #{s_no}
+    ORDER BY WL.W_PRICE DESC
    </select>
    
    

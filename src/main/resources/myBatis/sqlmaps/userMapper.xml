@@ -39,14 +39,14 @@
 		)
 
 	</insert>
-<!--
-   <delete id="UserDelete">
-   
-      DELETE  FROM   TUSER
-        WHERE  USERID = #{ userid }  
-           
-   </delete>
- -->
+
+<select id="IdCheck" parameterType="String" resultType="java.lang.Integer">
+
+ SELECT COUNT(U_ID) FROM TUSER 
+ WHERE U_ID  =  #{u_id}
+
+</select>
+
  
 </mapper>
 

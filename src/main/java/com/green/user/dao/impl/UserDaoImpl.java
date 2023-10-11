@@ -27,4 +27,13 @@ public class UserDaoImpl implements UserDao {
 		UserVo loginVo = sqlSession.selectOne("User.UserLogin", vo );
 		return loginVo;
 	}
+
+	@Override
+	public int idCheck(String u_id) {
+		
+		int cnt  =  sqlSession.selectOne("User.IdCheck", u_id);
+		
+		return cnt;
+	}
+
 }

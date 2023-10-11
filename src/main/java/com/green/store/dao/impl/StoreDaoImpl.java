@@ -130,6 +130,8 @@ public class StoreDaoImpl implements StoreDao {
 			storeListSearch  =  sqlSession.selectList("Store.GetKind", map);
 		} else if("w_amount".equals(searchOption)) {
 			storeListSearch  =  sqlSession.selectList("Store.GetAmount",map);
+		} else if ("w_amountDown".equals(searchOption)) {
+			storeListSearch  =  sqlSession.selectList("Store.GetAmountDown", map);
 		}
 		
 		return storeListSearch;

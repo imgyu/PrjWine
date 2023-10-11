@@ -28,6 +28,14 @@ public class UserServiceImpl implements UserService {
 		return loginVo;
 	}
 
+	@Override
+	public int idCheck(String u_id) {
+		
+		int cnt  =  userDao.idCheck(u_id);
+		
+		return cnt;
+	}
+
 	
 	
 	

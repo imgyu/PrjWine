@@ -5,7 +5,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.green.user.service.UserService;
 import com.green.user.vo.UserVo;
@@ -63,6 +67,16 @@ public class UserController {
 		userService.insertUser(vo);
 		return "/login/userloginform";
 	}
+	// 아이디 중복체크
+	@ResponseBody
+	@RequestMapping("/UserIdChk")
+	public int idCheck(@RequestParam("u_id") String u_id) {
+		
+		int cnt  =  userService.idCheck(u_id);
+		
+		return cnt;
+	}
+	
 	@RequestMapping("/UserFavoriteStores")
 	public String favoritestores() {
 		return "/user/favoritestores";

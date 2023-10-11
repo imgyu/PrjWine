@@ -7,5 +7,8 @@ public interface UserService {
 
 	UserVo userlogin(UserVo vo);
 
+	int idCheck(String u_id);
+
+
 
 }
