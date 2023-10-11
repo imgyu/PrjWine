@@ -1,5 +1,6 @@
 package com.green.store.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.green.store.vo.HavingWineVo;
@@ -15,8 +16,6 @@ public interface StoreDao {
 	List<RegVo> getSearchList(String searchKeyword, String searchOption);
 	
 	// (병규)
-	void insertStore(StoreVo vo);
-	// (병규)
 	StoreVo storelogin(StoreVo vo);
 	// (임규)
 	List<HavingWineVo> getWineList(HavingWineVo vo);
@@ -31,6 +30,9 @@ public interface StoreDao {
 	List<StoreVo> selectstrli( UserVo vo );
 	// (민규)
 	StoreVo selectstr(StoreVo vo);
+
+	void setJoin(HashMap<String, Object> map);
+	
 
 
 

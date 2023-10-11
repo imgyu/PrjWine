@@ -69,10 +69,13 @@
 			S_SN,
 		    S_POSTCODE,
 	        S_ADDRESS,
+			S_PHONE,
+			S_CONT,
             S_DETAILADDRESS,
 	        S_EXTRAADDRESS,
-			S_PHONE,
-			S_CONT
+			S_IMGNAME,
+	        S_IMGEXT,
+	        S_SIMGNAME
 		) VALUES (
 		( SELECT NVL(MAX(S_NO),0)+1 FROM STORE),
 		#{ s_id },
@@ -81,10 +84,13 @@
 		#{ s_sn },
 		#{ s_postcode },
 		#{ s_address },
+		#{ s_phone },
+		#{ s_cont },
 		#{ s_detailAddress },
 		#{ s_extraAddress },
-		#{ s_phone },
-		#{ s_cont }	
+		#{ s_imgname   },     
+	    #{ s_imgext    },     
+		#{ s_simgname  }   
 		)
 	</insert>
 	

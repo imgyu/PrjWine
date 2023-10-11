@@ -52,13 +52,6 @@ public class StoreDaoImpl implements StoreDao {
 	       return searchList;
 	   }
 	
-	//(병규)
-	@Override
-	public void insertStore(StoreVo vo) {
-		System.out.println(vo);
-		sqlSession.insert("Store.StoreInsert", vo );
-		
-	}
 	
 	//(병규)
 	@Override
@@ -107,6 +100,12 @@ public class StoreDaoImpl implements StoreDao {
 	public StoreVo selectstr(StoreVo vo) {
 		StoreVo svo = sqlSession.selectOne("Store.SelectStrVo", vo);
 		return svo;
+	}
+
+	@Override
+	public void setJoin(HashMap<String, Object> map) {
+		System.out.println(map);
+		sqlSession.insert("Store.StoreInsert",  map );		
 	}
 	
 

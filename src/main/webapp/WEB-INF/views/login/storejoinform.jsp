@@ -130,7 +130,7 @@ textarea {
 					<td>매장사진:</td>
 					<td>
 						<div>
-							<input type="file" id="s_img" accept="image/*" onchange="readURL(this)"/><br> 
+                               <input type="file" accept="image/*" onchange="readURL(this)" name="upfile" class="upfile" /><br>
 							<img id="preview" style="max-width: 300px;">
 						</div>
 					</td>

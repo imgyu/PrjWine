@@ -1,6 +1,9 @@
 package com.green.store.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,12 +32,6 @@ public class StoreServiceImpl implements StoreService {
 			List<RegVo> searchList = storeDao.getSearchList(searchKeyword,searchOption);
 			return searchList;
 		}
-	   
-	// (병규)
-	@Override
-	public void insertStore(StoreVo vo) {
-		storeDao.insertStore( vo );
-	}
 	
 	// (병규)
 	@Override
@@ -84,5 +81,13 @@ public class StoreServiceImpl implements StoreService {
 		StoreVo svo = storeDao.selectstr( vo );
 		return svo;
 	}
+	@Override
+	public void setJoin(HashMap<String, Object> map, HttpServletRequest request) {
+	
+		ImgFile.save( map, request );		
+				
+		storeDao.setJoin( map );
+		
+	}
+	}
 
-}

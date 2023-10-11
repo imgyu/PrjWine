@@ -1,6 +1,9 @@
 package com.green.store.service;
 
+import java.util.HashMap;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
@@ -17,10 +20,7 @@ public interface StoreService {
 
 	// (병규)
 	StoreVo storelogin(StoreVo vo);
-
-	// (병규)
-	void insertStore(StoreVo vo);
-
+	
 	// (임규)
 	List<HavingWineVo> getWineList(HavingWineVo vo);
 
@@ -39,5 +39,7 @@ public interface StoreService {
 	
 	// (민규)
 	StoreVo selectstr(StoreVo vo);
+
+	void setJoin(HashMap<String, Object> map, HttpServletRequest request);
 
 }
