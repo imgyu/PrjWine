@@ -34,7 +34,7 @@
      </li>
    </ul>
   </c:when>
-  <c:when test="${ lginVo eq null and sloginVo ne null }">
+  <c:when test="${ loginVo eq null and sloginVo ne null }">
     <ul class="nav justify-content-end">
      <li class="nav-item">
         <br>

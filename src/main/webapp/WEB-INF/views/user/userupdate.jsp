@@ -42,7 +42,7 @@
 
 <h2 class="logintitle">고객 정보 수정</h2>
 <div class="container">
-    <form action="/UserUpdate" method="POST">
+    <form action="/UserUpdate?u_no=${loginVo.u_no }" method="POST">
     	<c:forEach var="user" items="${userList }">
             <div class="mb-3">
                 <label for="userId" class="form-label">아이디:</label>
