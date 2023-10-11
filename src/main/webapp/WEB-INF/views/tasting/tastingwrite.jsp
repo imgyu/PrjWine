@@ -79,6 +79,13 @@ button[type="submit"] {
 button[type="submit"]:hover {
     background-color: #0056b3;
 }
+form#search-form input[type="search"] {
+	width: 150px;
+	padding: 5px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin-right: 10px;
+}
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -89,7 +96,7 @@ button[type="submit"]:hover {
 
 <h2 class="logintitle">시음회 등록</h2><br>
 <div class="container">
-    <form action="/WineJoin" method="POST">
+    <form action="/TastingList" method="POST">
         <div>
             <label for="eventName">시음회 이름</label>
             <input type="text" id="eventName" name="eventName" placeholder="시음회 이름을 입력하세요">
@@ -98,18 +105,42 @@ button[type="submit"]:hover {
             <label for="eventDescription">시음회 내용 설명</label>
             <textarea id="eventDescription" name="eventDescription" placeholder="시음회 내용 설명을 입력하세요"></textarea>
         </div>
-        <table>
-            <tr>
-                <th>와인이름</th>
-                <th>국가</th>
-                <th>품종</th>
-            </tr>
-            <tr>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-                <td><input type="text"></td>
-            </tr>
-        </table>
+        <div class="container">
+			<form action="/StoreWineSearch" method="GET" id="search-form">
+				<div>
+					<select id="select" name="searchOption">
+						<option value="w_name">이름</option>
+						<option value="w_location">국가</option>
+						<option value="w_vintage">빈티지</option>
+					</select>
+					<select id="select2" name="kindOption">
+						<option value="w_kind">전체</option>
+						<option value="1">PORT</option>
+						<option value="2">DESSERT</option>
+						<option value="3">RED</option>
+						<option value="4">ROSE</option>
+						<option value="5">WHITE</option>
+						<option value="6">SPARKLING</option>
+					</select>
+				<input type="search" name="searchKeyword" placeholder="검색어 입력">
+				<button type="submit">검색</button>
+				</div>
+			</form>
+			</div>
+				<table>
+				 <tr>
+				  <th>와인 이름</th>
+				  <th>와인 종류</th>
+				  <th>국가</th>
+				 </tr>
+				  <c:forEach var="store" items="${searchList}">
+					<tr>
+				    	<td>${store.w_name}</td>
+						<td>${store.w_kind}</td>
+						<td>${store.w_location}</td>
+					</tr>
+				  </c:forEach>
+				</table>
         <div>
             <label for="eventDateTime">시음회 날짜/시간</label>
             <input type="text" id="eventDateTime" name="eventDateTime" placeholder="날짜/시간을 입력하세요">

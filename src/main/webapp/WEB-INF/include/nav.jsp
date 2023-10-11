@@ -33,7 +33,7 @@
      </li>
    </ul>
   </c:when>
-  <c:when test="${ lginVo eq null and sloginVo ne null }">
+  <c:when test="${ loginVo eq null and sloginVo ne null }">
     <ul class="nav justify-content-end">
      <li class="nav-item">
         <br>
@@ -77,6 +77,5 @@
   <li class="nav-item">
     <a class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
   </li>
-
 </ul>
 

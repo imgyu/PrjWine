@@ -1,5 +1,7 @@
 package com.green.tasting.vo;
 
+import java.sql.Date;
+
 public class TastingVo {
 	private int s_no;
 	private String s_id;
@@ -16,10 +18,10 @@ public class TastingVo {
 	private String s_imgext;
 	private String s_simgname;
 	private int t_idx;
-	private String t_name;
+	private String t_title;
 	private String t_cont;
 	private int w_no;
-	private String t_date;
+	private Date t_date;
 	private int t_cost;
 	private int u_no;
 	private String u_id;
@@ -46,11 +48,11 @@ public class TastingVo {
 	public TastingVo() {}
 	public TastingVo(int s_no, String s_id, String s_pw, String s_name, String s_sn, String s_postcode,
 			String s_address, String s_phone, String s_cont, String s_detailaddress, String s_extraaddress,
-			String s_imgname, String s_imgext, String s_simgname, int t_idx, String t_name, String t_cont, int w_no,
-			String t_date, int t_cost, int u_no, String u_id, String u_pw, String u_name, int u_birth,
-			String u_postcode, String u_address, String u_phone, int u_point, String u_detailaddress,
-			String u_extraaddress, String w_wineery, String w_name, String w_vintage, int w_avg, String w_reviews,
-			String w_location, String w_image, String w_kind, int w_amount, int w_price, int wl_idx) {
+			String s_imgname, String s_imgext, String s_simgname, int t_idx, String t_title, String t_cont, int w_no,
+			Date t_date, int t_cost, int u_no, String u_id, String u_pw, String u_name, int u_birth, String u_postcode,
+			String u_address, String u_phone, int u_point, String u_detailaddress, String u_extraaddress,
+			String w_wineery, String w_name, String w_vintage, int w_avg, String w_reviews, String w_location,
+			String w_image, String w_kind, int w_amount, int w_price, int wl_idx) {
 		this.s_no = s_no;
 		this.s_id = s_id;
 		this.s_pw = s_pw;
@@ -66,7 +68,7 @@ public class TastingVo {
 		this.s_imgext = s_imgext;
 		this.s_simgname = s_simgname;
 		this.t_idx = t_idx;
-		this.t_name = t_name;
+		this.t_title = t_title;
 		this.t_cont = t_cont;
 		this.w_no = w_no;
 		this.t_date = t_date;
@@ -184,11 +186,11 @@ public class TastingVo {
 	public void setT_idx(int t_idx) {
 		this.t_idx = t_idx;
 	}
-	public String getT_name() {
-		return t_name;
+	public String getT_title() {
+		return t_title;
 	}
-	public void setT_name(String t_name) {
-		this.t_name = t_name;
+	public void setT_title(String t_title) {
+		this.t_title = t_title;
 	}
 	public String getT_cont() {
 		return t_cont;
@@ -202,10 +204,10 @@ public class TastingVo {
 	public void setW_no(int w_no) {
 		this.w_no = w_no;
 	}
-	public String getT_date() {
+	public Date getT_date() {
 		return t_date;
 	}
-	public void setT_date(String t_date) {
+	public void setT_date(Date t_date) {
 		this.t_date = t_date;
 	}
 	public int getT_cost() {
@@ -352,7 +354,7 @@ public class TastingVo {
 				+ ", s_postcode=" + s_postcode + ", s_address=" + s_address + ", s_phone=" + s_phone + ", s_cont="
 				+ s_cont + ", s_detailaddress=" + s_detailaddress + ", s_extraaddress=" + s_extraaddress
 				+ ", s_imgname=" + s_imgname + ", s_imgext=" + s_imgext + ", s_simgname=" + s_simgname + ", t_idx="
-				+ t_idx + ", t_name=" + t_name + ", t_cont=" + t_cont + ", w_no=" + w_no + ", t_date=" + t_date
+				+ t_idx + ", t_title=" + t_title + ", t_cont=" + t_cont + ", w_no=" + w_no + ", t_date=" + t_date
 				+ ", t_cost=" + t_cost + ", u_no=" + u_no + ", u_id=" + u_id + ", u_pw=" + u_pw + ", u_name=" + u_name
 				+ ", u_birth=" + u_birth + ", u_postcode=" + u_postcode + ", u_address=" + u_address + ", u_phone="
 				+ u_phone + ", u_point=" + u_point + ", u_detailaddress=" + u_detailaddress + ", u_extraaddress="

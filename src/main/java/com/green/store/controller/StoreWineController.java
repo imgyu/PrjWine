@@ -84,6 +84,7 @@ public class StoreWineController {
 
 		List<RegVo> searchList = storeService.searchList(searchKeyword, searchOption, kindOption);
 		ModelAndView mv = new ModelAndView();
+		
 		mv.addObject("searchList", searchList);
 		mv.setViewName("/store/storewineregisterform");
 		return mv;

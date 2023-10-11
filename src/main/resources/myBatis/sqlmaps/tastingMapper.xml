@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Taste">
+	 <select id         = "TastList"
+             resultType = "com.green.tasting.vo.TastingVo"  >
+	 SELECT T.*, S.S_NAME, S.S_ADDRESS, S_DETAILADDRESS
+     FROM  TESTING T
+     LEFT JOIN STORE S     ON T.S_NO = S.S_NO
+     LEFT JOIN WINELIST WL ON S.S_NO = WL.S_NO
+   	</select>
+   	
+   	<insert id="InsertTaste">
+   	
+   	
+   	
+   	</insert>
+   	
+</mapper>
+
+
+
+
+
+   
