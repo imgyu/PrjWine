@@ -12,13 +12,21 @@ import com.green.user.cart.vo.CartVo;
 @Repository("cartDao")
 public class CartDaoImpl implements CartDao {
 
-	@Autowired
-	private  SqlSession  sqlSession;
-	
-	@Override
-	public List<CartVo> getCartList() {
-		
-		List<CartVo>  cartList  = sqlSession.selectList("Cart.CartList");
-		return    cartList;
-	}
-}
+   @Autowired
+   private  SqlSession  sqlSession;
+   
+   @Override
+   public List<CartVo> getCartList(CartVo vo) {
+      
+      List<CartVo>  cartList  = sqlSession.selectList("Cart.CartList", vo);
+      return    cartList;
+   }
+
+   @Override
+   public void deleteCart(CartVo vo) {
+      sqlSession.delete("Cart.DeleteCartList", vo);
+      
+   }
+
+
+} 

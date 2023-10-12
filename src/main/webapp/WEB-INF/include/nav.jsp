@@ -26,7 +26,7 @@
             <li><a class="dropdown-item" href="#"><b>신청한 시음회</b></a></li>
             <li><a class="dropdown-item" href="/UserFavoriteStores"><b>관심 매장</b></a></li>
             <li><a class="dropdown-item" href="/UserInfo?u_no=${loginVo.u_no }"><b>내정보 확인/수정</b></a></li>
-            <li><a class="dropdown-item" href="/UserCart"><b>장바구니</b></a></li>
+            <li><a class="dropdown-item" href="/CartList?u_no=${loginVo.u_no }"><b>장바구니</b></a></li>
             <li><a class="dropdown-item" href="/UserPurchaseHistory"><b>구매 기록</b></a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/UserLogOut"><b>로그 아웃</b></a></li>

@@ -124,9 +124,5 @@ public class UserController {
 		return mv;
 	}
 	
-	//유저장바구니
-	@RequestMapping("/UserCart")
-	public String usercart() {
-		return "/user/cart";
-	}
+	
 }

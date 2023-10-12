@@ -9,9 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>장바 구니</title>
 <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-<link rel="stylesheet" href="/css/common.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
    <style>
       /* 전체 테이블 스타일 */
@@ -42,29 +41,29 @@
          text-align: center; /* 왼쪽 정렬 */
       }
 
-      /* 취소요청 버튼 스타일 */
-      #table input[type="button"] { 
-         background-color: #ff0000; /* 배경색 */
-         color: #ffffff; /* 글자색 */
-         border: none; /* 테두리 없음 */
-         padding: 5px 10px; /* 여백 */
-         cursor: pointer; /* 포인터로 마우스 커서 변경 */
-      }
+      #deleteButton {
+      background-color: #ff0000; /* 배경색 */
+      color: #ffffff; /* 글자색 */
+      border: none; /* 테두리 없음 */
+      padding: 10px 15px; /* 여백 */
+      cursor: pointer; /* 포인터로 마우스 커서 변경 */
+   }
    </style>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
+
 <body>
 <%@include file="/WEB-INF/include/nav.jsp" %>
 <h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">장바구니</h1>
    <main>
       
-      
+   <form action="/UserPayment?u_no=${u_no }" method="POST">
+   
    <!-- 게시물 목록 -->
    <table id="table">
    
    <tr>
-     <th></th>   <!-- 체크박스추가 -->
-     <th>No.</th>
+     <th><input type="checkbox" name="allCheck" id="allCheck" /></th>
      <th>와인이름</th>
      <th>와인매장</th>
      <th>수량</th>
@@ -72,8 +71,8 @@
      <th>총가격</th>
    </tr>
    <c:forEach var="cart" items="${cartList}">
-     <tr>
-        <th>${cart.c_idx}</th>
+     <tr>   
+        <th><input type="checkbox" name="rowCheck" id="rowCheck" value="${cart.u_no }, ${cart.c_idx }" /></th>
         <th>${cart.w_name}</th>
         <th>${cart.s_name}</th>
         <th>${cart.c_count}</th>
@@ -82,9 +81,76 @@
 </tr>
 
     </c:forEach>
-   </table>   
-    <button id="paymentButton">결제</button>
-      <button id="deleteButton">삭제</button>
-   </main>
+   </table>
+   <br><br>
+    <div class="text-center">
+    <input type="submit" value="결제" class="btn btn-outline-info" >
+    <input type="button" value="삭제" class="btn btn-outline-info" onclick="deleteValue();">
+    </div> 
+    </form>
+    </main>
+<script>
+
+$(function() {
+   
+   // 전체 체크 	
+   var chkObj  =  document.getElementsByName("rowCheck");
+   var rowCnt  =  chkObj.length;
+   
+   $("input[name='allCheck']").click(function() {
+      var chk_listArr  =  $("input[name='rowCheck']");
+      for (var i=0; i<chk_listArr.length; i++) {
+         chk_listArr[i].checked  =  this.checked;
+      }
+   });
+   $("input[name='rowCheck']").click(function() {
+      if($("input[name='allCheck']:checked").length == rowCnt) {
+         $("input[name='allCheck']")[0].checked  =  true;
+      }
+      else {
+         $("input[name='allCheck']")[0].checked  =  false;
+      }
+   });   
+    
+}); 
+
+function deleteValue() {
+   var u_no =  ${u_no};
+   var url  =  "/CartDelete?u_no=" + u_no;
+   var valueArr  =  [];
+   var list  =  $("input[name='rowCheck']");
+   for(var i = 0; i < list.length; i++) {
+      if(list[i].checked) {
+         valueArr.push(list[i].value);
+      }
+   }
+   if(valueArr.length == 0) {
+      alert("선택하신 게 없습니다.");
+   }
+   else {
+      var chk  =  confirm("정말 삭제하시겠습니까?");
+      $.ajax({
+         url  :  url,
+         type : 'post',
+         traditional : true,
+         data : {
+            'valueArr[]'  :  valueArr
+         },
+         success: function(jdata) {
+            if(jdata == 1) {
+               alert("삭제성공");
+               location.reload();
+               
+            }
+            else {
+               alert("삭제 실패");
+            }
+         }
+      });
+   }
+}  // deleteValue
+
+
+</script>
 </body>
 </html>

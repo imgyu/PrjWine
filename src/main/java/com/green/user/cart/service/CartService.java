@@ -7,7 +7,11 @@ import com.green.user.cart.vo.CartVo;
 public interface CartService {
 
 
-	List<CartVo> getCartList();
+   List<CartVo> getCartList(CartVo vo);
+
+   void deleteCart(CartVo vo);
+
+
 
 
 }
