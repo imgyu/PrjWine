@@ -39,6 +39,8 @@ public interface StoreService {
 
 	List<StoreVo> storeList(StoreVo vo);
 
+	List<StoreVo> getStoreInfo(StoreVo vo);
+
 	// 매장이름검색기능
 
 

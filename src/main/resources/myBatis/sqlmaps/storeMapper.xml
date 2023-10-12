@@ -150,7 +150,7 @@
    
    <select id="StoreList" resultType="com.green.store.vo.StoreVo">
     SELECT S_NAME , S_CONT, S_PHONE, 
-           S_ADDRESS, S_DETAILADDRESS, S_NO
+           S_ADDRESS, S_DETAILADDRESS, S_NO, S_SIMGNAME
     FROM   STORE
    </select>
    
@@ -158,11 +158,18 @@
    
     <select id="SnameSearch" resultType="com.green.store.vo.StoreVo">
     SELECT S_NAME , S_CONT, S_PHONE, 
-           S_ADDRESS, S_DETAILADDRESS, S_NO
+           S_ADDRESS, S_DETAILADDRESS, S_NO, S_SIMGNAME
     FROM STORE
    WHERE
          UPPER(S_NAME) LIKE '%' || UPPER(#{sname_Search}) || '%'
       OR LOWER(S_NAME) LIKE '%' || LOWER(#{sname_Search}) || '%'
+   </select>
+   
+    <select id="GetStoreInfo" resultType="com.green.store.vo.StoreVo">
+    SELECT S_NAME , S_CONT, S_PHONE, 
+           S_ADDRESS, S_DETAILADDRESS, S_NO, S_SIMGNAME
+    FROM STORE
+    WHERE   S_NO = #{s_no}
    </select>
    
 </mapper>

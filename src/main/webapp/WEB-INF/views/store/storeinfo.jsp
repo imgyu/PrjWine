@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
@@ -10,7 +11,10 @@
 	rel="stylesheet"
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous">
-
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+	crossorigin="anonymous"></script>
 <style>
 body {
 	font-family: Arial, sans-serif;
@@ -26,7 +30,7 @@ body {
 .store-container {
 	display: flex;
 	flex-wrap: wrap;
-	max-width: 70%;
+	max-width: 60%;
 	margin: 20px auto;
 	padding: 20px;
 	background-color: #fff;
@@ -36,124 +40,112 @@ body {
 }
 
 .store-image {
-	max-width: 40%;
-	border-radius: 10px;
-	flex-basis: 50%; /* 왼쪽 위 */
-	margin-bottom: 30px;
+	max-width: 100%;
+	max-height: 300px;
+	object-fit: contain;
+	border-radius: 10px 10px 0 0;
 }
 
-.store-content {
-	flex-basis: 40%; /* 오른쪽 위 */
-	padding: 5%;
-	margin-left: 50px;
+.wine-details {
+	flex-basis: 50%; /* 오른쪽 위 */
+	padding: 20px;
 }
 
 .store-name {
 	font-size: 36px;
 	font-weight: bold;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 }
 
-.store-description {
+.store-detailAddress {
 	font-size: 18px;
-	margin-bottom: 20px;
+	margin-bottom: 70px;
 }
 
-.store-phone {
+.store-address {
+	font-size: 18px;
+	margin-bottom: 70px;
+}
+
+.store-cont {
+	font-size: 26px;
 	font-weight: bold;
-	font-size: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 30px;
 }
 
-#map {
-	width: 40%;
-	height: 40%;
-	border-radius: 10px;
-	margin-bottom: 20px;
-}
-
-.store-button {
-	/* 가로 크기 설정 */
-	width: 180px;
-	/* 세로 크기 설정 */
-	height: 80px;
-	background-color: #007bff;
-	color: #fff;
+.store-link {
 	text-decoration: none;
-	border-radius: 5px;
+	color: #007bff;
 	font-weight: bold;
-	font-size: 20px;
-	margin: 10px 20px 15px 55px;
+	font-size: 18px;
 }
+
 </style>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-	crossorigin="anonymous"></script>
+
 </head>
-<%@include file="/WEB-INF/include/nav.jsp"%>
 <body>
-	<h1 style="text-align: center; margin-top: 60px;">매장찾기</h1>
-	<div class="store-allconatiner">
+	<%@include file="/WEB-INF/include/nav.jsp"%>
+<main>
+
+	<c:forEach var="info" items="${storeInfo }">
+		<h1 style="text-align: center; margin-top: 60px;">매장 정보</h1>
 		<div class="store-container">
-			<img class="store-image" src="/img/test.jpg" alt="매장 사진">
-			<div class="store-content">
-				<div class="store-name">매장 이름</div>
-				<div class="store-description">매장 설명 Lorem ipsum dolor sit
-					amet, consectetur adipiscing elit.</div>
-				<div class="store-phone">매장 전화번호: 123-456-7890</div>
+			<img class="store-image" src="/img/${info.s_simgname}" alt="매장사진" />
+
+			<div class="wine-details">
+				<div class="store-name">${info.s_name }</div>
+				<div class="store-cont">${info.s_cont}</div>
+				<div class="store-address">${info.s_address }</div>
+				<div class="store-detailAddress">${info.s_detailAddress }</div>
 			</div>
-			<div id="map"></div>
-			<a class="store-button" href="#">보유한와인리스트 보기</a>
+			<a class="winelist-link" href="/StoreWineManage?s_no=${info.s_no}"
+				class="btn btn-primary">매장보유 와인</a>
+	            <div id="map" style="width:100%;height:350px;"></div>
 		</div>
-	</div>
+                
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3e1bc19bc313fda7048dd34538eebc17&libraries=services"></script>
+<script>
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+    mapOption = {
+        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+        level: 3 // 지도의 확대 레벨
+    };  
 
-	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d8fe692ba937f44b9898d9148f2dbd78"></script>
-	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-		mapOption = {
-			center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-			level : 3
-		// 지도의 확대 레벨
-		};
+// 지도를 생성합니다    
+var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-		// 지도를 생성합니다    
-		var map = new kakao.maps.Map(mapContainer, mapOption);
+// 주소-좌표 변환 객체를 생성합니다
+var geocoder = new kakao.maps.services.Geocoder();
 
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new kakao.maps.services.Geocoder();
+// 주소로 좌표를 검색합니다
+geocoder.addressSearch('${info.s_address}', function(result, status) {
 
-		// 주소로 좌표를 검색합니다
-		geocoder
-				.addressSearch(
-						'제주특별자치도 제주시 첨단로 242',
-						function(result, status) {
+    // 정상적으로 검색이 완료됐으면 
+     if (status === kakao.maps.services.Status.OK) {
 
-							// 정상적으로 검색이 완료됐으면 
-							if (status === kakao.maps.services.Status.OK) {
+        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
 
-								var coords = new kakao.maps.LatLng(result[0].y,
-										result[0].x);
+        // 결과값으로 받은 위치를 마커로 표시합니다
+        var marker = new kakao.maps.Marker({
+            map: map,
+            position: coords
+        });
 
-								// 결과값으로 받은 위치를 마커로 표시합니다
-								var marker = new kakao.maps.Marker({
-									map : map,
-									position : coords
-								});
+        // 인포윈도우로 장소에 대한 설명을 표시합니다
+        var infowindow = new kakao.maps.InfoWindow({
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${info.s_name}</div>'
+        });
+        infowindow.open(map, marker);
 
-								// 인포윈도우로 장소에 대한 설명을 표시합니다
-								var infowindow = new kakao.maps.InfoWindow(
-										{
-											content : '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-										});
-								infowindow.open(map, marker);
+        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+        map.setCenter(coords);
+    } 
+});    
+</script>
 
-								// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-								map.setCenter(coords);
-							}
-						});
-	</script>
+	</c:forEach>
+	
+	
+</main>
 </body>
-
 </html>

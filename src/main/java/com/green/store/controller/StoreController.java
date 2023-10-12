@@ -14,6 +14,7 @@ import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineListVo;
+import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 
@@ -36,6 +37,7 @@ public class StoreController {
        
     }
 	
+	
 	//매장리스트
 	@RequestMapping("/StoreList")
 	public ModelAndView storelist(StoreVo vo) {
@@ -44,7 +46,6 @@ public class StoreController {
 		
 		mv.setViewName("/store/storelist");
 		mv.addObject("storeList", storeList );
-		
 		return mv;
 	}
 	
@@ -65,5 +66,18 @@ public class StoreController {
 	@RequestMapping("/StoreCheckUpdate")
 	public String storecheckupdate() {
 		return "/store/storeupdateform";
+	}
+	
+	@RequestMapping("/StoreInfo")
+	public ModelAndView storeinfo(StoreVo vo) {
+		
+		List<StoreVo> storeInfo  =  storeService.getStoreInfo(vo);
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("/store/storeinfo");
+		mv.addObject("storeInfo", storeInfo);
+		
+		System.out.println(mv);
+		return mv;
 	}
 }
