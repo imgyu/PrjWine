@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
     
 <!DOCTYPE html>
 <html>
@@ -57,13 +57,13 @@
 <h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">장바구니</h1>
    <main>
       
-   <form action="/UserPayment?u_no=${u_no }" method="POST">
-   
+   <form action="/UserPayment?u_no=${u_no }" method="POST" id="formPayment">
+   <input type="hidden" name="cartids	" value="" />
    <!-- 게시물 목록 -->
    <table id="table">
    
    <tr>
-     <th><input type="checkbox" name="allCheck" id="allCheck" /></th>
+     <th><input type="checkbox" id="allCheck" /></th>
      <th>와인이름</th>
      <th>와인매장</th>
      <th>수량</th>
@@ -72,7 +72,7 @@
    </tr>
    <c:forEach var="cart" items="${cartList}">
      <tr>   
-        <th><input type="checkbox" name="rowCheck" id="rowCheck" value="${cart.u_no }, ${cart.c_idx }" /></th>
+        <th><input type="checkbox" name="rowCheck" id="rowCheck" value="${cart.c_idx }" /></th>
         <th>${cart.w_name}</th>
         <th>${cart.s_name}</th>
         <th>${cart.c_count}</th>
@@ -93,24 +93,32 @@
 
 $(function() {
    
-   // 전체 체크 	
+   // 전체 체크    
    var chkObj  =  document.getElementsByName("rowCheck");
    var rowCnt  =  chkObj.length;
    
-   $("input[name='allCheck']").click(function() {
+   $("input[id='allCheck']").click(function() {
       var chk_listArr  =  $("input[name='rowCheck']");
       for (var i=0; i<chk_listArr.length; i++) {
          chk_listArr[i].checked  =  this.checked;
       }
    });
-   $("input[name='rowCheck']").click(function() {
-      if($("input[name='allCheck']:checked").length == rowCnt) {
-         $("input[name='allCheck']")[0].checked  =  true;
+
+   // submit 클릭
+   $("#formPayment").on('submit', function(e) {
+      let cartIds = '';
+      let checkedRows = $('#rowCheck:checked'); 
+      for(let i =0;i<checkedRows.length;i++) {         
+         cartIds += checkedRows[i].value;
+         if(  i < checkedRows.length-1 )
+            cartIds += ',';
       }
-      else {
-         $("input[name='allCheck']")[0].checked  =  false;
-      }
-   });   
+      alert(cartIds)
+      $('[name=cartids]').val(cartIds); 
+       
+    //  e.preventDefault();
+      
+   })
     
 }); 
 

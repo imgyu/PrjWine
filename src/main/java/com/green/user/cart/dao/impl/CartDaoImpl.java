@@ -1,5 +1,6 @@
 package com.green.user.cart.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -27,6 +28,14 @@ public class CartDaoImpl implements CartDao {
       sqlSession.delete("Cart.DeleteCartList", vo);
       
    }
+
+@Override
+public List<CartVo> getSelectList(List<CartVo> selCartList) {
+	
+	List<CartVo> getSelectList  =  sqlSession.selectOne("Cart.SelectList", selCartList);
+	
+	return getSelectList;
+}
 
 
 } 

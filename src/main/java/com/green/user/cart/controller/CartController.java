@@ -1,9 +1,8 @@
 package com.green.user.cart.controller;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -59,19 +58,32 @@ public class CartController {
          return 1;
    }
     
-    
-	@RequestMapping("/UserPayment")
-	public ModelAndView userPayment(CartVo vo, UserVo user) {
-		
-    	List<CartVo> cartList  =  cartService.getCartList(vo);
-    	List<UserVo> userList  =  userService.getUserList(user);
+    // map:{u_no=1, cartids=1,2, rowCheck=1}
+   @RequestMapping("/UserPayment")
+   public ModelAndView userPayment(@RequestParam HashMap<String, Object> map) {
+      
+      System.out.println("map:" + map);
+      String cartids = String.valueOf( map.get("cartids") ); 
+      List<CartVo> selCartList = new ArrayList<>();
+      for (String cartid : cartids.split(",")) {
+         CartVo vo = new CartVo();
+         vo.setC_idx(Integer.parseInt(cartid));
+         selCartList.add(vo);         
+      }
 
-		ModelAndView mv  =  new ModelAndView();
-		mv.setViewName("user/payment");
-		mv.addObject("cartList", cartList);
-		mv.addObject("userList", userList);
-		return mv;
-	}
-	
+      UserVo user = new UserVo();
+      int u_no = Integer.parseInt( String.valueOf( map.get("u_no") ));
+      user.setU_no(u_no);
+      
+       List<CartVo> cartList  =  cartService.getSelectList(selCartList);
+       List<UserVo> userList  =  userService.getUserList(user);
+
+      ModelAndView mv  =  new ModelAndView();
+      mv.setViewName("user/payment");
+      mv.addObject("cartList", cartList);
+      mv.addObject("userList", userList);
+      return mv;
+   }
+   
    
 }

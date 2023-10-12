@@ -1,5 +1,6 @@
 package com.green.user.cart.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,14 @@ public class CartServiceImpl implements CartService {
       cartDao.deleteCart(vo);
       
    }
+
+@Override
+public List<CartVo> getSelectList(List<CartVo> selCartList) {
+	
+	List<CartVo> getSelectList  =  cartDao.getSelectList(selCartList);
+	
+	return getSelectList;
+}
 
 }
 
