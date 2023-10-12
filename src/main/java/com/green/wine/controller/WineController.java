@@ -22,7 +22,7 @@ public class WineController {
 	//와인리스트 페이지 이동
 	@RequestMapping("/WineList")
 	public String winelist() {
-		return "/wine/winelist";
+		return "redirect:/All_Click";
 	}
 
 	//와인정보 페이지 이동	
