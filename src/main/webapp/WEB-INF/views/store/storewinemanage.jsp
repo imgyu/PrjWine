@@ -112,73 +112,43 @@
 <body>
      <%@ include file="/WEB-INF/include/nav.jsp" %> 
      
-<h1> 보유 와인 </h1>
+<h1>${ sloginVo.s_name } 보유 와인 </h1>
 
 <main>
-    <!-- 검색 폼 -->
-	<form id="search-form" action="/search" method="get" class="text-center">
-   	 <input type="text" name="query" placeholder="검색어 입력">
-     <button type="submit">검색</button>
-
-	<!-- 검색 조건 드롭다운 버튼 -->
-	<div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
-    <div class="dropdown">
-         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    	 국가
- 	     </button>
-        <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="StoreWineManage">Argentina</a></li>
-        <li><a class="dropdown-item" href="#">Australia</a></li>
-        <li><a class="dropdown-item" href="#">Austria</a></li>
-        <li><a class="dropdown-item" href="#">Canada</a></li>
-        <li><a class="dropdown-item" href="#">Chile</a></li>
-        <li><a class="dropdown-item" href="#">Georgia</a></li>
-        <li><a class="dropdown-item" href="#">Greece</a></li>
-        <li><a class="dropdown-item" href="#">Hungary</a></li>
-        <li><a class="dropdown-item" href="#">Israel</a></li>
-        <li><a class="dropdown-item" href="#">Italy</a></li>
-        <li><a class="dropdown-item" href="#">Macedonia</a></li>
-        <li><a class="dropdown-item" href="#">Moldova</a></li>
-        <li><a class="dropdown-item" href="#">New Zealand</a></li>
-        <li><a class="dropdown-item" href="#">Portugal</a></li>
-        <li><a class="dropdown-item" href="#">Romania</a></li>
-        <li><a class="dropdown-item" href="#">Slovenia</a></li>
-        <li><a class="dropdown-item" href="#">South Africa</a></li>
-        <li><a class="dropdown-item" href="#">Spain</a></li>
-        <li><a class="dropdown-item" href="#">Switzerland</a></li>
-        <li><a class="dropdown-item" href="#">Turkey</a></li>
-        <li><a class="dropdown-item" href="#">United States</a></li>
-        <li><a class="dropdown-item" href="#">Uruguay</a></li>
-        </ul>
-    </div>
-    <div class="dropdown">
-       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    	 품종
- 	     </button>
- 	     <ul class="dropdown-menu"> 
-        <li><a class="dropdown-item" href="#">RED</a></li>
-        <li><a class="dropdown-item" href="#">DESSERT</a></li>        
-        <li><a class="dropdown-item" href="#">ROSE</a></li>        
-        <li><a class="dropdown-item" href="#">PORT</a></li>        
-        <li><a class="dropdown-item" href="#">WHITE</a></li>        
-        <li><a class="dropdown-item" href="#">SPARKLING</a></li>        
-        </ul>
-    </div>
-    <div class="dropdown">
-      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    	 수량
- 	     </button>
-         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">수량 ↑</a></li>
-          <li><a class="dropdown-item" href="#">수량 ↓</a></li>
-         </ul>
-    </div>
-</div>
-</form>
+    <!-- 버튼 검색 -->
+		<div class="container">
+			<form action="/StoreListSearch" method="GET" id="search-form">
+			    <input type="hidden" name="s_no" value="${ s_no }" />
+				<div>
+					<select id="select" name="searchOption">
+						<option value="All">전체</option>
+						<option value="w_name">이름</option>
+						<option value="w_location">국가</option>	
+	                    <option value="w_vintage">빈티지</option>
+					</select>
+					<select id="select2" name="kindOption">
+					 <option value="w_kind">품종</option>
+					 <option value="PORT">PORT</option>
+				     <option value="DESSERT">DESSERT</option>
+					 <option value="RED">RED</option>
+					 <option value="ROSE">ROSE</option>
+					 <option value="WHITE">WHITE</option>
+					 <option value="SPARKLING">SPARKLING</option>
+					</select>
+					<select id="amount" name="amountOption">
+					 <option value="choose">선택</option>
+					 <option value="w_amount">수량↑</option>
+					 <option value="w_amountDown">수량↓</option>
+					</select>
+				</div>
+				<input type="text" name="searchKeyword" placeholder="검색어 입력">
+				<button type="submit">검색</button>
+			</form>
+		</div>
 <br>
 <br>
 
-    <!-- 와인 목록 테이블 -->
+    
     <table id="table">
         <tr>
             <th>와인명</th>
@@ -190,7 +160,8 @@
             <th>수정</th>
         </tr>
 
-        <!-- 예시 와인 데이터 -->
+        <!-- 검색하지 않았을떄  -->
+        <c:if test="${not empty wineList }">
         <c:forEach var="wine" items="${wineList }">
         <tr>
             <td>${wine.w_name }</td>
@@ -202,9 +173,26 @@
             <td>
    				<a href="/WineUpdateForm?s_no=${wine.s_no }&wl_idx=${wine.wl_idx}" class="btn btn-primary">수정</a>            
             </td>          
-        
+        </tr>
         </c:forEach>
-        <!-- 다른 와인 데이터 추가 -->
+        </c:if>
+        
+        <c:if test="${not empty storeListSearch }">
+        <c:forEach var="Search" items="${storeListSearch }">
+        <tr>
+            <td>${Search.w_name }</td>
+            <td>${Search.w_location}</td>
+            <td>${Search.w_kind}</td>
+            <td>${Search.w_amount}</td>
+            <td>${Search.w_price }</td>
+            <td>${Search.w_vintage}</td>
+            <td>
+   				<a href="/WineUpdateForm?s_no=${Search.s_no }&wl_idx=${Search.wl_idx}" class="btn btn-primary">수정</a>            
+            </td>          
+          </tr>
+        </c:forEach>
+        </c:if>
+        
     </table>
    
     <!-- 매장 홈으로 버튼 -->

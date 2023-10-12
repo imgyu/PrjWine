@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 public interface StoreService {
@@ -16,7 +17,7 @@ public interface StoreService {
 	void insertWine(int selectedOption, int w_amount, int w_price, int s_no, int w_no);
 
 	// (영태)
-	List<RegVo> searchList(String searchKeyword, String searchOption);
+	List<RegVo> searchList(String searchOption, String kindOption, String searchKeyword);
 
 	// (병규)
 	StoreVo storelogin(StoreVo vo);
@@ -42,6 +43,11 @@ public interface StoreService {
 	List<StoreVo> getStoreInfo(StoreVo vo);
 
 	// 매장이름검색기능
+
+
+	List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption);
+
+
 
 
 }

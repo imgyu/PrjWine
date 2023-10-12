@@ -40,35 +40,50 @@
 <body>
 <%@include file="/WEB-INF/include/nav.jsp" %>
 
-<h2 class="logintitle">고객 정보 확인</h2>
+<h2 class="logintitle">결제 확인</h2>
 <div class="container">
-    <form action="/UserUpdateForm?u_no=${u_no }" method="POST">
+    <form action="/" method="POST">
+        <h2>주문자</h2>
     	<c:forEach var="user" items="${userList }">
             <div class="mb-3">
-                <label for="userId" class="form-label">아이디:</label>
-                <span id="userId" class="form-text">${user.u_id }</span>
-            </div>
-            <div class="mb-3">
-                <label for="userName" class="form-label">이름:</label>
+                <label for="userName" class="form-label">이름 : </label>
                 <span id="userName" class="form-text">${user.u_name }</span>
             </div>
             <div class="mb-3">
-                <label for="userAddress" class="form-label">주소:</label>
-                <span id="userAddress" class="form-text">${user.u_address }</span>
+                <label for="useraddress" class="form-label">주소 : </label>
+                <span id="useraddress" class="form-text">${user.u_address }</span>
             </div>
             <div class="mb-3">
-                <label for="userPhone" class="form-label">연락처:</label>
-                <span id="userPhone" class="form-text">${user.u_phone }</span>
-            </div>
-            <div class="mb-3">
-                <label for="userPoint" class="form-label">보유 포인트:</label>
-                <span id="userPoint" class="form-text">${user.u_point }</span>
+                <label for="userphone" class="form-label">휴대폰 : </label>
+                <span id="userphone" class="form-text">${user.u_phone }</span>
             </div>
         </c:forEach>
+        <h2>주문 정보</h2>
+        <c:forEach var="cart" items="${cartList }">
+            <div class="mb-3">
+                <label for="userName" class="form-label">와인명 : </label>
+                <span id="userName" class="form-text">${cart.w_name }</span>
+            </div>
+            <div class="mb-3">
+                <label for="userName" class="form-label">판매점 : </label>
+                <span id="userName" class="form-text">${cart.s_name }</span>
+            </div>
+            <div class="mb-3">
+                <label for="userName" class="form-label">가격 : </label>
+                <span id="userName" class="form-text">${cart.w_price }</span>
+            </div>
+            <div class="mb-3">
+                <label for="userName" class="form-label">수량 : </label>
+                <span id="userName" class="form-text">${cart.c_count }</span>
+            </div>
+            <div class="mb-3">
+                <label for="userName" class="form-label">총가격 : </label>
+                <span id="userName" class="form-text">${cart.c_allprice }</span>
+            </div>
+           </c:forEach> 
         <div class="text-center">
           <div class="btn-group">
-             <button type="button" class="btn btn-primary mx-2" onclick="location.href='/'">메인 화면</button>
-             <button type="submit" class="btn btn-primary mx-2">수정하기</button>
+             <button class="btn btn-primary" >결제</button>
           </div>
         </div>
     </form>

@@ -2,6 +2,8 @@ package com.green.store.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,23 +14,52 @@ import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 
+
 @Controller
 public class StoreWineController {
 
 	@Autowired
 	private StoreService storeService;
-
+	
+	// 와인 리스트 조회 
+	@RequestMapping("/StoreListSearch")
+	public ModelAndView storeListSearch(   HavingWineVo vo,	 
+			@RequestParam("searchKeyword") String searchKeyword, 
+			@RequestParam("searchOption")  String searchOption,
+			@RequestParam("kindOption")    String kindOption,
+			@RequestParam("amountOption")  String amountOption,
+			HttpSession session) {
+		
+		System.out.println("searchOption:" + searchOption);
+		int s_no  =  vo.getS_no();
+		List<RegVo> storeListSearch  =  storeService.getStoreListSearch( s_no, searchKeyword, searchOption, kindOption, amountOption);
+		
+		System.out.println("searchKeyword2:"+searchKeyword);
+		System.out.println("searchOption3:"+searchOption);
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("store/storewinemanage");
+		mv.addObject("storeListSearch", storeListSearch);
+		mv.addObject("s_no", s_no);
+		return mv;
+	}
+	
 	// 와인 리스트 (임규)
 	@RequestMapping("/StoreWineManage")
 	public ModelAndView storewinemanage(HavingWineVo vo) {
-
+		
+		String s_name  =  vo.getS_name();
+		int s_no       =  vo.getS_no();
+		
 		// 각 매장별 보유 와인 조회
 		List<HavingWineVo> wineList = storeService.getWineList(vo);
-
-
+		System.out.println(s_no);
+		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/store/storewinemanage");
+		mv.setViewName("store/storewinemanage");
 		mv.addObject("wineList", wineList);
+		mv.addObject("s_name", s_name);
+		mv.addObject("s_no", s_no);
 
 		return mv;
 	}
@@ -79,12 +110,12 @@ public class StoreWineController {
 	@RequestMapping("/StoreWineSearch")
 	public ModelAndView winesearch(@RequestParam("searchKeyword") String searchKeyword
 			,@RequestParam("searchOption") String searchOption
+			,@RequestParam("kindOption") String kindOption
 			) {
 
-		List<RegVo> searchList = storeService.searchList(searchKeyword,searchOption);
+		List<RegVo> searchList = storeService.searchList(searchKeyword, searchOption, kindOption);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("searchList", searchList);
-		mv.addObject("searchOption", searchOption);
 		mv.setViewName("/store/storewineregisterform");
 		return mv;
 	}

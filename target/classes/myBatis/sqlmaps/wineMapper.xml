@@ -39,8 +39,9 @@ WHERE WL.W_NO  =  #{w_no}
          LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
          LEFT JOIN STORE S ON WL.S_NO = S.S_NO
       WHERE
-         UPPER(W.W_NAME) LIKE '%' || UPPER(#{name_Search}) || '%'
-      OR LOWER(W.W_NAME) LIKE '%' || LOWER(#{name_Search}) || '%'
+         W.W_NAME LIKE '%' || UPPER(#{name_Search}) || '%' AND WL.WL_IDX >= 1 
+      OR W.W_NAME LIKE '%' || LOWER(#{name_Search}) || '%' AND WL.WL_IDX >= 1
+      OR W.W_NAME LIKE '%' || INITCAP(#{name_Search}) || '%' AND WL.WL_IDX >= 1
    </select>
    
    <!-- 영태 모든와인종류 클릭 -->
@@ -49,11 +50,7 @@ WHERE WL.W_NO  =  #{w_no}
       FROM WINE W
          LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
          LEFT JOIN STORE S ON WL.S_NO = S.S_NO
-      <where>
-        <if test="all_click != null and all_click != ''">
-            AND 1 = 1;
-        </if>
-    </where>
+	     WHERE 1 = 1 AND WL.WL_IDX >= 1 
    </select>
    
    <!-- 영태 레드와인 클릭 -->
@@ -62,7 +59,7 @@ WHERE WL.W_NO  =  #{w_no}
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
-    WHERE W_KIND = 'RED'
+    WHERE W_KIND = 'RED'  AND WL.WL_IDX >= 1 
    </select>
    
    <!-- 영태 화이트와인 클릭 -->
@@ -71,7 +68,7 @@ WHERE WL.W_NO  =  #{w_no}
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
-    WHERE W_KIND = 'WHITE'
+    WHERE W_KIND = 'WHITE' AND WL.WL_IDX >= 1
    </select>
 
 <!-- 영태 스파클링와인 클릭 -->
@@ -80,7 +77,7 @@ WHERE WL.W_NO  =  #{w_no}
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
-    WHERE W_KIND = 'SPARKLING'
+    WHERE W_KIND = 'SPARKLING' AND WL.WL_IDX >= 1
    </select>
    
    <!-- 영태 로제와인 클릭 -->
@@ -89,7 +86,7 @@ WHERE WL.W_NO  =  #{w_no}
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
-    WHERE W_KIND = 'ROSE'
+    WHERE W_KIND = 'ROSE' AND WL.WL_IDX >= 1
    </select>
    
    <!-- 영태 나머지버튼 클릭 -->
@@ -98,7 +95,8 @@ WHERE WL.W_NO  =  #{w_no}
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
-    WHERE W_KIND = 'DESSERT' OR W_KIND = 'PORT'
+    WHERE W_KIND = 'DESSERT' AND WL.WL_IDX >= 1 
+    OR W_KIND = 'PORT' AND WL.WL_IDX >= 1
    </select>
 	
 </mapper>

@@ -6,6 +6,7 @@ import java.util.List;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 public interface StoreDao {
@@ -13,7 +14,7 @@ public interface StoreDao {
 	void insertwine(int selectedOption, int w_amount, int w_price, int s_no, int w_no);
 	
 	// (영태)
-	List<RegVo> getSearchList(String searchKeyword, String searchOption);
+	List<RegVo> getSearchList(String searchKeyword, String searchOption, String kindOption);
 	
 	// (병규)
 	StoreVo storelogin(StoreVo vo);
@@ -34,6 +35,12 @@ public interface StoreDao {
 
 	List<StoreVo> getStoreInfo(StoreVo vo);
 	
+
+	List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption);
+
+
+
+
 
 
 

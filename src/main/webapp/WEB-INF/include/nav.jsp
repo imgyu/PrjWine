@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
 
 <!-- 위 nav (비로그인)-->
 <c:choose> 
@@ -24,8 +25,8 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#"><b>신청한 시음회</b></a></li>
             <li><a class="dropdown-item" href="/UserFavoriteStores"><b>관심 매장</b></a></li>
-            <li><a class="dropdown-item" href="/UserInfo"><b>내정보 확인/수정</b></a></li>
-            <li><a class="dropdown-item" href="/UserCart"><b>장바구니</b></a></li>
+            <li><a class="dropdown-item" href="/UserInfo?u_no=${loginVo.u_no }"><b>내정보 확인/수정</b></a></li>
+            <li><a class="dropdown-item" href="/CartList?u_no=${loginVo.u_no }"><b>장바구니</b></a></li>
             <li><a class="dropdown-item" href="/UserPurchaseHistory"><b>구매 기록</b></a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="/UserLogOut"><b>로그 아웃</b></a></li>
@@ -33,7 +34,7 @@
      </li>
    </ul>
   </c:when>
-  <c:when test="${ lginVo eq null and sloginVo ne null }">
+  <c:when test="${ loginVo eq null and sloginVo ne null }">
     <ul class="nav justify-content-end">
      <li class="nav-item">
         <br>

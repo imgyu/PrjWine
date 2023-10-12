@@ -36,21 +36,75 @@ public class StoreDaoImpl implements StoreDao {
 	
 	 //(영태)
 	   @Override
-	   public List<RegVo> getSearchList(String searchKeyword, String searchOption) {
+	   public List<RegVo> getSearchList(String searchKeyword, String searchOption, String kindOption) {
 	       List<RegVo> searchList = new ArrayList<>();
 	       
 	       Map<String, Object> map = new HashMap<>();
 	       map.put("searchKeyword", searchKeyword);
-	       
-	       if ("w_name".equals(searchOption)) {
-	           searchList = sqlSession.selectList("Store.SearchList1", map);
-	       } else if ("w_location".equals(searchOption)) {
-	           searchList = sqlSession.selectList("Store.SearchList2", map);
-	       } else if ("w_vintage".equals(searchOption)) {
-	           searchList = sqlSession.selectList("Store.SearchList3", map);
-	       }
-	       
-	       return searchList;
+			if ("w_kind".equals(kindOption)) {
+				if ("w_name".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList1", map);
+				} else if ("w_location".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList2", map);
+				} else if ("w_vintage".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList3", map);
+				}
+			} 
+			if ("1".equals(kindOption)) {
+				if ("w_name".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList4", map);
+				} else if ("w_location".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList5", map);
+				} else if ("w_vintage".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList6", map);
+				}
+			} 
+			if ("2".equals(kindOption)) {
+				if ("w_name".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList7", map);
+				} else if ("w_location".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList8", map);
+				} else if ("w_vintage".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList9", map);
+				}
+			} 
+			if ("3".equals(kindOption)) {
+				if ("w_name".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList10", map);
+				} else if ("w_location".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList11", map);
+				} else if ("w_vintage".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList12", map);
+				}
+			} 
+			if ("4".equals(kindOption)) {
+				if ("w_name".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList13", map);
+				} else if ("w_location".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList14", map);
+				} else if ("w_vintage".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList15", map);
+				}
+			} 
+			if ("5".equals(kindOption)) {
+				if ("w_name".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList16", map);
+				} else if ("w_location".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList17", map);
+				} else if ("w_vintage".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList18", map);
+				}
+			} 
+			if ("6".equals(kindOption)) {
+				if ("w_name".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList19", map);
+				} else if ("w_location".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList20", map);
+				} else if ("w_vintage".equals(searchOption)) {
+					searchList = sqlSession.selectList("Store.SearchList21", map);
+				}
+			} 
+		       return searchList;
 	   }
 	
 	
@@ -128,7 +182,56 @@ public class StoreDaoImpl implements StoreDao {
 		return storeInfo;
 		
 	}
-	
+
+	@Override
+	public List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption) {
+		
+		List<RegVo> storeListSearch  =  new ArrayList<>();
+		
+		Map<String, Object> map  =  new HashMap<>();
+		map.put("s_no", s_no);
+		map.put("searchKeyword", searchKeyword);
+		map.put("kindOption", kindOption);
+		
+		if("All".equals(searchOption)) {
+			storeListSearch  =  sqlSession.selectList("Store.WineList", map);	
+		} else if("w_name".equals(searchOption)) {
+			storeListSearch  =  sqlSession.selectList("Store.GetName", map);
+		} else if ("w_location".equals(searchOption)) {
+			storeListSearch  =  sqlSession.selectList("Store.GetLocation", map);
+		} else if ("w_vintage".equals(searchOption)) {
+			storeListSearch  =  sqlSession.selectList("Store.GetVintage", map);
+		}
+		
+		if("w_kind".equals(kindOption)) {
+			if("PORT".equals(kindOption)) {
+				storeListSearch  =  sqlSession.selectList("Store.Port", map);
+			} else if("DESSERT".equals(kindOption)) {
+				storeListSearch  =  sqlSession.selectList("Store.Dessert", map);
+			} else if("RED".equals(kindOption)) {
+				storeListSearch  =  sqlSession.selectList("Store.Red", map);
+			} else if("ROSE".equals(kindOption)) {
+				storeListSearch  =  sqlSession.selectList("Store.Rose", map);
+			}else if("WHITE".equals(kindOption)) {
+				storeListSearch  =  sqlSession.selectList("Store.White", map);
+			}else if("SPARKLING".equals(kindOption)) {
+				storeListSearch  =  sqlSession.selectList("Store.Sparkling", map);
+			}
+		}
+		
+		if("choose".equals(amountOption)) {
+			if("w_amount".equals(amountOption)) {
+				storeListSearch  =  sqlSession.selectList("Store.GetAmount",map);
+			} else if("w_amountDown".equals(amountOption)) {
+				storeListSearch  =  sqlSession.selectList("Store.GetAmountDown", map);
+			}
+		}
+		
+		
+		return storeListSearch;
+	}
+
+		
 
 	} 
 	

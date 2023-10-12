@@ -43,13 +43,31 @@
 		)
 
 	</insert>
-<!--
-   <delete id="UserDelete">
-   
-      DELETE  FROM   TUSER
-        WHERE  USERID = #{ userid }  
-           
-   </delete>
- -->
+
+<select id="IdCheck" parameterType="String" resultType="java.lang.Integer">
+
+ SELECT COUNT(U_ID) FROM TUSER 
+ WHERE U_ID  =  #{u_id}
+
+</select>
+
+<select id="UserList" resultType="com.green.user.vo.UserVo">
+
+SELECT U_NO, U_ID, U_NAME, U_ADDRESS, U_PHONE, U_POINT
+ FROM TUSER
+ WHERE U_NO  =  #{u_no}
+
+</select>
+
+<update id="UpdateUser">
+
+UPDATE TUSER
+SET    U_PW  =  #{u_pw},
+       U_ADDRESS  =  #{u_address},
+       U_PHONE    =  #{u_phone}
+WHERE  U_NO  =  #{u_no}
+
+</update>
+
  
 </mapper>

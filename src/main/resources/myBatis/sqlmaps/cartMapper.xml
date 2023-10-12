@@ -13,42 +13,25 @@
              S.S_NAME,
              C.C_COUNT,
              WL.W_PRICE,
+             U.U_NO,
              C.C_COUNT * WL.W_PRICE AS C_ALLPRICE
-        FROM CART C, WINE W, WINELIST WL, STORE S, TUSER U
-        WHERE S.S_NO = 1 AND W.W_NO = 1
+        FROM CART C 
+               LEFT JOIN WINE W ON C.W_NO = W.W_NO 
+               LEFT JOIN WINELIST WL ON C.W_NO = WL.W_NO 
+               LEFT JOIN STORE S ON C.S_NO = S.S_NO
+               LEFT JOIN TUSER U ON C.U_NO = U.U_NO
+               WHERE U.U_NO = #{u_no}
    </select>
-<!-- <insert id="CartList">
 
-		INSERT INTO TUSER (
-		U_NO,
-		U_ID,
-		U_PW,
-		U_NAME,
-		U_BIRTH,
-		U_SI,
-		U_GU,
-		U_PHONE
-		) VALUES (
-		( SELECT NVL(MAX(U_NO),0)+1 FROM TUSER),
-		#{ u_id },
-		#{ u_pw },
-		#{ u_name },
-		#{ u_birth },
-		#{ u_si },
-		#{ u_gu },
-		#{ u_phone }
-		)
+<delete id="DeleteCartList">
 
-	</insert> -->
-<!--
-   <delete id="UserDelete">
-   
-      DELETE  FROM   TUSER
-        WHERE  USERID = #{ userid }  
-           
-   </delete>
- -->
- 
+DELETE FROM CART
+WHERE  U_NO  =  #{u_no}
+AND    C_IDX =  #{c_idx}
+
+</delete>
+
+
 </mapper>
 
 

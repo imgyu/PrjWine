@@ -12,20 +12,22 @@ import com.green.user.cart.vo.CartVo;
 @Service("cartService")
 public class CartServiceImpl implements CartService {
 
-	@Autowired
-	private   CartDao  cartDao;
+   @Autowired
+   private   CartDao  cartDao;
 
 
+   @Override
+   public List<CartVo> getCartList(CartVo vo) {
+      
+      List<CartVo>  cartList = cartDao.getCartList(vo);
+      return cartList;
+   }
 
-	@Override
-	public List<CartVo> getCartList() {
-		
-		List<CartVo>  cartList = cartDao.getCartList();
-		return cartList;
-	}
-
-
+   @Override
+   public void deleteCart(CartVo vo) {
+      cartDao.deleteCart(vo);
+      
+   }
 
 }
-
 
