@@ -7,9 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.green.store.service.StoreService;
 import com.green.store.vo.RegVo;
 import com.green.tasting.service.TastingService;
 import com.green.tasting.vo.TastingVo;
@@ -19,9 +19,6 @@ public class TastingWineController {
 	@Autowired
 	private TastingService tastingService;
 	
-	@Autowired
-	private StoreService storeService;
-	
 	// 시음회 정보
 	@RequestMapping("/TastingList")
 	public ModelAndView tastingList(TastingVo vo) {
@@ -29,7 +26,6 @@ public class TastingWineController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("tastList", tastList);
-		//System.out.println("tastList: "+tastList);
 		mv.setViewName("/tasting/tastinglist");
 		return mv;
 	}
@@ -39,7 +35,6 @@ public class TastingWineController {
 	public ModelAndView TastingWriteForm(TastingVo vo ){
 	
 		ModelAndView mv = new ModelAndView();
-		
 		mv.addObject("vo", vo);
 		mv.setViewName("/tasting/tastingwrite");
 		return mv;
@@ -47,21 +42,14 @@ public class TastingWineController {
 
 	// 시음회 등록
 	@RequestMapping("/TastingWrite")
-	public ModelAndView TastingWrite( TastingVo vo,@RequestParam("searchKeyword") String searchKeyword,
-			@RequestParam("searchOption")  String searchOption,
-			@RequestParam("kindOption")    String kindOption ){
-		
-		List<RegVo> searchList = storeService.searchList(searchKeyword, searchOption, kindOption);
+	public ModelAndView TastingWrite(TastingVo vo ){
+		tastingService.insertTaste(vo);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("searchList", searchList);
 		mv.addObject("vo", vo);
-		
-
-		System.out.println("vo: "+ vo);
-		mv.setViewName("redirect:/tasting/tastingwrite");
-
+		mv.setViewName("redirect:/TastingList");
 		return mv;
 	}
+	
 
 	// 신청한 시음회
 	@RequestMapping("/UserTasting")
@@ -69,7 +57,27 @@ public class TastingWineController {
 
 		return "/tasting/usertasting";
 	}
-		
-		
+	
+	// ajax 호출의 대상	
+	@RequestMapping("/Tasting/WineList")
+	@ResponseBody
+	public  List<RegVo>  tastingWineList(@RequestParam HashMap<String, Object> map) {
+		List<RegVo> searchList = tastingService.searchList(map);
+		return searchList;
+	}
 		
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

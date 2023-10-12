@@ -1,10 +1,12 @@
 package com.green.tasting.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.store.vo.RegVo;
 import com.green.tasting.dao.TastingDao;
 import com.green.tasting.service.TastingService;
 import com.green.tasting.vo.TastingVo;
@@ -19,6 +21,17 @@ public class TastingServiceImpl implements TastingService {
 	public List<TastingVo> getTastList(TastingVo vo) {
 		List<TastingVo> tastList = tastingDao.getTastingList(vo);
 		return tastList;
+	}
+
+	@Override
+	public List<RegVo> searchList(HashMap<String, Object> map) {
+		List<RegVo> searchList = tastingDao.getSearchList(map);
+		return searchList;
+	}
+
+	@Override
+	public void insertTaste(TastingVo vo) {
+		tastingDao.insertTaste(vo);
 	}
 
 

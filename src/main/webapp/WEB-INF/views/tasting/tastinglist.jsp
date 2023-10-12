@@ -47,6 +47,7 @@
 						<th>주최매장</th>
 						<th>시음회이름</th>
 						<th>시음회장소</th>
+						<th>시음회내용</th>
 						<th>날짜/시간</th>
 						<th>참가비</th>
 					</tr>
@@ -58,6 +59,7 @@
 					<td>${tast.s_name}</td>
 					<td>${tast.t_title}</td>
 					<td>${tast.s_address}${tast.s_detailaddress}</td>
+					<td>${tast.t_cont}</td>
 					<td>${tast.t_date}</td>
 					<td>${tast.t_cost}</td>
 				</tr>

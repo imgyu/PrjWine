@@ -90,23 +90,77 @@ form#search-form input[type="search"] {
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+<script>
+	
+  function make_table( wineList ) {
+	  let table = 
+	  `<tr>
+	  <th></th>
+	  <th>와인 이름</th>
+	  <th>와인 종류</th>
+	  <th>국가</th>
+	  <th>빈티지</th>
+	 </tr>`;
+	
+	 console.log('table', wineList[0]);
+	 for (let i=0;i < wineList.length; i++) {
+		let wine = wineList[i];
+		console.log(wine.w_name);
+		table += '<tr>';
+		table += '<td>' + '<input type="radio" name="w_no" value="' + wine.w_no + '" /></td>';
+		table += '<td>' + wine.w_name     + '</td>';
+		table += '<td>' + wine.w_kind     + '</td>';
+		table += '<td>' + wine.w_location + '</td>';
+		table += '<td>' + wine.w_vintage  + '</td>';		  
+		table += '</tr>'
+     }
+	 return table;
+  }
+
+  $(function() {
+	
+	  $('#btnSearch').on('click', function() {
+		  
+		  $.ajax({		
+			  url   : '/Tasting/WineList' ,   // RestController
+			  data  : {
+				  searchOption  : $('[name=searchOption]').val(),
+				  searchKeyword : $('[name=searchKeyword]').val(),
+				  kindOption    : $('[name=kindOption]').val()
+			  }			  
+		  })
+		  .done( function(result) {
+			  console.log(result);			  
+	          $('#searchWineList').html( make_table( result ) );			  
+		  })
+		  .fail( function(xhr) {
+			  alert(xhr.status + ':' + xhr.textStatus)
+		  });
+		 
+	  })
+	  
+  })
+</script>
+
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
 
 <h2 class="logintitle">시음회 등록</h2><br>
-<div class="container">
-    <form action="/TastingList" method="POST">
+	<div class="container">
+    <form action="/TastingWrite" method="post" id="search-form">
+		<input type="hidden" name="s_no"            value="${sloginVo.s_no}">
+		
         <div>
-            <label for="eventName">시음회 이름</label>
-            <input type="text" id="eventName" name="eventName" placeholder="시음회 이름을 입력하세요">
+            <label>시음회 이름</label>
+            <input type="text" name="t_title" placeholder="시음회 이름을 입력하세요">
         </div>
         <div>
-            <label for="eventDescription">시음회 내용 설명</label>
-            <textarea id="eventDescription" name="eventDescription" placeholder="시음회 내용 설명을 입력하세요"></textarea>
+            <label>시음회 내용 설명</label>
+            <textarea name="t_cont" placeholder="시음회 내용 설명을 입력하세요"></textarea>
         </div>
-        <div class="container">
-			<form action="/StoreWineSearch" method="GET" id="search-form">
+        	<div class="container">
 				<div>
 					<select id="select" name="searchOption">
 						<option value="w_name">이름</option>
@@ -122,34 +176,24 @@ form#search-form input[type="search"] {
 						<option value="5">WHITE</option>
 						<option value="6">SPARKLING</option>
 					</select>
-				<input type="search" name="searchKeyword" placeholder="검색어 입력">
-				<button type="submit">검색</button>
+				<input id="search" type="search" name="searchKeyword" placeholder="검색어 입력">
+				<button type="button" id="btnSearch">검색</button>
 				</div>
-			</form>
 			</div>
-				<table>
-				 <tr>
-				  <th>와인 이름</th>
-				  <th>와인 종류</th>
-				  <th>국가</th>
-				 </tr>
-				  <c:forEach var="store" items="${searchList}">
-					<tr>
-				    	<td>${store.w_name}</td>
-						<td>${store.w_kind}</td>
-						<td>${store.w_location}</td>
-					</tr>
-				  </c:forEach>
+			<div style="overflow-y: auto; max-height: 340px;" id="div1">
+				<table id="searchWineList" name="${w_no}" >
+				
 				</table>
+				</div>
         <div>
-            <label for="eventDateTime">시음회 날짜/시간</label>
-            <input type="text" id="eventDateTime" name="eventDateTime" placeholder="날짜/시간을 입력하세요">
+            <label>시음회 날짜/시간</label>
+            <input type="text" name="t_date" placeholder="날짜/시간을 입력하세요">
         </div>
         <div>
-            <label for="eventFee">참가비</label>
-            <input type="number" id="eventFee" name="eventFee" placeholder="숫자만입력:>">
+            <label>참가비</label>
+            <input type="number" name="t_cost" placeholder="숫자만입력:>">
         </div>
-        <button type="submit">등록</button>
+    	<button type="submit">등록</button>
     </form>
 </div>
 </body>
