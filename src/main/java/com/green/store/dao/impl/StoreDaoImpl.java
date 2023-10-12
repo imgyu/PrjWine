@@ -13,6 +13,7 @@ import com.green.store.dao.StoreDao;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 @Repository("storeDao")
@@ -105,17 +106,28 @@ public class StoreDaoImpl implements StoreDao {
 		sqlSession.insert("Store.StoreInsert",  map );		
 	}
 
+	// 매장검색
 	@Override
 	public List<StoreVo> getSnameSearch(String sname_Search) {
 		List<StoreVo> snameSearch = sqlSession.selectList("Store.SnameSearch", sname_Search);
+        System.out.println(snameSearch);
 		return snameSearch;
 	}
 
+	// 매장리스트
 	@Override
 	public List<StoreVo> storeList(StoreVo vo) {
 		List<StoreVo> storeList = sqlSession.selectList("Store.StoreList", vo); 
-		System.out.println(storeList);
 		return storeList; }
+
+	// 매장정보
+	@Override
+	public List<StoreVo> getStoreInfo(StoreVo vo) {
+        
+		List<StoreVo> storeInfo  =  sqlSession.selectList("Store.GetStoreInfo", vo);
+		return storeInfo;
+		
+	}
 	
 
 	} 

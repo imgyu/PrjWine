@@ -13,6 +13,7 @@ import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 @Service("storeService")
@@ -76,17 +77,31 @@ public class StoreServiceImpl implements StoreService {
 		storeDao.setJoin( map );
 		
 	}
+	
+	// 매장리스트 검색
 	@Override
 	public List<StoreVo> snameSearch(String sname_Search) {
 		List<StoreVo> snameSearch = storeDao.getSnameSearch(sname_Search);
+		System.out.println(snameSearch);
 		return snameSearch;
 	}
+	
+	// 매장리스트
 	@Override
 	public List<StoreVo> storeList(StoreVo vo) {
-	  List<StoreVo> vo1 = storeDao.storeList( vo );
+	  List<StoreVo> storeList = storeDao.storeList( vo );
 
-			return vo1;
+			return storeList;
 		}
+	
+	// 매장정보
+	@Override
+	public List<StoreVo> getStoreInfo(StoreVo vo) {
+           List<StoreVo> getStoreInfo  =  storeDao.getStoreInfo(vo);
+		
+		return getStoreInfo;
+		
+	}
 	}
 	
 

@@ -64,6 +64,7 @@ public class ImgFile {
                 map.put("s_imgname", s_imgname);
                 map.put("s_imgext", s_imgext);
                 map.put("s_simgname", s_simgname);
+                System.out.println(filePath);
             }
         }
 

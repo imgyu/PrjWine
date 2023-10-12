@@ -31,6 +31,8 @@ public interface StoreDao {
 	List<StoreVo> getSnameSearch(String sname_Search);
 
 	List<StoreVo> storeList(StoreVo vo);
+
+	List<StoreVo> getStoreInfo(StoreVo vo);
 	
 
 
