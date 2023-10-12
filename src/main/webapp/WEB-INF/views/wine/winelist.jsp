@@ -83,29 +83,35 @@
    </div>
    <!-- 와인 검색end -->
    
-   <c:set var="click" value="${allClick}" />
+   <c:set var="wine" value="" />
 
 	<c:choose>
-		<c:when test="button eq {name=red_click}">
-			<c:set var="click" value="${redClick}" />
-		</c:when>
-		<c:when test="'white_click' == button">
-			<c:set var="click" value="${whiteClick}" />
-		</c:when>
-		<c:when test="${'sparkling_click' == button}">
-			<c:set var="click" value="${sparkClick}" />
-		</c:when>
-		<c:when test="${'rose_click' == button}">
-			<c:set var="click" value="${roseClick}" />
-		</c:when>
-		<c:when test="${'other_click' == button}">
-			<c:set var="click" value="${otherClick}" />
-		</c:when>
-	</c:choose>
+    <c:when test="${not empty redClick}">
+        <c:set var="wine" value="${redClick}" />
+    </c:when>
+    <c:when test="${not empty whiteClick}">
+        <c:set var="wine" value="${whiteClick}" />
+    </c:when>
+    <c:when test="${not empty sparkClick}">
+        <c:set var="wine" value="${sparkClick}" />
+    </c:when>
+    <c:when test="${not empty roseClick}">
+        <c:set var="wine" value="${roseClick}" />
+    </c:when>
+    <c:when test="${not empty otherClick}">
+        <c:set var="wine" value="${otherClick}" />
+    </c:when>
+    <c:when test="${not empty nameSearch}">
+        <c:set var="wine" value="${nameSearch}" />
+    </c:when>
+    <c:otherwise>
+        <c:set var="wine" value="${allClick}" />
+    </c:otherwise>
+</c:choose>
 
 	<div class="container"
       style="margin-top: 60px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; justify-content: start;">
-      <c:forEach var="wine" items="${click}">
+      <c:forEach var="wine" items="${wine}">
          <div class="card" style="width: 18rem;">
              <div style="max-width: 300px; max-height: 300px; margin: 0 auto;">
                   <img src="${wine.w_image}" alt="와인이미지" style="width: 100%; height: 100%; object-fit: contain;">

@@ -145,17 +145,17 @@ button#btn1 {
 					<th>국가</th>
 					<th>빈티지</th>
 				</tr>
-					<form action="/StoreWineRegister" method="POST" id="list-form">
+			<form action="/StoreWineRegister" method="POST" id="list-form">
 				<c:forEach var="store" items="${searchList}" varStatus="loop">
 						<tr>
 							<td colspan="1" style="text-align: center;">
 							<label> <input type="radio" name="selectedOption" value="${store.w_no}">
-							</label><input type="hidden" name="s_no"       value="${sloginVo.s_no}">
-								    <input type="hidden" name="w_name"     value="${store.w_name}">
-								    <input type="hidden" name="w_no"       value="${store.w_no}">
-								    <input type="hidden" name="w_location" value="${store.w_location}">
-								    <input type="hidden" name="w_vintage"  value="${store.w_vintage}">
-								    <input type="hidden" name="w_kind"     value="${store.w_kind}">
+							</label><input type="hidden" name="s_no"          value="${sloginVo.s_no}">
+								    <input type="hidden" name="w_name"        value="${store.w_name}">
+								    <input type="hidden" name="w_no"          value="${store.w_no}">
+								    <input type="hidden" name="w_location"    value="${store.w_location}">
+								    <input type="hidden" name="w_vintage"     value="${store.w_vintage}">
+								    <input type="hidden" name="w_kind"        value="${store.w_kind}">
 							</td>
 							<td>${store.w_name}</td>
 							<td>${store.w_kind}</td>
