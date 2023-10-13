@@ -9,7 +9,7 @@
 	 SELECT T.*, S.S_NAME, S.S_ADDRESS, S_DETAILADDRESS
      FROM  TESTING T
      LEFT JOIN STORE S     ON T.S_NO = S.S_NO
-     LEFT JOIN WINELIST WL ON S.S_NO = WL.S_NO
+     LEFT JOIN WINE  W     ON W.W_NO = T.W_NO
      ORDER BY T.T_IDX DESC
    	</select>
    	
@@ -20,6 +20,19 @@
 	LEFT JOIN STORE S ON T.S_NO = S.S_NO
 	LEFT JOIN WINE  W ON T.W_NO = W.W_NO   	
    	</insert>
+   	
+   	<select id          = "TastingBoard"
+             resultType = "com.green.tasting.vo.TastingVo"  >
+	SELECT T.*, S.S_NAME, S.S_ADDRESS, S.S_DETAILADDRESS, W.W_NAME, W.W_KIND, W.W_VINTAGE, W.W_LOCATION
+     FROM  TESTING T
+     LEFT JOIN STORE S     ON T.S_NO = S.S_NO
+     LEFT JOIN WINE W      ON T.W_NO = W.W_NO
+     WHERE T.T_IDX = #{t_idx} 
+   	</select>
+   	
+   	<delete id = "DeleteTaste">
+   	 DELETE FROM TESTING WHERE T_IDX = #{t_idx}
+   	</delete>
    	
 </mapper>
 

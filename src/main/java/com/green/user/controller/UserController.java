@@ -41,7 +41,7 @@ public class UserController {
 		
 		// 로그인 입력값으로 DB조회후 확인
 		UserVo loginVo = userService.userlogin( vo );
-		System.out.println(loginVo);
+		//System.out.println(loginVo);
 		if( loginVo  !=  null  ) {
 			session.setAttribute("loginVo", loginVo);
 			returnURL = "redirect:/";        //  Home 으로 보낸다	

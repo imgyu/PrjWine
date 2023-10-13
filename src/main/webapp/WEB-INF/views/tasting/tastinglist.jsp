@@ -4,9 +4,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-   <title>신청한 시음회 목록</title>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <style>
+<title>신청한 시음회 목록</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="stylesheet"  href="/css/common.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<style>
 #table {
 	width: 70%;
 	margin: 0 auto; /* 수평 가운데 정렬 */
@@ -29,12 +33,8 @@
 	text-align: center; /* 가운데 정렬 */
 }
 
-   </style>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-   <link rel="stylesheet"  href="/css/common.css" />
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</style>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
    <%@include file="/WEB-INF/include/nav.jsp" %>
@@ -51,13 +51,13 @@
 						<th>날짜/시간</th>
 						<th>참가비</th>
 					</tr>
-			</div>
+		</div>
 		<div class="container">
 			<c:forEach var="tast" items="${tastList}">
 				<tr>
 					<td>${tast.t_idx}</td>
 					<td>${tast.s_name}</td>
-					<td>${tast.t_title}</td>
+					<td><a href="/TastingBoard?t_idx=${tast.t_idx}">${tast.t_title}</a></td>
 					<td>${tast.s_address}${tast.s_detailaddress}</td>
 					<td>${tast.t_cont}</td>
 					<td>${tast.t_date}</td>
@@ -65,7 +65,6 @@
 				</tr>
 			</c:forEach>
 		</div>
-    </div>
 	</table>
 	<div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
 	<c:choose>
@@ -75,6 +74,7 @@
         	</form>
         </c:when>
 	</c:choose>
+	</div>
 	</main>
 </body>
 </html>

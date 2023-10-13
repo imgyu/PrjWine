@@ -14,4 +14,8 @@ public interface TastingService {
 
 	void insertTaste(TastingVo vo);
 
+	List<TastingVo> tastingBoard(TastingVo vo);
+
+	void deleteTaste(TastingVo vo);
+
 }

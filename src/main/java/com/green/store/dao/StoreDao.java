@@ -10,33 +10,33 @@ import com.green.store.vo.WineVo;
 import com.green.user.vo.UserVo;
 
 public interface StoreDao {
-	// (영태)
-	void insertwine(int selectedOption, int w_amount, int w_price, int s_no, int w_no);
-	
-	// (영태)
-	List<RegVo> getSearchList(String searchKeyword, String searchOption, String kindOption);
-	
-	// (병규)
-	StoreVo storelogin(StoreVo vo);
-	// (임규)
-	List<HavingWineVo> getWineList(HavingWineVo vo);
-	// (임규)
-	void updateWineList(HavingWineVo havingVo);
-	
-	void deleteWineList(HavingWineVo havingVo);
-	
-	List<HavingWineVo> selectList(HavingWineVo vo);	
+   // (영태)
+   void insertwine(int selectedOption, int w_amount, int w_price, int s_no, int w_no);
+   
+   // (영태)
+   List<RegVo> getSearchList(String searchKeyword, String searchOption, String kindOption);
+   
+   // (병규)
+   StoreVo storelogin(StoreVo vo);
+   // (임규)
+   List<HavingWineVo> getWineList(HavingWineVo vo);
+   // (임규)
+   void updateWineList(HavingWineVo havingVo);
+   
+   void deleteWineList(HavingWineVo havingVo);
+   
+   List<HavingWineVo> selectList(HavingWineVo vo);   
 
-	void setJoin(HashMap<String, Object> map);
+   void setJoin(HashMap<String, Object> map);
 
-	List<StoreVo> getSnameSearch(String sname_Search);
+   List<StoreVo> getSnameSearch(String sname_Search);
 
-	List<StoreVo> storeList(StoreVo vo);
+   List<StoreVo> storeList(StoreVo vo);
 
-	List<StoreVo> getStoreInfo(StoreVo vo);
-	
+   List<StoreVo> getStoreInfo(StoreVo vo);
+   
 
-	List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption);
+   List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption);
 
 
 
