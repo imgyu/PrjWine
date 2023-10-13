@@ -65,6 +65,24 @@ public class TastingWineController {
 		List<RegVo> searchList = tastingService.searchList(map);
 		return searchList;
 	}
+	
+	@RequestMapping("/TastingBoard")
+	public ModelAndView tastingboard(TastingVo vo){
+		List<TastingVo> tastingBoard = tastingService.tastingBoard(vo);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("tastingBoard", tastingBoard);
+		mv.setViewName("/tasting/tastingboard");
+		return mv;
+	}
+	@RequestMapping("/TastingListDelete")
+	public ModelAndView tastingListDelete(TastingVo vo) {
+		tastingService.deleteTaste( vo );
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/TastingList");
+		return mv;
+	}
+	
 		
 }
 

@@ -34,5 +34,16 @@ public class TastingServiceImpl implements TastingService {
 		tastingDao.insertTaste(vo);
 	}
 
+	@Override
+	public List<TastingVo> tastingBoard(TastingVo vo) {
+		List<TastingVo> tastingBoard = tastingDao.getTastingBoard(vo);
+		return tastingBoard;
+	}
+
+	@Override
+	public void deleteTaste(TastingVo vo) {
+		tastingDao.deleteTaste(vo);
+	}
+
 
 }

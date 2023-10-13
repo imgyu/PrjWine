@@ -149,7 +149,7 @@ button#btn1 {
 				<c:forEach var="store" items="${searchList}" varStatus="loop">
 						<tr>
 							<td colspan="1" style="text-align: center;">
-							<label> <input type="radio" name="selectedOption" value="${store.w_no}">
+							<label> <input type="radio"  name="selectedOption" value="${store.w_no}">
 							</label><input type="hidden" name="s_no"          value="${sloginVo.s_no}">
 								    <input type="hidden" name="w_name"        value="${store.w_name}">
 								    <input type="hidden" name="w_no"          value="${store.w_no}">
