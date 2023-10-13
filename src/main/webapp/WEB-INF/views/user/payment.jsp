@@ -9,8 +9,8 @@
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous">
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script type="text/javascript"	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <style>
         /* 컨테이너 스타일링 */
         .container {
@@ -52,12 +52,11 @@
 <h2 class="logintitle">결제 확인</h2>
 <br>
 <div class="container">
-    <form action="/" method="POST">
         <div class="user-info">
             <h2>주문자</h2>
             <c:forEach var="user" items="${userList}">
-                <p><strong>이름:</strong> ${user.u_name }</p>
-                <p><strong>주소:</strong> ${user.u_address }</p>
+                <p><strong>이름:</strong><span id="u_name">${user.u_name }</span></p>
+                <p><strong>주소:</strong><span id="u_address">${user.u_address }</span></p>
                 <p><strong>휴대폰:</strong> ${user.u_phone }</p>
             </c:forEach>
         </div>
@@ -65,20 +64,69 @@
         <div class="order-info">
             <h2>주문 정보</h2>
             <c:forEach var="sel" items="${selCartList}">
-                <p><strong>와인명:</strong> ${sel.w_name }</p>
-                <p><strong>판매점:</strong> ${sel.s_name }</p>
-                <p><strong>가격:</strong> ${sel.w_price }</p>
-                <p><strong>수량:</strong> ${sel.c_count }</p>
-                <p><strong>총가격:</strong> ${sel.c_allprice }</p>
+                <p><strong>와인명:</strong><span id="w_name">${sel.w_name }</span></p>
+                <p><strong>판매점:</strong><span id="s_name">${sel.s_name }</span></p>
+                <p><strong>가격:</strong><span id="w_price">${sel.w_price }</span></p>
+                <p><strong>수량:</strong><span id="c_count">${sel.c_count }</span></p>
+                <p><strong>총가격:</strong><span id="c_allprice">${sel.c_allprice }</span></p>
             </c:forEach>
         </div>
 
         <div class="text-center">
             <div class="btn-group">
-                <button class="btn btn-primary">결제</button>
+                <button class="btn btn-primary" id="money-btn">결제</button>
             </div>
         </div>
-    </form>
 </div>
+<script>
+
+var IMP  =  window.IMP;
+IMP.init("imp64553480")
+
+var storeName  = '테스트입니다';
+var wineName  =  '테스트';
+var allPrice  =  1000
+    allPrice  =  parseInt(allPrice);
+
+var buyerName =  $("#u_name").val();
+var buyerAddress  =  $("#u_address").val();
+
+$('#money-btn').click(function() {
+	IMP.request_pay({
+		pg: 'html5_inicis.INIBillTst',
+		pay_method: 'card',
+		merchant_uid: 'merchant_' + new Date().getTime(),
+
+		name: '예약 지점명 : ' + storeName + '점',
+		amount: 130,
+		buyer_email: "",  /*필수 항목이라 "" 로 남겨둠*/
+		buyer_name: buyerName,
+		customer_uid : 'store-fd4992b6-fce9-4f0e-bc65-7372b0736b89'
+	}, function(rsp) {
+		console.log(rsp);
+		
+		 //결제 성공 시
+		if (rsp.success) {
+			var msg = '결제가 완료되었습니다.';
+			console.log("결제성공 ");
+
+			$.ajax({
+				type: "GET",
+				url: '/WinePay',
+				data: {
+					amount: allPrice,
+					imp_uid: rsp.imp_uid,
+					merchant_uid: rsp.merchant_uid
+				}
+			});
+		} else {
+			var msg = '결제에 실패하였습니다.';
+			msg += '에러내용 : ' + rsp.error_msg;
+		}
+		alert(msg);
+	});
+});
+
+</script>
 </body>
 </html>

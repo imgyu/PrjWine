@@ -108,6 +108,10 @@ $(function() {
    $("#formPayment").on('submit', function(e) {
       let cartIds = '';
       let checkedRows = $('#rowCheck:checked'); 
+      if(checkedRows.length == 0) {
+          alert("선택하신 게 없습니다.");
+          e.preventDefault();
+       }
       for(let i =0;i<checkedRows.length;i++) {         
          cartIds += checkedRows[i].value;
          if(  i < checkedRows.length-1 )

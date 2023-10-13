@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,7 +30,7 @@ public class CartController {
       public ModelAndView cart(CartVo vo) {
          
         int c_idx  =  vo.getC_idx();
-        int u_no   =  vo.getU_no();
+        int u_no   =  vo.getU_no();        
          List<CartVo> cartList  =  cartService.getCartList(vo);  
          
          
@@ -80,6 +81,18 @@ public class CartController {
       mv.addObject("selCartList", selCartList);
       mv.addObject("userList", userList);
       return mv;
+   }  
+   
+   @GetMapping("/WinePay")
+   @ResponseBody
+   public void winePay(int amount, String imp_uid, String merchant_uid) throws Exception {
+	    
+	   	    	   
+	    System.out.println("결제 성공");
+		System.out.println("결제 금액 : " + amount);
+		System.out.println("imp_uid : " + imp_uid);
+		System.out.println("merchant_uid : " + merchant_uid);
+	   
    }
    
    
