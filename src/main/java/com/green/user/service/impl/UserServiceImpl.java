@@ -52,6 +52,12 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
+	@Override
+	public void updateUserPw(UserVo vo) {
+		userDao.updateUserPw(vo);
+		
+	}
+
 	
 	
 	

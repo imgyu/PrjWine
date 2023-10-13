@@ -62,12 +62,18 @@ SELECT U_NO, U_ID, U_NAME, U_ADDRESS, U_PHONE, U_POINT
 <update id="UpdateUser">
 
 UPDATE TUSER
-SET    U_PW  =  #{u_pw},
-       U_ADDRESS  =  #{u_address},
+SET    U_ADDRESS  =  #{u_address},
        U_PHONE    =  #{u_phone}
 WHERE  U_NO  =  #{u_no}
 
 </update>
 
+<update id="UpdateUserPw">
+
+Update TUSER
+SET     U_PW  =  #{u_pw}
+WHERE   U_NO  =  #{u_no}
+
+</update>
  
 </mapper>

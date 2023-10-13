@@ -53,34 +53,31 @@ public class CartController {
             cartService.deleteCart(vo);
             System.out.println(vo);
             System.out.println(value);
-            
+            	
          }
          return 1;
    }
     
-    // map:{u_no=1, cartids=1,2, rowCheck=1}
+   // map:{u_no=1, cartids=1,2, rowCheck=1}
    @RequestMapping("/UserPayment")
    public ModelAndView userPayment(@RequestParam HashMap<String, Object> map) {
       
       System.out.println("map:" + map);
+      // input 에 있는 value=name cartids 를 받아온다 
       String cartids = String.valueOf( map.get("cartids") ); 
-      List<CartVo> selCartList = new ArrayList<>();
-      for (String cartid : cartids.split(",")) {
-         CartVo vo = new CartVo();
-         vo.setC_idx(Integer.parseInt(cartid));
-         selCartList.add(vo);         
-      }
 
       UserVo user = new UserVo();
       int u_no = Integer.parseInt( String.valueOf( map.get("u_no") ));
       user.setU_no(u_no);
       
-       List<CartVo> cartList  =  cartService.getSelectList(selCartList);
+       // 선택 한 주문 목록 
+       List<CartVo> selCartList  =  cartService.getSelectList(u_no, cartids);
+       // 유저목록 
        List<UserVo> userList  =  userService.getUserList(user);
 
       ModelAndView mv  =  new ModelAndView();
       mv.setViewName("user/payment");
-      mv.addObject("cartList", cartList);
+      mv.addObject("selCartList", selCartList);
       mv.addObject("userList", userList);
       return mv;
    }

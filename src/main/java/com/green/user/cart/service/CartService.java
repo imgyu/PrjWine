@@ -12,7 +12,7 @@ public interface CartService {
 
    void deleteCart(CartVo vo);
 
-List<CartVo> getSelectList(List<CartVo> selCartList);
+List<CartVo> getSelectList(int u_no, String cartids);
 
 
 

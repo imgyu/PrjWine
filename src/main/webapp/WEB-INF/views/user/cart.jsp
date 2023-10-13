@@ -58,7 +58,7 @@
    <main>
       
    <form action="/UserPayment?u_no=${u_no }" method="POST" id="formPayment">
-   <input type="hidden" name="cartids	" value="" />
+   <input type="hidden" name="cartids" value="" />
    <!-- 게시물 목록 -->
    <table id="table">
    
@@ -113,7 +113,6 @@ $(function() {
          if(  i < checkedRows.length-1 )
             cartIds += ',';
       }
-      alert(cartIds)
       $('[name=cartids]').val(cartIds); 
        
     //  e.preventDefault();

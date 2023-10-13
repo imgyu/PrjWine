@@ -23,7 +23,7 @@ SELECT W_NO,
 
 <select id="GetStoreList" resultType="com.green.store.vo.HavingWineVo">
 
-SELECT S.S_NAME, WL.W_PRICE
+SELECT S.S_NAME, WL.W_PRICE, S.S_NO
 FROM STORE S
 INNER JOIN WINELIST WL ON S.S_NO = WL.S_NO
 WHERE WL.W_NO  =  #{w_no}

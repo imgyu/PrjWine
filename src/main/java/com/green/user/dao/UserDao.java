@@ -15,4 +15,6 @@ public interface UserDao {
 
 	void updateUser(UserVo vo);
 
+	void updateUserPw(UserVo vo);
+
 }

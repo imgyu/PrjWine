@@ -124,5 +124,27 @@ public class UserController {
 		return mv;
 	}
 	
+	@RequestMapping("/UserPwUpdateForm") 
+		public ModelAndView userPwUpdateForm(UserVo vo) {
+			
+		List<UserVo> userList  =  userService.getUserList(vo);
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("user/userpwupdate");
+		mv.addObject("userList", userList);
+		return mv;
+		}
+
+	
+	@RequestMapping("/UserPwUpdate")
+	public ModelAndView userPwUpdate(UserVo vo) {
+		
+		userService.updateUserPw(vo);
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("redirect:/UserInfo?u_no=" + vo.getU_no());
+		return mv;
+	}
+	
+	
 	
 }

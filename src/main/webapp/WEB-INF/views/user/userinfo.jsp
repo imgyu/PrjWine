@@ -69,6 +69,7 @@
           <div class="btn-group">
              <button type="button" class="btn btn-primary mx-2" onclick="location.href='/'">메인 화면</button>
              <button type="submit" class="btn btn-primary mx-2">수정하기</button>
+             <a href="UserPwUpdateForm?u_no=${u_no }" class="btn btn-primary mx-2">비밀번호 변경</a>
           </div>
         </div>
     </form>

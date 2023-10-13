@@ -31,9 +31,9 @@ public class CartServiceImpl implements CartService {
    }
 
 @Override
-public List<CartVo> getSelectList(List<CartVo> selCartList) {
+public List<CartVo> getSelectList(int u_no, String cartids) {
 	
-	List<CartVo> getSelectList  =  cartDao.getSelectList(selCartList);
+	List<CartVo> getSelectList  =  cartDao.getSelectList(u_no, cartids);
 	
 	return getSelectList;
 }

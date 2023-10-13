@@ -45,12 +45,10 @@ SELECT C.C_IDX,
   LEFT JOIN STORE S ON C.S_NO = S.S_NO
   LEFT JOIN TUSER U ON C.U_NO = U.U_NO
   WHERE U.U_NO = #{u_no}
-  <if test="cartids != null and cartids.size() > 0">
-  AND C.C_IDX IN
-  <foreach collection="cartids" item="cartId" open="(" separator="," close=")">
-  #{cartids[cartId]}
-  </foreach>
-  </if>
+  <foreach collection="list" item="digit" open=" AND C.C_IDX IN (" separator="," close=")">
+  #{digit} 
+  </foreach> 
+  
 
 </select>
 

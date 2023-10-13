@@ -15,6 +15,8 @@ public interface UserService {
 
 	void updateUser(UserVo vo);
 
+	void updateUserPw(UserVo vo);
+
 
 
 }

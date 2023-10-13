@@ -1,7 +1,9 @@
 package com.green.user.cart.dao.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,9 +32,20 @@ public class CartDaoImpl implements CartDao {
    }
 
 @Override
-public List<CartVo> getSelectList(List<CartVo> selCartList) {
+public List<CartVo> getSelectList(int u_no, String cartids) {
 	
-	List<CartVo> getSelectList  =  sqlSession.selectOne("Cart.SelectList", selCartList);
+	// cartids 에 ',' 를 자른다 [배열에서]
+	int[]              digs    = Stream.of(cartids.split(",")).mapToInt(Integer::parseInt).toArray();   // [3, 1, 2]
+	ArrayList<Integer> list = new ArrayList<>();
+	for (Integer  num: digs) {
+		list.add(num);
+	}
+	
+	HashMap<String, Object> map = new HashMap<String, Object>();
+	map.put("u_no", u_no);
+	map.put("list", list);
+			
+	List<CartVo> getSelectList  =  sqlSession.selectList("Cart.SelectList", map);
 	
 	return getSelectList;
 }

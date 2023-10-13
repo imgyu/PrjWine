@@ -91,7 +91,7 @@
         
         <c:forEach var="storeList" items="${storeList }">
          <ul> <!-- forEach  -->
-        <li><a class="store-link" href="/매장페이지">매장 이름 : ${storeList.s_name }</a><span>가격 : ${storeList.w_price }</span></li>
+        <li><a class="store-link" href="/StoreInfo?s_no=${storeList.s_no }">매장 이름 : ${storeList.s_name }</a><span>가격 : ${storeList.w_price }</span></li>
     </ul> 
  		 </c:forEach>
  		 </div>
