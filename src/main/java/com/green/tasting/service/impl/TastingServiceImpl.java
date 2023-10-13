@@ -43,6 +43,14 @@ public class TastingServiceImpl implements TastingService {
 	@Override
 	public void deleteTaste(TastingVo vo) {
 		tastingDao.deleteTaste(vo);
+	public List<TastingVo> getUserTasting(TastingVo vo) {
+		List<TastingVo> usertasting = tastingDao.getUserTasting(vo);
+		return usertasting;
+	}
+
+	@Override
+	public void deleteTasting(TastingVo vo) {
+		 tastingDao.deleteTasting(vo);
 	}
 
 

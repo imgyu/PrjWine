@@ -38,7 +38,7 @@
 </head>
 <body>
    <%@include file="/WEB-INF/include/nav.jsp" %>
-<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">시음회 정보</h1>
+<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">시음회 목록</h1>
    <main>
    <table id="table">
 		<div class="container">
@@ -70,7 +70,7 @@
 	<c:choose>
     	<c:when test="${not empty sloginVo.s_no}">
         	<form action="/TastingWriteForm?s_no=${sloginVo.s_no}" method="POST" id="search-form">
-              <button type="submit" class="btn btn-primary">새글작성</button>
+              <input type="button" value="삭제" class="btn btn-outline-info" onclick="deleteValue();">
         	</form>
         </c:when>
 	</c:choose>

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.green.store.vo.RegVo;
 import com.green.tasting.service.TastingService;
 import com.green.tasting.vo.TastingVo;
+import com.green.user.cart.vo.CartVo;
 
 @Controller
 public class TastingWineController {
@@ -53,9 +54,14 @@ public class TastingWineController {
 
 	// 신청한 시음회
 	@RequestMapping("/UserTasting")
-	public String userTasting() {
-
-		return "/tasting/usertasting";
+	public ModelAndView UserTasting(TastingVo vo) {
+		List<TastingVo> usertasting = tastingService.getUserTasting(vo);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("usertasting", usertasting);
+		mv.setViewName("/tasting/usertasting");
+		
+		return mv;
 	}
 	
 	// ajax 호출의 대상	
@@ -84,6 +90,17 @@ public class TastingWineController {
 	}
 	
 		
+	@ResponseBody
+	@RequestMapping("/UserTastingDelete")
+	 public int tastDelete(@RequestParam(value = "valueArr[]") String[] valueArr, TastingVo vo ) {
+        
+        for(String value : valueArr) {
+           vo.setT_idx(Integer.parseInt(value));
+           tastingService.deleteTasting(vo);
+            
+        }
+        return 1;
+  }
 }
 
 

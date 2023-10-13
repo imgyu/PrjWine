@@ -34,6 +34,25 @@
    	 DELETE FROM TESTING WHERE T_IDX = #{t_idx}
    	</delete>
    	
+   	 <select id         = "Usertasting"
+             resultType = "com.green.tasting.vo.TastingVo"  >
+     SELECT J.U_NO, T.T_COST, T.*, S.S_NAME, S.S_ADDRESS, S.S_DETAILADDRESS
+     FROM  TESTINGJOIN J
+     LEFT JOIN TESTING T   ON J.T_IDX = T.T_IDX
+     LEFT JOIN STORE S     ON T.S_NO  = S.S_NO
+     LEFT JOIN WINE W      ON T.W_NO  = W.W_NO
+     WHERE J.U_NO = #{u_no}
+     ORDER BY T.T_IDX DESC
+   	</select>
+   	
+   	<delete id="DeleteTasting">
+
+    DELETE FROM TESTINGJOIN
+    WHERE    T_IDX =  #{t_idx}
+    AND      U_NO  =  #{u_no}
+
+</delete>
+
 </mapper>
 
 

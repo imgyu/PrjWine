@@ -17,5 +17,9 @@ public interface TastingService {
 	List<TastingVo> tastingBoard(TastingVo vo);
 
 	void deleteTaste(TastingVo vo);
+	
+	List<TastingVo> getUserTasting(TastingVo vo);
+
+	void deleteTasting(TastingVo vo);
 
 }
