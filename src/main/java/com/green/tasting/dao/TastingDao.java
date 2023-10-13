@@ -14,5 +14,9 @@ public interface TastingDao {
 
 	void insertTaste(TastingVo vo);
 
+	List<TastingVo> getUserTasting(TastingVo vo);
+
+	void deleteTasting(TastingVo vo);
+
 
 }

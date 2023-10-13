@@ -77,7 +77,7 @@ public class StoreController {
 		mv.setViewName("/store/storeinfo");
 		mv.addObject("storeInfo", storeInfo);
 		
-		System.out.println(mv);
+		System.out.println(storeInfo);
 		return mv;
 	}
 }

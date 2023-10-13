@@ -8,10 +8,10 @@
    <ul class="nav justify-content-end">
      <li class="nav-item">
        <a class="nav-link active" aria-current="page" href="/UserLoginForm"><b>고객로그인</b></a>
-     </li>
+     </li> 
      <li class="nav-item">
        <a class="nav-link" href="/StoreLoginForm"><b>가게로그인</b></a>
-     </li>
+     </li> 
    </ul>
   </c:when>
   <c:when test="${ loginVo ne null and sloginVo eq null }">
@@ -23,9 +23,9 @@
      <li class="nav-item">
        <img src="/img/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="/UserTasting"><b>신청한 시음회</b></a></li>
+            <li><a class="dropdown-item" href="/UserTasting?u_no=${loginVo.u_no}"><b>신청한 시음회</b></a></li>
             <li><a class="dropdown-item" href="/UserFavoriteStores"><b>관심 매장</b></a></li>
-            <li><a class="dropdown-item" href="/UserInfo?u_no=${loginVo.u_no }"><b>내정보 확인/수정</b></a></li>
+            <li><a class="dropdown-item" href="/UserInfo?u_no=${loginVo.u_no}"><b>내정보 확인/수정</b></a></li>
             <li><a class="dropdown-item" href="/CartList?u_no=${loginVo.u_no }"><b>장바구니</b></a></li>
             <li><a class="dropdown-item" href="/UserPurchaseHistory"><b>구매 기록</b></a></li>
             <li><hr class="dropdown-divider"></li>
