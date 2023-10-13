@@ -80,9 +80,17 @@ textarea {
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>비밀번호:</td>
-					<td><input type="password" name="s_pw" style="width: 200px">
+					<td><input type="password" id="store_pw1" name="s_pw" style="width: 200px">
+					<span id=pwdcheck_1 ></span>
 					</td>
 				</tr>
+				   <tr>
+        <td><span class="redFont">*</span>비밀번호 확인:
+        </td>
+        <td><input type="password"  id="store_pw2" style="width: 200px" onKeyUp="fn_compare_pwd();">
+            <span id="pwdcheck_2"></span>
+        </td>
+      </tr>
 				<tr>
 					<td><span class="redFont">*</span>매장이름:</td>
 					<td><input type="text" name="s_name" style="width: 200px">
@@ -216,6 +224,40 @@ textarea {
 				    document.getElementById('preview').src = "";
 				  }
 				}
+			
+	        $("#store_pw1").blur(function () {
+	    		let pwdCheck= /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+	    		
+	    		if($("#store_pw1").val() == "") {
+	    			$("#pwdcheck_1").text("비밀번호를 입력하세요.");
+	    			store_pw1  =  false;
+	    		}
+	    		else if (!pwdCheck.test($("#store_pw1").val())) {
+	    			$("#pwdcheck_1").text("이건 틀린거 ");
+	    			store_pw1  =  false;
+	    		} else {
+	    			$("#pwdcheck_1").text("안전한 비밀번호 입니다")
+	    			store_pw1  =  true;
+	    		}
+	    	});
+	    	
+	    	$("#store_pw2").blur(function() {
+	    		if($("#store_pw2").val() == "") {
+	    			$("#pwdcheck_2").css("color", "red");
+	    			$("#pwdcheck_2").text("필수정보입니다");
+	    			store_pw2 = false;
+	    		}
+	    		else if(store_pw1 == true && $("#store_pw1").val() == $("#store_pw2").val()) {
+	    			$("#pwdcheck_2").css("color", "blue");
+	    			$("#pwdcheck_2").text("비밀번호 일치");
+	    			store_pw2 = true;
+	    		} else {
+	    			$("#pwdcheck_2").text("비밀번호 다시 확인해주세요");
+	    			$("#pwdcheck_2").css("color", "red");
+	    			$("#store_pw2").val("");
+	    			store_pw2 = false;
+	    		}
+	    	});
 		
 	</script>
 </body>

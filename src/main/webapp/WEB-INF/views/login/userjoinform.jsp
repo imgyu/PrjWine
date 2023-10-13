@@ -186,7 +186,7 @@ display: none;
 		    	});
 		    	
 		    	$("#user_pw2").blur(function() {
-		    		if($("user_pw2").val() == "") {
+		    		if($("#user_pw2").val() == "") {
 		    			$("#pwdcheck_2").css("color", "red");
 		    			$("#pwdcheck_2").text("필수정보입니다");
 		    			user_pw2 = false;
