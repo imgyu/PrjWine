@@ -51,4 +51,10 @@ public class UserDaoImpl implements UserDao {
 		
 	}
 
+	@Override
+	public void updateUserPw(UserVo vo) {
+		sqlSession.update("User.UpdateUserPw", vo);
+		
+	}
+
 }

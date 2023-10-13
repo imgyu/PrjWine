@@ -1,9 +1,8 @@
 package com.green.user.cart.controller;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,24 +53,34 @@ public class CartController {
             cartService.deleteCart(vo);
             System.out.println(vo);
             System.out.println(value);
-            
+            	
          }
          return 1;
    }
     
-    
-	@RequestMapping("/UserPayment")
-	public ModelAndView userPayment(CartVo vo, UserVo user) {
-		
-    	List<CartVo> cartList  =  cartService.getCartList(vo);
-    	List<UserVo> userList  =  userService.getUserList(user);
+   // map:{u_no=1, cartids=1,2, rowCheck=1}
+   @RequestMapping("/UserPayment")
+   public ModelAndView userPayment(@RequestParam HashMap<String, Object> map) {
+      
+      System.out.println("map:" + map);
+      // input 에 있는 value=name cartids 를 받아온다 
+      String cartids = String.valueOf( map.get("cartids") ); 
 
-		ModelAndView mv  =  new ModelAndView();
-		mv.setViewName("user/payment");
-		mv.addObject("cartList", cartList);
-		mv.addObject("userList", userList);
-		return mv;
-	}
-	
+      UserVo user = new UserVo();
+      int u_no = Integer.parseInt( String.valueOf( map.get("u_no") ));
+      user.setU_no(u_no);
+      
+       // 선택 한 주문 목록 
+       List<CartVo> selCartList  =  cartService.getSelectList(u_no, cartids);
+       // 유저목록 
+       List<UserVo> userList  =  userService.getUserList(user);
+
+      ModelAndView mv  =  new ModelAndView();
+      mv.setViewName("user/payment");
+      mv.addObject("selCartList", selCartList);
+      mv.addObject("userList", userList);
+      return mv;
+   }
+   
    
 }

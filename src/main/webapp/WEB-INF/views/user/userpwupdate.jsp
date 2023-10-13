@@ -40,25 +40,19 @@
 <body>
 <%@include file="/WEB-INF/include/nav.jsp" %>
 
-<h2 class="logintitle">고객 정보 수정</h2>
+<h2 class="logintitle">고객 비밀번호 변경</h2>
 <div class="container">
-    <form action="/UserUpdate?u_no=${loginVo.u_no }" method="POST">
+    <form action="/UserPwUpdate?u_no=${loginVo.u_no }" method="POST">
     	<c:forEach var="user" items="${userList }">
             <div class="mb-3">
-                <label for="userId" class="form-label">아이디:</label>
-                <span id="userId" class="form-text">${user.u_id }</span>
+                 <label for="userpw" class="form-label"  >변경할 비밀번호</label>
+                 <input type="password" name="u_pw" id="user_pw1" minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합" ><br>
+                 <span id=pwdcheck_1 ></span>
             </div>
             <div class="mb-3">
-                <label for="userName" class="form-label">이름:</label>
-                <span id="userName" class="form-text">${user.u_name }</span>
-            </div>
-            <div class="mb-3">
-                <label for="userAddress" class="form-label">주소:</label>
-                <input type="text" name="u_address" value="${user.u_address }">
-            </div>
-            <div class="mb-3">
-                <label for="userPhone" class="form-label">연락처:</label>
-                <input type="text" name="u_phone" value="${user.u_phone }">
+                <label for="userpw" class="form-label"  >비밀번호 확인</label>
+                <input type="password" name="u_pwChk" id="user_pw2" onKeyUp="fn_compare_pwd();" minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합" ><br>
+                <span id="pwdcheck_2"></span>
             </div>
         </c:forEach>
         <div class="text-center">
@@ -78,7 +72,7 @@ $("#user_pw1").blur(function () {
 		user_pwd1  =  false;
 	}
 	else if (!pwdCheck.test($("#user_pw1").val())) {
-		$("#pwdcheck_1").text("이건 틀린거 ");
+		$("#pwdcheck_1").text("8~16 자리 영문과 숫자 조합하여주세요. ");
 		user_pwd1  =  false;
 	} else {
 		$("#pwdcheck_1").text("안전한 비밀번호 입니다")
