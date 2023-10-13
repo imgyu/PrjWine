@@ -88,7 +88,6 @@ public class TastingWineController {
 		mv.setViewName("redirect:/TastingList");
 		return mv;
 	}
-	
 		
 	@ResponseBody
 	@RequestMapping("/UserTastingDelete")

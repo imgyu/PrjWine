@@ -126,7 +126,7 @@ public class TastingDaoImpl implements TastingDao {
 		sqlSession.delete("Taste.DeleteTaste",vo);
 	}
 
-
+    @Override
 	public List<TastingVo> getUserTasting(TastingVo vo) {
 		List<TastingVo> usertasting = sqlSession.selectList("Taste.Usertasting", vo);
 		return usertasting;
