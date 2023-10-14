@@ -59,6 +59,11 @@
 					<p class="card-text">${store.s_address}</p>
 					<p class="card-text">${store.s_detailAddress}</p>
 					<a href="/StoreInfo?s_no=${store.s_no}" class="btn btn-primary">매장정보</a>
+					<c:choose>
+					<c:when test="${not empty loginVo.u_no}">
+					<a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">장바구니</a>
+					</c:when>
+					</c:choose>
 				</div>
 			</div>
 		</c:forEach>
@@ -80,6 +85,11 @@
 					<p class="card-text">${store.s_address}</p>
 					<p class="card-text">${store.s_detailAddress}</p>
 					<a href="/StoreInfo?s_no=${store.s_no}" class="btn btn-primary">매장정보</a>
+					<c:choose>
+					<c:when test="${not empty loginVo.u_no}">
+					<a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">장바구니</a>
+					</c:when>
+					</c:choose>
 				</div>
 			</div>
 		</c:forEach>

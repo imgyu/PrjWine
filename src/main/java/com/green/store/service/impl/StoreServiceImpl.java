@@ -96,7 +96,7 @@ public class StoreServiceImpl implements StoreService {
    
    // 매장정보
    @Override
-   public List<StoreVo> getStoreInfo(StoreVo vo) {
+   public List<StoreVo> getStoreInfo(StoreVo vo ) {
            List<StoreVo> getStoreInfo  =  storeDao.getStoreInfo(vo);
       
       return getStoreInfo;

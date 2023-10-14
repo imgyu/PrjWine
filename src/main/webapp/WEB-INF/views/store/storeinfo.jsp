@@ -80,6 +80,28 @@ body {
 	font-size: 18px;
 }
 
+#table {
+   width: 70%;
+   margin: 0 auto; /* 수평 가운데 정렬 */
+   border-collapse: collapse; /* 테이블 셀 경계를 합칩니다. */
+}
+
+/* 테이블 헤더 스타일 */
+#table th {
+   background-color: #f2f2f2; /* 헤더 배경색 */
+   border: 1px solid #dddddd; /* 테두리 선 스타일 */
+   padding: 10px; /* 셀 안 여백 */
+   text-align: center; /* 가운데 정렬 */
+   font-weight: bold; /* 텍스트 굵게 표시 */
+}
+
+/* 테이블 내용 스타일 */
+#table td {
+   border: 1px solid #dddddd; /* 테두리 선 스타일 */
+   padding: 10px; /* 셀 안 여백 */
+   text-align: center; /* 가운데 정렬 */
+}
+
 </style>
 
 </head>
@@ -87,7 +109,7 @@ body {
 	<%@include file="/WEB-INF/include/nav.jsp"%>
 <main>
 
-	<c:forEach var="info" items="${storeInfo }">
+	<c:forEach var="info" items="${storeInfo}">
 		<h1 style="text-align: center; margin-top: 60px;">매장 정보</h1>
 		<div class="store-container">
 			<img class="store-image" src="/img/${info.s_simgname}" alt="매장사진" />
@@ -100,9 +122,37 @@ body {
 			</div>
 			<a class="winelist-link" href="/StoreWineManage?s_no=${info.s_no}"
 				class="btn btn-primary">매장보유 와인</a>
-	            <div id="map" style="width:100%;height:350px;"></div>
+	       <div id="map" style="width: 50%; height: 350px; float: left;"></div>
+		   <div id="board" style="width: 50%; height: 350px; float: right;">
+			 <table id="table">
+			  <div class="container">
+				<tr>
+				 <th>No.</th>
+				 <th>공지사항 제목</th>
+				 <th>글작성자</th>
+				</tr>
+			  </div>
+			  <div class="container">
+				<c:forEach var="board" items="${boardList}">
+				 <tr>
+				  <td>${board.b_idx}</td>
+				  <td><a href="/BoardCont?b_idx=${board.b_idx}&s_no=${sloginVo.s_no}">${board.b_title}</a></td>
+				  <td>${board.s_name}</td>
+				 </tr>
+				</c:forEach>
+			  </div>
+			 </table>
+			 <div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
+			  <c:choose>
+				<c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq info.s_no}">
+				<form action="/BoardWriteForm?s_no=${sloginVo.s_no}" method="POST">
+				 <button type="submit" class="btn btn-primary">새글작성</button>
+				</form>
+				</c:when>
+			  </c:choose>
+			 </div>
+		    </div>
 		</div>
-                
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3e1bc19bc313fda7048dd34538eebc17&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

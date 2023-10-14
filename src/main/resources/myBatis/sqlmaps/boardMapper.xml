@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+  
+  <select id="BoardList" resultType="com.green.board.vo.BoardVo">
+      SELECT B.*, S.*
+	   FROM  BOARD B LEFT JOIN STORE S ON B.S_NO = S.S_NO
+	   ORDER BY B.B_IDX DESC
+  </select> 
+  
+  <insert id="BoardInsert"> 
+  	  INSERT INTO BOARD (
+  	  	 B_IDX
+		,S_NO
+		,B_TITLE
+		,B_CONT
+  	  ) VALUES (
+  	  	( SELECT NVL(MAX(B_IDX), 0)+1  FROM  BOARD ),
+  	  	#{s_no},
+  	  	#{b_title},
+        #{b_cont}
+  	  )
+  </insert>
+  
+  <select id="BoardCont" resultType="com.green.board.vo.BoardVo">
+      SELECT B.*, S.*
+	   FROM  BOARD B LEFT JOIN STORE S ON B.S_NO = S.S_NO
+	   WHERE B.B_IDX = ${b_idx}
+  </select> 
+  <delete id="BoardDelete">
+       DELETE  FROM  BOARD
+         WHERE B_IDX = #{b_idx} 
+   </delete>
+   
+</mapper>
+
+
+
+
+
+   
