@@ -24,14 +24,8 @@ public class StoreDaoImpl implements StoreDao {
 
    //(영태)
       @Override
-      public void insertwine(int selectedOption, int w_amount, int w_price, int s_no, int w_no) {
-         Map<String, Object> map = new HashMap<>();
-         map.put("selectedOption", selectedOption);
-         map.put("w_amount", w_amount);
-         map.put("w_price", w_price);
-         map.put("s_no", s_no);
-         map.put("w_no", w_no);
-         sqlSession.insert("Store.InsertWine", map);
+      public void insertwine(RegVo vo) {
+         sqlSession.insert("Store.InsertWine", vo);
       }
    
     //(영태)
