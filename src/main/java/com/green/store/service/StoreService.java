@@ -47,6 +47,10 @@ public interface StoreService {
 
    List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption);
 
+   List<StoreVo> getStoreCheck(StoreVo vo);
+
+   void storeUpdate(HashMap<String, Object> map, HttpServletRequest request);
+
 
 
 

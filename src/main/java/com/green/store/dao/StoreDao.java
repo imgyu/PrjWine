@@ -38,6 +38,10 @@ public interface StoreDao {
 
    List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption);
 
+   List<StoreVo> getStoreCheck(StoreVo vo);
+
+   void storeUpdate(HashMap<String, Object> map);
+
 
 
 

@@ -22,4 +22,14 @@ public interface TastingService {
 
 	void deleteTasting(TastingVo vo);
 
+	void tastingRequest(TastingVo vo);
+
+	int requestCount(int t_idx);
+
+	List<TastingVo> requestList(TastingVo vo);
+
+	
+
+
+
 }

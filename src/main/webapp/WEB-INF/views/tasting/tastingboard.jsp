@@ -119,11 +119,13 @@ th, td {
 <div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: left; margin: 0 auto; max-width: 600px;">
 	<c:choose>
     	<c:when test="${not empty loginVo.u_no}">
-        	<form action="/TastingWriteForm?u_no=${loginVo.u_no}" method="POST">
-              <button type="submit" class="btn btn-primary">신청</button>
+        	<form action="/UserTastingRequest?u_no=${loginVo.u_no}&t_idx=${tast.t_idx}" method="POST">
+              <button type="submit" class="btn btn-primary" id="applyButton">신청</button>
+              <span>신청인원 : ${count }명</span>
         	</form>
         </c:when>
     	<c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq tast.s_no }">
+    	    <a href="TastingRequestList?s_no=${sloginVo.s_no }&t_idx=${tast.t_idx}" class="btn btn-primary">신청자 목록 </a>
         	<form action="/TastingListDelete?t_idx=${tast.t_idx}" method="POST">
               <button type="submit" class="btn btn-primary">삭제</button>
         	</form>
@@ -131,5 +133,17 @@ th, td {
 	</c:choose>
     </c:forEach>
 </div>
+<script>
+
+document.getElementById("applyButton").addEventListener("click", function() {
+    if (confirm("신청하시겠습니까?")) {
+        alert("신청이 완료되었습니다."); 
+    } else {
+        alert("신청이 취소되었습니다."); 
+    }
+});
+
+
+</script>
 </body>
 </html>

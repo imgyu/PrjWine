@@ -107,5 +107,21 @@ public class StoreServiceImpl implements StoreService {
       List<RegVo> storeListSearch  =  storeDao.getStoreListSearch(s_no, searchKeyword, searchOption, kindOption, amountOption);
       return storeListSearch;
    }
+
+	@Override
+	public List<StoreVo> getStoreCheck(StoreVo vo) {
+		
+		List<StoreVo> storeCheck  =  storeDao.getStoreCheck(vo);
+		
+		return storeCheck;
+	}
+	@Override
+	public void storeUpdate(HashMap<String, Object> map, HttpServletRequest request) {
+		
+		ImgFile.save(map, request);
+		
+		storeDao.storeUpdate(map);
+		
+	}
    }
    

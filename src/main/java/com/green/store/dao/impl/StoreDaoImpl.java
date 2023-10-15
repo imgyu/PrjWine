@@ -231,6 +231,20 @@ public class StoreDaoImpl implements StoreDao {
       return storeListSearch;
    }
 
+	@Override
+	public List<StoreVo> getStoreCheck(StoreVo vo) {
+		
+		List<StoreVo> storeCheck  =  sqlSession.selectList("Store.GetStoreCheck", vo);
+		
+		return storeCheck;
+	}
+
+	@Override
+	public void storeUpdate(HashMap<String, Object> map) {
+		
+		sqlSession.update("Store.StoreUpdate", map );
+		
+	}
       
 
    } 

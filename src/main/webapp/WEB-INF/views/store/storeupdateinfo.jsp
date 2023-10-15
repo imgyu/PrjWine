@@ -150,31 +150,6 @@ textarea {
 
 
    <script>
-      function itemChange() {
-         // 주소 등록
-         var seoul = [ "강남", "서초", "송파" ];
-         var busan = [ "동래", "서면", "광안리", "해운대" ];
-         var zezu = [ "애월", "서귀포", "땡땡" ];
-
-         var selectItem = $("#s_si").val();
-
-         var changeItem;
-
-         if (selectItem == "서울") {
-            changeItem = seoul;
-         } else if (selectItem == "부산") {
-            changeItem = busan;
-         } else if (selectItem == "제주") {
-            changeItem = zezu;
-         }
-
-         $('#s_gu').empty();
-
-         for (var count = 0; count < changeItem.length; count++) {
-            var option = $("<option>" + changeItem[count] + "</option>");
-            $('#s_gu').append(option);
-         }
-      }
       //이미지 파일 미리보기
       const imageInput = document.getElementById('s_img');
         const previewImage = document.getElementById('previewImage');
