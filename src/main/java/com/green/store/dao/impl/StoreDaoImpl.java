@@ -230,6 +230,15 @@ public class StoreDaoImpl implements StoreDao {
       
       return storeListSearch;
    }
+   
+   // 매장아이디 중복확인
+   @Override
+	public int idCheck(String s_id) {
+		
+		int cnt  =  sqlSession.selectOne("Store.IdCheck", s_id);
+		
+		return cnt;
+	}
 
       
 

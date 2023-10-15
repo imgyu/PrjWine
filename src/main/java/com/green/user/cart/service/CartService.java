@@ -3,6 +3,7 @@ package com.green.user.cart.service;
 import java.util.HashMap;
 import java.util.List;
 
+import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.vo.CartVo;
 
 public interface CartService {
@@ -13,6 +14,10 @@ public interface CartService {
    void deleteCart(CartVo vo);
 
 List<CartVo> getSelectList(int u_no, String cartids);
+
+void AddCart(CartVo vo);
+
+
 
 
 

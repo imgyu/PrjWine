@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.service.CartService;
 import com.green.user.cart.vo.CartVo;
 import com.green.user.service.UserService;
@@ -41,6 +42,27 @@ public class CartController {
          mv.addObject("u_no", u_no);
          return mv;
       }
+   
+   // /AddtoCart?u_no=${wine.u_no}&wl_idx=${wine.wl_idx}
+   @RequestMapping("/AddCart")
+   public ModelAndView AddCart(CartVo vo) {
+	   
+	   int u_no   =  vo.getU_no();        
+ 
+       
+       cartService.AddCart(vo);
+       
+       ModelAndView  mv  =  new ModelAndView();
+       mv.addObject("vo", vo);
+       mv.addObject("u_no", u_no);
+       mv.setViewName("redirect:/CartList");
+       mv.addObject("message", "장바구니에 추가되었습니다");
+      
+	return mv; 
+	
+	}
+   
+   
    
    // 게시물 선택삭제
    @ResponseBody
@@ -94,6 +116,7 @@ public class CartController {
 		System.out.println("merchant_uid : " + merchant_uid);
 	   
    }
+   
    
    
 }

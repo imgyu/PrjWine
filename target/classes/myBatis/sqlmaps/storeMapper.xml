@@ -457,6 +457,12 @@
       AND     S.S_NO  =  #{s_no}
 </select>
 
+<select id="IdCheck" parameterType="String" resultType="java.lang.Integer">
+
+ SELECT COUNT(S_ID) FROM STORE 
+ WHERE S_ID  =  #{s_id}
+
+</select>
 
  
  

@@ -107,5 +107,13 @@ public class StoreServiceImpl implements StoreService {
       List<RegVo> storeListSearch  =  storeDao.getStoreListSearch(s_no, searchKeyword, searchOption, kindOption, amountOption);
       return storeListSearch;
    }
+   
+   @Override
+	public int idCheck(String s_id) {
+		
+		int cnt  =  storeDao.idCheck(s_id);
+		
+		return cnt;
+	}
    }
    

@@ -13,6 +13,8 @@ public interface CartDao {
 
 List<CartVo> getSelectList(int u_no, String cartids);
 
+void addCart(CartVo vo);
+
 
 
 

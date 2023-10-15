@@ -34,7 +34,7 @@ public class CartDaoImpl implements CartDao {
 @Override
 public List<CartVo> getSelectList(int u_no, String cartids) {
 	
-	// cartids 에 ',' 를 자른다 [배열에서]
+	// cartidx 에 ',' 를 자른다 [배열에서]
 	int[]              digs    = Stream.of(cartids.split(",")).mapToInt(Integer::parseInt).toArray();   // [3, 1, 2]
 	ArrayList<Integer> list = new ArrayList<>();
 	for (Integer  num: digs) {
@@ -49,6 +49,15 @@ public List<CartVo> getSelectList(int u_no, String cartids) {
 	
 	return getSelectList;
 }
+
+@Override
+public void addCart(CartVo vo) {
+	 sqlSession.insert("Cart.InsertCart", vo);
+	
+	
+}
+
+
 
 
 } 
