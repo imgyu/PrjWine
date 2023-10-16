@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+
   <div class="top-header-area" id="sticker">
         <div class="container">
             <div class="row">
@@ -74,7 +75,7 @@
 
                         <!-- 아래쪽 네비게이션 -->
                         <nav class="main-menu">
-                        <ul class="nav justify-content-center" >
+                        <ul class="nav justify-content-center" \>
                             <li class="nav-item">
                                 <a class="nav-link active" ariacurrent="page" href="/StoreList"><b>매장찾기</b></a>
                             </li>

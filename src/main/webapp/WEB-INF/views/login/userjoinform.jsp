@@ -66,7 +66,6 @@ display: none;
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
-	<%@include file="/WEB-INF/include/nav.jsp"%>
 
 
 <h2 class="logintitle">고객 회원가입</h2>
