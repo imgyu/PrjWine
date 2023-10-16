@@ -79,5 +79,5 @@
   <li class="nav-item">
     <a class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
   </li>
-</ul>
+</ul> 
 
