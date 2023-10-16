@@ -138,4 +138,27 @@ public class TastingDaoImpl implements TastingDao {
 		
 	}
 
+	@Override
+	public void tastingRequest(TastingVo vo) {
+		sqlSession.insert("Taste.TastingRequest", vo);
+		
+	}
+
+	@Override
+	public int requestCount(int t_idx) {
+		int count  =  sqlSession.selectOne("Taste.RequestCount", t_idx);
+		return count;
+	}
+
+	@Override
+	public List<TastingVo> requestList(TastingVo vo) {
+		
+		List<TastingVo> requestList  =  sqlSession.selectList("Taste.RequestList", vo);
+		
+		return requestList;
+	}
+
+
+
+
 }

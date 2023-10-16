@@ -56,5 +56,30 @@ public class TastingServiceImpl implements TastingService {
 		 tastingDao.deleteTasting(vo);
 	}
 
+	@Override
+	public void tastingRequest(TastingVo vo) {
+		tastingDao.tastingRequest(vo);
+		
+	}
+
+	@Override
+	public int requestCount(int t_idx) {
+		
+		int count  =  tastingDao.requestCount(t_idx);
+		
+		return count;
+	}
+
+	@Override
+	public List<TastingVo> requestList(TastingVo vo) {
+		
+		List<TastingVo> requestList  =  tastingDao.requestList(vo);
+		
+		return requestList;
+	}
+
+
+
+
 
 }

@@ -73,12 +73,17 @@ public class TastingWineController {
 	}
 	
 	@RequestMapping("/TastingBoard")
-	public ModelAndView tastingboard(TastingVo vo){
+	public ModelAndView tastingboard(TastingVo vo, @RequestParam("t_idx")int t_idx){
 		List<TastingVo> tastingBoard = tastingService.tastingBoard(vo);
 		
+		// 신청인원
+		int count  =  tastingService.requestCount(t_idx);
+		System.out.println(count);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("tastingBoard", tastingBoard);
 		mv.setViewName("/tasting/tastingboard");
+		mv.addObject("count", count);
+	    
 		return mv;
 	}
 	@RequestMapping("/TastingListDelete")
@@ -100,6 +105,28 @@ public class TastingWineController {
         }
         return 1;
   }
+	
+	@RequestMapping("UserTastingRequest")
+	public ModelAndView userTastingRequest(TastingVo vo) {
+		
+		tastingService.tastingRequest(vo);
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("redirect:/TastingList");
+		return mv;
+	}
+	
+	@RequestMapping("TastingRequestList")
+	public ModelAndView tastingRequestList(TastingVo vo) {		
+		
+		List<TastingVo> requestList  =  tastingService.requestList(vo);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("tasting/tastingrequestlist");
+		mv.addObject("requestList", requestList);
+		
+		return mv;
+	}
+	
 }
 
 

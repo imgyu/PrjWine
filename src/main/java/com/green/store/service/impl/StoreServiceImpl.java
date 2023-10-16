@@ -114,6 +114,23 @@ public class StoreServiceImpl implements StoreService {
 		int cnt  =  storeDao.idCheck(s_id);
 		
 		return cnt;
-	}
    }
+
+	@Override
+	public List<StoreVo> getStoreCheck(StoreVo vo) {
+		
+		List<StoreVo> storeCheck  =  storeDao.getStoreCheck(vo);
+		
+		return storeCheck;
+	}
+	@Override
+	public void storeUpdate(HashMap<String, Object> map, HttpServletRequest request) {
+		
+		ImgFile.save(map, request);
+		
+		storeDao.storeUpdate(map);
+		
+	
+   }
+}
    

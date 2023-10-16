@@ -298,6 +298,3 @@ textarea {
 	</script>
 </body>
 </html>
-
-
-
