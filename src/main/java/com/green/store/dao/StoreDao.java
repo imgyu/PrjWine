@@ -11,7 +11,7 @@ import com.green.user.vo.UserVo;
 
 public interface StoreDao {
    // (영태)
-   void insertwine(RegVo vo);
+   void insertwine(int w_price, int w_amount, int selectedOption, int s_no);
    
    // (영태)
    List<RegVo> getSearchList(String searchKeyword, String searchOption, String kindOption);

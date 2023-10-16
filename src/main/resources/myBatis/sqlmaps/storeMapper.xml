@@ -146,10 +146,12 @@
    </select>
    
    <!-- 영태 -->
-   <insert id="InsertWine">
+   <insert id="InsertWine" parameterType="map">
     
-    INSERT INTO WINELIST (W_NO, W_AMOUNT, W_PRICE, S_NO, WL_IDX)
-    VALUES (#{w_no}, #{w_amount}, #{w_price}, #{s_no}, ( SELECT NVL(MAX(WL_IDX),0)+1 FROM WINELIST))
+    INSERT INTO WINELIST 
+    (W_NO, W_AMOUNT, W_PRICE, S_NO, WL_IDX)
+    VALUES 
+    (#{selectedOption}, #{w_amount}, #{w_price}, #{s_no}, ( SELECT NVL(MAX(WL_IDX),0)+1 FROM WINELIST))
    </insert>
    
     <select id="Storelogin"

@@ -136,7 +136,7 @@ body {
 				<c:forEach var="board" items="${boardList}">
 				 <tr>
 				  <td>${board.b_idx}</td>
-				  <td><a href="/BoardCont?b_idx=${board.b_idx}&s_no=${sloginVo.s_no}">${board.b_title}</a></td>
+				  <td><a href="/BoardCont?b_idx=${board.b_idx}&s_no=${board.s_no}">${board.b_title}</a></td>
 				  <td>${board.s_name}</td>
 				 </tr>
 				</c:forEach>

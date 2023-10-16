@@ -24,8 +24,8 @@ public class StoreServiceImpl implements StoreService {
 
    // (영태)
       @Override
-      public void insertWine(RegVo vo) {
-         storeDao.insertwine(vo);
+      public void insertWine(int w_price, int w_amount,int selectedOption, int s_no) {
+         storeDao.insertwine(w_price, w_amount, selectedOption, s_no);
       }
    // (영태)
       @Override

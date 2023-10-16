@@ -129,12 +129,16 @@ public class StoreWineController {
    
    // 와인등록 (영태)
    @RequestMapping("/StoreWineRegister")
-   public ModelAndView storewineregister(RegVo vo) {
-      System.out.println(vo);
-
-      storeService.insertWine(vo);
+   public ModelAndView storewineregister(
+		   @RequestParam("w_price") int w_price,
+		   @RequestParam("selectedOption") int selectedOption,
+		   @RequestParam("w_amount") int w_amount,
+		   @RequestParam("s_no") int s_no
+		   ){
+	   
+      storeService.insertWine(w_price,w_amount,selectedOption,s_no);
       ModelAndView mv = new ModelAndView();
-      mv.setViewName("redirect:/StoreWineManage?s_no="+vo.getS_no());
+      mv.setViewName("redirect:/StoreWineManage?s_no="+s_no);
       return mv;
    }
    

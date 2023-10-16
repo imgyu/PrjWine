@@ -8,6 +8,7 @@
   <select id="BoardList" resultType="com.green.board.vo.BoardVo">
       SELECT B.*, S.*
 	   FROM  BOARD B LEFT JOIN STORE S ON B.S_NO = S.S_NO
+	   WHERE B.S_NO = #{s_no}
 	   ORDER BY B.B_IDX DESC
   </select> 
   
@@ -28,7 +29,7 @@
   <select id="BoardCont" resultType="com.green.board.vo.BoardVo">
       SELECT B.*, S.*
 	   FROM  BOARD B LEFT JOIN STORE S ON B.S_NO = S.S_NO
-	   WHERE B.B_IDX = ${b_idx}
+	   WHERE B.B_IDX = #{b_idx}
   </select> 
   <delete id="BoardDelete">
        DELETE  FROM  BOARD
