@@ -473,12 +473,12 @@ SELECT S_NO,
 
 </select>
  
-<update id="StoreUpdate">
+<update id="StoreUpdate" parameterType="Map">
 
 UPDATE STORE
 SET S_NAME  =  #{s_name},
     S_ADDRESS = #{s_address},
-    S_DATAILADDRESS = #{s_detailAddress},
+    S_DETAILADDRESS = #{s_detailAddress},
     S_CONT = #{s_cont},
     S_IMGNAME = #{s_imgname},
     s_IMGEXT  = #{s_imgext},
