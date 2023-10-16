@@ -24,13 +24,13 @@ public class StoreDaoImpl implements StoreDao {
 
    //(영태)
       @Override
-      public void insertwine(int selectedOption, int w_amount, int w_price, int s_no, int w_no) {
-         Map<String, Object> map = new HashMap<>();
-         map.put("selectedOption", selectedOption);
-         map.put("w_amount", w_amount);
-         map.put("w_price", w_price);
-         map.put("s_no", s_no);
-         map.put("w_no", w_no);
+      public void insertwine(int w_price, int w_amount, int selectedOption, int s_no) {
+    	  Map<String, Object> map = new HashMap<>();
+    	  map.put("w_price", w_price);
+    	  map.put("w_amount", w_amount);
+    	  map.put("s_no", s_no);
+    	  map.put("selectedOption", selectedOption);
+    	  
          sqlSession.insert("Store.InsertWine", map);
       }
    
@@ -41,7 +41,7 @@ public class StoreDaoImpl implements StoreDao {
           
           Map<String, Object> map = new HashMap<>();
           map.put("searchKeyword", searchKeyword);
-         if ("w_kind".equals(kindOption)) {
+         if ("0".equals(kindOption)) {
             if ("w_name".equals(searchOption)) {
                searchList = sqlSession.selectList("Store.SearchList1", map);
             } else if ("w_location".equals(searchOption)) {

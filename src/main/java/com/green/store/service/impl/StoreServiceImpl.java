@@ -24,8 +24,8 @@ public class StoreServiceImpl implements StoreService {
 
    // (영태)
       @Override
-      public void insertWine(int selectedOption, int w_amount, int w_price, int s_no, int w_no) {
-         storeDao.insertwine(selectedOption, w_amount, w_price, s_no, w_no);
+      public void insertWine(int w_price, int w_amount,int selectedOption, int s_no) {
+         storeDao.insertwine(w_price, w_amount, selectedOption, s_no);
       }
    // (영태)
       @Override
@@ -96,7 +96,7 @@ public class StoreServiceImpl implements StoreService {
    
    // 매장정보
    @Override
-   public List<StoreVo> getStoreInfo(StoreVo vo) {
+   public List<StoreVo> getStoreInfo(StoreVo vo ) {
            List<StoreVo> getStoreInfo  =  storeDao.getStoreInfo(vo);
       
       return getStoreInfo;

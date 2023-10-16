@@ -4,18 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.green.board.service.BoardService;
+import com.green.board.vo.BoardVo;
 import com.green.store.service.StoreService;
-import com.green.store.vo.HavingWineVo;
-import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
-import com.green.store.vo.WineListVo;
-import com.green.store.vo.WineVo;
-import com.green.user.vo.UserVo;
 
 
 
@@ -23,6 +19,8 @@ import com.green.user.vo.UserVo;
 public class StoreController {
 	@Autowired
 	private  StoreService storeService;
+	@Autowired
+	private  BoardService boardService;
 	
 	//매장 검색
 	@RequestMapping("/SnameSearch")
@@ -40,12 +38,14 @@ public class StoreController {
 	
 	//매장리스트
 	@RequestMapping("/StoreList")
-	public ModelAndView storelist(StoreVo vo) {
-		List<StoreVo> storeList = storeService.storeList(vo);
+	public ModelAndView storelist(StoreVo vo, BoardVo vo2) {
+		List<StoreVo> storeList  =  storeService.storeList(vo);
+		List<BoardVo> boardList  =  boardService.getBoardList(vo2);
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("/store/storelist");
 		mv.addObject("storeList", storeList );
+		mv.addObject("boardList", boardList);
 		return mv;
 	}
 	
@@ -69,15 +69,15 @@ public class StoreController {
 	}
 	
 	@RequestMapping("/StoreInfo")
-	public ModelAndView storeinfo(StoreVo vo) {
+	public ModelAndView storeinfo(StoreVo vo, BoardVo vo2) {
 		
 		List<StoreVo> storeInfo  =  storeService.getStoreInfo(vo);
+		List<BoardVo> boardList  =  boardService.getBoardList(vo2);
 		
 		ModelAndView mv  =  new ModelAndView();
 		mv.setViewName("/store/storeinfo");
 		mv.addObject("storeInfo", storeInfo);
-		
-		System.out.println(storeInfo);
+		mv.addObject("boardList", boardList);
 		return mv;
 	}
 }

@@ -66,12 +66,17 @@ th, td {
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script>
+function goBack() {
+    window.history.back();
+}
+</script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-
-<h2 class="logintitle">시음회 이름</h2><br>
     <c:forEach var="tast" items="${tastingBoard}">
+    <div>
+<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">${tast.t_title}</h1><br> 
 <div class="container">
    <table>
         <tr>
@@ -115,6 +120,7 @@ th, td {
             <td>${tast.t_cost}</td>
         </tr>
 </div>
+</div>
     </table>
 <div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: left; margin: 0 auto; max-width: 600px;">
 	<c:choose>
@@ -126,6 +132,7 @@ th, td {
     	<c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq tast.s_no }">
         	<form action="/TastingListDelete?t_idx=${tast.t_idx}" method="POST">
               <button type="submit" class="btn btn-primary">삭제</button>
+              <button type="button" class="btn btn-primary" onclick="goBack()">뒤로가기</button>
         	</form>
         </c:when>
 	</c:choose>
