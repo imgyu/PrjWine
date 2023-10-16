@@ -60,12 +60,11 @@
                     <span id="s_sn" class="form-text">${check.s_sn }</span>
                 </div>
                 <div>
-                    <input type="text" id="s_postcode" name="s_postcode" placeholder="우편번호">
+                    <input type="text" id="s_postcode" name="s_postcode" value="${check.s_postcode}">
                     <input type="button" onclick="s_execDaumPostcode()" value="우편번호 찾기"><br> 
                     <input type="text" id="s_address" name="s_address" value="${check.s_address }"><br>
                     <input type="text" id="s_detailAddress" name="s_detailAddress" value="${check.s_detailAddress }">
-                    <input type="text" id="s_extraAddress" name="s_extraAddress"
-								placeholder="참고항목">
+                    <input type="text" id="s_extraAddress" name="s_extraAddress" value="${check.s_extraAddress }">
                 </div>
                 <div class="mb-3">
                     <label for="storePhone" class="form-label">매장 연락처:</label>
@@ -77,9 +76,12 @@
                 </div>
                 <div class="mb-3">
                     <label for="storeIMG" class="form-label">매장 사진</label>
-                    <input type="file" accept="image/*" onchange="readURL(this)" name="upfile" class="upfile"  /><br> 
-                    <img id="preview" style="max-width: 300px;">
+                   <input type="file" accept="image/*" name="upfile" class="upfile" id="fileInput">
+<img id="imagePreview" src="/img/${check.s_simgname}" alt="Image Preview" />
+
                 </div>
+        
+                
             </c:forEach>
             <div class="text-center">
                 <div class="btn-group">
@@ -91,69 +93,84 @@
     </div>
 <script>
 function s_execDaumPostcode() {
-	new daum.Postcode(
-			{
-				oncomplete : function(data) {
-					// 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+    new daum.Postcode({
+        oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-					// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-					// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-					var addr = ''; // 주소 변수
-					var extraAddr = ''; // 참고항목 변수
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var addr = ''; // 주소 변수
+            var extraAddr = ''; // 참고항목 변수
 
-					//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-					if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-						addr = data.roadAddress;
-					} else { // 사용자가 지번 주소를 선택했을 경우(J)
-						addr = data.jibunAddress;
-					}
+            //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                addr = data.roadAddress;
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                addr = data.jibunAddress;
+            }
 
-					// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-					if (data.userSelectedType === 'R') {
-						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-						if (data.bname !== ''
-								&& /[동|로|가]$/g.test(data.bname)) {
-							extraAddr += data.bname;
-						}
-						// 건물명이 있고, 공동주택일 경우 추가한다.
-						if (data.buildingName !== ''
-								&& data.apartment === 'Y') {
-							extraAddr += (extraAddr !== '' ? ', '
-									+ data.buildingName
-									: data.buildingName);
-						}
-						// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-						if (extraAddr !== '') {
-							extraAddr = ' (' + extraAddr + ')';
-						}
-						// 조합된 참고항목을 해당 필드에 넣는다.
-						document.getElementById("s_extraAaddress").value = extraAddr;
+            // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+            if(data.userSelectedType === 'R'){
+                // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                    extraAddr += data.bname;
+                }
+                // 건물명이 있고, 공동주택일 경우 추가한다.
+                if(data.buildingName !== '' && data.apartment === 'Y'){
+                    extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                }
+                // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                if(extraAddr !== ''){
+                    extraAddr = ' (' + extraAddr + ')';
+                }
+                // 조합된 참고항목을 해당 필드에 넣는다.
+                document.getElementById("s_extraAddress").value = extraAddr;
+            
+            } else {
+                document.getElementById("s_extraAddress").value = '';
+            }
 
-					} else {
-						document.getElementById("s_extraAddress").value = '';
-					}
-
-					// 우편번호와 주소 정보를 해당 필드에 넣는다.
-					document.getElementById('s_postcode').value = data.zonecode;
-					document.getElementById("s_address").value = addr;
-					// 커서를 상세주소 필드로 이동한다.
-					document.getElementById("s_detailAddress").focus();
-				}
-			}).open();
+            // 우편번호와 주소 정보를 해당 필드에 넣는다.
+            document.getElementById('s_postcode').value = data.zonecode;
+            document.getElementById("s_address").value = addr;
+            // 커서를 상세주소 필드로 이동한다.
+            document.getElementById("s_detailAddress").focus();
+        }
+    }).open();
 }
 
-function readURL(input) {
-	  if (input.files && input.files[0]) {
-	    var reader = new FileReader();
-	    reader.onload = function(e) {
-	      document.getElementById('preview').src = e.target.result;
-	    };
-	    reader.readAsDataURL(input.files[0]);
-	  } else {
-	    document.getElementById('preview').src = "";
-	  }
-	}
+// 파일 입력 필드 엘리먼트 가져오기
+
+   var fileInput = document.getElementById('fileInput');
+
+ //이미지 미리보기 엘리먼트 가져오기
+ var imagePreview = document.getElementById('imagePreview');
+
+ //파일 입력 필드의 change 이벤트를 감지하고 함수 실행
+ fileInput.addEventListener('change', function() {
+   readURL(this);
+ });
+
+ //파일 입력 필드의 기본값을 설정하는 함수
+ function setDefaultValue() {
+   // 여기서 필요한 기본값을 설정합니다
+   fileInput.value = "/img/${check.s_simgname}";
+
+ }
+
+ function readURL(input) {
+ 	  if (input.files && input.files[0]) {
+ 	    var reader = new FileReader();
+ 	    
+ 	    reader.onload = function(e) {
+ 	      imagePreview.src = e.target.result;
+ 	    };
+ 	    
+ 	    reader.readAsDataURL(input.files[0]);
+ 	  }
+ 	}
+
 
 </script>
 </body>

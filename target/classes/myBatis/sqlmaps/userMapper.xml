@@ -53,7 +53,7 @@
 
 <select id="UserList" resultType="com.green.user.vo.UserVo">
 
-SELECT U_NO, U_ID, U_NAME, U_ADDRESS, U_PHONE, U_POINT
+SELECT *
  FROM TUSER
  WHERE U_NO  =  #{u_no}
 
@@ -62,8 +62,8 @@ SELECT U_NO, U_ID, U_NAME, U_ADDRESS, U_PHONE, U_POINT
 <update id="UpdateUser">
 
 UPDATE TUSER
-SET    U_ADDRESS  =  #{u_address},
-       U_PHONE    =  #{u_phone}
+SET    U_ADDRESS  =  #{u_address}, U_DETAILADDRESS = #{u_detailAddress}, U_POSTCODE = #{u_postcode}, 
+U_EXTRAADDRESS = #{u_extraAddress}, U_PHONE    =  #{u_phone}
 WHERE  U_NO  =  #{u_no}
 
 </update>

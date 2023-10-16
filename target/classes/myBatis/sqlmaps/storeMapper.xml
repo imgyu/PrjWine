@@ -426,15 +426,7 @@
 
 <select id="GetStoreCheck" resultType="com.green.store.vo.StoreVo">
 
-SELECT S_NO,
-       S_ID,
-       S_SN,
-       S_NAME,
-       S_ADDRESS,
-       S_DETAILADDRESS,
-       S_PHONE,
-       S_CONT,
-       S_SIMGNAME
+SELECT *
        FROM STORE
        WHERE S_NO = #{s_no}
 
@@ -449,7 +441,10 @@ SET S_NAME  =  #{s_name},
     S_CONT = #{s_cont},
     S_IMGNAME = #{s_imgname},
     s_IMGEXT  = #{s_imgext},
-    S_SIMGNAME = #{s_simgname} 
+    S_SIMGNAME = #{s_simgname},
+    S_EXTRAADDRESS = #{s_extraAddress},
+    S_POSTCODE = #{s_postcode}
+       
     WHERE S_NO = #{s_no}
 
 

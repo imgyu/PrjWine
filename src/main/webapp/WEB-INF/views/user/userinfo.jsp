@@ -54,7 +54,7 @@
             </div>
             <div class="mb-3">
                 <label for="userAddress" class="form-label">주소:</label>
-                <span id="userAddress" class="form-text">${user.u_address }</span>
+                <span id="userAddress" class="form-text">${user.u_address}&nbsp;${user.u_detailAddress}</span>
             </div>
             <div class="mb-3">
                 <label for="userPhone" class="form-label">연락처:</label>

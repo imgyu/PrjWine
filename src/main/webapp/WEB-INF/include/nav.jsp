@@ -74,7 +74,7 @@
     <a class="nav-link" href="/WineList"><b>전체와인</b></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/CouponForm"><b>쿠폰 발급</b></a>
+    <a class="nav-link" href="/Event"><b>이벤트 및 프로모션</b></a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
