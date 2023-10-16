@@ -12,6 +12,24 @@
    rel="stylesheet"
    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
    crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<!-- animate css -->
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<!-- main style -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="assets/css/responsive.css"> 
 <style>
 .inputRound {
    border-radius: 5px;
@@ -52,8 +70,29 @@
         location.href = '/Other_Click';
     });
 </script>
+   <!-- jquery -->
+   <script src="assets/js/jquery-1.11.3.min.js"></script>
+   <!-- bootstrap -->
+   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+   <!-- count down -->
+   <script src="assets/js/jquery.countdown.js"></script>
+   <!-- isotope -->
+   <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+   <!-- waypoints -->
+   <script src="assets/js/waypoints.js"></script>
+   <!-- owl carousel -->
+   <script src="assets/js/owl.carousel.min.js"></script>
+   <!-- magnific popup -->
+   <script src="assets/js/jquery.magnific-popup.min.js"></script>
+   <!-- mean menu -->
+   <script src="assets/js/jquery.meanmenu.min.js"></script>
+   <!-- sticker js -->
+   <script src="assets/js/sticker.js"></script>
+   <!-- main js -->
+   <script src="assets/js/main.js"></script>
 </head>
 <body>
+<div class="top-header-area" id="sticker">
    <%@include file="/WEB-INF/include/nav.jsp"%>
 
    <h1 style="text-align: center; margin-top: 60px;">전체와인</h1>
@@ -63,14 +102,22 @@
    <!-- 와인 검색start -->
    <div class="container">
       <!-- 버튼 검색 -->
-      <div>
-           <button type="button" onclick="location.href='/All_Click'"       name="all_click" class="btn btn-outline-secondary">all</button>
-           <button type="button" onclick="location.href='/Red_Click'"       name="red_click" class="btn btn-outline-secondary">레드와인</button>
-           <button type="button" onclick="location.href='/White_Click'"     name="white_click" class="btn btn-outline-secondary">화이트와인</button>
-           <button type="button" onclick="location.href='/Sparkling_Click'" name="sparkling_click" class="btn btn-outline-secondary">스파클링</button>
-           <button type="button" onclick="location.href='/Rose_Click'"      name="rose_click" class="btn btn-outline-secondary">로제</button>
-           <button type="button" onclick="location.href='/Other_Click'"     name="other_click" class="btn btn-outline-secondary">기타와인</button>
-      </div>
+      <div class="product-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+                        <ul>
+                            <li class="active" data-filter="*" onclick="window.location.href = '/All_Click';" name="All_click">all</li>
+                            <li data-filter=".red_click" onclick="window.location.href = '/Red_Click';" name="red_click">레드와인</li>
+                            <li data-filter=".white_click" onclick="window.location.href = '/White_Click';" name="white_click">화이트와인</li>
+                            <li data-filter=".sparkling_click" onclick="window.location.href = '/Sparkling_Click';" name="sparkling_click">스파클링</li>
+                            <li data-filter=".rose_click" onclick="window.location.href = '/Rose_Click';" name="rose_click">로제와인</li>
+                            <li data-filter=".other_click" onclick="window.location.href = '/Other_Click';" name="other_click">기타와인</li>
+                        </ul>
+                    </div>
+                    </div></div></div></div>
       <br>
       <br>
       <!-- input 검색 -->
@@ -137,6 +184,6 @@
          </div>
       </c:forEach>
    </div>
-
+</div>
 </body>
 </html>
