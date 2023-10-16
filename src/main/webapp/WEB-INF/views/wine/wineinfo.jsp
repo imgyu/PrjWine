@@ -32,12 +32,12 @@ body {
 	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	height: 100vh;
+	height: 60vh;
 }
 
 .wine-image {
 	max-width: 100%;
-	max-height: 300px;
+	max-height: 600x;
 	object-fit: contain;
 	border-radius: 10px 10px 0 0;
 }
@@ -79,12 +79,33 @@ body {
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-	crossorigin="anonymous"></script>
+	crossorigin="anonymous">
+</script>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.countdown.js"></script>
+<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+<script src="assets/js/waypoints.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/sticker.js"></script>
+<script src="assets/js/main.js"></script>
 </head>
 <body>
 	<%@include file="/WEB-INF/include/nav.jsp"%>
+<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<h1>와인 정보</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>	
 	<c:forEach var="info" items="${wineInfo }">
-		<h1 style="text-align: center; margin-top: 60px;">와인 정보</h1>
 		<div class="wine-container">
 			<img class="wine-image" src="${info.w_image}" alt="와인 사진">
 			<div class="wine-details">

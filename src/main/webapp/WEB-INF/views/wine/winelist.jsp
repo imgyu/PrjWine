@@ -12,24 +12,14 @@
    rel="stylesheet"
    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
    crossorigin="anonymous">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
-	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
-	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css"> 
+<link rel="stylesheet" href="assets/css/all.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/owl.carousel.css">
+<link rel="stylesheet" href="assets/css/magnific-popup.css">
+<link rel="stylesheet" href="assets/css/animate.css">
+<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
 <style>
 .inputRound {
    border-radius: 5px;
@@ -70,35 +60,30 @@
         location.href = '/Other_Click';
     });
 </script>
-   <!-- jquery -->
-   <script src="assets/js/jquery-1.11.3.min.js"></script>
-   <!-- bootstrap -->
-   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-   <!-- count down -->
-   <script src="assets/js/jquery.countdown.js"></script>
-   <!-- isotope -->
-   <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-   <!-- waypoints -->
-   <script src="assets/js/waypoints.js"></script>
-   <!-- owl carousel -->
-   <script src="assets/js/owl.carousel.min.js"></script>
-   <!-- magnific popup -->
-   <script src="assets/js/jquery.magnific-popup.min.js"></script>
-   <!-- mean menu -->
-   <script src="assets/js/jquery.meanmenu.min.js"></script>
-   <!-- sticker js -->
-   <script src="assets/js/sticker.js"></script>
-   <!-- main js -->
-   <script src="assets/js/main.js"></script>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.countdown.js"></script>
+<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+<script src="assets/js/waypoints.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/sticker.js"></script>
+<script src="assets/js/main.js"></script>
 </head>
 <body>
-<div class="top-header-area" id="sticker">
-   <%@include file="/WEB-INF/include/nav.jsp"%>
-
-   <h1 style="text-align: center; margin-top: 60px;">전체와인</h1>
-   <br>
-   <br>
-
+<%@include file="/WEB-INF/include/nav.jsp"%>
+   <div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<h1>전체와인</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
    <!-- 와인 검색start -->
    <div class="container">
       <!-- 버튼 검색 -->
@@ -109,19 +94,18 @@
                 <div class="col-md-12">
                     <div class="product-filters">
                         <ul>
-                            <li class="active" data-filter="*" onclick="window.location.href = '/All_Click';" name="All_click">all</li>
-                            <li data-filter=".red_click" onclick="window.location.href = '/Red_Click';" name="red_click">레드와인</li>
-                            <li data-filter=".white_click" onclick="window.location.href = '/White_Click';" name="white_click">화이트와인</li>
-                            <li data-filter=".sparkling_click" onclick="window.location.href = '/Sparkling_Click';" name="sparkling_click">스파클링</li>
-                            <li data-filter=".rose_click" onclick="window.location.href = '/Rose_Click';" name="rose_click">로제와인</li>
-                            <li data-filter=".other_click" onclick="window.location.href = '/Other_Click';" name="other_click">기타와인</li>
+                            <li onclick="window.location.href = '/All_Click';"       name="All_click">all</li>
+                            <li onclick="window.location.href = '/Red_Click';"       name="red_click">레드와인</li>
+                            <li onclick="window.location.href = '/White_Click';"     name="white_click">화이트와인</li>
+                            <li onclick="window.location.href = '/Sparkling_Click';" name="sparkling_click">스파클링</li>
+                            <li onclick="window.location.href = '/Rose_Click';"      name="rose_click">로제와인</li>
+                            <li onclick="window.location.href = '/Other_Click';"     name="other_click">기타와인</li>
                         </ul>
                     </div>
-                    </div></div></div></div>
-      <br>
-      <br>
+                </div>
+                    
       <!-- input 검색 -->
-      <div>
+      <div class="search-form">
          <form action="/NameSearch" method="POST">
             <input type="search"   name="name_Search" placeholder="와인이름">
             <input type="submit"   value="찾기">
@@ -179,11 +163,11 @@
                   <li class="list-group-item">${wine.w_amount}</li>
                   <li class="list-group-item"></li>
                </ul>
-               <a href="/WineInfo?w_no=${wine.w_no}" class="btn btn-primary">와인 보기</a>
+               <a href="/WineInfo?w_no=${wine.w_no}" class="cart-btn">와인 보기</a>
             </div>
          </div>
       </c:forEach>
    </div>
-</div>
+   </div></div></div>
 </body>
 </html>
