@@ -87,11 +87,10 @@ display: none;
          <td>
             <span class="redFont">*</span>아이디:
          </td>
-         <td>
-            <input type="text" name="u_id" id="u_id" style="width: 200px" oninput="checkId()">
-            <span class="id_ok">사용 가능한 아이디입니다.</span>
-            <span class="id_already">사용 불가능 아이디입니다.</span>
-         </td>
+ <td>
+    <input type="text" name="u_id" id="u_id" style="width: 200px">
+    <button type="button" onclick="checkId()">중복 체크</button>
+</td>
       </tr>
       <tr>
          <td>
@@ -153,7 +152,7 @@ display: none;
       <tr>
       	<td colspan="2">
       	    <div>
-      	    	<button type="submit" >회원가입 하기</button>
+      	    	<button type="submit"  >회원가입 하기</button>
       	    </div>
       	</td>
       </tr>
@@ -177,7 +176,7 @@ display: none;
 		    			user_pwd1  =  false;
 		    		}
 		    		else if (!pwdCheck.test($("#user_pw1").val())) {
-		    			$("#pwdcheck_1").text("이건 틀린거 ");
+		    			$("#pwdcheck_1").text("문자,숫자,특수문자를 포함한 8글자 이상 사용하여주세요");
 		    			user_pwd1  =  false;
 		    		} else {
 		    			$("#pwdcheck_1").text("안전한 비밀번호 입니다")
@@ -204,29 +203,29 @@ display: none;
 		    	});
 
 	
-	function checkId() {
-		
-		var u_id  =  $('#u_id').val();
-		$.ajax({
-			url : '/UserIdChk',
-			type : 'post',
-			data : {u_id:u_id},
-			success : function(cnt) {
-				if(cnt == 0) {
-					$('.id_ok').css("display", "inline-block");
-					$('.id_already').css("display", "none");
-				} else {
-					$('.id_already').css("display", "inline-block");
-					$('.id_ok').css("display", "none");
-					alert("아이디를 다시 입력해주세요");
-					$('#u_id').val('');
-				}
-			},
-			error:function() {
-				alert("에러입니다!");
-			}
-		});
-	};
+		    	function checkId() {
+		    	    var u_id = $('#u_id').val();
+		    	    $.ajax({
+		    	        url: '/UserIdChk',
+		    	        type: 'post',
+		    	        data: { u_id: u_id },
+		    	        success: function (cnt) {
+		    	            if (cnt == 0) {
+		    	                $('.id_ok').css("display", "inline-block");
+		    	                $('.id_already').css("display", "none");
+		    	                alert("중복되지 않은 아이디입니다");
+		    	            } else {
+		    	                $('.id_already').css("display", "inline-block");
+		    	                $('.id_ok').css("display", "none");
+		    	                alert("아이디를 다시 입력해주세요");
+		    	                $('#u_id').val('');
+		    	            }
+		    	        },
+		    	        error: function () {
+		    	            alert("에러입니다!");
+		    	        }
+		    	    });
+		    	}
 	
 
     function u_execDaumPostcode() {

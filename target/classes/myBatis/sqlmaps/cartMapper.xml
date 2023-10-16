@@ -52,6 +52,13 @@ SELECT C.C_IDX,
 
 </select>
 
+	<insert id="InsertCart">
+INSERT INTO CART (C_IDX, W_NO, S_NO, C_COUNT, U_NO) 
+SELECT (NVL(MAX(C.C_IDX), 0) + 1), #{w_no}, #{s_no}, #{c_count}, #{u_no}
+FROM CART C
+	   	
+   	</insert>
+
 </mapper>
 
 

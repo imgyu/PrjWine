@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.green.store.service.StoreService;
@@ -76,6 +77,16 @@ public class StoreLoginController {
 		mv.addObject("map", map);
 		return  mv;
 	}
-	}
 	
+
+@ResponseBody
+@RequestMapping("/StoreIdChk")
+public int idCheck(@RequestParam("s_id") String s_id) {
+	
+	int cnt  =  storeService.idCheck(s_id);
+	
+	return cnt;
+}
+
+}
 
