@@ -114,11 +114,18 @@
       <c:forEach var="wine" items="${wine}">
          <div class="card" style="width: 18rem;">
              <div style="max-width: 300px; max-height: 300px; margin: 0 auto;">
-                  <img src="${wine.w_image}" alt="와인이미지" style="width: 100%; height: 100%; object-fit: contain;">
-              </div>
+   				 <img src="${wine.w_image}" alt="와인이미지" style="width: 300px; height: 300px; object-fit: contain;">
+			</div>
             <div class="card-body">
-               <h5 class="card-title">${wine.w_name}</h5>
-               <p class="card-text">${wine.w_wineery}</p>
+               <h5 class="card-title" style="max-height: 3em; overflow: hidden; line-height: 3em;">${wine.w_name}</h5>
+              <c:choose>
+    			<c:when test="${empty wine.w_wineery}">
+        		  <p class="card-text" style="max-height: 1em; overflow: hidden; line-height: 1em;">&nbsp;</p>
+    			</c:when>
+    			<c:otherwise>
+        		  <p class="card-text" style="max-height: 1em; overflow: hidden; line-height: 1em;">${wine.w_wineery}</p>
+    			</c:otherwise>
+			  </c:choose>
                <p class="card-text">${wine.w_kind}</p>
                <ul class="list-group list-group-flush">
                   <li class="list-group-item">${wine.w_price}</li>

@@ -136,7 +136,7 @@ button#btn1 {
 			</form>
 		</div>
 		<!-- 게시물 목록 -->
-		<div style="overflow-y: auto; max-height: 340px; ">
+		<div style="overflow-y: auto; max-height: 340px; max-width: 60%; margin: 0 auto; text-align: center;">
 			<table id="table">
 				<tr>
 					<th></th>

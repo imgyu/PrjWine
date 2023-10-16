@@ -54,14 +54,14 @@
 							style="width: 100%; height: 100%; object-fit: contain;" />
 					</div>
 					<h5 class="card-title">${store.s_name}</h5>
-					<p class="card-text">${store.s_cont}</p>
+					<p class="card-text" style="max-height: 3em; overflow: hidden; line-height: 3em;">${store.s_cont}</p>
 					<p class="card-text">${store.s_phone}</p>
 					<p class="card-text">${store.s_address}</p>
 					<p class="card-text">${store.s_detailAddress}</p>
 					<a href="/StoreInfo?s_no=${store.s_no}" class="btn btn-primary">매장정보</a>
 					<c:choose>
 					<c:when test="${not empty loginVo.u_no}">
-					<a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">장바구니</a>
+					<a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">관심매장</a>
 					</c:when>
 					</c:choose>
 				</div>
@@ -80,15 +80,15 @@
 							style="width: 100%; height: 100%; object-fit: contain;" />
 					</div>
 					<h5 class="card-title">${store.s_name}</h5>
-					<p class="card-text">${store.s_cont}</p>
+					<p class="card-text" style="max-height: 3em; overflow: hidden; line-height: 3em;">${store.s_cont}</p>
 					<p class="card-text">${store.s_phone}</p>
 					<p class="card-text">${store.s_address}</p>
 					<p class="card-text">${store.s_detailAddress}</p>
 					<a href="/StoreInfo?s_no=${store.s_no}" class="btn btn-primary">매장정보</a>
 					<c:choose>
-					<c:when test="${not empty loginVo.u_no}">
-					<a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">장바구니</a>
-					</c:when>
+					 <c:when test="${not empty loginVo.u_no}">
+					  <a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">관심매장</a>
+					 </c:when>
 					</c:choose>
 				</div>
 			</div>
