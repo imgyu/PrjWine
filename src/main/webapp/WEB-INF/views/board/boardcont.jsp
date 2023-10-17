@@ -76,6 +76,27 @@ table {
 table {
     border: 1px solid #ccc;
 }
+
+/* 기본 버튼 스타일 */
+.btn1 {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 50px;
+    transition: 0.3s;
+    box-sizing: border-box;
+    border: none; /* 경계선 없음 */
+    cursor: pointer; /* 포인터 커서로 변경 */
+}
+
+/* 호버(마우스 오버) 시의 버튼 스타일 */
+.btn1:hover {
+    background-color: #000; 
+    color: #F28123;
+}
+
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
@@ -145,8 +166,8 @@ table {
         <c:choose>
             <c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq board.s_no}">
                 <form action="/BoardDelete?s_no=${sloginVo.s_no}&b_idx=${board.b_idx}" method="POST" id="search-form">  
-                    <button type="submit" class="btn btn-primary">삭제</button>
-                    <button type="button" class="btn btn-primary" onclick="goBack()">뒤로가기</button>
+                    <button type="submit" class="btn1">삭제</button>
+                    <a type="submit" class="boxed-btn" onclick="goBack()">뒤로가기</a>
                 </form>
             </c:when>
         </c:choose>

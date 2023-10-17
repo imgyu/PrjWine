@@ -136,7 +136,7 @@
 					<a href="/StoreInfo?s_no=${store.s_no}" class="cart-btn">매장정보</a>
 					<c:choose>
 					<c:when test="${not empty loginVo.u_no}">
-					<a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">관심매장</a>
+					<a href="/CartList?u_no=${loginVo.u_no}" class="btn cart-btn">관심매장</a>
 					</c:when>
 					</c:choose>
 				</div>
@@ -159,10 +159,10 @@
 					<p class="card-text"><i class="fas fa-user">${store.s_phone}</i></p>
 					<p class="card-text">${store.s_address}</p>
 					<p class="card-text">${store.s_detailAddress}</p>
-					<a href="/StoreInfo?s_no=${store.s_no}" class="cart-btn">매장정보</a>
+					<a href="/StoreInfo?s_no=${store.s_no}" class="btn cart-btn">매장정보</a>
 					<c:choose>
 					 <c:when test="${not empty loginVo.u_no}">
-					  <a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">관심매장</a>
+					  <a href="/CartList?u_no=${loginVo.u_no}" class="btn cart-btn">관심매장</a>
 					 </c:when>
 					</c:choose>
 				</div>

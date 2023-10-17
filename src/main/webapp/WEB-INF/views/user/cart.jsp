@@ -54,6 +54,27 @@
       padding: 10px 15px; /* 여백 */
       cursor: pointer; /* 포인터로 마우스 커서 변경 */
    }
+ .btn1 {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 15px 25px;
+    transition: 0.3s;
+    box-sizing: border-box;
+    border: none; /* 경계선 없음 */
+    cursor: pointer; /* 포인터 커서로 변경 */
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 50px !important;
+}
+
+/* 호버(마우스 오버) 시의 버튼 스타일 */
+.btn1:hover {
+    background-color: #000; 
+    color: #F28123;
+}  
+   
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
@@ -116,7 +137,7 @@
    <br><br>
     <div class="text-center">
     <input type="submit" value="결제" class="btn btn-outline-info" >
-    <input type="button" value="삭제" class="btn btn-outline-info" onclick="deleteValue();">
+    <a type="button" class="btn1" onclick="deleteValue();">삭제</a>
     </div> 
     </form>
     </main>

@@ -60,6 +60,8 @@ body {
 .store-image {
 	max-width: 100%;
 	max-height: 300px;
+	width: 50%;
+	margin-top: 50px;
 	object-fit: contain;
 	border-radius: 10px 10px 0 0;
 }
@@ -170,10 +172,9 @@ body {
             <div class="store-name">${info.s_name }</div>
             <div class="store-cont">${info.s_cont}</div>
             <div class="store-address">${info.s_address }</div>
-            <div class="store-detailAddress">${info.s_detailAddress }</div>
+            <div class="store-detailAddress">${info.s_detailAddress } <a class="winelist-link" href="/StoreWineManage?s_no=${info.s_no}"
+            class="btn btn-primary">매장보유 와인</a></div>
          </div>
-         <a class="winelist-link" href="/StoreWineManage?s_no=${info.s_no}"
-            class="btn btn-primary">매장보유 와인</a>
           <div id="map" style="width: 50%; height: 350px; float: left;"></div>
          <div id="board" style="width: 50%; height: 350px; float: right;">
           <table id="table">
@@ -198,7 +199,7 @@ body {
            <c:choose>
             <c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq info.s_no}">
             <form action="/BoardWriteForm?s_no=${sloginVo.s_no}" method="POST">
-             <button type="submit" class="btn btn-primary">새글작성</button>
+             <input type="submit" class="btn btn-primary" value="새글작성">
             </form>
             </c:when>
            </c:choose>

@@ -77,20 +77,10 @@ table {
     border: 1px solid #ccc;
 }
 
-button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 20px auto;
-    display: block;
-}
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+input[type="submit"] {
+  display: block;
+  margin: 0 auto; 
 }
 
 </style>
@@ -149,7 +139,7 @@ button[type="submit"]:hover {
                  <textarea name="b_cont" placeholder="공지사항 내용을 입력하세요"></textarea>
                 </div>	
 			  </table>
-			  <button type="submit" class="btn btn-primary">등록</button>
+			  <input type="submit" value="등록">
 			</form>
     </div>
 </body>
