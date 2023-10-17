@@ -22,6 +22,7 @@
 </head>
 <body>
  <%@include file="/WEB-INF/include/nav.jsp" %>
+  
  <div class="hero-area hero-bg">
       <div class="container">
          <div class="row">

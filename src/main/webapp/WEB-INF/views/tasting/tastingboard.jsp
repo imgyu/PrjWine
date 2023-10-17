@@ -119,7 +119,7 @@ function goBack() {
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 					<p>Tasting</p>
-					<h2>${tast.t_title}</h2>
+					<h1>${tast.t_title}</h1>
 					</div>
 				</div>
 			</div>

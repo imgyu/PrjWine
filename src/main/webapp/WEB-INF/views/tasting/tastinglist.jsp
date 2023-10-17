@@ -82,7 +82,7 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 					<p>Tasting</p>
-					<h2>시음회 정보</h2>
+					<h1>시음회 정보</h1>
 					</div>
 				</div>
 			</div>

@@ -152,8 +152,8 @@ button#btn1 {
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Store Wine Register</p>
-						<h2>매장 와인 등록</h2>
+						<p>Store Information</p>
+						<h1>매장 와인 등록</h1>
 					</div>
 				</div>
 			</div>

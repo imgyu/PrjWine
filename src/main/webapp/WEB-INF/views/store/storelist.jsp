@@ -69,7 +69,7 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						<p>Store Information</p>
-						<h2>전체매장</h2>
+						<h1>전체매장</h1>
 					</div>
 				</div>
 			</div>
@@ -99,12 +99,12 @@
 						<img src="/img/${store.s_simgname}" alt="매장사진"
 							style="width: 100%; height: 100%; object-fit: contain;" />
 					</div>
-					<h5 class="card-title">${store.s_name}</h5>
+					<h5 class="card-title"><i class="fas fa-briefcase">&nbsp;${store.s_name}</i></h5>
 					<p class="card-text" style="max-height: 3em; overflow: hidden; line-height: 3em;">${store.s_cont}</p>
-					<p class="card-text"><i class="fas fa-user">${store.s_phone}</i></p>
-					<p class="card-text">${store.s_address}</p>
-					<p class="card-text">${store.s_detailAddress}</p>
-					<a href="/StoreInfo?s_no=${store.s_no}" class="btn btn-primary">매장정보</a>
+					<p class="card-text"><i class="fas fa-user">&nbsp;${store.s_phone}</i></p>
+					<p class="card-text"><i class="fas fa-map">&nbsp;${store.s_address}</i></p>
+					<p class="card-text"><i class="fas fa-map">&nbsp;${store.s_detailAddress}</i></p>
+					<a href="/StoreInfo?s_no=${store.s_no}" class="cart-btn">매장정보</a>
 					<c:choose>
 					<c:when test="${not empty loginVo.u_no}">
 					<a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">관심매장</a>
@@ -125,12 +125,12 @@
 						<img src="/img/${store.s_simgname}" alt="매장사진"
 							style="width: 100%; height: 100%; object-fit: contain;" />
 					</div>
-					<h5 class="card-title">${store.s_name}</h5>
+					<h5 class="card-title"><i class="fas fa-briefcase">&nbsp;${store.s_name}</i></h5>
 					<p class="card-text" style="max-height: 3em; overflow: hidden; line-height: 3em;">${store.s_cont}</p>
-					<p class="card-text">${store.s_phone}</p>
+					<p class="card-text"><i class="fas fa-user">${store.s_phone}</i></p>
 					<p class="card-text">${store.s_address}</p>
 					<p class="card-text">${store.s_detailAddress}</p>
-					<a href="/StoreInfo?s_no=${store.s_no}" class="btn btn-primary">매장정보</a>
+					<a href="/StoreInfo?s_no=${store.s_no}" class="cart-btn">매장정보</a>
 					<c:choose>
 					 <c:when test="${not empty loginVo.u_no}">
 					  <a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">관심매장</a>

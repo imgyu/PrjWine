@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+
+
 
   <div class="top-header-area" id="sticker">
         <div class="container">
@@ -53,7 +55,7 @@
                                             <li><a class="dropdown-item" href="/StoreCheck?s_no=${sloginVo.s_no }"><b>매장정보</b></a></li>
                                             <li><a class="dropdown-item" href="/StoreWineRegisterForm?s_no=${ sloginVo.s_no }"><b>매장와인 등록</b></a></li>
                                             <li><a class="dropdown-item" href="/StoreWineManage?s_no=${ sloginVo.s_no }"><b>보유와인 확인/수정</b></a></li>
-                                            <li><a class="dropdown-item" href="/Store/SalesHistory"><b>판매기록</b></a></li>
+                                            <li><a class="dropdown-item" href="/SalesHistory"><b>판매기록</b></a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="/StoreLogOut"><b>로그 아웃</b></a></li>
                                         </ul>
