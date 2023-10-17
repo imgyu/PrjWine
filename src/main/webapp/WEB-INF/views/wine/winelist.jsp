@@ -21,8 +21,45 @@
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 <style>
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.search-container input[type="search"] {
+    background-color: #F5F5F5;
+    border: 2px solid #FFA500;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    placeholder-color: #FFA500;
+    width: 60%;
+    text-align: right;
+    margin-right: 10px; /* 오른쪽 여백을 주기 위해 margin-right 사용 */
+}
+
+.search-container button {
+    /* 버튼에 스타일을 적용하세요. */
+    background-color: #FFA500;
+    color: #FFF;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
 .inputRound {
    border-radius: 5px;
+}
+
+.product-section
+{
+margin-top: 50px;
 }
 </style>
 <script
@@ -87,7 +124,7 @@
    <!-- 와인 검색start -->
    <div class="container">
       <!-- 버튼 검색 -->
-      <div class="product-section mt-150 mb-150">
+      <div class="product-section mb-150">
 		<div class="container">
 
 			<div class="row">
