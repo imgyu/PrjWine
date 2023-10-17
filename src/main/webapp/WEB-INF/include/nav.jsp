@@ -7,17 +7,34 @@
                 <div class="col-lg-12 col-sm-12 text-center">
                     <div class="main-menu-wrap">
                         <c:choose>
-                            <c:when test="${loginVo eq null and sloginVo eq null}">
-                                <!-- 비로그인 상태 -->
-                                <ul class="nav justify-content-end">
-                                    <li class="nav-item">
-                                        <a class="boxed-btn" aria-current="page" href="/UserLoginForm"><b>고객로그인</b></a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="bordered-btn" href="/StoreLoginForm"><b>가게로그인</b></a>
-                                    </li>
-                                </ul>
-                            </c:when>
+<c:when test="${loginVo eq null and sloginVo eq null}">
+    <!-- 비로그인 상태 -->
+<ul class="nav" style="justify-content: space-between; align-items: center; display: flex;">
+    <li class="nav-item">
+        <div class="site-logo"><a href="/"><img src="/img/winestory.png" alt="로고"></a></div>
+    </li>
+    <li class="nav-item">
+        <ul class="navbar" style="justify-content: space-between; display: flex;">
+            <li>
+                <a style="color: #98fb98;!important;" class="nav-link active" aria-current="page" href="/StoreList"><b>매장찾기</b></a>
+            </li>
+            <li>
+                <a style="color: #f08080;!important;" class="nav-link" href="/WineList"><b>전체와인</b></a>
+            </li>
+            <li>
+                <a style="color: #87cefa;!important;" class="nav-link" href="/Event"><b>이벤트 및 프로모션</b></a>
+            </li>
+            <li> 
+                <a style="color: #e6e6fa;!important;" class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
+            </li>
+        </ul>
+    </li>
+    <li class="nav-item">
+        <a style="background-color: #e6e6fa; color: #4b0082 !important;" class="boxed-btn" aria-current="page" href="/UserLoginForm"><b>고객로그인</b></a>
+        <a style="background-color: #4b0082; color: #e6e6fa !important; margin-left: 10px;" class="bordered-btn" href="/StoreLoginForm"><b>가게로그인</b></a>
+    </li>
+</ul>
+</c:when>
                             <c:when test="${loginVo ne null and sloginVo eq null}">
                                 <!-- 고객 로그인 상태 -->
                                 <ul class="nav justify-content-end">
@@ -61,35 +78,6 @@
                             </c:when>
                         </c:choose>
                         <!-- 위쪽 네비게이션 -->
-
-                        <!-- 왼쪽으로 홈으로 가는 버튼 -->
-                        <nav class="main-menu2">
-                        <ul class="nav justify-content-left">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">와인이야기</a>
-                            </li>
-                        </ul>
-                        </nav>
-                        <!-- 왼쪽으로 홈으로 가는 버튼 -->
-
-                        <!-- 아래쪽 네비게이션 -->
-                        <nav class="main-menu">
-                        <ul class="nav justify-content-center" \>
-                            <li class="nav-item">
-                                <a class="nav-link active" ariacurrent="page" href="/StoreList"><b>매장찾기</b></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/WineList"><b>전체와인</b></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Event"><b>이벤트 및 프로모션</b></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
-                            </li>
-                        </ul>
-                        </nav>
-                        <!-- 아래쪽 네비게이션 -->
                     </div>
                 </div>
             </div>
