@@ -3,6 +3,7 @@ package com.green.user.cart.dao.impl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Stream;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import com.green.user.cart.dao.CartDao;
 import com.green.user.cart.vo.CartVo;
+import com.green.user.cart.vo.PaymentVo;
 
 @Repository("cartDao")
 public class CartDaoImpl implements CartDao {
@@ -44,8 +46,10 @@ public List<CartVo> getSelectList(int u_no, String cartids) {
 	HashMap<String, Object> map = new HashMap<String, Object>();
 	map.put("u_no", u_no);
 	map.put("list", list);
-			
+	
+	
 	List<CartVo> getSelectList  =  sqlSession.selectList("Cart.SelectList", map);
+	
 	
 	return getSelectList;
 }
@@ -56,6 +60,15 @@ public void addCart(CartVo vo) {
 	
 	
 }
+
+@Override
+public void insertPay(PaymentVo pay) {
+	
+	sqlSession.insert("Cart.InsertPay", pay);
+	
+}
+
+
 
 
 
