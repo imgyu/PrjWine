@@ -140,9 +140,10 @@ margin-top: 50px;
                         </ul>
                     </div>
                 </div>
-                    
+            </div>
       <!-- input 검색 -->
-      <div class="search-form">
+         	<div class="container">
+	<div class="search-container">
          <form action="/NameSearch" method="POST">
             <input type="search"   name="name_Search" placeholder="와인이름">
             <input type="submit"   value="찾기">

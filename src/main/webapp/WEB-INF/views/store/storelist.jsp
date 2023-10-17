@@ -107,13 +107,13 @@
 
 	<!-- 매장 검색start -->
 	<div class="container">
-		<div>
+	<div class="search-container">
 			<form action="/SnameSearch" method="POST">
 				<input type="search" name="sname_Search" placeholder="매장이름">
 				<input type="submit" value="찾기">
 			</form>
 		</div>
-	</div>
+		</div>
 	<!-- 매장 검색end -->
 
 	<!--  매장 리스트  -->
@@ -129,8 +129,7 @@
 					<h5 class="card-title"><i class="fas fa-briefcase">&nbsp;${store.s_name}</i></h5>
 					<p class="card-text" style="max-height: 3em; overflow: hidden; line-height: 3em;">${store.s_cont}</p>
 					<p class="card-text"><i class="fas fa-user">&nbsp;${store.s_phone}</i></p>
-					<p class="card-text"><i class="fas fa-map">&nbsp;${store.s_address}</i></p>
-					<p class="card-text"><i class="fas fa-map">&nbsp;${store.s_detailAddress}</i></p>
+					<p class="card-text"><i class="fas fa-map">&nbsp;${store.s_address}&nbsp;${store.s_detailAddress}</i></p>
 					<a href="/StoreInfo?s_no=${store.s_no}" class="cart-btn">매장정보</a>
 					<c:choose>
 					<c:when test="${not empty loginVo.u_no}">
