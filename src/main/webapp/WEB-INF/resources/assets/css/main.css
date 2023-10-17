@@ -487,7 +487,7 @@ a.boxed-btn, a.bordered-btn, a.cart-btn {
 }
 
 .breadcrumb-section {
-  padding: 150px 0;
+  padding: 50px 0;
   background-size: cover;
   background-position: center center;
   position: relative;
@@ -2385,7 +2385,7 @@ ul.social-link-team li a {
   color: #323232;
   cursor: pointer;
   padding: 8px 20px;
-  border-radius: 25px;
+  border-radius: 25px;  transition: all 0.3s;
 }
 
 .product-filters ul li.active {
@@ -2393,7 +2393,7 @@ ul.social-link-team li a {
   background-color: #F28123;
   color: #fff;
 }
-
+.product-filters ul li:hover {  background-color: #F28123;  color: #fff; }
 .single-product-item {
   margin-bottom: 30px;
 }

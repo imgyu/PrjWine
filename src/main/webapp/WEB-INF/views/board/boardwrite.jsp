@@ -32,7 +32,7 @@
     margin-top: 40px;
 }
 
-.container {
+.container1 {
     margin: 0 auto; /* 상하여백 좌우여백 */
     max-width: 600px; /* 최대 폭 지정 */
 }
@@ -77,20 +77,10 @@ table {
     border: 1px solid #ccc;
 }
 
-button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 20px auto;
-    display: block;
-}
 
-button[type="submit"]:hover {
-    background-color: #0056b3;
+input[type="submit"] {
+  display: block;
+  margin: 0 auto; 
 }
 
 </style>
@@ -119,24 +109,25 @@ button[type="submit"]:hover {
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
+	  <div class="breadcrumb-section breadcrumb-bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+               <div class="breadcrumb-text">
+               <br>
+                  <h1>전체매장</h1>
+                  <br>
+                  <p>Store Information</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br>
+   <br>
 
-	<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<p>Store Information</p>
-						<h1>공지사항 등록</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<br>
 
-
-	<div class="container" id="board" style="width: 50%; height: 350px; float: center;">
+	<div class="container1" id="board" style="width: 50%; height: 350px; float: center;">
 			<form action="/BoardWrite?s_no=${sloginVo.s_no}" method="POST" id="search-form">
 			 <table id="table">
 			    <div>
@@ -148,7 +139,7 @@ button[type="submit"]:hover {
                  <textarea name="b_cont" placeholder="공지사항 내용을 입력하세요"></textarea>
                 </div>	
 			  </table>
-			  <button type="submit" class="btn btn-primary">등록</button>
+			  <input type="submit" value="등록">
 			</form>
     </div>
 </body>

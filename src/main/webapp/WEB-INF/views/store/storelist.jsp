@@ -31,8 +31,36 @@
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 <style>
-.inputRound {
-	border-radius: 5px;
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.search-container input[type="search"] {
+    background-color: #F5F5F5;
+    border: 2px solid #FFA500;
+    color: #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    placeholder-color: #FFA500;
+    width: 60%;
+    text-align: right;
+    margin-right: 10px; /* 오른쪽 여백을 주기 위해 margin-right 사용 */
+}
+
+.search-container button {
+    /* 버튼에 스타일을 적용하세요. */
+    background-color: #FFA500;
+    color: #FFF;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
 }
 </style>
 <script
@@ -62,31 +90,33 @@
    <script src="assets/js/main.js"></script>
 </head>
 <body>
-	<%@include file="/WEB-INF/include/nav.jsp"%>
-	<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<p>Store Information</p>
-						<h1>전체매장</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<br>
+<%@include file="/WEB-INF/include/nav.jsp"%>
+	  <div class="breadcrumb-section breadcrumb-bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+               <div class="breadcrumb-text">
+               <br>
+                  <h1>전체매장</h1>
+                  <br>
+                  <p>Store Information</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br>
+   <br>
 
 	<!-- 매장 검색start -->
 	<div class="container">
-		<div>
+	<div class="search-container">
 			<form action="/SnameSearch" method="POST">
 				<input type="search" name="sname_Search" placeholder="매장이름">
 				<input type="submit" value="찾기">
 			</form>
 		</div>
-	</div>
+		</div>
 	<!-- 매장 검색end -->
 
 	<!--  매장 리스트  -->
@@ -102,12 +132,11 @@
 					<h5 class="card-title"><i class="fas fa-briefcase">&nbsp;${store.s_name}</i></h5>
 					<p class="card-text" style="max-height: 3em; overflow: hidden; line-height: 3em;">${store.s_cont}</p>
 					<p class="card-text"><i class="fas fa-user">&nbsp;${store.s_phone}</i></p>
-					<p class="card-text"><i class="fas fa-map">&nbsp;${store.s_address}</i></p>
-					<p class="card-text"><i class="fas fa-map">&nbsp;${store.s_detailAddress}</i></p>
+					<p class="card-text"><i class="fas fa-map">&nbsp;${store.s_address}&nbsp;${store.s_detailAddress}</i></p>
 					<a href="/StoreInfo?s_no=${store.s_no}" class="cart-btn">매장정보</a>
 					<c:choose>
 					<c:when test="${not empty loginVo.u_no}">
-					<a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">관심매장</a>
+					<a href="/CartList?u_no=${loginVo.u_no}" class="btn cart-btn">관심매장</a>
 					</c:when>
 					</c:choose>
 				</div>
@@ -130,10 +159,10 @@
 					<p class="card-text"><i class="fas fa-user">${store.s_phone}</i></p>
 					<p class="card-text">${store.s_address}</p>
 					<p class="card-text">${store.s_detailAddress}</p>
-					<a href="/StoreInfo?s_no=${store.s_no}" class="cart-btn">매장정보</a>
+					<a href="/StoreInfo?s_no=${store.s_no}" class="btn cart-btn">매장정보</a>
 					<c:choose>
 					 <c:when test="${not empty loginVo.u_no}">
-					  <a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">관심매장</a>
+					  <a href="/CartList?u_no=${loginVo.u_no}" class="btn cart-btn">관심매장</a>
 					 </c:when>
 					</c:choose>
 				</div>

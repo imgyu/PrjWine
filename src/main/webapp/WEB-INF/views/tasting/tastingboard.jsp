@@ -31,7 +31,7 @@
     margin-top: 40px;
 }
 
-.container {
+.container1 {
     margin: 0 auto; /* 상하여백 좌우여백 */
     max-width: 600px; /* 최대 폭 지정 */
 }
@@ -81,6 +81,10 @@ th, td {
     text-align: center;
     background-color: #f2f2f2;
 }
+.centered-text {
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
@@ -112,23 +116,27 @@ function goBack() {
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-    <c:forEach var="tast" items="${tastingBoard}">
-<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-					<p>Tasting</p>
-					<h1>${tast.t_title}</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<br>
+<%@include file="/WEB-INF/include/nav.jsp"%>
+	  <div class="breadcrumb-section breadcrumb-bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+               <div class="breadcrumb-text">
+               <br>
+                  <h1>전체매장</h1>
+                  <br>
+                  <p>Store Information</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br>
+   <br>
 
-<div class="container">
+<div class="container1">
+<c:forEach var="tast" items="${tastingBoard}">
+					<h1 class="centered-text">${tast.t_title}</h1>
    <table>
         <tr>
             <th>No.</th>

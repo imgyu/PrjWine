@@ -10,9 +10,15 @@
 <title>장바 구니</title>
 <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-   <style>
+<link rel="stylesheet" href="assets/css/all.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/owl.carousel.css">
+<link rel="stylesheet" href="assets/css/magnific-popup.css">
+<link rel="stylesheet" href="assets/css/animate.css">
+<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+<style>
       /* 전체 테이블 스타일 */
       #table { 
          width: 70%; 
@@ -48,13 +54,59 @@
       padding: 10px 15px; /* 여백 */
       cursor: pointer; /* 포인터로 마우스 커서 변경 */
    }
-   </style>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-</head>
+ .btn1 {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 15px 25px;
+    transition: 0.3s;
+    box-sizing: border-box;
+    border: none; /* 경계선 없음 */
+    cursor: pointer; /* 포인터 커서로 변경 */
+    font-weight: 700;
+    font-size: 15px;
+    border-radius: 50px !important;
+}
 
+/* 호버(마우스 오버) 시의 버튼 스타일 */
+.btn1:hover {
+    background-color: #000; 
+    color: #F28123;
+}  
+   
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.countdown.js"></script>
+<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+<script src="assets/js/waypoints.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/sticker.js"></script>
+<script src="assets/js/main.js"></script>
+</head>
 <body>
-<%@include file="/WEB-INF/include/nav.jsp" %>
-<h1 style="text-align: center; margin-top: 60px; margin-bottom: 120px;">장바구니</h1>
+<%@include file="/WEB-INF/include/nav.jsp"%>
+	  <div class="breadcrumb-section breadcrumb-bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+               <div class="breadcrumb-text">
+               <br>
+                  <h1>전체매장</h1>
+                  <br>
+                  <p>Store Information</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br>
+   <br>
    <main>
       
    <form action="/UserPayment?u_no=${u_no }" method="POST" id="formPayment">
@@ -85,7 +137,7 @@
    <br><br>
     <div class="text-center">
     <input type="submit" value="결제" class="btn btn-outline-info" >
-    <input type="button" value="삭제" class="btn btn-outline-info" onclick="deleteValue();">
+    <a type="button" class="btn1" onclick="deleteValue();">삭제</a>
     </div> 
     </form>
     </main>
