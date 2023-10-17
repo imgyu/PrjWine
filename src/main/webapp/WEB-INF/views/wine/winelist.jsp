@@ -12,6 +12,14 @@
    rel="stylesheet"
    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
    crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/all.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/owl.carousel.css">
+<link rel="stylesheet" href="assets/css/magnific-popup.css">
+<link rel="stylesheet" href="assets/css/animate.css">
+<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
 <style>
 .inputRound {
    border-radius: 5px;
@@ -52,29 +60,52 @@
         location.href = '/Other_Click';
     });
 </script>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.countdown.js"></script>
+<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+<script src="assets/js/waypoints.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/sticker.js"></script>
+<script src="assets/js/main.js"></script>
 </head>
 <body>
-   <%@include file="/WEB-INF/include/nav.jsp"%>
-
-   <h1 style="text-align: center; margin-top: 60px;">전체와인</h1>
-   <br>
-   <br>
-
+<%@include file="/WEB-INF/include/nav.jsp"%>
+   <div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<h1>전체와인</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
    <!-- 와인 검색start -->
    <div class="container">
       <!-- 버튼 검색 -->
-      <div>
-           <button type="button" onclick="location.href='/All_Click'"       name="all_click" class="btn btn-outline-secondary">all</button>
-           <button type="button" onclick="location.href='/Red_Click'"       name="red_click" class="btn btn-outline-secondary">레드와인</button>
-           <button type="button" onclick="location.href='/White_Click'"     name="white_click" class="btn btn-outline-secondary">화이트와인</button>
-           <button type="button" onclick="location.href='/Sparkling_Click'" name="sparkling_click" class="btn btn-outline-secondary">스파클링</button>
-           <button type="button" onclick="location.href='/Rose_Click'"      name="rose_click" class="btn btn-outline-secondary">로제</button>
-           <button type="button" onclick="location.href='/Other_Click'"     name="other_click" class="btn btn-outline-secondary">기타와인</button>
-      </div>
-      <br>
-      <br>
+      <div class="product-section mt-150 mb-150">
+		<div class="container">
+
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+                        <ul>
+                            <li onclick="window.location.href = '/All_Click';"       name="All_click">all</li>
+                            <li onclick="window.location.href = '/Red_Click';"       name="red_click">레드와인</li>
+                            <li onclick="window.location.href = '/White_Click';"     name="white_click">화이트와인</li>
+                            <li onclick="window.location.href = '/Sparkling_Click';" name="sparkling_click">스파클링</li>
+                            <li onclick="window.location.href = '/Rose_Click';"      name="rose_click">로제와인</li>
+                            <li onclick="window.location.href = '/Other_Click';"     name="other_click">기타와인</li>
+                        </ul>
+                    </div>
+                </div>
+                    
       <!-- input 검색 -->
-      <div>
+      <div class="search-form">
          <form action="/NameSearch" method="POST">
             <input type="search"   name="name_Search" placeholder="와인이름">
             <input type="submit"   value="찾기">
@@ -114,22 +145,29 @@
       <c:forEach var="wine" items="${wine}">
          <div class="card" style="width: 18rem;">
              <div style="max-width: 300px; max-height: 300px; margin: 0 auto;">
-                  <img src="${wine.w_image}" alt="와인이미지" style="width: 100%; height: 100%; object-fit: contain;">
-              </div>
+   				 <img src="${wine.w_image}" alt="와인이미지" style="width: 300px; height: 300px; object-fit: contain;">
+			</div>
             <div class="card-body">
-               <h5 class="card-title">${wine.w_name}</h5>
-               <p class="card-text">${wine.w_wineery}</p>
+               <h5 class="card-title" style="max-height: 3em; overflow: hidden; line-height: 3em;">${wine.w_name}</h5>
+              <c:choose>
+    			<c:when test="${empty wine.w_wineery}">
+        		  <p class="card-text" style="max-height: 1em; overflow: hidden; line-height: 1em;">&nbsp;</p>
+    			</c:when>
+    			<c:otherwise>
+        		  <p class="card-text" style="max-height: 1em; overflow: hidden; line-height: 1em;">${wine.w_wineery}</p>
+    			</c:otherwise>
+			  </c:choose>
                <p class="card-text">${wine.w_kind}</p>
                <ul class="list-group list-group-flush">
                   <li class="list-group-item">${wine.w_price}</li>
                   <li class="list-group-item">${wine.w_amount}</li>
                   <li class="list-group-item"></li>
                </ul>
-               <a href="/WineInfo?w_no=${wine.w_no}" class="btn btn-primary">와인 보기</a>
+               <a href="/WineInfo?w_no=${wine.w_no}" class="cart-btn">와인 보기</a>
             </div>
          </div>
       </c:forEach>
    </div>
-
+   </div></div></div>
 </body>
 </html>
