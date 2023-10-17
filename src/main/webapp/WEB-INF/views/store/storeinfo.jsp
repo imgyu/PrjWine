@@ -143,65 +143,68 @@ body {
    <script src="assets/js/main.js"></script>
 </head>
 <body>
-	<%@include file="/WEB-INF/include/nav.jsp"%>
-		<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<h1>매장정보</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<br>
-	<br>
+ <%@include file="/WEB-INF/include/nav.jsp"%>
+   <div class="breadcrumb-section breadcrumb-bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+               <div class="breadcrumb-text">
+               <br>
+                  <h1>전체매장</h1>
+                  <br>
+                  <p>Store Information</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br>
+   <br>
 <main>
 
-	<c:forEach var="info" items="${storeInfo}">
-		<div class="store-container">
-			<img class="store-image" src="/img/${info.s_simgname}" alt="매장사진" />
+   <c:forEach var="info" items="${storeInfo}">
+      <div class="store-container">
+         <img class="store-image" src="/img/${info.s_simgname}" alt="매장사진" />
 
-			<div class="wine-details">
-				<div class="store-name">${info.s_name }</div>
-				<div class="store-cont">${info.s_cont}</div>
-				<div class="store-address">${info.s_address }</div>
-				<div class="store-detailAddress">${info.s_detailAddress }</div>
-			</div>
-			<a class="winelist-link" href="/StoreWineManage?s_no=${info.s_no}"
-				class="btn btn-primary">매장보유 와인</a>
-	       <div id="map" style="width: 50%; height: 350px; float: left;"></div>
-		   <div id="board" style="width: 50%; height: 350px; float: right;">
-			 <table id="table">
-			  <div class="container">
-				<tr>
-				 <th>No.</th>
-				 <th>공지사항 제목</th>
-				 <th>글작성자</th>
-				</tr>
-			  </div>
-			  <div class="container">
-				<c:forEach var="board" items="${boardList}">
-				 <tr>
-				  <td>${board.b_idx}</td>
-				  <td><a href="/BoardCont?b_idx=${board.b_idx}&s_no=${board.s_no}">${board.b_title}</a></td>
-				  <td>${board.s_name}</td>
-				 </tr>
-			  </div>
-			 </table>
-		</c:forEach>
-			 <div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
-			  <c:choose>
-				<c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq info.s_no}">
-				<form action="/BoardWriteForm?s_no=${sloginVo.s_no}" method="POST">
-				 <button type="submit" class="btn btn-primary">새글작성</button>
-				</form>
-				</c:when>
-			  </c:choose>
-			 </div>
-		    </div>
-		</div>
+         <div class="wine-details">
+            <div class="store-name">${info.s_name }</div>
+            <div class="store-cont">${info.s_cont}</div>
+            <div class="store-address">${info.s_address }</div>
+            <div class="store-detailAddress">${info.s_detailAddress }</div>
+         </div>
+         <a class="winelist-link" href="/StoreWineManage?s_no=${info.s_no}"
+            class="btn btn-primary">매장보유 와인</a>
+          <div id="map" style="width: 50%; height: 350px; float: left;"></div>
+         <div id="board" style="width: 50%; height: 350px; float: right;">
+          <table id="table">
+           <div class="container">
+            <tr>
+             <th>No.</th>
+             <th>공지사항 제목</th>
+             <th>글작성자</th>
+            </tr>
+           </div>
+           <div class="container">
+            <c:forEach var="board" items="${boardList}">
+             <tr>
+              <td>${board.b_idx}</td>
+              <td><a href="/BoardCont?b_idx=${board.b_idx}&s_no=${board.s_no}">${board.b_title}</a></td>
+              <td>${board.s_name}</td>
+             </tr>
+            </c:forEach>
+           </div>
+          </table>
+          <div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
+           <c:choose>
+            <c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq info.s_no}">
+            <form action="/BoardWriteForm?s_no=${sloginVo.s_no}" method="POST">
+             <button type="submit" class="btn btn-primary">새글작성</button>
+            </form>
+            </c:when>
+           </c:choose>
+          </div>
+          </div>
+      </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3e1bc19bc313fda7048dd34538eebc17&libraries=services"></script>
 <script>
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -242,9 +245,9 @@ geocoder.addressSearch('${info.s_address}', function(result, status) {
 });    
 </script>
 
-	</c:forEach>
-	
-	
+   </c:forEach>
+   
+   
 </main>
 </body>
 </html>

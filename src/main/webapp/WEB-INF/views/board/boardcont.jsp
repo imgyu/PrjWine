@@ -8,13 +8,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<!-- fontawesome -->
+<link rel="stylesheet" href="assets/css/all.min.css">
+<!-- bootstrap -->
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<!-- owl carousel -->
+<link rel="stylesheet" href="assets/css/owl.carousel.css">
+<!-- magnific popup -->
+<link rel="stylesheet" href="assets/css/magnific-popup.css">
+<!-- animate css -->
+<link rel="stylesheet" href="assets/css/animate.css">
+<!-- mean menu css -->
+<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+<!-- main style -->
+<link rel="stylesheet" href="assets/css/main.css">
+<!-- responsive -->
+<link rel="stylesheet" href="assets/css/responsive.css">
 <style>
 .logintitle {
     text-align: center;
     margin-top: 40px;
 }
 
-.container {
+.container1 {
     margin: 0 auto; /* 상하여백 좌우여백 */
     max-width: 600px; /* 최대 폭 지정 */
 }
@@ -66,11 +84,47 @@ table {
             window.history.back();
         }
 </script>
+   <!-- jquery -->
+   <script src="assets/js/jquery-1.11.3.min.js"></script>
+   <!-- bootstrap -->
+   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+   <!-- count down -->
+   <script src="assets/js/jquery.countdown.js"></script>
+   <!-- isotope -->
+   <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+   <!-- waypoints -->
+   <script src="assets/js/waypoints.js"></script>
+   <!-- owl carousel -->
+   <script src="assets/js/owl.carousel.min.js"></script>
+   <!-- magnific popup -->
+   <script src="assets/js/jquery.magnific-popup.min.js"></script>
+   <!-- mean menu -->
+   <script src="assets/js/jquery.meanmenu.min.js"></script>
+   <!-- sticker js -->
+   <script src="assets/js/sticker.js"></script>
+   <!-- main js -->
+   <script src="assets/js/main.js"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
+	  <div class="breadcrumb-section breadcrumb-bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+               <div class="breadcrumb-text">
+               <br>
+                  <h1>전체매장</h1>
+                  <br>
+                  <p>Store Information</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br>
+   <br>
 <c:forEach var="board" items="${boardCont}">
-    <div class="container" id="board" style="width: 50%; height: 350px; float: center;">
+    <div class="container1" id="board" style="width: 50%; height: 350px; float: center;">
         <h1 style="text-align: center; margin-top: 60px">${board.b_title}</h1><br>
         <table id="table">
             <div>

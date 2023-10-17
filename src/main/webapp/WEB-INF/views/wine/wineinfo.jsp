@@ -103,18 +103,23 @@ body {
 <script src="assets/js/main.js"></script>
 </head>
 <body>
-	<%@include file="/WEB-INF/include/nav.jsp"%>
-<div class="breadcrumb-section breadcrumb-bg">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-8 offset-lg-2 text-center">
-					<div class="breadcrumb-text">
-						<h1>와인 정보</h1>
-					</div>
-				</div>
-			</div>
-		</div>
-</div>	
+<%@include file="/WEB-INF/include/nav.jsp"%>
+	  <div class="breadcrumb-section breadcrumb-bg">
+      <div class="container">
+         <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+               <div class="breadcrumb-text">
+               <br>
+                  <h1>전체매장</h1>
+                  <br>
+                  <p>Store Information</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <br>
+   <br>
    <div class="wine-container1">
 	<c:forEach var="info" items="${wineInfo }">
 			<img class="wine-image" src="${info.w_image}" alt="와인 사진">
