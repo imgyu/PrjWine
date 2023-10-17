@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.green.user.cart.dao.CartDao;
 import com.green.user.cart.service.CartService;
 import com.green.user.cart.vo.CartVo;
+import com.green.user.cart.vo.PaymentVo;
 
 @Service("cartService")
 public class CartServiceImpl implements CartService {
@@ -45,6 +46,12 @@ public void AddCart(CartVo vo) {
 	
 	
 	
+}
+
+@Override
+public String insertPay(PaymentVo vo) {
+	String insertPay = cartDao.insertPay(vo);
+	return insertPay;
 }
 
 

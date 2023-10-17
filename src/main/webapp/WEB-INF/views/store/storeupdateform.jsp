@@ -55,6 +55,27 @@
             max-width: 100%;
             height: auto;
         }
+         .btn1 {
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+    background-color: #F28123;
+    color: #fff;
+    padding: 13px 25px;
+    border-radius: 50px;
+    transition: 0.3s;
+    box-sizing: border-box;
+    border: none; /* 경계선 없음 */
+    cursor: pointer; /* 포인터 커서로 변경 */
+    font-weight: 700;
+    font-size: 15px;
+    border: none;
+}
+
+/* 호버(마우스 오버) 시의 버튼 스타일 */
+.btn1:hover {
+    background-color: #000; 
+    color: #F28123;!important;
+} 
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
@@ -138,8 +159,8 @@
             </c:forEach>
             <div class="text-center">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary mx-2" onclick="location.href='/';">메인 화면</button>
-                    <button type="submit" class="btn btn-primary mx-2">수정하기</button>
+                    <a type="button" class="btn1" onclick="location.href='/';">메인 화면</a>
+                    <input type="submit" value="수정하기">
                 </div>
             </div>
         </form>

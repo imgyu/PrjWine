@@ -1,20 +1,18 @@
 package com.green.user.cart.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.service.CartService;
 import com.green.user.cart.vo.CartVo;
+import com.green.user.cart.vo.PaymentVo;
 import com.green.user.service.UserService;
 import com.green.user.vo.UserVo;
 
@@ -26,6 +24,7 @@ public class CartController {
    
    @Autowired
    private UserService userService;
+   
    //장바구니 목록   
    @RequestMapping("/CartList")
       public ModelAndView cart(CartVo vo) {
@@ -105,16 +104,16 @@ public class CartController {
       return mv;
    }  
    
-   @GetMapping("/WinePay")
-   @ResponseBody
-   public void winePay(int amount, String imp_uid, String merchant_uid) throws Exception {
-	    
-	   	    	   
-	    System.out.println("결제 성공");
-		System.out.println("결제 금액 : " + amount);
-		System.out.println("imp_uid : " + imp_uid);
-		System.out.println("merchant_uid : " + merchant_uid);
+   @RequestMapping("/insertPay")
+   public ModelAndView payMent(PaymentVo vo){
+	   System.out.println("vo: " + vo);
+	   String view = cartService.insertPay(vo);
+	   System.out.println("view: " + view);
 	   
+	   ModelAndView mv  =  new ModelAndView();
+	   mv.addObject("view",view);
+	   mv.setViewName("/");
+	   return mv;
    }
    
    

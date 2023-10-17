@@ -116,7 +116,6 @@ function goBack() {
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-<%@include file="/WEB-INF/include/nav.jsp"%>
 	  <div class="breadcrumb-section breadcrumb-bg">
       <div class="container">
          <div class="row">

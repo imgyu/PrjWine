@@ -59,14 +59,15 @@
     display: inline-block;
     background-color: #F28123;
     color: #fff;
-    padding: 15px 25px;
+    padding: 13px 25px;
+    border-radius: 50px;
     transition: 0.3s;
     box-sizing: border-box;
     border: none; /* 경계선 없음 */
     cursor: pointer; /* 포인터 커서로 변경 */
     font-weight: 700;
     font-size: 15px;
-    border-radius: 50px !important;
+    border: none;
 }
 
 /* 호버(마우스 오버) 시의 버튼 스타일 */

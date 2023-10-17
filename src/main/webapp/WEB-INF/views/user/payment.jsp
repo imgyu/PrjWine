@@ -3,20 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>결제 확인</title>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<link rel="stylesheet" href="assets/css/all.min.css">
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/owl.carousel.css">
-<link rel="stylesheet" href="assets/css/magnific-popup.css">
-<link rel="stylesheet" href="assets/css/animate.css">
-<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
-<style>
+    <title>결제 확인</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script type="text/javascript"   src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+    <style>
         /* 컨테이너 스타일링 */
         .container {
             margin-top: 40px;
@@ -49,46 +44,20 @@
             display: block;
             margin: 0 auto;
         }
-</style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-<script type="text/javascript"	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.countdown.js"></script>
-<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-<script src="assets/js/waypoints.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<script src="assets/js/sticker.js"></script>
-<script src="assets/js/main.js"></script>   
+    </style>
 </head>
 <body>
-<%@include file="/WEB-INF/include/nav.jsp"%>
-	  <div class="breadcrumb-section breadcrumb-bg">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-               <div class="breadcrumb-text">
-               <br>
-                  <h1>전체매장</h1>
-                  <br>
-                  <p>Store Information</p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <br>
-   <br>
+<%@include file="/WEB-INF/include/nav.jsp" %>
+<br>
+<h2 class="logintitle">결제 확인</h2>
+<br>
 <div class="container">
         <div class="user-info">
             <h2>주문자</h2>
             <c:forEach var="user" items="${userList}">
                 <p><strong>이름:</strong><span id="u_name">${user.u_name }</span></p>
-                <p><strong>주소:</strong><span id="u_address">${user.u_address }</span></p>
-                <p><strong>휴대폰:</strong> ${user.u_phone }</p>
+                <p><strong>주소:</strong><span id="u_address">${user.u_address }${user.u_detailAddress }</span></p>
+                <p><strong>휴대폰:</strong><span id="u_phone">${user.u_phone }</span></p>
             </c:forEach>
         </div>
         
@@ -100,9 +69,10 @@
                 <p><strong>가격:</strong><span id="w_price">${sel.w_price }</span></p>
                 <p><strong>수량:</strong><span id="c_count">${sel.c_count }</span></p>
                 <p><strong>총가격:</strong><span id="c_allprice">${sel.c_allprice }</span></p>
+              <c:set var="totalPrice" value="${totalPrice + sel.c_allprice }" />
             </c:forEach>
         </div>
-
+      <p><strong>주문 총액:</strong><span id="totalPrice">${totalPrice}</span></p>
         <div class="text-center">
             <div class="btn-group">
                 <button class="btn btn-primary" id="money-btn">결제</button>
@@ -114,48 +84,67 @@
 var IMP  =  window.IMP;
 IMP.init("imp64553480")
 
-var storeName  = '테스트입니다';
-var wineName  =  '테스트';
-var allPrice  =  1000
-    allPrice  =  parseInt(allPrice);
+var storeName  = '와인이야기';
+var wineNames   =  [];
+var tel         =   document.getElementById('u_phone').textContent;
+var wineNameElements  =  document.querySelectorAll('#w_name');
+wineNameElements.forEach(function(element) {
+   wineNames.push(element.textContent);
+});
 
-var buyerName =  $("#u_name").val();
-var buyerAddress  =  $("#u_address").val();
+var wineName  =  wineNames.join(',');
+
+var totalPrice  =  document.getElementById('totalPrice').textContent;
+    totalPrice  =  parseInt(totalPrice);
+    console.log(wineName);
+
+var buyerName = document.getElementById('u_name').textContent;
+var buyerAddress  =  document.getElementById('u_address').textContent;
 
 $('#money-btn').click(function() {
-	IMP.request_pay({
-		pg: 'html5_inicis.INIBillTst',
-		pay_method: 'card',
-		merchant_uid: 'merchant_' + new Date().getTime(),
+   IMP.request_pay({
+      pg: 'kakaopay',
+      pay_method: 'card',
+      merchant_uid: 'merchant_' + new Date().getTime(),
 
-		name: '예약 지점명 : ' + storeName + '점',
-		amount: 130,
-		buyer_email: "",  /*필수 항목이라 "" 로 남겨둠*/
-		buyer_name: buyerName,
-		customer_uid : 'store-fd4992b6-fce9-4f0e-bc65-7372b0736b89'
-	}, function(rsp) {
-		console.log(rsp);
-		
-		 //결제 성공 시
-		if (rsp.success) {
-			var msg = '결제가 완료되었습니다.';
-			console.log("결제성공 ");
-
-			$.ajax({
-				type: "GET",
-				url: '/WinePay',
-				data: {
-					amount: allPrice,
-					imp_uid: rsp.imp_uid,
-					merchant_uid: rsp.merchant_uid
-				}
-			});
-		} else {
-			var msg = '결제에 실패하였습니다.';
-			msg += '에러내용 : ' + rsp.error_msg;
-		}
-		alert(msg);
-	});
+      name: '예약 지점명 : ' + storeName + '점',
+      name  : wineName,
+      amount: totalPrice,
+      buyer_email: buyerAddress,  /*필수 항목이라 "" 로 남겨둠*/
+      buyer_name: buyerName,
+      buyer_tel : tel,
+      customer_uid : 'store-fd4992b6-fce9-4f0e-bc65-7372b0736b89'
+   }, function(rsp) {
+      console.log(rsp);
+      
+       //결제 성공 시
+      if (rsp.success) {
+         var msg = '결제가 완료되었습니다.';
+         var result = {
+               "sh_date" : new Date().toISOString().slice(0,10),
+               "paynum" : rsp.merchant_uid,   
+               "u_no" : ${loginVo.u_no},
+               "s_no" : null, 
+               "c_allprice" : totalPrice,  
+               "w_name" : wineName  
+         }
+         
+         $.ajax({
+            url: '/insertPay',
+            type: "POST",
+            data: JSON.stringify(result),
+            success : function (res) {
+               alert(JSON.stringify(res))
+               console.log(res);
+               location.href = "/";
+            },
+         });
+      } else {
+         var msg = '결제에 실패하였습니다.';
+         msg += '에러내용 : ' + rsp.error_msg;
+      }
+         alert(msg);
+   });
 });
 
 </script>

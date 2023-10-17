@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.vo.CartVo;
+import com.green.user.cart.vo.PaymentVo;
 
 public interface CartService {
 
@@ -16,6 +17,8 @@ public interface CartService {
 List<CartVo> getSelectList(int u_no, String cartids);
 
 void AddCart(CartVo vo);
+
+String insertPay(PaymentVo vo);
 
 
 

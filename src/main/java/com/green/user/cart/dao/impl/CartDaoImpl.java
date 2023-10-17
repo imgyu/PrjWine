@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.green.user.cart.dao.CartDao;
 import com.green.user.cart.vo.CartVo;
+import com.green.user.cart.vo.PaymentVo;
 
 @Repository("cartDao")
 public class CartDaoImpl implements CartDao {
@@ -55,6 +56,15 @@ public void addCart(CartVo vo) {
 	 sqlSession.insert("Cart.InsertCart", vo);
 	
 	
+}
+
+@Override
+public String insertPay(PaymentVo vo) {
+	
+	int rowsInserted = sqlSession.insert("Cart.InsertPay", vo);
+    String insertPay = String.valueOf(rowsInserted);
+    
+	return insertPay;
 }
 
 
