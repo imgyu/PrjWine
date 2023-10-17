@@ -149,7 +149,6 @@ body {
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Store Information</p>
 						<h1>매장정보</h1>
 					</div>
 				</div>
@@ -189,9 +188,9 @@ body {
 				  <td><a href="/BoardCont?b_idx=${board.b_idx}&s_no=${board.s_no}">${board.b_title}</a></td>
 				  <td>${board.s_name}</td>
 				 </tr>
-				</c:forEach>
 			  </div>
 			 </table>
+		</c:forEach>
 			 <div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
 			  <c:choose>
 				<c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq info.s_no}">

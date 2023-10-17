@@ -151,7 +151,6 @@ form#search-form input[type="text"] {
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Store Wine Manage</p>
 						<h1>${sloginVo.s_name}점 보유 와인</h1>
 					</div>
 				</div>

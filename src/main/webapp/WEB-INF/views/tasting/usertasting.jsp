@@ -90,7 +90,6 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-					<p>Tasting</p>
 					<h1>신청한 시음회 목록</h1>
 					</div>
 				</div>

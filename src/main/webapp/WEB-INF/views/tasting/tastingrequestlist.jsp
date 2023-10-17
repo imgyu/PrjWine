@@ -81,7 +81,6 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-					<p>Store Tasting</p>
 					<h1>${sloginVo.s_name}점 신청 고객 시음회 목록</h1>
 					</div>
 				</div>

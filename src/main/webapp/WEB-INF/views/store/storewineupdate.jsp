@@ -130,7 +130,6 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Store Information</p>
 						<h1>수정</h1>
 					</div>
 				</div>

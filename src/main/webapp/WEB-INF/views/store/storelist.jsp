@@ -31,9 +31,6 @@
 	<!-- responsive -->
 	<link rel="stylesheet" href="assets/css/responsive.css">
 <style>
-.inputRound {
-	border-radius: 5px;
-}
 </style>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -68,7 +65,6 @@
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Store Information</p>
 						<h1>전체매장</h1>
 					</div>
 				</div>

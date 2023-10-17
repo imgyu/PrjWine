@@ -28,26 +28,27 @@ body {
 	padding: 0;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
 }
 
-.wine-container {
-	display: flex;
-	flex-wrap: wrap;
-	max-width: 60%;
-	margin: 20px auto;
-	padding: 20px;
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	height: auto;
+.wine-container1 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 650px; /* 가로 너비를 650px로 설정 */
+  height: 1200px; /* 높이를 항상 1200px로 설정 */
+  margin: 40px auto;
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .wine-image {
-	max-width: 100%;
-	max-height: 600x;
+	max-width: 400px;
+	max-height: 600px;
+	margin: 0 100px 50px;
 	object-fit: contain;
 	border-radius: 10px 10px 0 0;
+	float: left;
 }
 
 .wine-details {
@@ -59,6 +60,7 @@ body {
 	font-size: 36px;
 	font-weight: bold;
 	margin-bottom: 20px;
+	margin-top: 50px;
 }
 
 .wine-amount {
@@ -113,8 +115,8 @@ body {
 			</div>
 		</div>
 </div>	
+   <div class="wine-container1">
 	<c:forEach var="info" items="${wineInfo }">
-		<div class="wine-container">
 			<img class="wine-image" src="${info.w_image}" alt="와인 사진">
 			<div class="wine-details">
 				<div class="wine-name">${info.w_name }</div>

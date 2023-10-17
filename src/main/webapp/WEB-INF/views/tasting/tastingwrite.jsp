@@ -189,7 +189,6 @@ form#search-form input[type="search"] {
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
-						<p>Tasting</p>
 						<h1>시음회 등록</h1>
 					</div>
 				</div>
