@@ -52,7 +52,7 @@
                                             <li><a class="dropdown-item" href="/StoreCheck?s_no=${sloginVo.s_no }"><b>매장정보</b></a></li>
                                             <li><a class="dropdown-item" href="/StoreWineRegisterForm?s_no=${ sloginVo.s_no }"><b>매장와인 등록</b></a></li>
                                             <li><a class="dropdown-item" href="/StoreWineManage?s_no=${ sloginVo.s_no }"><b>보유와인 확인/수정</b></a></li>
-                                            <li><a class="dropdown-item" href="/Store/SalesHistory"><b>판매기록</b></a></li>
+                                            <li><a class="dropdown-item" href="/SalesHistory"><b>판매기록</b></a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="/StoreLogOut"><b>로그 아웃</b></a></li>
                                         </ul>
@@ -74,7 +74,7 @@
 
                         <!-- 아래쪽 네비게이션 -->
                         <nav class="main-menu">
-                        <ul class="nav justify-content-center" >
+                        <ul class="nav justify-content-center" \>
                             <li class="nav-item">
                                 <a class="nav-link active" ariacurrent="page" href="/StoreList"><b>매장찾기</b></a>
                             </li>

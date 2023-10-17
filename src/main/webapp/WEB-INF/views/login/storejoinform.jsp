@@ -59,7 +59,6 @@ textarea {
 
 </head>
 <body>
-	<%@include file="/WEB-INF/include/nav.jsp"%>
 
 	<h2 class="logintitle">매장 회원가입</h2>
 	<div class="container">

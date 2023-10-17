@@ -54,9 +54,12 @@ public class StoreController {
 	
 
 	//판매기록 이동
-	@RequestMapping("/Store/SalesHistory")
-	public String saleshistory() {
-				return "/store/saleshistory";
+	@RequestMapping("/SalesHistory")
+	public ModelAndView saleshistory() {
+		
+		ModelAndView  mv  =  new ModelAndView();
+		mv.setViewName("/store/saleshistory");
+		return mv;
 	}
 	 
 	//매장 정보 확인 페이지 이동
