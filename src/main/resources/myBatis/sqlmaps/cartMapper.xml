@@ -38,7 +38,9 @@ SELECT C.C_IDX,
        C.C_COUNT,
        WL.W_PRICE,
        U.U_NO,
-       C.C_COUNT * WL.W_PRICE AS C_ALLPRICE
+       S.S_NO,
+       C.C_COUNT * WL.W_PRICE AS C_ALLPRICE,
+       W.W_NO
   FROM CART C
   LEFT JOIN WINE W ON C.W_NO = W.W_NO
   LEFT JOIN WINELIST WL ON C.W_NO = WL.W_NO
@@ -52,12 +54,20 @@ SELECT C.C_IDX,
 
 </select>
 
-	<insert id="InsertCart">
+	<insert id="InsertCart" >
 INSERT INTO CART (C_IDX, W_NO, S_NO, C_COUNT, U_NO) 
 SELECT (NVL(MAX(C.C_IDX), 0) + 1), #{w_no}, #{s_no}, #{c_count}, #{u_no}
 FROM CART C
 	   	
    	</insert>
+   	
+   	
+ <insert id="InsertPay" >
+ 
+ INSERT INTO SALESHISTORY (PAYNUM, U_NO, S_NO, SH_DATE, P_ALLPRICE, W_NO )
+ VALUES (#{paynum}, #{u_no}, #{s_no}, #{sh_date}, #{p_allprice}, #{w_no})
+ 
+ </insert>  	
 
 </mapper>
 

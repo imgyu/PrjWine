@@ -56,8 +56,8 @@
             <h2>주문자</h2>
             <c:forEach var="user" items="${userList}">
                 <p><strong>이름:</strong><span id="u_name">${user.u_name }</span></p>
-                <p><strong>주소:</strong><span id="u_address">${user.u_address }</span></p>
-                <p><strong>휴대폰:</strong> ${user.u_phone }</p>
+                <p><strong>주소:</strong><span id="u_address">${user.u_address }${user.u_detailAddress }</span></p>
+                <p><strong>휴대폰:</strong><span id="u_phone">${user.u_phone }</span></p>
             </c:forEach>
         </div>
         
@@ -68,10 +68,14 @@
                 <p><strong>판매점:</strong><span id="s_name">${sel.s_name }</span></p>
                 <p><strong>가격:</strong><span id="w_price">${sel.w_price }</span></p>
                 <p><strong>수량:</strong><span id="c_count">${sel.c_count }</span></p>
-                <p><strong>총가격:</strong><span id="c_allprice">${sel.c_allprice }</span></p>
+                <p><strong>총가격:</strong><span id=c_allprice>${sel.c_allprice }</span></p>
+                <p><strong>판매점번호:</strong><span id="s_no">${sel.s_no }</span></p>
+                <p><strong>와인번호:</strong><span id="w_no">${sel.w_no }</span></p>
+                
+		        <c:set var="totalPrice" value="${totalPrice + sel.c_allprice }" />
             </c:forEach>
         </div>
-
+		<p><strong>주문 총액:</strong><span id="p_allprice">${totalPrice}</span></p>
         <div class="text-center">
             <div class="btn-group">
                 <button class="btn btn-primary" id="money-btn">결제</button>
@@ -83,24 +87,30 @@
 var IMP  =  window.IMP;
 IMP.init("imp64553480")
 
-var storeName  = '테스트입니다';
-var wineName  =  '테스트';
-var allPrice  =  1000
-    allPrice  =  parseInt(allPrice);
+var storeName  = '와인이야기';
+var wineNames   =  [];
+var tel         =   document.getElementById('u_phone').textContent;
+var wineNameElements  =  document.querySelectorAll('#w_name');
+wineNameElements.forEach(function(element) {
+	wineNames.push(element.textContent);
+});
+var s_no = document.getElementById('s_no').textContent;
 
-var buyerName =  $("#u_name").val();
-var buyerAddress  =  $("#u_address").val();
+var w_no = document.getElementById('w_no').textContent;
+
+var wineName  =  wineNames.join(',');
+
+var totalPrice  =  document.getElementById('p_allprice').textContent;
+    totalPrice  =  parseInt(totalPrice);
+    console.log(wineName);
 
 $('#money-btn').click(function() {
 	IMP.request_pay({
-		pg: 'html5_inicis.INIBillTst',
+		pg: 'kakaopay',
 		pay_method: 'card',
-		merchant_uid: 'merchant_' + new Date().getTime(),
-
-		name: '예약 지점명 : ' + storeName + '점',
-		amount: 130,
-		buyer_email: "",  /*필수 항목이라 "" 로 남겨둠*/
-		buyer_name: buyerName,
+		merchant_uid: 'merchant_' + new Date().getTime(),		
+		name  : wineName,
+		amount: totalPrice,
 		customer_uid : 'store-fd4992b6-fce9-4f0e-bc65-7372b0736b89'
 	}, function(rsp) {
 		console.log(rsp);
@@ -108,22 +118,31 @@ $('#money-btn').click(function() {
 		 //결제 성공 시
 		if (rsp.success) {
 			var msg = '결제가 완료되었습니다.';
-			console.log("결제성공 ");
-
+			var result = {
+					"paynum" : rsp.merchant_uid,
+					"u_no" : ${loginVo.u_no},
+					"sh_date" : new Date().toISOString().slice(0,10),
+					"p_allprice" : totalPrice,
+					"s_no" : s_no,
+					"w_no" : w_no
+			}
+			
 			$.ajax({
-				type: "GET",
-				url: '/WinePay',
-				data: {
-					amount: allPrice,
-					imp_uid: rsp.imp_uid,
-					merchant_uid: rsp.merchant_uid
-				}
+				url: '/insertPay',
+				type: "POST",
+				contentType : 'application/json',
+				data: JSON.stringify(result),
+				success : function (res) {
+					alert(JSON.stringify(res))
+					console.log(res);
+					location.href = "/";
+				},
 			});
 		} else {
 			var msg = '결제에 실패하였습니다.';
 			msg += '에러내용 : ' + rsp.error_msg;
 		}
-		alert(msg);
+			alert(msg);
 	});
 });
 
