@@ -71,13 +71,13 @@ table {
 			<div>
 				<label>메인 이미지</label>
 				<input type="file" accept="image/*" onchange="readURL(this)"
-					name="upfile" class="upfile" /><br>
+					name="e_fimg" class="upfile" /><br>
 				<img id="preview" style="max-width: 300px;">
 			</div>
 			<div>
 				<label>내용 이미지</label>
 				<input type="file" accept="image/*" onchange="readURL(this)"
-					name="upfile2" class="upfile2" /><br>
+					name="e_bimg" class="upfile2" /><br>
 				<img id="preview" style="max-width: 300px;">
 			</div>
 			<div>
