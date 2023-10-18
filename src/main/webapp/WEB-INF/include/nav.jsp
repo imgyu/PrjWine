@@ -21,7 +21,7 @@
                 <a style="color: #f08080;" class="nav-link" href="/WineList"><b>전체와인</b></a>
             </li>
             <li>
-                <a style="color: #87cefa;" class="nav-link" href="/Event"><b>이벤트 및 프로모션</b></a>
+                <a style="color: #87cefa;" class="nav-link" href="/EventList"><b>이벤트 및 프로모션</b></a>
             </li>
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/TastingList"><b>시음회 정보</b></a>

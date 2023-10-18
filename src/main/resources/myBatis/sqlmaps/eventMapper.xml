@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Event">
+  
+  <select id="EventList" resultType="com.green.event.vo.EventVo">
+     SELECT * 
+       FROM EVENT
+  </select> 
+  <insert id="EventInsert" >
+  INSERT INTO EVENT 
+  (
+  	E_IDX,
+  	S_NO, 
+  	E_TITLE, 
+  	E_FIMG, 
+  	E_BIMG, 
+  	E_SDATE, 
+  	E_EDATE
+  ) VALUES (
+  ( SELECT NVL(MAX(E_IDX),0)+1 FROM EVENT),
+  	#{ s_no },
+  	#{ e_title },
+  	#{ e_fimg },
+  	#{ e_bimg },
+  	#{ e_sdate },
+  	#{ e_edate } 
+  )
+  </insert>
+</mapper>
+
+
+
+
+
+   
