@@ -2,6 +2,7 @@ package com.green.user.dao;
 
 import java.util.List;
 
+import com.green.store.vo.RegVo;
 import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
@@ -19,5 +20,11 @@ public interface UserDao {
 	void updateUserPw(UserVo vo);
 
 	List<PaymentVo> purchaseHistory(PaymentVo vo);
+
+	void favoritesInsert(RegVo vo);
+
+	List<RegVo> favoritesStoreList(RegVo vo);
+
+	void favoriteDelete(RegVo vo);
 
 }

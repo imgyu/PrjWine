@@ -135,7 +135,7 @@
 					<a href="/StoreInfo?s_no=${store.s_no}" class="cart-btn">매장정보</a>
 					<c:choose>
 					<c:when test="${not empty loginVo.u_no}">
-					<a href="/CartList?u_no=${loginVo.u_no}" class="btn cart-btn">관심매장</a>
+					 <a href="/UserFavoritesInsert?u_no=${loginVo.u_no}&s_no=${store.s_no}" class="btn cart-btn" onclick="return confirmAndRedirect();">관심매장</a>
 					</c:when>
 					</c:choose>
 				</div>
@@ -161,7 +161,7 @@
 					<a href="/StoreInfo?s_no=${store.s_no}" class="btn cart-btn">매장정보</a>
 					<c:choose>
 					 <c:when test="${not empty loginVo.u_no}">
-					  <a href="/CartList?u_no=${loginVo.u_no}" class="btn cart-btn">관심매장</a>
+					  <a href="/UserFavoritesInsert?u_no=${loginVo.u_no}&s_no=${store.s_no}" class="btn cart-btn" onclick="confirmAndRedirect();">관심매장</a>
 					 </c:when>
 					</c:choose>
 				</div>
@@ -172,4 +172,15 @@
 
 
 </body>
+<script>
+function confirmAndRedirect() {
+    if (confirm('관심매장 등록하시겠습니까?')) {
+        alert('등록되었습니다');
+    } else {
+    	alert("취소하였습니다");
+        return false; // 링크를 직접 실행하지 않음
+    }
+}
+
+</script>
 </html>

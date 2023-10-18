@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,9 +64,9 @@
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>관심매장</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>User Information</p>
                </div>
             </div>
          </div>
@@ -75,17 +76,30 @@
    <br>
 	<table id="table">
 	<tr class="first-row">
-		<td>매장이름</td>
-		<td>매장주소</td>
+		<th>매장이름</th>
+		<th>매장주소</th>
+		<th>관심매장 삭제</th>
 	</tr>
+	<c:forEach var="favorite" items="${favorites}">
 	<tr>
-		<td></td>
-		<td></td>
+		<td><a href="StoreInfo?s_no=${favorite.s_no }" class="nav-link">${favorite.s_name}</a></td>
+		<td>${favorite.s_address }&nbsp;${favorite.s_detailAddress }</td>
+		<td><a href="/UserFavoriteDelete?u_no=${favorite.u_no }&s_no=${favorite.s_no}" class="btn btn-primary" onclick="confirmDelete();">삭제</a></td>
 	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-	</tr>
+   </c:forEach>
 	</table>
 </body>
+<script>
+function confirmDelete() {
+    if (confirm('삭제하시겠습니까?')) {
+        alert("삭제되었습니다.");
+    } else {
+    	alert("삭제 실패");
+    	event.preventDefault(); // 링크를 직접 실행하지 않음
+    }
+}
+      
+
+
+</script>
 </html>

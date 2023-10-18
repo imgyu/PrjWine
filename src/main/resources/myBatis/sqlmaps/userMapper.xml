@@ -89,5 +89,30 @@ WHERE SH.U_NO = #{u_no}
 
 
 </select>
+
+<insert id="FavoritesInsert">
+
+INSERT INTO FAVORITESTORE ( U_NO, S_NO)
+VALUES(#{u_no},  #{s_no})
+
+</insert>
+
+<select id="FavoritesStoreList" resultType="com.green.store.vo.RegVo">
+
+SELECT DISTINCT S.S_NAME, S.S_ADDRESS, S.S_DETAILADDRESS,F.U_NO, F.S_NO
+FROM FAVORITESTORE F
+INNER JOIN STORE S ON F.S_NO = S.S_NO
+WHERE F.U_NO = #{u_no}
+
+
+</select>
+
+<delete id="FavoriteDelete">
+
+DELETE FAVORITESTORE
+WHERE  u_no = #{u_no}
+AND    s_no = #{s_no}
+
+</delete>
  
 </mapper>

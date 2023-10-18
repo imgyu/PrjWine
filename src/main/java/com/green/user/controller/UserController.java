@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.green.store.vo.RegVo;
 import com.green.user.cart.vo.PaymentVo;
 import com.green.user.service.UserService;
 import com.green.user.vo.UserVo;
@@ -81,9 +82,32 @@ public class UserController {
 		return cnt;
 	}
 	
+	@RequestMapping("/UserFavoritesInsert")
+	public String favoritesInsert(RegVo vo) {
+		
+		userService.favoritesInsert(vo);
+		
+		return "redirect:/StoreList";
+	}
+	
 	@RequestMapping("/UserFavoriteStores")
-	public String favoritestores() {
-		return "/user/favoritestores";
+	public ModelAndView favoritestores(RegVo vo) {
+		
+		List<RegVo> favoritesStoreList  =  userService.favoritesStoreList(vo);  
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("/user/favoritestores");
+		mv.addObject("favorites", favoritesStoreList);
+		
+		return mv;
+	}
+	
+	@RequestMapping("/UserFavoriteDelete")
+	public String favoriteDelete(RegVo vo) {
+		
+		userService.favoriteDelete(vo);
+		
+		return "redirect:/UserFavoriteStores?u_no=" + vo.getU_no();
 	}
 
 	@RequestMapping("/UserPurchaseHistory")
@@ -152,7 +176,6 @@ public class UserController {
 		mv.setViewName("redirect:/UserInfo?u_no=" + vo.getU_no());
 		return mv;
 	}
-	
-	
+		
 	
 }
