@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<style>
+</style>
   <div class="top-header-area" id="sticker">
         <div class="container">
             <div class="row">
@@ -11,18 +13,18 @@
         <div class="site-logo"><a href="/"><img src="/img/winestory.png" alt="로고"></a></div>
     </li>
     <li class="nav-item">
-        <ul class="navbar" style="justify-content: space-between; display: flex;">
+        <ul class="navbar" style="justify-content: space-between; list-style-type: none; display: flex;">
             <li>
-                <a style="color: #98fb98;!important;" class="nav-link active" aria-current="page" href="/StoreList"><b>매장찾기</b></a>
+                <a style="color: #98fb98;" class="nav-link" aria-current="page" href="/StoreList"><b>매장찾기</b></a>
             </li>
             <li>
-                <a style="color: #f08080;!important;" class="nav-link" href="/WineList"><b>전체와인</b></a>
+                <a style="color: #f08080;" class="nav-link" href="/WineList"><b>전체와인</b></a>
             </li>
             <li>
-                <a style="color: #87cefa;!important;" class="nav-link" href="/Event"><b>이벤트 및 프로모션</b></a>
+                <a style="color: #87cefa;" class="nav-link" href="/Event"><b>이벤트 및 프로모션</b></a>
             </li>
             <li> 
-                <a style="color: #e6e6fa;!important;" class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
+                <a style="color: #e6e6fa;" class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
             </li>
         </ul>
     </li>
