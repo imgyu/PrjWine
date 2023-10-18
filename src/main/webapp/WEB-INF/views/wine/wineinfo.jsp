@@ -125,8 +125,10 @@ body {
 			<img class="wine-image" src="${info.w_image}" alt="와인 사진">
 			<div class="wine-details">
 				<div class="wine-name">${info.w_name }</div>
-				<div class="wine-winery">${info.w_winery}</div>
+				<div class="wine-winery">${info.w_wineery}</div>
 				<div class="wine-location">${info.w_location }</div>
+				<div class="wine-location">${info.w_avg }</div>
+				<div class="wine-location">${info.w_reviews }</div>
 				<div class="wine-vintage">${info.w_vintage }</div>
 			</div>
 	</c:forEach>

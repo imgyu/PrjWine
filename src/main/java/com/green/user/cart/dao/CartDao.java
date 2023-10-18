@@ -25,10 +25,4 @@ public interface CartDao {
 
 
 
-
-String insertPay(PaymentVo vo);
-
-
-
-
 }

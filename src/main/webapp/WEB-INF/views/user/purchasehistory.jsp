@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,9 +65,9 @@
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>구매기록</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>User Information</p>
                </div>
             </div>
          </div>
@@ -86,29 +87,21 @@
   </div>
 	<table id="table">
 	<tr class="first-row">
-		<td>날짜</td>
-		<td>구매매장</td>
-		<td>와인이름</td>
-		<td>판매와인</td>
-		<td>와인당가</td>
-		<td>총가격</td>
+		<th>구매날짜</th>
+		<th>구매매장</th>
+		<th>와인이름</th>
+		<th>와인단가</th>
+		<th>총가격</th>
 	</tr>
+	<c:forEach var="purch" items="${purch }">
 	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>${purch.sh_date}</td>
+		<td>${purch.s_name }</td>
+		<td>${purch.w_name }</td>
+		<td>${purch.w_price }</td>
+		<td>${purch.p_allprice }</td>
 	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
+	</c:forEach>
 	</table>
 </body>
 </html>

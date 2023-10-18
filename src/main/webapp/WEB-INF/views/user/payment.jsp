@@ -133,7 +133,6 @@ $('#money-btn').click(function() {
 				contentType : 'application/json',
 				data: JSON.stringify(result),
 				success : function (res) {
-					alert(JSON.stringify(res))
 					console.log(res);
 					location.href = "/";
 				},

@@ -65,7 +65,7 @@ FROM CART C
  <insert id="InsertPay" >
  
  INSERT INTO SALESHISTORY (PAYNUM, U_NO, S_NO, SH_DATE, P_ALLPRICE, W_NO )
- VALUES (#{paynum}, #{u_no}, #{s_no}, #{sh_date}, #{p_allprice}, #{w_no})
+ VALUES (#{paynum}, #{u_no}, #{s_no}, SYSDATE, #{p_allprice}, #{w_no})
  
  </insert>  	
 
