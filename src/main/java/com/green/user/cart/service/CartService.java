@@ -25,12 +25,4 @@ public interface CartService {
 
    String insertPay(PaymentVo pay);
 
-String insertPay(PaymentVo vo);
-
-
-
-
-
-
-
 }

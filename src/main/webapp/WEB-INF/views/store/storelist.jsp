@@ -58,7 +58,6 @@
     color: #FFF;
     border: none;
     padding: 5px 10px;
-    border-radius: 5px;
     font-size: 16px;
     font-weight: bold;
 }

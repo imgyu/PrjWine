@@ -19,16 +19,4 @@ public interface CartDao {
 
    void insertPay(PaymentVo pay);
 
-
-
-
-
-
-
-
-String insertPay(PaymentVo vo);
-
-
-
-
 }

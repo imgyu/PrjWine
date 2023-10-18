@@ -1165,7 +1165,7 @@ input[type="submit"] {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
-  border-radius: 50px !important;
+  border-radius: 8px !important;
 }
 
 input[type="submit"]:hover {
@@ -1456,8 +1456,7 @@ input[type="submit"] {
   font-size: 15px;
   border: none !important;
   cursor: pointer;
-  padding: 15px 25px;
-  border-radius: 3px;
+  padding: 8px 20px;
 }
 
 .homepage-bg-1 {

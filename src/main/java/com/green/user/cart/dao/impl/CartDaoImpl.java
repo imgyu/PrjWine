@@ -69,8 +69,4 @@ public void insertPay(PaymentVo pay) {
 }
 
 
-
-
-
-
 } 

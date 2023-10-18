@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
   <div class="top-header-area" id="sticker">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-sm-12 text-center">
                     <div class="main-menu-wrap">
-                        <c:choose>
-<c:when test="${loginVo eq null and sloginVo eq null}">
-    <!-- 비로그인 상태 -->
 <ul class="nav" style="justify-content: space-between; align-items: center; display: flex;">
     <li class="nav-item">
         <div class="site-logo"><a href="/"><img src="/img/winestory.png" alt="로고"></a></div>
@@ -29,11 +26,13 @@
             </li>
         </ul>
     </li>
+                        <c:choose>
+<c:when test="${loginVo eq null and sloginVo eq null}">
+    <!-- 비로그인 상태 -->
     <li class="nav-item">
         <a style="background-color: #e6e6fa; color: #4b0082 !important;" class="boxed-btn" aria-current="page" href="/UserLoginForm"><b>고객로그인</b></a>
         <a style="background-color: #4b0082; color: #e6e6fa !important; margin-left: 10px;" class="bordered-btn" href="/StoreLoginForm"><b>가게로그인</b></a>
     </li>
-</ul>
 </c:when>
                             <c:when test="${loginVo ne null and sloginVo eq null}">
                                 <!-- 고객 로그인 상태 -->
@@ -77,6 +76,7 @@
                                 </ul>
                             </c:when>
                         </c:choose>
+</ul>
                         <!-- 위쪽 네비게이션 -->
                     </div>
                 </div>
