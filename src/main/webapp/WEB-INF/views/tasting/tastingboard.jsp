@@ -188,7 +188,7 @@ function goBack() {
               <span>신청인원 : ${count }명</span>
         	</form>
         </c:when>
-    	<c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq tast.s_no }">
+    	<c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq tast.s_no}">
     	    <a href="TastingRequestList?s_no=${sloginVo.s_no }&t_idx=${tast.t_idx}" class="btn btn-primary">신청자 목록 </a>
         	<form action="/TastingListDelete?t_idx=${tast.t_idx}" method="POST">
               <button type="submit" class="btn btn-primary">삭제</button>

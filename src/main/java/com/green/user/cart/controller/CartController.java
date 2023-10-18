@@ -46,18 +46,6 @@ public class CartController {
 	   return view;
    }
    
-   @GetMapping("Payment")
-   public ModelAndView paymentContents(String paynum, HttpSession session  ) {
-	   
-	  ModelAndView mv  =  new ModelAndView(); 
-	   
-	  // 주문 정보 가져오기
-	  
-	  
-	  
-	  return mv; 
-   }
-   
    //장바구니 목록   
    @RequestMapping("/CartList")
       public ModelAndView cart(CartVo vo) {

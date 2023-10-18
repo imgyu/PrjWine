@@ -47,7 +47,7 @@
                                         <img src="/img/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item" href="/UserTasting?u_no=${loginVo.u_no}"><b>신청한 시음회</b></a></li>
-                                            <li><a class="dropdown-item" href="/UserFavoriteStores"><b>관심 매장</b></a></li>
+                                            <li><a class="dropdown-item" href="/UserFavoriteStores?u_no=${loginVo.u_no }"><b>관심 매장</b></a></li>
                                             <li><a class="dropdown-item" href="/UserInfo?u_no=${loginVo.u_no}"><b>내정보 확인/수정</b></a></li>
                                             <li><a class="dropdown-item" href="/CartList?u_no=${loginVo.u_no }"><b>장바구니</b></a></li>
                                             <li><a class="dropdown-item" href="/UserPurchaseHistory?u_no=${loginVo.u_no }"><b>구매 기록</b></a></li>
@@ -57,7 +57,7 @@
                                     </li>
                                 </ul>
                             </c:when>
-                            <c:when test="${loginVo eq null and sloginVo ne null}">
+                            <c:when test="${loginVo eq null and sloginVo ne null and sloginVo.s_no ne 99}">
                                 <!-- 가게 로그인 상태 -->
                                 <ul class="nav justify-content-end">
                                     <li class="nav-item">
@@ -71,6 +71,29 @@
                                             <li><a class="dropdown-item" href="/StoreWineRegisterForm?s_no=${ sloginVo.s_no }"><b>매장와인 등록</b></a></li>
                                             <li><a class="dropdown-item" href="/StoreWineManage?s_no=${ sloginVo.s_no }"><b>보유와인 확인/수정</b></a></li>
                                             <li><a class="dropdown-item" href="/SalesHistory?s_no=${sloginVo.s_no }"><b>판매기록</b></a></li>
+                                            <li><hr class="dropdown-divider"></li>
+                                            <li><a class="dropdown-item" href="/StoreLogOut"><b>로그 아웃</b></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </c:when>
+                             <c:when test="${loginVo.u_no eq null and sloginVo.s_no eq 99}">
+                                <!-- 가게 로그인 상태 -->
+                                <ul class="nav justify-content-end">
+                                    <li class="nav-item">
+                                        <br>
+                                        <b> ${sloginVo.s_name } 님 환영합니다 </b>
+                                    </li>
+                                    <li class="nav-item">
+                                        <img src="/img/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item" href="/AdminWineInsert?s_no=99"><b>와인등록</b></a></li>
+                                            <li><a class="dropdown-item" href="/AdminBoardList?s_no=99"><b>공지사항 목록</b></a></li>
+                                            <li><a class="dropdown-item" href="#"><b>프로모션 목록</b></a></li>
+                                            <li><a class="dropdown-item" href="#"><b>이벤트 목록</b></a></li>
+                                            <li><a class="dropdown-item" href="/AdminTastingList?s_no=99"><b>시음회 목록</b></a></li>
+                                            <li><a class="dropdown-item" href="/AdminUserList?s_no=99"><b>유저목록</b></a></li>
+                                            <li><a class="dropdown-item" href="/AdminStoreList?s_no=99"><b>매장목록</b></a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="/StoreLogOut"><b>로그 아웃</b></a></li>
                                         </ul>
