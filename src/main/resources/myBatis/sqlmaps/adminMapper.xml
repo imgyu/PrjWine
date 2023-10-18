@@ -71,7 +71,7 @@ WHERE U_NO  =  #{u_no}
 <insert id="AdminWineInsert">
 
 INSERT INTO WINE (W_NO, W_WINEERY, W_NAME, W_VINTAGE, W_AVG, W_REVIEWS, W_LOCATION, W_IMAGE, W_KIND)
-VALUES (SELECT NVL(MAX(W_NO),0)+1 FROM WINE)
+VALUES (SELECT NVL(MAX(W_NO),0)+1 FROM WINE), #{w_wineery}, #{w_name}, #{w_vintage}, #{w_avg}, #{w_reviews}, #{w_location}, #{w_image}, #{w_kind})
 
 </insert>
 

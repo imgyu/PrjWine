@@ -76,18 +76,20 @@
    <br>
 	<table id="table">
 	<tr class="first-row">
+	    <th><input type="checkbox" id="allCheck"></th>
 		<th>매장이름</th>
 		<th>매장주소</th>
-		<th>관심매장 삭제</th>
 	</tr>
 	<c:forEach var="favorite" items="${favorites}">
 	<tr>
+	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${favorite.s_no }">
+	         <input type="hidden" value="${favorite.u_no }"></td>
 		<td><a href="StoreInfo?s_no=${favorite.s_no }" class="nav-link">${favorite.s_name}</a></td>
 		<td>${favorite.s_address }&nbsp;${favorite.s_detailAddress }</td>
-		<td><a href="/UserFavoriteDelete?u_no=${favorite.u_no }&s_no=${favorite.s_no}" class="btn btn-primary" onclick="confirmDelete();">삭제</a></td>
 	</tr>
    </c:forEach>
 	</table>
+	<a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
 </body>
 <script>
 function confirmDelete() {
@@ -98,6 +100,53 @@ function confirmDelete() {
     	event.preventDefault(); // 링크를 직접 실행하지 않음
     }
 }
+
+var chkObj  =  document.getElementsByName("rowCheck");
+var rowCnt  =  chkObj.length;
+
+$("input[id='allCheck']").click(function() {
+   var chk_listArr  =  $("input[name='rowCheck']");
+   for (var i=0; i<chk_listArr.length; i++) {
+      chk_listArr[i].checked  =  this.checked;
+   }
+});
+
+function deleteValue() {
+	   var u_no =  ${u_no};
+	   var s_no =  ${s_no};
+	   var url  =  "/UserFavoriteDelete?u_no=" + u_no + "&s_no=" + s_no;
+	   var valueArr  =  [];
+	   var list  =  $("input[name='rowCheck']");
+	   for(var i = 0; i < list.length; i++) {
+	      if(list[i].checked) {
+	         valueArr.push(list[i].value);
+	      }
+	   }
+	   if(valueArr.length == 0) {
+	      alert("선택하신 게 없습니다.");
+	   }
+	   else {
+	      var chk  =  confirm("정말 삭제하시겠습니까?");
+	      $.ajax({
+	         url  :  url,
+	         type : 'post',
+	         traditional : true,
+	         data : {
+	            'valueArr[]'  :  valueArr
+	         },
+	         success: function(jdata) {
+	            if(jdata == 1) {
+	               alert("삭제성공");
+	               location.reload();
+	               
+	            }
+	            else {
+	               alert("삭제 실패");
+	            }
+	         }
+	      });
+	   }
+	}  // deleteValue
       
 
 

@@ -93,21 +93,28 @@ public class UserController {
 	@RequestMapping("/UserFavoriteStores")
 	public ModelAndView favoritestores(RegVo vo) {
 		
+		int u_no  =  vo.getU_no();
+		int s_no  =  vo.getS_no();
 		List<RegVo> favoritesStoreList  =  userService.favoritesStoreList(vo);  
-		
 		ModelAndView mv  =  new ModelAndView();
 		mv.setViewName("/user/favoritestores");
 		mv.addObject("favorites", favoritesStoreList);
-		
+		mv.addObject("u_no", u_no);
+		mv.addObject("s_no", s_no);
 		return mv;
 	}
-	
+	@ResponseBody
 	@RequestMapping("/UserFavoriteDelete")
-	public String favoriteDelete(RegVo vo) {
+	public int favoriteDelete(@RequestParam(value = "valueArr[]") String[] valueArr, RegVo vo) {
 		
+		for(String value : valueArr) {
+		vo.setS_no(Integer.parseInt(value));
 		userService.favoriteDelete(vo);
+		System.out.println(vo);
+		System.out.println(value);
+		}
 		
-		return "redirect:/UserFavoriteStores?u_no=" + vo.getU_no();
+		return 1;
 	}
 
 	@RequestMapping("/UserPurchaseHistory")

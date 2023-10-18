@@ -203,7 +203,6 @@ button#btn1 {
 			</table>
 			<div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
 				<button id="btn1" type="submit" class="btn btn-primary">등록</button>
-				<button id="btn1" type="submit" class="btn btn-primary">수정</button>
 			</div>
 		</div>
 		</form>
