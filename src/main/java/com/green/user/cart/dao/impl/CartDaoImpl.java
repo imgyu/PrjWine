@@ -66,6 +66,8 @@ public void insertPay(PaymentVo pay) {
 	
 	sqlSession.insert("Cart.InsertPay", pay);
 	
+	sqlSession.delete("Cart.DeleteCart", pay);
+	
 }
 
 

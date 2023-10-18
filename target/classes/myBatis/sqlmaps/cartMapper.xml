@@ -67,7 +67,16 @@ FROM CART C
  INSERT INTO SALESHISTORY (PAYNUM, U_NO, S_NO, SH_DATE, P_ALLPRICE, W_NO )
  VALUES (#{paynum}, #{u_no}, #{s_no}, SYSDATE, #{p_allprice}, #{w_no})
  
- </insert>  	
+ </insert>  
+ 
+ 
+ <delete id="DeleteCart">
+
+DELETE FROM CART
+WHERE  C_IDX =  #{c_idx}
+
+</delete>
+ 	
 
 </mapper>
 

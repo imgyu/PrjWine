@@ -71,6 +71,8 @@
                 <p><strong>총가격:</strong><span id=c_allprice>${sel.c_allprice }</span></p>
                 <p><strong>판매점번호:</strong><span id="s_no">${sel.s_no }</span></p>
                 <p><strong>와인번호:</strong><span id="w_no">${sel.w_no }</span></p>
+                <p><strong>장바구니번호:</strong><span id="c_idx">${sel.c_idx }</span></p>
+                
                 
 		        <c:set var="totalPrice" value="${totalPrice + sel.c_allprice }" />
             </c:forEach>
@@ -98,6 +100,8 @@ var s_no = document.getElementById('s_no').textContent;
 
 var w_no = document.getElementById('w_no').textContent;
 
+var c_idx = document.getElementById('c_idx').textContent;
+
 var wineName  =  wineNames.join(',');
 
 var totalPrice  =  document.getElementById('p_allprice').textContent;
@@ -124,7 +128,8 @@ $('#money-btn').click(function() {
 					"sh_date" : new Date().toISOString().slice(0,10),
 					"p_allprice" : totalPrice,
 					"s_no" : s_no,
-					"w_no" : w_no
+					"w_no" : w_no,
+					"c_idx" : c_idx
 			}
 			
 			$.ajax({
