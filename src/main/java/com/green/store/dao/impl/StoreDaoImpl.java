@@ -14,6 +14,7 @@ import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
+import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
 @Repository("storeDao")
@@ -253,6 +254,14 @@ public class StoreDaoImpl implements StoreDao {
 		
 		sqlSession.update("Store.StoreUpdate", map );
 		
+	}
+
+	@Override
+	public List<PaymentVo> salesHistory(PaymentVo vo) {
+		
+		List<PaymentVo> salesHistory  =  sqlSession.selectList("Store.SalesHistory", vo);
+		
+		return salesHistory;
 	}
       
 

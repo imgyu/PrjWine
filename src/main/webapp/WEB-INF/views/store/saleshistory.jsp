@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -88,7 +89,7 @@
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>판매기록</h1>
                   <br>
                   <p>Store Information</p>
                </div>
@@ -111,32 +112,27 @@
   </div>
 	<table id="table">
 	<tr class="first-row">
-		<td>판매날짜</td>
-		<td>손님고유번호</td>
-		<td>손님이름</td>
-		<td>손님연락처</td>
-		<td>판매와인</td>
-		<td>와인당가</td>
-		<td>총가격</td>
+		<th>판매날짜</th>
+		<th>손님고유번호</th>
+		<th>손님이름</th>
+		<th>손님연락처</th>
+		<th>판매와인</th>
+		<th>와인단가</th>
+		<th>총가격</th>
 	</tr>
+	
+	
+	<c:forEach var="sales" items="${salesHistory }">
 	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
+		<td>${sales.sh_date }</td>
+		<td>${sales.u_no}</td>
+		<td>${sales.u_name }</td>
+		<td>${sales.u_phone }</td>
+		<td>${sales.w_name }</td>
+		<td>${sales.w_price }</td>
+		<td>${sales.p_allprice }</td>
 	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
+	</c:forEach>
 	</table>
 </body>
 </html>

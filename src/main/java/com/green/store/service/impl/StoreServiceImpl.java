@@ -14,6 +14,7 @@ import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
+import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
 @Service("storeService")
@@ -132,5 +133,12 @@ public class StoreServiceImpl implements StoreService {
 		
 	
    }
+	@Override
+	public List<PaymentVo> salesHistory(PaymentVo vo) {
+		
+		List<PaymentVo> salesHistory  =  storeDao.salesHistory(vo);
+		
+		return salesHistory;
+	}
 }
    

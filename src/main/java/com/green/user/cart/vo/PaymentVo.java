@@ -15,8 +15,29 @@ public class PaymentVo {
 	private int    u_no;
 	private int    s_no;
 	private int    w_no;
-	private String    paynum;
+	private String paynum;
+	private String u_phone;
+	private String w_price;
+	private int w_amount;
 	
+	public PaymentVo() {}
+	public PaymentVo(String u_name, String s_name, String w_name, Date ph_date, Date sh_date, int c_idx, int p_allprice,
+			int u_no, int s_no, int w_no, String paynum, String u_phone, String w_price, int w_amount) {
+		this.u_name = u_name;
+		this.s_name = s_name;
+		this.w_name = w_name;
+		this.ph_date = ph_date;
+		this.sh_date = sh_date;
+		this.c_idx = c_idx;
+		this.p_allprice = p_allprice;
+		this.u_no = u_no;
+		this.s_no = s_no;
+		this.w_no = w_no;
+		this.paynum = paynum;
+		this.u_phone = u_phone;
+		this.w_price = w_price;
+		this.w_amount = w_amount;
+	}
 	public synchronized String getU_name() {
 		return u_name;
 	}
@@ -83,27 +104,30 @@ public class PaymentVo {
 	public synchronized void setPaynum(String paynum) {
 		this.paynum = paynum;
 	}
+	public synchronized String getU_phone() {
+		return u_phone;
+	}
+	public synchronized void setU_phone(String u_phone) {
+		this.u_phone = u_phone;
+	}
+	public synchronized String getW_price() {
+		return w_price;
+	}
+	public synchronized void setW_price(String w_price) {
+		this.w_price = w_price;
+	}
+	public synchronized int getW_amount() {
+		return w_amount;
+	}
+	public synchronized void setW_amount(int w_amount) {
+		this.w_amount = w_amount;
+	}
 	@Override
 	public String toString() {
 		return "PaymentVo [u_name=" + u_name + ", s_name=" + s_name + ", w_name=" + w_name + ", ph_date=" + ph_date
 				+ ", sh_date=" + sh_date + ", c_idx=" + c_idx + ", p_allprice=" + p_allprice + ", u_no=" + u_no
-				+ ", s_no=" + s_no + ", w_no=" + w_no + ", paynum=" + paynum + "]";
-	}
-	
-	public PaymentVo() {}
-	public PaymentVo(String u_name, String s_name, String w_name, Date ph_date, Date sh_date, int c_idx, int p_allprice,
-			int u_no, int s_no, int w_no, String paynum) {
-		this.u_name = u_name;
-		this.s_name = s_name;
-		this.w_name = w_name;
-		this.ph_date = ph_date;
-		this.sh_date = sh_date;
-		this.c_idx = c_idx;
-		this.p_allprice = p_allprice;
-		this.u_no = u_no;
-		this.s_no = s_no;
-		this.w_no = w_no;
-		this.paynum = paynum;
+				+ ", s_no=" + s_no + ", w_no=" + w_no + ", paynum=" + paynum + ", u_phone=" + u_phone + ", w_price="
+				+ w_price + ", w_amount=" + w_amount + "]";
 	}
 	
 

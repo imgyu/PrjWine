@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.user.cart.vo.PaymentVo;
 import com.green.user.dao.UserDao;
 import com.green.user.service.UserService;
 import com.green.user.vo.UserVo;
@@ -56,6 +57,14 @@ public class UserServiceImpl implements UserService {
 	public void updateUserPw(UserVo vo) {
 		userDao.updateUserPw(vo);
 		
+	}
+
+	@Override
+	public List<PaymentVo> purchaseHistory(PaymentVo vo) {
+
+		List<PaymentVo> purchaseHistory  =  userDao.purchaseHistory(vo); 
+		
+		return purchaseHistory;
 	}
 
 	

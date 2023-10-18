@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.green.user.cart.vo.PaymentVo;
 import com.green.user.dao.UserDao;
 import com.green.user.vo.UserVo;
 
@@ -55,6 +56,12 @@ public class UserDaoImpl implements UserDao {
 	public void updateUserPw(UserVo vo) {
 		sqlSession.update("User.UpdateUserPw", vo);
 		
+	}
+
+	@Override
+	public List<PaymentVo> purchaseHistory(PaymentVo vo) {
+		List<PaymentVo> purchaseHistory  =  sqlSession.selectList("User.PurchaseHistory", vo);
+		return purchaseHistory;
 	}
 
 }

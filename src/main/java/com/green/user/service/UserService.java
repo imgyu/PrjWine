@@ -2,6 +2,7 @@ package com.green.user.service;
 
 import java.util.List;
 
+import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
 public interface UserService {
@@ -16,6 +17,8 @@ public interface UserService {
 	void updateUser(UserVo vo);
 
 	void updateUserPw(UserVo vo);
+
+	List<PaymentVo> purchaseHistory(PaymentVo vo);
 
 
 

@@ -15,6 +15,7 @@ import com.green.board.service.BoardService;
 import com.green.board.vo.BoardVo;
 import com.green.store.service.StoreService;
 import com.green.store.vo.StoreVo;
+import com.green.user.cart.vo.PaymentVo;
 
 
 
@@ -55,10 +56,13 @@ public class StoreController {
 
 	//판매기록 이동
 	@RequestMapping("/SalesHistory")
-	public ModelAndView saleshistory() {
+	public ModelAndView saleshistory(PaymentVo vo) {
 		
+		List<PaymentVo> salesHistory  =  storeService.salesHistory(vo);
+		System.out.println(salesHistory);
 		ModelAndView  mv  =  new ModelAndView();
 		mv.setViewName("/store/saleshistory");
+		mv.addObject("salesHistory", salesHistory);
 		return mv;
 	}
 	 
