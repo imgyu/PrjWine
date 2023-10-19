@@ -116,13 +116,13 @@
 	<c:forEach var="storeList" items="${storeList }">
 	<tr>
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${storeList.s_no }"></td>
-		<td>${storeList.s_no }</td>
-		<td>${storeList.s_id}</td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_no }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_id}</a></td>
 		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_name }</a></td>
-		<td>${storeList.s_address } &nbsp; ${storeList.s_detailAddress }</td>
-		<td>${storeList.s_sn }</td>
-		<td>${storeList.s_phone }</td>
-		<td>${storeList.s_cont }</td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_address } &nbsp; ${storeList.s_detailAddress }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_sn }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_phone }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_cont }</a></td>
 	</tr>
 	</c:forEach>
 	</table>

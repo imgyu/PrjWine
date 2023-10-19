@@ -124,6 +124,7 @@
 	</tr>
 	</c:forEach>
 	</table>
+	<%@include file="/WEB-INF/include/paging.jsp" %>
 	<a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
 <script>
 //전체 체크    

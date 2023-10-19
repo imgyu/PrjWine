@@ -113,10 +113,10 @@
 	<c:forEach var="board" items="${board }">
 	<tr>
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${board.b_idx }"></td>
-		<td>${board.b_idx }</td>
+		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="nav-link">${board.b_idx }</a></td>
 		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="nav-link">${board.b_title}</a></td>
-		<td>${board.b_cont }</td>
-		<td>${board.s_name }</td>
+		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="nav-link">${board.b_cont }</a></td>
+		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="nav-link">${board.s_name }</a></td>
 	</tr>
 	</c:forEach>
 	</table>

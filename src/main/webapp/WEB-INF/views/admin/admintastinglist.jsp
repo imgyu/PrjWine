@@ -110,13 +110,13 @@
          <c:forEach var="tastingList" items="${tast}">
             <tr>
                <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${tastingList.t_idx }"></td>
-               <td>${tastingList.t_idx}</td>
-               <td>${tastingList.s_name}</td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link">${tastingList.t_idx}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link">${tastingList.s_name}</a></td>
                <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link">${tastingList.t_title}</a></td>
-               <td>${tastingList.s_address}&nbsp;${tastingList.s_detailaddress}</td>
-               <td>${tastingList.t_cont}</td>
-               <td>${tastingList.t_date}</td>
-               <td>${tastingList.t_cost}</td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link">${tastingList.s_address}&nbsp;${tastingList.s_detailaddress}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link">${tastingList.t_cont}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link">${tastingList.t_date}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link">${tastingList.t_cost}</a></td>
             </tr>
          </c:forEach>
       </div>
