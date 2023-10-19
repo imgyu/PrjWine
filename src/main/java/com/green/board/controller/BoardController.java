@@ -51,5 +51,23 @@ public class BoardController {
 		mv.setViewName("redirect:/StoreInfo?s_no="+ vo.getS_no());
 		return  mv;
 	}
+	@RequestMapping("/BoardContUpdateForm")
+	public ModelAndView boardContUpdateForm(BoardVo vo) {
+		
+		List<BoardVo> boardCont = boardService.getBoardCont(vo);
+		ModelAndView  mv  = new ModelAndView();
+		mv.setViewName("/board/boardcontupdate");
+		mv.addObject("boardCont",boardCont);
+		return  mv;
+	}
+	@RequestMapping("/BoardContUpdate")
+	public ModelAndView boardContUpdate(BoardVo vo) {
+		System.out.println("보드업데이트안 vo"+vo);
+		boardService.updateBoard( vo );
+		
+		ModelAndView  mv  = new ModelAndView();
+		mv.setViewName("redirect:/BoardCont?s_no=" + vo.getS_no() + "&b_idx=" + vo.getB_idx());
+		return  mv;
+	}
 	
 }

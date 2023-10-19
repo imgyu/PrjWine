@@ -35,6 +35,12 @@
        DELETE  FROM  BOARD
          WHERE B_IDX = #{b_idx} 
    </delete>
+   <update id="BoardUpdate">
+   UPDATE BOARD
+   SET   B_TITLE  = #{b_title},
+         B_CONT   = #{b_cont}
+   WHERE B_IDX   = #{b_idx}   
+   </update>
    
 </mapper>
 

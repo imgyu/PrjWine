@@ -144,35 +144,33 @@ table {
    </div>
    <br>
    <br>
-<c:forEach var="board" items="${boardCont}">
     <div class="container1" id="board" style="width: 50%; height: 350px; float: center;">
+    <form action="/BoardContUpdate" method="POST" id="search-form">
+<c:forEach var="board" items="${boardCont}">
+    <input type="hidden" name="s_no" value="${board.s_no}">
+    <input type="hidden" name="b_idx" value="${board.b_idx}">
         <h1 style="text-align: center; margin-top: 60px">${board.b_title}</h1><br>
         <table id="table">
             <div>
                 <label>공지사항 제목</label>
                 <div>
-                    <input type="text" value="${board.b_title}" readonly>
+                    <input type="text" name="b_title" value="${board.b_title}">
                 </div>
             </div>
             <div>
                 <div>
                     <label>글작성자</label>
-                    <input type="text" value="${board.s_name}" readonly>
+                    <input type="text" name="s_name" value="${board.s_name}" readonly>
                 </div>
                 <label>공지사항 내용 설명</label>
-                <textarea readonly>${board.b_cont}</textarea>
+                <textarea name="b_cont">${board.b_cont}</textarea>
             </div>
         </table>
-        <c:choose>
-            <c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq board.s_no}">
-                <form action="/BoardDelete?s_no=${board.s_no}&b_idx=${board.b_idx}" method="POST" id="search-form">  
-                    <button type="submit" class="btn1">삭제</button>
-					<a href="/BoardContUpdateForm?s_no=${board.s_no }&b_idx=${board.b_idx}&b_title=${board.b_title}" class="btn1">수정</a>                    
-                    <a type="submit" class="boxed-btn" onclick="goBack()">뒤로가기</a>
-                </form>
-            </c:when>
-        </c:choose>
-    </div>
+            
+                    <button type="submit" class="btn1">수정</button>
+                    <a type="button" class="boxed-btn" onclick="goBack()">뒤로가기</a>
 </c:forEach>
+                </form>
+    </div>
 </body>
 </html>

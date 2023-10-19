@@ -13,4 +13,10 @@ public interface EventService {
 
 	void insertEvent(HashMap<String, Object> map, HttpServletRequest request);
 
+	List<EventVo> getEventList2(EventVo vo);
+
+	void deleteEvent(EventVo vo);
+
+	List<EventVo> getEventListEnd(EventVo vo);
+
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>       
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,36 +19,45 @@
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 <style>
+    .event-button {
+        width: 70%; /* 중앙 70% 폭 설정 */
+        margin: 0 auto; /* 가운데 정렬 */
+    }
 
-.event-button ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-}
+    .event-button ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
 
-.promotion-link {
-    flex: 1;
-    text-align: center; /* 가운데 정렬 */
-}
+    .promotion-link {
+        flex: 1;
+        text-align: center; /* 가운데 정렬 */
+    }
 
-.promotion-link a {
-    display: block;
-    text-decoration: none;
-    color: #000;
-    font-weight: bold;
-    padding: 10px; /* 내부 여백 설정 */
-    border: 1px solid #ccc; 
-    border-radius: 5px; 
-}
-table {
-    border-collapse: collapse; !important;
-    height: 420px; 
-    width: 580px; 
-  }
-table, th, td {
-    border: none;
-  }
+    .promotion-link a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px; /* 내부 여백 설정 */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .table1 {
+        border-collapse: collapse;
+        margin: 0 auto;  
+        max-width: 580px; 
+        max-height: 420px; 
+        width: 100%; ;
+        height: 100%; 
+    }
+
+    .table1, th, td {
+        border: none;
+    }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script src="assets/js/jquery-1.11.3.min.js"></script>
@@ -79,35 +90,32 @@ table, th, td {
 <br>
 	<div class="event-button">
 		<ul>
-			<li class="promotion-link"><a href="/Event">이달의 프로모션</a></li>
-			<li class="promotion-link"><a href="/EventEnd">종료된 프로모션</a></li>
+			<li class="promotion-link"><a href="/EventList">이달의 프로모션</a></li>
+			<li class="promotion-link"><a href="/EventListEnd">종료된 프로모션</a></li>
 		</ul>
 	</div>
-
 	<form action="/EventInsertForm" method="POST">
-		<table>
-			<tr>
-				<th>이미지</th>
-				<th>제목</th>
-				<th>기간</th>
-			</tr>
-
-
-			<c:forEach var="event" items="${eventList}">
-				<tr>
-					<td><img src="${event.e_fimg}" alt="프로모션 이미지"></td>
-				</tr>
-				<tr>
-					<td><a href="/EventCont">${event.e_title}</a></td>
-				</tr>
-				<tr>
-					<td>${event.e_sdate}~${event.e_edate}</td>
-				</tr>
+  <table>
+	 <div class="container1">
+        <div class="row">
+            <c:forEach var="event" items="${eventList}">
+				<div class="col-lg-6">
+					<a href="/EventCont?e_idx=${event.e_idx}&e_bimg=${e_bimg}">
+						<div class="event-card">
+							<img src="/img/${event.e_fimg}" alt="이미지">
+							<h3>${event.e_title}</h3>
+							<p><fmt:formatDate value="${event.e_sdate}" pattern="yyyy.MM.dd" />~<fmt:formatDate value="${event.e_edate}" pattern="yyyy.MM.dd" /></p>
+						</div>
+					</a>
+				</div>
+				<br>
 			</c:forEach>
+        </div>
+    </div>
 		</table>
-		<input type="submit" value="글 쓰기">
+		<c:if test="${sloginVo.s_no == 99}">
+        <input type="submit" value="글 쓰기">
+    </c:if>
 	</form>
 </body>
 </html>
-
-

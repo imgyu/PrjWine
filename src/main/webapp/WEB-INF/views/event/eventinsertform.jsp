@@ -35,11 +35,14 @@ table {
 <script src="assets/js/main.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
+const config = {
+		dateFormat: 'yy-mm-dd'
+	}
 	$(function() {
-		$("#datepicker1").datepicker();
+		$("#datepicker1").datepicker(config);
 	});
 	$(function() {
-		$("#datepicker2").datepicker();
+		$("#datepicker2").datepicker(config);
 	});
 </script>
 </head>
@@ -63,6 +66,7 @@ table {
 <br>
 <form action="/EventInsert" method="POST" enctype="multipart/form-data">
 <input type="hidden"  name="s_no" value="${sloginVo.s_no}" />
+<input type="hidden"  name="e_idx" value="" />
 		<table>
 			<div>
 				<label>이벤트 제목</label>

@@ -29,4 +29,22 @@ public class EventDaoImpl implements EventDao {
 		sqlSession.insert("Event.EventInsert",  map ); 
 	}
 
+	@Override
+	public List<EventVo> getEventList2(EventVo vo) {
+		List<EventVo> eventList = sqlSession.selectList("Event.EventList2", vo);
+		
+		return eventList;
+	}
+
+	@Override
+	public void deleteEvent(EventVo vo) {
+		sqlSession.delete("Event.EventDelete",vo);
+	}
+
+	@Override
+	public List<EventVo> getEventListEnd(EventVo vo) {
+		List<EventVo> eventList = sqlSession.selectList("Event.EventListEnd", vo);
+		return eventList;
+	}
+
 }
