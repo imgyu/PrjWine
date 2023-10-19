@@ -6,8 +6,16 @@
 <mapper namespace="Event">
   
   <select id="EventList" resultType="com.green.event.vo.EventVo">
-     SELECT * 
-       FROM EVENT
+	SELECT *
+	FROM EVENT
+	WHERE E_EDATE &gt; SYSDATE
+	ORDER BY E_EDATE DESC  
+  </select> 
+  <select id="EventListEnd" resultType="com.green.event.vo.EventVo">
+	SELECT *
+	FROM EVENT
+	WHERE E_EDATE &lt; SYSDATE
+	ORDER BY E_EDATE DESC  
   </select> 
   <insert id="EventInsert" >
   INSERT INTO EVENT 
@@ -29,6 +37,14 @@
   	#{ e_edate } 
   )
   </insert>
+   <select id="EventList2" resultType="com.green.event.vo.EventVo">
+     SELECT * 
+       FROM EVENT
+       WHERE E_IDX = #{e_idx}
+  </select>
+  <delete id="EventDelete">
+  DELETE FROM EVENT WHERE E_IDX = #{e_idx}
+  </delete>
 </mapper>
 
 

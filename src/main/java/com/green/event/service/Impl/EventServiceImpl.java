@@ -27,8 +27,24 @@ public class EventServiceImpl implements EventService{
 	@Override
 	public void insertEvent(HashMap<String, Object> map, HttpServletRequest request) {
 		ImgFile1.save( map, request );
-		System.out.println("서비스임플리먼트 안에 맵: "+map);
 	    eventDao.insertEvent( map );
+	}
+
+	@Override
+	public List<EventVo> getEventList2(EventVo vo) {
+		List<EventVo> eventList = eventDao.getEventList2(vo);
+		return eventList;
+	}
+
+	@Override
+	public void deleteEvent(EventVo vo) {
+		eventDao.deleteEvent(vo);
+	}
+
+	@Override
+	public List<EventVo> getEventListEnd(EventVo vo) {
+		List<EventVo> eventList = eventDao.getEventListEnd(vo);
+		return eventList;
 	}
 
 }

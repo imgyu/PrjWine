@@ -11,4 +11,10 @@ public interface EventDao {
 
 	void insertEvent(HashMap<String, Object> map);
 
+	List<EventVo> getEventList2(EventVo vo);
+
+	void deleteEvent(EventVo vo);
+
+	List<EventVo> getEventListEnd(EventVo vo);
+
 }

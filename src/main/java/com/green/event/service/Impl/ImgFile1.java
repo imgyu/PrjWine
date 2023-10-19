@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.green.event.vo.EventVo;
+import com.green.event.vo.FilesVo;
 import com.green.store.service.impl.CheckFileName;
 
 public class ImgFile1 {
@@ -34,52 +35,50 @@ public class ImgFile1 {
         MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
         
         // 넘어온 파일을 한개씩 반복 처리
-        Iterator<String> fileNames = multipartHttpServletRequest.getFileNames();
-
+        Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
+        
         MultipartFile multipartFile = null;
         
-        List<EventVo>  fileList      = new ArrayList<>();
+        List<FilesVo>  fileList      = new ArrayList<>();
         
         String e_imgname    = null;
         String orgFileName  = null;
         String e_imgext     = null;
-        String e_fimg       = null;
-        String e_bimg       = null;
+        String sFilename    = null;
 
-        while (fileNames.hasNext()) {
-            String paramName = fileNames.next();
-            multipartFile = multipartHttpServletRequest.getFile(paramName);
-
-            if (multipartFile != null && !multipartFile.isEmpty()) {
-            	e_imgname = multipartFile.getOriginalFilename();
-                orgFileName = e_imgname.substring(0, e_imgname.lastIndexOf('.'));
-                e_imgext = e_imgname.substring( e_imgname.lastIndexOf('.') );
-                
-                if (paramName.equals("e_fimg")) {
-                    e_fimg = checkFile.getCheckFileName(filePath, orgFileName, e_imgext);
-                    
-                    File file = new File(filePath + e_fimg);
-                    try {
-                        multipartFile.transferTo(file); // 실제 파일 저장
-                    } catch (IllegalStateException | IOException e) {
-                        e.printStackTrace();
-                    }
-                } else if (paramName.equals("e_bimg")) {
-                    e_bimg = checkFile.getCheckFileName(filePath, orgFileName, e_imgext);
-                    
-                    File file = new File(filePath + e_bimg);
-                    try {
-                        multipartFile.transferTo(file); // 실제 파일 저장
-                    } catch (IllegalStateException | IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                
-                EventVo vo = new EventVo();
+        while( iterator.hasNext() ) {
+			multipartFile = multipartHttpServletRequest.getFile( iterator.next() );
+			
+			if( !multipartFile.isEmpty() ) {
+				e_imgname     =  multipartFile.getOriginalFilename(); // 손.흥민.jpg
+				orgFileName  =  e_imgname.substring(0, e_imgname.lastIndexOf('.'));   // 손.흥민  
+				e_imgext      =  e_imgname.substring( e_imgname.lastIndexOf('.') );   // .jpg  
+				
+				// 손.흥민.jpg 있으면   손.흥민1.jpg 리턴
+				// 중복파일이 존재하면  파일명을 변경하여 리턴
+				sFilename    =  checkFile.getCheckFileName(
+					filePath, orgFileName, e_imgext	);   
+				
+				FilesVo  vo   = new FilesVo(0, 0, e_imgname, e_imgext, sFilename);
 				fileList.add( vo );
-            }
-        }
-        map.put("fileList", fileList);
-        System.out.println("map 파일안 : "+map);
-    }
+				
+				//  파일 저장
+				File     file = new File( filePath + sFilename ); 
+				try {
+					multipartFile.transferTo( file );     // 실제 파일 저장
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}  
+				
+			}  // if end
+			
+		}  //hwile end
+		System.out.println("map1 : " + map);
+		String e_fimg = fileList.get(0).getSfilename(); 
+		String e_bimg = fileList.get(1).getSfilename(); 
+		map.put("e_fimg", e_fimg);
+		map.put("e_bimg", e_bimg);
+		System.out.println("map2 : " + map);
+	} 
+        
 }

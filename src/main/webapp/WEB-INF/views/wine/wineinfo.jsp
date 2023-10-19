@@ -141,7 +141,7 @@ body {
 					${storeList.s_name }</a> <span>가격 : ${storeList.w_price }</span>
 			    <c:choose>
 					<c:when test="${not empty loginVo.u_no}">
-						<a href="/CartList?u_no=${loginVo.u_no}" class="btn btn-primary">장바구니</a>
+						<a href="/StoreWineManage?u_no=${loginVo.u_no}&s_no=${storeList.s_no}" class="btn btn-primary">장바구니</a>
 					</c:when>
 				</c:choose>
 		    </li>

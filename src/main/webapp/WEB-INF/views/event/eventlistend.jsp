@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>       
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="stylesheet" href="/css/main.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/all.min.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
@@ -17,36 +19,45 @@
 <link rel="stylesheet" href="assets/css/main.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 <style>
-.logintitle {
-	text-align: center;
-	margin-top: 40px;
-}
-.container1{
-    background-color: #f2f2f2;
-    width: 400px;
-    /* padding-left: 200px;  padding은 안쪽 여백이다. */
-    
-    padding-top: 100px;
-    padding-bottom: 100px;
-    /* margin-left: 20px;  margin은 바깥 여백이다. */
-    margin: 0 auto;  /* 상하여백(0) 좌우여백(auto) 이 태그를 감싸고있는,,*/
-    margin-top: 70px;
-    
-    
-    border-radius: 10px;   /* 테두리이다. */
-    
-}
-table{
-    border: 1px solid black;
-    border-collapse: collapse;  /* 이중 실선이 하나로 나온다. */
-    width:300px;
-    margin : 0 auto;
-    text-align: center;
-}
-tr, td{
-    border: 1px solid black;
-}
- 
+    .event-button {
+        width: 70%; /* 중앙 70% 폭 설정 */
+        margin: 0 auto; /* 가운데 정렬 */
+    }
+
+    .event-button ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .promotion-link {
+        flex: 1;
+        text-align: center; /* 가운데 정렬 */
+    }
+
+    .promotion-link a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px; /* 내부 여백 설정 */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    table {
+        border-collapse: collapse;
+        margin: 0 auto;  
+        max-width: 580px; 
+        max-height: 420px; 
+        width: 100%; ;
+        height: 100%; 
+    }
+
+    table, th, td {
+        border: none;
+    }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script src="assets/js/jquery-1.11.3.min.js"></script>
@@ -58,8 +69,7 @@ tr, td{
 <script src="assets/js/jquery.magnific-popup.min.js"></script>
 <script src="assets/js/jquery.meanmenu.min.js"></script>
 <script src="assets/js/sticker.js"></script>
-<script src="assets/js/main.js"></script>
-</head>
+<script src="assets/js/main.js"></script></head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
 <div class="breadcrumb-section breadcrumb-bg">
@@ -68,7 +78,7 @@ tr, td{
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>매장 로그인</h1>
+               <h1>이벤트</h1>
                <br>
                <p>프로모션 Information</p>
             </div>
@@ -78,45 +88,31 @@ tr, td{
 </div>
 <br>
 <br>
-<div class="container1">
-<!-- div는 크기를 변경할 수도 있지만, 옆에 아무것도 못온다. 무조건 밑줄에나옴. -->
-  <form action="/StoreLogin" method="POST" >
-    <table >
-        <colgroup>
-            <col width="30%">
-            <col width="70%">
-        </colgroup>
-        <tr>
-            <td>I D</td>
-            <td><input type="text" name="s_id" placeholder="Input your ID"></td>
-        </tr>
-        <tr>
-            <td>P W</td>
-            <td><input type="password" name="s_pw" placeholder="Input your password"></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-             <button type="submit">로그인</button>
-             <button type="button" onclick="location.href='/StoreJoinForm'"> 회원가입</button>
-            </td>
-            
-        </tr>
-    </table>
-   </form>
- 
-</div>
-
-		
-
-
+	<div class="event-button">
+		<ul>
+			<li class="promotion-link"><a href="redirect:/EventList">이달의 프로모션</a></li>
+			<li class="promotion-link"><a href="redirect:/EventListEnd">종료된 프로모션</a></li>
+		</ul>
+	</div>
+	<form action="/EventInsertForm" method="POST">
+  <table>
+	 <div class="container1">
+        <div class="row">
+            <c:forEach var="event" items="${eventList}">
+				<div class="col-lg-6">
+					<a href="/EventCont?e_idx=${event.e_idx}&e_bimg=${e_bimg}">
+						<div class="event-card">
+							<img src="/img/${event.e_fimg}" alt="이미지">
+							<h3>${event.e_title}</h3>
+							<p><fmt:formatDate value="${event.e_sdate}" pattern="yyyy.MM.dd" />~<fmt:formatDate value="${event.e_edate}" pattern="yyyy.MM.dd" /></p>
+						</div>
+					</a>
+				</div>
+				<br>
+			</c:forEach>
+        </div>
+    </div>
+		</table>
+	</form>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

@@ -12,13 +12,21 @@
 	rel="stylesheet"
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous">
+<link rel="stylesheet" href="assets/css/all.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/owl.carousel.css">
+<link rel="stylesheet" href="assets/css/magnific-popup.css">
+<link rel="stylesheet" href="assets/css/animate.css">
+<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/responsive.css">	
 <style>
 .logintitle {
 	text-align: center;
 	margin-top: 40px;
 }
 
-.container {
+.container1 {
 	margin: 0 auto; /* 상하여백 좌우여백 */
 }
 
@@ -64,12 +72,37 @@ display: none;
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 	crossorigin="anonymous"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.countdown.js"></script>
+<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+<script src="assets/js/waypoints.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<script src="assets/js/sticker.js"></script>
+<script src="assets/js/main.js"></script>
 </head>
 <body>
+<%@include file="/WEB-INF/include/nav.jsp"%>
+<div class="breadcrumb-section breadcrumb-bg">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-8 offset-lg-2 text-center">
+            <div class="breadcrumb-text">
+               <br>
+               <h1>고객 회원가입</h1>
+               <br>
+               <p>프로모션 Information</p>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<br>
+<br>
 
-
-<h2 class="logintitle">고객 회원가입</h2>
-<div class="container">
+<div class="container1">
  <form action="/UserJoin" method="POST">
    <table>
       <colgroup>
@@ -158,7 +191,7 @@ display: none;
    </table>
  </form>
 </div>
-  <input type="button" value="뒤로가기" onclick="location.href=''" style="margin: auto">
+  <input type="button" value="뒤로가기" onclick="history.back()" style="margin: auto">
 
 
 

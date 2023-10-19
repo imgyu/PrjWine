@@ -24,7 +24,6 @@ public class EventController {
 	public ModelAndView eventlist(EventVo vo){
 		
 		List<EventVo> eventList = eventService.getEventList(vo); 
-		
 		ModelAndView  mv  = new ModelAndView();
 		mv.setViewName("/event/eventlist");
 		mv.addObject("eventList", eventList);
@@ -44,8 +43,35 @@ public class EventController {
 		eventService.insertEvent(map, request);
 		
 		ModelAndView  mv  = new ModelAndView();
-		mv.setViewName("/event/eventlist");
+		mv.setViewName("redirect:/EventList");
 		mv.addObject("map", map);
+		return  mv;
+	}
+	@RequestMapping("/EventCont")
+	public ModelAndView eventcont(EventVo vo){
+		
+		List<EventVo> eventList = eventService.getEventList2(vo);
+		ModelAndView  mv  = new ModelAndView();
+		mv.setViewName("/event/eventcont");
+		mv.addObject("eventList", eventList);
+		return  mv;
+	}
+	@RequestMapping("/EventContDelete")
+	public ModelAndView eventcontdelete(EventVo vo){
+		
+		eventService.deleteEvent(vo);
+		ModelAndView  mv  = new ModelAndView();
+		mv.setViewName("redirect:/EventList");
+		mv.addObject("vo", vo);
+		return  mv;
+	}
+	@RequestMapping("/EventListEnd")
+		public ModelAndView eventlistend(EventVo vo){
+		
+		List<EventVo> eventList = eventService.getEventListEnd(vo); 
+		ModelAndView  mv  = new ModelAndView();
+		mv.setViewName("/event/eventlist");
+		mv.addObject("eventList", eventList);
 		return  mv;
 	}
 }
