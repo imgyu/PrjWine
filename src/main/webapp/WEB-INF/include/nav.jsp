@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <style>
 </style>
   <div class="top-header-area" id="sticker">
@@ -87,7 +87,8 @@
                                     <li class="nav-item">
                                         <img src="/img/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item" href="/AdminWineInsert?s_no=99"><b>와인등록</b></a></li>
+                                            <li><a class="dropdown-item" href="/AdminWineInsertForm"><b>와인등록</b></a></li>
+                                            <li><a class="dropdown-item" href="/AdminWineList?s_no=99"><b>와인목록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminBoardList?s_no=99"><b>공지사항 목록</b></a></li>
                                             <li><a class="dropdown-item" href="#"><b>프로모션 목록</b></a></li>
                                             <li><a class="dropdown-item" href="#"><b>이벤트 목록</b></a></li>

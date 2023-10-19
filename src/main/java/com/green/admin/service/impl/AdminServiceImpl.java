@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.green.admin.dao.AdminDao;
 import com.green.admin.service.AdminService;
 import com.green.board.vo.BoardVo;
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.service.impl.ImgFile;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
@@ -23,26 +24,6 @@ public class AdminServiceImpl implements AdminService {
 
 	@Autowired
 	private AdminDao adminDao;
-	
-	@Override
-	public List<UserVo> userList(UserVo vo) {
-		List<UserVo> userList  =  adminDao.userList(vo);
-		return userList;
-	}
-
-	@Override
-	public List<StoreVo> storeList(StoreVo vo) {
-		List<StoreVo> storeList  =  adminDao.storeList(vo);
-		return storeList;
-	}
-
-	@Override
-	public List<TastingVo> tastingList(TastingVo vo) {
-		
-		List<TastingVo> tastingList  =  adminDao.tastingList(vo);
-		
-		return tastingList;
-	}
 
 	@Override
 	public void deleteTastingList(TastingVo vo) {
@@ -55,14 +36,6 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteStoreList(StoreVo vo) {
 		adminDao.deleteStoreList(vo);
 		
-	}
-
-	@Override
-	public List<BoardVo> boardList(BoardVo vo) {
-		
-		List<BoardVo> boardList  =  adminDao.boardList(vo);
-		
-		return boardList;
 	}
 
 	@Override
@@ -80,12 +53,86 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void wineInsert(@RequestParam  HashMap<String, Object> map, HttpServletRequest request) {
+	public int countUser() {
 		
-		ImgFile.save( map, request );  
+		return adminDao.countUser();
+	}
+
+	@Override
+	public List<UserVo> userList2(PdsPagingVo pds) {
 		
-		adminDao.wineInsert(map);
+		List<UserVo> userList2  =  adminDao.userList2(pds);
+		
+		return userList2;
+	}
+
+	@Override
+	public List<StoreVo> storeList2(PdsPagingVo pds) {
+		
+		List<StoreVo> storeList2  =  adminDao.storeList2(pds);
+		
+		return storeList2;
+	}
+
+	@Override
+	public int countStore() {
+
+		return adminDao.countStore();
+	}
+
+	@Override
+	public int countTasting() {
+		
+		return adminDao.countTasting();
+	}
+
+	@Override
+	public List<TastingVo> tastingList2(PdsPagingVo pds) {
+		
+		List<TastingVo> tastingList2  =  adminDao.tastingList2(pds);
+		
+		return tastingList2;
+	}
+
+	@Override
+	public int countBoard() {
+		
+		return  adminDao.countBoard();
+	}
+
+	@Override
+	public List<BoardVo> boardList2(PdsPagingVo pds) {
+		
+		 List<BoardVo> boardList2  =  adminDao.boardList2(pds);
+		
+		return boardList2;
+	}
+
+	@Override
+	public void WineInsert(WineVo vo) {
+		
+		adminDao.WineInsert(vo);
 		
 	}
+
+	@Override
+	public List<WineVo> wineList(PdsPagingVo pds) {
+		List<WineVo> wineList  =  adminDao.wineList(pds);
+		return wineList;
+	}
+
+	@Override
+	public int countWine() {
+		
+		return adminDao.countWine();
+	}
+
+	@Override
+	public void deleteWineList(WineVo vo) {
+		
+		adminDao.deleteWineList(vo);
+		
+	}
+
 
 }

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.dao.StoreDao;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
@@ -262,6 +263,19 @@ public class StoreDaoImpl implements StoreDao {
 		List<PaymentVo> salesHistory  =  sqlSession.selectList("Store.SalesHistory", vo);
 		
 		return salesHistory;
+	}
+
+	@Override
+	public int countManage(HavingWineVo vo) {
+		
+		return sqlSession.selectOne("Store.CountManage", vo);
+	}
+
+	@Override
+	public List<HavingWineVo> getWineList2(HashMap<String, Object> map) {
+		
+		List<HavingWineVo> wineList2  =  sqlSession.selectList("Store.WineList2", map);
+		return wineList2;
 	}
       
 

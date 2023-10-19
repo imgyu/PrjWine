@@ -14,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.green.admin.service.AdminService;
 import com.green.board.vo.BoardVo;
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
 import com.green.tasting.vo.TastingVo;
@@ -27,27 +28,57 @@ public class AdminController {
 	
 	
 	@RequestMapping("/AdminUserList")
-	public ModelAndView userList(UserVo vo) {
+	public ModelAndView userList(UserVo vo, PdsPagingVo pds,
+			@RequestParam(value="nowPage", required = false)String nowPage,
+			@RequestParam(value="cntPerPage", required = false)String cntPerPage
+			) {
+		
+		int total  =  adminService.countUser();
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "8";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "8";
+		}
+		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		
 		int u_no  =  vo.getU_no();
-		List<UserVo> userList  =  adminService.userList(vo);  
-		
+		List<UserVo> userList2 =  adminService.userList2(pds);
 		ModelAndView mv  =  new ModelAndView();
+		mv.addObject("pds", pds);
 		mv.setViewName("admin/userlist");
-		mv.addObject("userList", userList);
 		mv.addObject("u_no", u_no);
+		mv.addObject("userList", userList2);
 		return mv;
 	}
 	
 	@RequestMapping("/AdminStoreList")
-	public ModelAndView storeList(StoreVo vo) {
+	public ModelAndView storeList(StoreVo vo, PdsPagingVo pds,
+			@RequestParam(value="nowPage", required = false)String nowPage,
+			@RequestParam(value="cntPerPage", required = false)String cntPerPage
+			) {
+		
+		int total  =  adminService.countStore();
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "7";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "7";
+		}
+		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
 		
 		int s_no  =  vo.getS_no();
-		List<StoreVo> storeList  =  adminService.storeList(vo);
+		List<StoreVo> storeList2  =  adminService.storeList2(pds);
 		
 		ModelAndView mv  =  new ModelAndView();
 		mv.setViewName("admin/storelist");
-		mv.addObject("storeList", storeList);
+		mv.addObject("storeList", storeList2);
+		mv.addObject("pds", pds);
 		mv.addObject("s_no", s_no);
 		return mv;
 	}
@@ -62,17 +93,33 @@ public class AdminController {
 		
 		return 1;
 	}
-	
+	// 7개
 	@RequestMapping("/AdminTastingList")
-	public ModelAndView tastingList(TastingVo vo) {
+	public ModelAndView tastingList(TastingVo vo, PdsPagingVo pds,
+			@RequestParam(value="nowPage", required = false)String nowPage,
+			@RequestParam(value="cntPerPage", required = false)String cntPerPage
+			) {
+		
+		int total  =  adminService.countTasting();
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "7";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "7";
+		}
+		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
 		
 		int t_idx  =  vo.getT_idx();
 		
-		List<TastingVo> tastingList  =  adminService.tastingList(vo);
+		List<TastingVo> tastingList2  =  adminService.tastingList2(pds);
 		
 		ModelAndView mv  =  new ModelAndView();
 		mv.setViewName("admin/admintastinglist");
-		mv.addObject("tast", tastingList);
+		mv.addObject("tast", tastingList2);
+		mv.addObject("pds", pds);
 		mv.addObject("t_idx", t_idx);
 		return mv;
 	}
@@ -89,17 +136,33 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/AdminBoardList")
-	public ModelAndView boardList(BoardVo vo) {
+	public ModelAndView boardList(BoardVo vo,  PdsPagingVo pds,
+			@RequestParam(value="nowPage", required = false)String nowPage,
+			@RequestParam(value="cntPerPage", required = false)String cntPerPage
+			) {
+		
+		int total  =  adminService.countBoard();
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "7";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "7";
+		}
+		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
 		
 		int b_idx  =  vo.getB_idx();
-		List<BoardVo> boardList  =  adminService.boardList(vo);
 		
-		System.out.println(boardList);
+		List<BoardVo> boardList2  =  adminService.boardList2(pds);
+		
 		System.out.println(b_idx);
 		ModelAndView mv  =  new ModelAndView();
 		mv.setViewName("admin/boardlist");
-		mv.addObject("board", boardList);
+		mv.addObject("board", boardList2);
 		mv.addObject("b_idx", b_idx);
+		mv.addObject("pds", pds);
 		return mv;
 	}
 	
@@ -127,15 +190,60 @@ public class AdminController {
 		return 1;
 	}
 	
-	@RequestMapping("/AdminWineInsert")
-	public ModelAndView wineInsert(@RequestParam  HashMap<String, Object> map, HttpServletRequest   request) {
+	@RequestMapping("/AdminWineInsertForm")
+	public String wineInsertForm() {
 		
-		adminService.wineInsert(map, request);
+		return "admin/wineinsert";
+	}
+	
+	
+	@RequestMapping("/AdminWineInsert")
+	public ModelAndView wineInsert(WineVo vo) {
+		
+		adminService.WineInsert(vo);
 		
 		ModelAndView mv  =  new ModelAndView();
-		mv.setViewName("admin/wineinsert");
+		mv.setViewName("redirect:/AdminWineInsertForm?s_no=99");
 		return mv;
 	}
 	
+	@RequestMapping("/AdminWineList")
+	public ModelAndView wineList(WineVo vo,  PdsPagingVo pds,
+			@RequestParam(value="nowPage", required = false)String nowPage,
+			@RequestParam(value="cntPerPage", required = false)String cntPerPage
+			) {
+		
+		int total  =  adminService.countWine();
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "5";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "5";
+		}
+		int w_no  =  vo.getW_no();
+		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		List<WineVo> wineList  =  adminService.wineList(pds); 
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("admin/winelist");
+		mv.addObject("Allwine", wineList);
+		mv.addObject("pds", pds);
+		mv.addObject("w_no", w_no);
+		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping("/AdminWineListDelete")
+    public int  wineListDelete(@RequestParam(value = "valueArr[]") String [] valueArr, WineVo vo) {
+		
+		for(String value : valueArr) {
+			vo.setW_no(Integer.parseInt(value));
+			adminService.deleteWineList(vo);
+		}
+		
+		return 1;
+	} 
 	
 }

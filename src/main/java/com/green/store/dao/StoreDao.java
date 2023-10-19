@@ -3,6 +3,7 @@ package com.green.store.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
@@ -46,6 +47,10 @@ public interface StoreDao {
    void storeUpdate(HashMap<String, Object> map);
 
    List<PaymentVo> salesHistory(PaymentVo vo);
+
+   int countManage(HavingWineVo vo);
+
+   List<HavingWineVo> getWineList2(HashMap<String, Object> map);
 
 
 

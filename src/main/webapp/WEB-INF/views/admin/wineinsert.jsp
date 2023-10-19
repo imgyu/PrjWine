@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+ 
 <!DOCTYPE html>
 <html> 
 <head>
@@ -165,7 +165,7 @@ button#btn1 {
    <br>
 	<main>
 		<!-- 게시물 목록 -->
-		<form action="/AdminWineInsert" method="POST" enctype="multipart/form-data">
+		<form action="/AdminWineInsert" method="POST" >
 		<div style="overflow-y: auto; max-height: 340px; max-width: 60%; margin: 0 auto; text-align: center;">
 			<table id="table">
 				<tr>
@@ -180,12 +180,12 @@ button#btn1 {
 				</tr>
 						<tr>
 							<td><input type="text" name="w_wineery"></td>
-							<td><input type="text" name="w_wine"></td>
+							<td><input type="text" name="w_name"></td>
 							<td><input type="text" name="w_vintage"></td>
 							<td><input type="text" name="w_avg"></td>
 							<td><input type="text" name="w_reviews"></td>
 							<td><input type="text" name="w_location"></td>
-							<td><input type="file" accept="image/*" onchange="readURL(this)" name="w_image" class="upfile">
+							<td><input type="text" name="w_image">
 							    <img id="preview" style="max-width: 300px">
 							</td>
 							<td>					
@@ -202,29 +202,40 @@ button#btn1 {
 						</tr>
 			</table>
 			<div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
-				<button id="btn1" type="submit" class="btn btn-primary">등록</button>
+				<button id="btn1" type="button" class="btn btn-primary" onclick="myconfirm();">등록</button>
 			</div>
 		</div>
 		</form>
 	</main>
 <script>
+var wineery = document.querySelector('input[name="w_wineery"]').value;
+var wine = document.querySelector('input[name="w_wine"]').value;
+var vintage = document.querySelector('input[name="w_vintage"]').value;
+var avg = document.querySelector('input[name="w_avg"]').value;
+var reviews = document.querySelector('input[name="w_reviews"]').value;
+var location = document.querySelector('input[name="w_location"]').value;
+var kind = document.querySelector('select[name="w_kind"]').value;
+
+function myconfirm() {
+if (wineery === '' || wine === '' || vintage === '' || avg === '' || reviews === '' || location === '' || kind === 'kind') {
+    alert("입력 필드를 모두 작성하세요.");
+} else {
+    if (confirm('등록하시겠습니까?')) {
+        alert("등록되었습니다.");
+    } else {
+        alert("등록 실패");
+        event.preventDefault(); // 링크를 직접 실행하지 않음
+    }
+}
+}
+
+
 // 선택한 옵션을 입력 필드에 설정하는 JavaScript 코드
 document.getElementById("kind").addEventListener("change", function () {
     var selectedValue = this.value;
     document.getElementsByName("w_kind")[0].value = selectedValue;
 });
 
-function readURL(input) {
-	if (input.files && input.files[0]) {
-		var reader = new FileReader();
-		reader.onload = function(e) {
-			document.getElementById('preview').src = e.target.result;
-		};
-		reader.readAsDataURL(input.files[0]);
-	} else {
-		document.getElementById('preview').src = "";
-	}
-}
 
 </script>
 </body>

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
-<title>매장목록</title>
+<title>판매기록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
@@ -89,7 +89,7 @@
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>공지사항목록</h1>
+                  <h1>와인목록</h1>
                   <br>
                   <p>Admin</p>
                </div>
@@ -103,45 +103,51 @@
 	<table id="table">
 	<tr class="first-row">
 	    <th><input type="checkbox" id="allCheck"></th>
-		<th>공지사항No</th>
-		<th>공지사항 제목</th>
-		<th>공지사항 내용</th>
-		<th>매장이름</th>
+		<th>Winery</th>
+		<th>Wine</th>
+		<th>Vintage</th>
+		<th>Average</th>
+		<th>Reviews</th>
+		<th>Location</th>
+		<th>Image</th>
+		<th>Kind</th>
 	</tr>
 	
 	
-	<c:forEach var="board" items="${board }">
+	<c:forEach var="all" items="${Allwine }">
 	<tr>
-	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${board.b_idx }"></td>
-		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="nav-link">${board.b_idx }</a></td>
-		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="nav-link">${board.b_title}</a></td>
-		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="nav-link">${board.b_cont }</a></td>
-		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="nav-link">${board.s_name }</a></td>
+	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${all.w_no }"></td>
+		<td>${all.w_wineery }</td>
+		<td>${all.w_name}</td>
+		<td>${all.w_vintage }</td>
+		<td>${all.w_avg }</td>
+		<td>${all.w_reviews }</td>
+		<td>${all.w_location }</td>
+		<td><img class="wine-image" src="${all.w_image}" alt="와인 사진"></td>
+		<td>${all.w_kind }</td>
 	</tr>
 	</c:forEach>
 	</table>
-	
 	<div style="display: block; text-align: center;">
 
-    <c:if test="${pds.startPage != 1 }">
-    <a href="/AdminBoardList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
-    </c:if>
-    <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
-      <c:choose>
-       <c:when test="${p == pds.nowPage }">
-         <b>${p}</b> 
-       </c:when>
-        <c:when test="${p != page.nowPage }">
-          <a href="/AdminBoardList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+    <c:if test="${pds.startPage != 1}">
+    <a href="/AdminWineList?nowPage=${pds.startPage - 1}&cntPerPage=${pds.cntPerPage}">&lt;</a>
+</c:if>
+<c:forEach begin="${pds.startPage}" end="${pds.endPage}" var="p">
+    <c:choose>
+        <c:when test="${p == pds.nowPage}">
+            <b>${p}</b>
         </c:when>
-      </c:choose>
-    </c:forEach>
- <c:if test="${pds.endPage != pds.lastPage }">
-   <a href="/AdminBoardList?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
- </c:if>
+        <c:when test="${p != pds.nowPage}">
+            <a href="/AdminWineList?nowPage=${p}&cntPerPage=${pds.cntPerPage}">${p}</a>
+        </c:when>
+    </c:choose>
+</c:forEach>
+<c:if test="${pds.endPage != pds.lastPage}">
+    <a href="/AdminWineList?nowPage=${pds.endPage + 1}&cntPerPage=${pds.cntPerPage}">&gt;</a>
+</c:if>
 </div>
-
-	 <a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
+	<a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
 <script>
 //전체 체크    
 var chkObj  =  document.getElementsByName("rowCheck");
@@ -155,8 +161,8 @@ $("input[id='allCheck']").click(function() {
 });
 
 function deleteValue() {
-	   var b_idx =  ${b_idx};
-	   var url  =  "/AdminBoardListDelete?b_idx=" + b_idx;
+	   var u_no =  ${w_no};
+	   var url  =  "/AdminWineListDelete?w_no=" + w_no;
 	   var valueArr  =  [];
 	   var list  =  $("input[name='rowCheck']");
 	   for(var i = 0; i < list.length; i++) {

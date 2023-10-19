@@ -9,7 +9,9 @@ import org.springframework.stereotype.Repository;
 
 import com.green.admin.dao.AdminDao;
 import com.green.board.vo.BoardVo;
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.StoreVo;
+import com.green.store.vo.WineVo;
 import com.green.tasting.vo.TastingVo;
 import com.green.user.vo.UserVo;
 
@@ -18,30 +20,6 @@ public class AdminDaoImpl implements AdminDao {
 	
 	@Autowired
 	private SqlSession sqlSession;
-	
-	@Override
-	public List<UserVo> userList(UserVo vo) {
-		
-		List<UserVo> userList  =  sqlSession.selectList("Admin.AdminUserList", vo);  
-		
-		return userList;
-	}
-
-	@Override
-	public List<StoreVo> storeList(StoreVo vo) {
-		
-		List<StoreVo> storeList  =  sqlSession.selectList("Admin.AdminStoreList", vo);
-		
-		return storeList;
-	}
-
-	@Override
-	public List<TastingVo> tastingList(TastingVo vo) {
-
-		List<TastingVo> tastingList  =  sqlSession.selectList("Admin.AdminTastingList", vo);
-		
-		return tastingList;
-	}
 
 	@Override
 	public void deleteTastingList(TastingVo vo) {
@@ -55,14 +33,6 @@ public class AdminDaoImpl implements AdminDao {
 	public void deleteStoreList(StoreVo vo) {
 		sqlSession.delete("Admin.AdminStoreListDelete", vo);
 		
-	}
-
-	@Override
-	public List<BoardVo> boardList(BoardVo vo) {
-		
-		List<BoardVo> boardList  =  sqlSession.selectList("Admin.AdminBoardList", vo);
-		
-		return boardList;
 	}
 
 	@Override
@@ -80,11 +50,88 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public void wineInsert(HashMap<String, Object> map) {
+	public int countUser() {
 		
-		System.out.println(map);
-		sqlSession.insert("Admin.AdminWineInsert", map);
+		return sqlSession.selectOne("Admin.CountUser");
+	}
+
+	@Override
+	public List<UserVo> userList2(PdsPagingVo pds) {
+		
+		List<UserVo> userList2  =  sqlSession.selectList("Admin.AdminUserList2", pds);
+		
+		return userList2;
+	}
+
+	@Override
+	public List<StoreVo> storeList2(PdsPagingVo pds) {
+		
+		List<StoreVo> storeList2  =  sqlSession.selectList("Admin.AdminStoreList2", pds);
+		
+		return storeList2;
+	}
+
+	@Override
+	public int countStore() {
+		
+		return sqlSession.selectOne("Admin.CountStore");
+	}
+
+	@Override
+	public int countTasting() {
+		
+		return sqlSession.selectOne("Admin.CountTasting");
+	}
+
+	@Override
+	public List<TastingVo> tastingList2(PdsPagingVo pds) {
+		
+		 List<TastingVo> tastingList2  =  sqlSession.selectList("Admin.AdminTastingList2", pds);
+		
+		return tastingList2;
+	}
+
+	@Override
+	public int countBoard() {
+		
+		return sqlSession.selectOne("Admin.CountBoard");
+	}
+
+	@Override
+	public List<BoardVo> boardList2(PdsPagingVo pds) {
+		
+		 List<BoardVo> boardList2  =  sqlSession.selectList("Admin.AdminBoardList2", pds);
+		
+		return boardList2;
+	}
+
+	@Override
+	public void WineInsert(WineVo vo) {
+		
+		sqlSession.insert("Admin.AdminWineInsert", vo);
 		
 	}
+
+	@Override
+	public List<WineVo> wineList(PdsPagingVo pds) {
+		
+		 List<WineVo> wineList  =  sqlSession.selectList("Admin.AdminWineList", pds);
+		
+		return wineList;
+	}
+
+	@Override
+	public int countWine() {
+		
+		return sqlSession.selectOne("Admin.CountWine");
+	}
+	
+	@Override
+	public void deleteWineList(WineVo vo) {
+		
+		sqlSession.delete("Admin.AdminDeleteWineList", vo);
+		
+	}
+
 
 }

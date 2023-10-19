@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<!DOCTYPE html> 
 <html>
 <head>
 <title>판매기록</title>
@@ -124,7 +124,26 @@
 	</tr>
 	</c:forEach>
 	</table>
-	<%@include file="/WEB-INF/include/paging.jsp" %>
+	<div style="display: block; text-align: center;">
+
+    <c:if test="${pds.startPage != 1 }">
+    <a href="/AdminUserList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+    </c:if>
+    <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
+      <c:choose>
+       <c:when test="${p == pds.nowPage }">
+         <b>${p}</b> 
+       </c:when>
+        <c:when test="${p != page.nowPage }">
+          <a href="/AdminUserList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+        </c:when>
+      </c:choose>
+    </c:forEach>
+ <c:if test="${pds.endPage != pds.lastPage }">
+   <a href="/AdminUserList?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
+ </c:if>
+
+</div>
 	<a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
 <script>
 //전체 체크    
@@ -140,7 +159,7 @@ $("input[id='allCheck']").click(function() {
 
 function deleteValue() {
 	   var u_no =  ${u_no};
-	   var url  =  "/AdminUserListDelete?u_no" + u_no;
+	   var url  =  "/AdminUserListDelete?u_no=" + u_no;
 	   var valueArr  =  [];
 	   var list  =  $("input[name='rowCheck']");
 	   for(var i = 0; i < list.length; i++) {
