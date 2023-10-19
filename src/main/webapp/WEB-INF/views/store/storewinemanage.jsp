@@ -282,7 +282,7 @@ form#search-form input[type="text"] {
 
         <!-- 매장 홈으로 버튼 -->
         <div class="back-home-button">
-            <a href="/" class="btn btn-primary">매장 홈으로</a>
+            <button class="btn btn-primary" onclick="history.back();">매장 홈으로</button>
         </div>
     </main>
     <script>

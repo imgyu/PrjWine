@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.green.store.vo.RegVo;
 import com.green.user.cart.vo.PaymentVo;
 import com.green.user.service.UserService;
 import com.green.user.vo.UserVo;
@@ -81,9 +82,39 @@ public class UserController {
 		return cnt;
 	}
 	
+	@RequestMapping("/UserFavoritesInsert")
+	public String favoritesInsert(RegVo vo) {
+		
+		userService.favoritesInsert(vo);
+		
+		return "redirect:/StoreList";
+	}
+	
 	@RequestMapping("/UserFavoriteStores")
-	public String favoritestores() {
-		return "/user/favoritestores";
+	public ModelAndView favoritestores(RegVo vo) {
+		
+		int u_no  =  vo.getU_no();
+		int s_no  =  vo.getS_no();
+		List<RegVo> favoritesStoreList  =  userService.favoritesStoreList(vo);  
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("/user/favoritestores");
+		mv.addObject("favorites", favoritesStoreList);
+		mv.addObject("u_no", u_no);
+		mv.addObject("s_no", s_no);
+		return mv;
+	}
+	@ResponseBody
+	@RequestMapping("/UserFavoriteDelete")
+	public int favoriteDelete(@RequestParam(value = "valueArr[]") String[] valueArr, RegVo vo) {
+		
+		for(String value : valueArr) {
+		vo.setS_no(Integer.parseInt(value));
+		userService.favoriteDelete(vo);
+		System.out.println(vo);
+		System.out.println(value);
+		}
+		
+		return 1;
 	}
 
 	@RequestMapping("/UserPurchaseHistory")
@@ -152,7 +183,6 @@ public class UserController {
 		mv.setViewName("redirect:/UserInfo?u_no=" + vo.getU_no());
 		return mv;
 	}
-	
-	
+		
 	
 }

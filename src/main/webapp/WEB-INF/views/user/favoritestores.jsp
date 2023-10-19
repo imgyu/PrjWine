@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -63,9 +64,9 @@
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>관심매장</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>User Information</p>
                </div>
             </div>
          </div>
@@ -75,17 +76,79 @@
    <br>
 	<table id="table">
 	<tr class="first-row">
-		<td>매장이름</td>
-		<td>매장주소</td>
+	    <th><input type="checkbox" id="allCheck"></th>
+		<th>매장이름</th>
+		<th>매장주소</th>
 	</tr>
+	<c:forEach var="favorite" items="${favorites}">
 	<tr>
-		<td></td>
-		<td></td>
+	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${favorite.s_no }">
+	         <input type="hidden" value="${favorite.u_no }"></td>
+		<td><a href="StoreInfo?s_no=${favorite.s_no }" class="nav-link">${favorite.s_name}</a></td>
+		<td>${favorite.s_address }&nbsp;${favorite.s_detailAddress }</td>
 	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-	</tr>
+   </c:forEach>
 	</table>
+	<a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
 </body>
+<script>
+function confirmDelete() {
+    if (confirm('삭제하시겠습니까?')) {
+        alert("삭제되었습니다.");
+    } else {
+    	alert("삭제 실패");
+    	event.preventDefault(); // 링크를 직접 실행하지 않음
+    }
+}
+
+var chkObj  =  document.getElementsByName("rowCheck");
+var rowCnt  =  chkObj.length;
+
+$("input[id='allCheck']").click(function() {
+   var chk_listArr  =  $("input[name='rowCheck']");
+   for (var i=0; i<chk_listArr.length; i++) {
+      chk_listArr[i].checked  =  this.checked;
+   }
+});
+
+function deleteValue() {
+	   var u_no =  ${u_no};
+	   var s_no =  ${s_no};
+	   var url  =  "/UserFavoriteDelete?u_no=" + u_no + "&s_no=" + s_no;
+	   var valueArr  =  [];
+	   var list  =  $("input[name='rowCheck']");
+	   for(var i = 0; i < list.length; i++) {
+	      if(list[i].checked) {
+	         valueArr.push(list[i].value);
+	      }
+	   }
+	   if(valueArr.length == 0) {
+	      alert("선택하신 게 없습니다.");
+	   }
+	   else {
+	      var chk  =  confirm("정말 삭제하시겠습니까?");
+	      $.ajax({
+	         url  :  url,
+	         type : 'post',
+	         traditional : true,
+	         data : {
+	            'valueArr[]'  :  valueArr
+	         },
+	         success: function(jdata) {
+	            if(jdata == 1) {
+	               alert("삭제성공");
+	               location.reload();
+	               
+	            }
+	            else {
+	               alert("삭제 실패");
+	            }
+	         }
+	      });
+	   }
+	}  // deleteValue
+      
+
+
+</script>
 </html>
