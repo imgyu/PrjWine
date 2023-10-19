@@ -272,12 +272,17 @@ public class StoreDaoImpl implements StoreDao {
 	}
 
 	@Override
-	public List<HavingWineVo> getWineList2(HashMap<String, Object> map) {
+	public List<HavingWineVo> wineList2(PdsPagingVo pds, int s_no) {
 		
+		HashMap<String, Object> map  =  new HashMap<>();
+		map.put("s_no", s_no);
+		map.put("pds", pds);
+		map.put("start", pds.getStart());
+		map.put("end", pds.getEnd());
 		List<HavingWineVo> wineList2  =  sqlSession.selectList("Store.WineList2", map);
+		
 		return wineList2;
 	}
-      
 
    } 
    

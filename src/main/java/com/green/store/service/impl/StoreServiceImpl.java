@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.dao.StoreDao;
 import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
@@ -139,6 +140,18 @@ public class StoreServiceImpl implements StoreService {
 		List<PaymentVo> salesHistory  =  storeDao.salesHistory(vo);
 		
 		return salesHistory;
+	}
+	@Override
+	public int countManage(HavingWineVo vo) {
+		
+		return storeDao.countManage(vo);
+	}
+	@Override
+	public List<HavingWineVo> wineList2(PdsPagingVo pds, int s_no) {
+		
+		List<HavingWineVo> wineList2  =  storeDao.wineList2(pds, s_no);
+		
+		return wineList2;
 	}
 }
    

@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.RegVo;
 import com.green.tasting.dao.TastingDao;
 import com.green.tasting.service.TastingService;
@@ -76,6 +77,20 @@ public class TastingServiceImpl implements TastingService {
 		List<TastingVo> requestList  =  tastingDao.requestList(vo);
 		
 		return requestList;
+	}
+
+	@Override
+	public int countTasting() {
+		
+		return tastingDao.countTasting();
+	}
+
+	@Override
+	public List<TastingVo> getTastList2(PdsPagingVo pds) {
+		
+		List<TastingVo> tastList2  =  tastingDao.getTastList2(pds);
+		
+		return tastList2;
 	}
 
 

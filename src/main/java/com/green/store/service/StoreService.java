@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
@@ -55,6 +56,10 @@ public interface StoreService {
    void storeUpdate(HashMap<String, Object> map, HttpServletRequest request);
 
    List<PaymentVo> salesHistory(PaymentVo vo);
+
+   int countManage(HavingWineVo vo);
+
+   List<HavingWineVo> wineList2(PdsPagingVo pds, int s_no);
 
 
 
