@@ -3,6 +3,7 @@ package com.green.tasting.dao;
 import java.util.HashMap;
 import java.util.List;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.RegVo;
 import com.green.tasting.vo.TastingVo;
 
@@ -27,6 +28,10 @@ public interface TastingDao {
 	int requestCount(int t_idx);
 
 	List<TastingVo> requestList(TastingVo vo);
+
+	int countTasting();
+
+	List<TastingVo> getTastList2(PdsPagingVo pds);
 
 
 

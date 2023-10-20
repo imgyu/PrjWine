@@ -264,10 +264,11 @@
    
    </select>
    
-   <select id="StoreList" resultType="com.green.store.vo.StoreVo">
+    <select id="StoreList" resultType="com.green.store.vo.StoreVo">
     SELECT S_NAME , S_CONT, S_PHONE, 
            S_ADDRESS, S_DETAILADDRESS, S_NO, S_SIMGNAME
     FROM   STORE
+    WHERE S_NO &lt;&gt; 99
    </select>
    
  
@@ -463,6 +464,46 @@ WHERE SH.S_NO = #{s_no}
 
 
 </select>
+ 
+ <select id="CountManage" resultType="int">
+ 
+ SELECT COUNT(*)
+FROM WINELIST WL
+INNER JOIN WINE W ON WL.W_NO = W.W_NO
+INNER JOIN STORE S ON S.S_NO = WL.S_NO
+WHERE S.S_NO = #{s_no}
+ 
+ </select>
+ 
+ <select id="WineList2" resultType="com.green.store.vo.HavingWineVo" parameterType="map">
+ 
+ SELECT *
+ FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+        SELECT
+            W.W_NAME,
+            W.W_LOCATION,
+            W.W_KIND,
+            W.W_VINTAGE,
+            WL.W_AMOUNT,
+            WL.W_PRICE,
+            S.S_NAME,
+            WL.WL_IDX,
+            S.S_NO,
+            W.W_NO
+        FROM WINELIST WL
+        INNER JOIN WINE W ON WL.W_NO = W.W_NO
+        INNER JOIN STORE S ON S.S_NO = WL.S_NO
+        WHERE S.S_NO = #{s_no}
+        ORDER BY S.S_NO ASC
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end}
+ 
+ 
+ </select>
+ 
  
    
 </mapper>

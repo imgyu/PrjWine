@@ -13,6 +13,22 @@
      ORDER BY T.T_IDX DESC
    	</select>
    	
+	 <select id         = "TastList2"
+             resultType = "com.green.tasting.vo.TastingVo"  >
+     SELECT *
+     FROM (
+     SELECT ROWNUM RN, A.*
+     FROM( 	 
+	 SELECT T.*, S.S_NAME, S.S_ADDRESS, S_DETAILADDRESS
+     FROM  TESTING T
+     LEFT JOIN STORE S     ON T.S_NO = S.S_NO
+     LEFT JOIN WINE  W     ON W.W_NO = T.W_NO
+     ORDER BY T.T_IDX DESC
+     )A
+     )
+     WHERE RN BETWEEN #{start} AND #{end}
+   	</select>
+   	
    	<insert id="InsertTaste">
    	INSERT INTO TESTING (T_IDX, T_TITLE, T_CONT, W_NO, T_DATE, T_COST, S_NO)
 	SELECT (NVL(MAX(T.T_IDX), 0) + 1), #{t_title}, #{t_cont}, #{w_no}, #{t_date}, #{t_cost}, #{s_no}
@@ -73,6 +89,12 @@ SELECT DISTINCT U.U_NAME, U.U_PHONE
 FROM TESTINGJOIN TJ
 JOIN TUSER U ON TJ.U_NO = U.U_NO
 WHERE TJ.T_IDX = #{t_idx}
+
+</select>
+
+<select id="CountTasting" resultType="int">
+
+SELECT COUNT(*) FROM TESTING
 
 </select>
 

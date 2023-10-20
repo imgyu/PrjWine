@@ -50,7 +50,8 @@ public interface StoreDao {
 
    int countManage(HavingWineVo vo);
 
-   List<HavingWineVo> getWineList2(HashMap<String, Object> map);
+   List<HavingWineVo> wineList2(PdsPagingVo pds, int s_no);
+
 
 
 

@@ -128,6 +128,26 @@
         </c:when>
    </c:choose>
    </div>
+   <div style="display: block; text-align: center;">
+
+    <c:if test="${pds.startPage != 1 }">
+    <a href="/TastingList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+    </c:if>
+    <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
+      <c:choose>
+       <c:when test="${p == pds.nowPage }">
+         <b>${p}</b> 
+       </c:when>
+        <c:when test="${p != page.nowPage }">
+          <a href="/TastingList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+        </c:when>
+      </c:choose>
+    </c:forEach>
+ <c:if test="${pds.endPage != pds.lastPage }">
+   <a href="/TastingList?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
+ </c:if>
+
+</div>
    </main>
 </body>
 </html>
