@@ -45,7 +45,7 @@
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/CsAllUser"><b>고객센터</b></a>
             </li>
-             </c:when>
+             </c:when> 
             </c:choose>
         </ul>
     </li>
