@@ -118,6 +118,33 @@ form#search-form input[type="text"] {
         text-align: center;
         margin-top: 20px;
     }
+      .event-button {
+        width: 70%; /* 중앙 70% 폭 설정 */
+        margin: 0 auto; /* 가운데 정렬 */
+    }
+
+    .event-button ul {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .promotion-link {
+        flex: 1;
+        text-align: center; /* 가운데 정렬 */
+    }
+
+    .promotion-link a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px; /* 내부 여백 설정 */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
 </style>
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -167,7 +194,7 @@ form#search-form input[type="text"] {
    <br>
 
     <main>
-        <!-- 버튼 검색 -->
+     <%--    <!-- 버튼 검색 -->
         <div class="container">
             <form action="/UcsCategorySearch" method="GET" id="search-form">
                 <input type="hidden" name="u_no" value="${u_no}" />
@@ -188,7 +215,13 @@ form#search-form input[type="text"] {
               
             </form>
         </div>
-        <br> <br>
+        <br> <br> --%>
+        <div class="event-button">
+		<ul>
+			<li class="promotion-link"><a href="redirect:/CsAllUser">유저 고객센터</a></li>
+			<li class="promotion-link"><a href="redirect:/CsAllStore">매장 고객센터</a></li>
+		</ul>
+	</div>
 
         <table id="table">
             <tr>
@@ -201,8 +234,8 @@ form#search-form input[type="text"] {
             </tr>
 
             <!-- 검색하지 않았을떄  -->
-            <c:if test="${not empty usecslist}">
-                <c:forEach var="ucs" items="${usecslist }">
+            <c:if test="${not empty csalluserList}">
+                <c:forEach var="ucs" items="${csalluserList }">
                     <tr>
                         <td>${ucs.ucs_idx }</td>
                         <td>${ucs.u_id}</td>
@@ -215,18 +248,18 @@ form#search-form input[type="text"] {
             </c:if>
 
 
-                  <c:if test="${not empty selectusecslist}">
-                <c:forEach var="selucs" items="${selectusecslist }">
+             <%--      <c:if test="${not empty csalluserList}">
+                <c:forEach var="ucs" items="${csalluserList }">
                     <tr>
-                      <td>${selucs.ucs_idx }</td>
-                        <td>${selucs.u_id}</td>
-                        <td>${selucs.ucs_category}</td>
-                        <td>${selucs.ucs_title}</td>
-                        <td>${selucs.uw_date}</td>
-                        <td>${selucs.res_date}</td>
+                      <td>${ucs.ucs_idx }</td>
+                        <td>${ucs.u_id}</td>
+                        <td>${ucs.ucs_category}</td>
+                        <td>${ucs.ucs_title}</td>
+                        <td>${ucs.uw_date}</td>
+                        <td>${ucs.res_date}</td>
                     </tr>
                 </c:forEach>
-            </c:if>
+            </c:if> --%>
 
         </table>
 

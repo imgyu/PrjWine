@@ -4,11 +4,46 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="Cs">
- 
+
+<insert id="UserCsInsert">
+
+INSERT INTO USERCS (UCS_IDX , U_NO, UCS_TITLE, UCS_CONT, UW_DATE, UCS_IMG, UCS_CATEGORY)
+VALUES(
+(SELECT NVL(MAX(UCS_IDX), 0)+1 FROM USERCS),
+#{u_no},
+#{ucs_title},
+#{ucs_cont},
+SYSDATE,
+#{ucs_img},
+#{ucs_category}
+)
+</insert>
+
+<insert id=" StoreCsInsert">
+
+INSERT INTO STORECS (SCS_IDX , S_NO, SCS_TITLE, SCS_CONT, SW_DATE, SCS_IMG, SCS_CATEGORY)
+VALUES(
+(SELECT NVL(MAX(SCS_IDX), 0)+1 FROM STORECS),
+#{s_no},
+#{scs_title},
+#{scs_cont},
+SYSDATE,
+#{scs_img},
+#{scs_category}
+)
+</insert>
+
    <select id="UsercsList" resultType="com.green.cs.vo.CsVo">
       SELECT *
-	   FROM  USERCS CS
-	   WHERE CS.U_NO = #{u_no}
+	   FROM  USERCS
+	   WHERE U_NO = #{u_no}
+	   ORDER BY UCS_IDX DESC
+  </select> 
+  
+  
+  <select id="CsAllUserList" resultType="com.green.cs.vo.CsVo">
+      SELECT CS.UCS_IDX , U.U_ID, CS.UCS_CATEGORY, CS.UCS_TITLE, CS.UW_DATE, CS.RES_DATE
+	   FROM  USERCS CS LEFT JOIN TUSER U ON CS.U_NO = U.U_NO
 	   ORDER BY CS.UCS_IDX DESC
   </select> 
 

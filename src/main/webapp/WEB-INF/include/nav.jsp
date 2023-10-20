@@ -2,7 +2,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <style>
-</style>
+</style> 
   <div class="top-header-area" id="sticker">
         <div class="container">
             <div class="row">
@@ -21,14 +21,32 @@
                 <a style="color: #f08080;" class="nav-link" href="/WineList"><b>전체와인</b></a>
             </li>
             <li>
-                <a style="color: #87cefa;" class="nav-link" href="/EventList"><b>프로모션</b></a>
+                <a style="color: #87cefa;" class="nav-link" href="/EventList"><b>이벤트 및 프로모션</b></a>
             </li>
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
             </li>
+            <c:choose>
+            <c:when test="${loginVo ne null and sloginVo eq null}">
             <li> 
-                <a style="color: #e6e6fa;" class="nav-link" href="/UserCs?u_no=${loginVo.u_no }"><b>고객센터</b></a>
+                <a style="color: #e6e6fa;" class="nav-link" href="/UserCs?u_no=${loginVo.u_no }"><b>고객 문의</b></a>
             </li>
+             </c:when>
+             </c:choose>
+             <c:choose>
+             <c:when test="${loginVo eq null and sloginVo ne null and sloginVo.s_no ne 99}">
+            <li> 
+                <a style="color: #e6e6fa;" class="nav-link" href="/StoreCs?s_no=${sloginVo.s_no }"><b>고객센터</b></a>
+            </li>
+             </c:when>
+            </c:choose>
+            <c:choose>
+            <c:when test="${loginVo.u_no eq null and sloginVo.s_no eq 99}">
+            <li> 
+                <a style="color: #e6e6fa;" class="nav-link" href="/CsAllUser"><b>고객센터</b></a>
+            </li>
+             </c:when>
+            </c:choose>
         </ul>
     </li>
                         <c:choose>
@@ -54,7 +72,6 @@
                                             <li><a class="dropdown-item" href="/UserInfo?u_no=${loginVo.u_no}"><b>내정보 확인/수정</b></a></li>
                                             <li><a class="dropdown-item" href="/CartList?u_no=${loginVo.u_no }"><b>장바구니</b></a></li>
                                             <li><a class="dropdown-item" href="/UserPurchaseHistory?u_no=${loginVo.u_no }"><b>구매 기록</b></a></li>
-                                            <li><a class="dropdown-item" href="/UserCs?u_no=${loginVo.u_no }"><b>구매 기록</b></a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="/UserLogOut"><b>로그 아웃</b></a></li>
                                         </ul>
@@ -99,6 +116,7 @@
                                             <li><a class="dropdown-item" href="/AdminTastingList?s_no=99"><b>시음회 목록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminUserList?s_no=99"><b>유저목록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminStoreList?s_no=99"><b>매장목록</b></a></li>
+                                            <li><a class="dropdown-item" href="/CsAllUser"><b>고객센터관리</b></a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="/StoreLogOut"><b>로그 아웃</b></a></li>
                                         </ul>
