@@ -1,6 +1,7 @@
 package com.green.cs.dao;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.green.cs.vo.CsVo;
@@ -22,5 +23,8 @@ public interface CsDao {
 	List<CsVo> getstorecsList(CsVo vo);
 
 	List<CsVo> getcsAllStoreList(CsVo vo);
+
+	void adminCsResponse(CsVo vo);
+
 
 }

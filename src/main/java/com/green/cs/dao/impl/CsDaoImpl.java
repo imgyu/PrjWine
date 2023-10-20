@@ -1,5 +1,6 @@
 package com.green.cs.dao.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -78,4 +79,14 @@ List<CsVo> admincsviewList = sqlSession.selectList("Cs.AdminCsviewList",vo);
 		
 		return csAllStoreList;
 	}
+
+
+	@Override
+	public void adminCsResponse(CsVo vo) {
+		
+		sqlSession.update("Cs.AdminCsResponse", vo);
+		
+	}
+
+
 }

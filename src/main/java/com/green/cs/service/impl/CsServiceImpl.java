@@ -1,5 +1,6 @@
 package com.green.cs.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,5 +63,11 @@ public class CsServiceImpl implements CsService {
 	public List<CsVo> getcsAllStoreList(CsVo vo) {
 		List<CsVo>  csAllStoreList  =  csDao.getcsAllStoreList(vo);
 		return csAllStoreList;
+	}
+	@Override
+	public void adminCsResponse(CsVo vo) {
+		
+		csDao.adminCsResponse(vo);
+		
 	}
 }

@@ -81,4 +81,13 @@ SYSDATE,
 	   ORDER BY CS.SCS_IDX DESC
   </select>   
 
+<update id="AdminCsResponse">
+
+UPDATE USERCS
+SET    RES_DATE  =  SYSDATE,
+       RESPONSE  =  #{response}
+WHERE  UCS_IDX   =  #{ucs_idx}
+
+</update>
+
 </mapper>

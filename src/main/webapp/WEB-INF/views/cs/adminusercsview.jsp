@@ -148,12 +148,15 @@ input[type="submit"] {
                             </div>
                              <label>답변날짜</label>
                  <input type="text" value="${ucs.res_date}" readonly="readonly">
+
+           
            </c:when>
              <c:when test="${empty ucs.response}">
-             <form action="">
+            <form action="/AdminCsResponse?ucs_idx=${ucs.ucs_idx }" method="POST">
              <div>
              <label>문의사항 내용 </label>
               <textarea name="response" ></textarea></div>
+              <button type="submit" class="btn btn-primary" onclick="confirmSubmit();">등록</button>
               </form>
              </c:when>
            </c:choose>
