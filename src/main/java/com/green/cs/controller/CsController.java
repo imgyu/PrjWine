@@ -89,7 +89,7 @@ public class CsController {
 		List<CsVo> csalluserList  =  csService.getcsalluserList(vo);  
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cs/csuser");
+		mv.setViewName("cs/adminusercs");
 		mv.addObject("csalluserList", csalluserList );
 		
 		return mv;
