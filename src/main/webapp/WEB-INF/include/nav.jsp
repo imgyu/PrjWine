@@ -21,10 +21,13 @@
                 <a style="color: #f08080;" class="nav-link" href="/WineList"><b>전체와인</b></a>
             </li>
             <li>
-                <a style="color: #87cefa;" class="nav-link" href="/EventList"><b>이벤트 및 프로모션</b></a>
+                <a style="color: #87cefa;" class="nav-link" href="/EventList"><b>프로모션</b></a>
             </li>
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
+            </li>
+            <li> 
+                <a style="color: #e6e6fa;" class="nav-link" href="/UserCs?u_no=${loginVo.u_no }"><b>고객센터</b></a>
             </li>
         </ul>
     </li>
@@ -51,6 +54,7 @@
                                             <li><a class="dropdown-item" href="/UserInfo?u_no=${loginVo.u_no}"><b>내정보 확인/수정</b></a></li>
                                             <li><a class="dropdown-item" href="/CartList?u_no=${loginVo.u_no }"><b>장바구니</b></a></li>
                                             <li><a class="dropdown-item" href="/UserPurchaseHistory?u_no=${loginVo.u_no }"><b>구매 기록</b></a></li>
+                                            <li><a class="dropdown-item" href="/UserCs?u_no=${loginVo.u_no }"><b>구매 기록</b></a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="/UserLogOut"><b>로그 아웃</b></a></li>
                                         </ul>
