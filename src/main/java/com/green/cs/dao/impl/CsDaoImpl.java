@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.green.board.vo.BoardVo;
 import com.green.cs.dao.CsDao;
 import com.green.cs.vo.CsVo;
 
@@ -61,5 +60,22 @@ List<CsVo> admincsviewList = sqlSession.selectList("Cs.AdminCsviewList",vo);
 		
 		System.out.println(admincsviewList); 
 		return admincsviewList;
+	}
+	
+	@Override
+	public List<CsVo> getstorecsList(CsVo vo) {
+		
+		List<CsVo> storecsList  =  sqlSession.selectList("Cs.StorecsList", vo);
+		
+		return storecsList;
+	}
+
+
+	@Override
+	public List<CsVo> getcsAllStoreList(CsVo vo) {
+		
+		List<CsVo> csAllStoreList  =  sqlSession.selectList("Cs.CsAllStoreList", vo);
+		
+		return csAllStoreList;
 	}
 }

@@ -130,11 +130,11 @@ input[type="submit"] {
 			<input type="hidden" name="scs_idx" value="${scs_idx }">
 			 <table id="table">
 			    <div>
-			     <select id="category" name="ucs_category">
+			     <select id="category" name="scs_category">
 			     <option value="*">카테고리</option>
 			     <option value="계정관리">계정관리</option>
 			     <option value="결제/환불">결제/환불</option>
-			     <option value="입점문의">입점문의</option>
+			     <option value="고객관련문의">고객관련문의</option>
 			     <option value="건의사항">건의사항</option>
 			     <option value="고객센터">고객센터</option>			     
 			     </select>

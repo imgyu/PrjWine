@@ -43,9 +43,24 @@ public class CsServiceImpl implements CsService {
 		List<CsVo> csviewList = csDao.getcsviewList( vo );
 		return csviewList;
 	}
+	
 	@Override
 	public List<CsVo> getadmincsviewList(CsVo vo) {
 		List<CsVo> admincsviewList = csDao.getadmincsviewList( vo );
 		return admincsviewList;
+	}
+	
+		@Override	
+	public List<CsVo> getstorecsList(CsVo vo) {
+		
+		List<CsVo> storecsList  =  csDao.getstorecsList(vo);
+		
+		return storecsList;
+	}
+		
+	@Override
+	public List<CsVo> getcsAllStoreList(CsVo vo) {
+		List<CsVo>  csAllStoreList  =  csDao.getcsAllStoreList(vo);
+		return csAllStoreList;
 	}
 }

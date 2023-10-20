@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>고객 센터(유저)</title>
+<title>(유저)고객 센터</title>
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -118,33 +118,6 @@ form#search-form input[type="text"] {
         text-align: center;
         margin-top: 20px;
     }
-      .event-button {
-        width: 70%; /* 중앙 70% 폭 설정 */
-        margin: 0 auto; /* 가운데 정렬 */
-    }
-
-    .event-button ul {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .promotion-link {
-        flex: 1;
-        text-align: center; /* 가운데 정렬 */
-    }
-
-    .promotion-link a {
-        display: block;
-        text-decoration: none;
-        color: #000;
-        font-weight: bold;
-        padding: 10px; /* 내부 여백 설정 */
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    
 </style>
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
@@ -170,7 +143,10 @@ form#search-form input[type="text"] {
    <!-- main js -->
    <script src="assets/js/main.js"></script>
    <script>
- 
+   function selChange() {
+      var sel = document.getElementById('cntPerPage').value;
+      location.href="boardList?nowPage=${paging.nowPage}&cntPerPage="+sel;
+   }
 </script>
 </head>
 
@@ -182,9 +158,9 @@ form#search-form input[type="text"] {
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>고객 센터(유저)</h1>
+                  <h1>(매장)고객 센터</h1>
                   <br>
-                  <p>Customer Service</p>
+                  <p>Store Service</p>
                </div>
             </div>
          </div>
@@ -194,83 +170,33 @@ form#search-form input[type="text"] {
    <br>
 
     <main>
-     <%--    <!-- 버튼 검색 -->
-        <div class="container">
-            <form action="/UcsCategorySearch" method="GET" id="search-form">
-                <input type="hidden" name="u_no" value="${u_no}" />
-                <div class="row">
-                    <div class="col-md-3">
-                        <select class="form-select" name="ucs_category">
-                            <option value="ucs_category">카테고리</option>
-                            <option value="계정관리">계정관리</option>
-                            <option value="결제/환불">결제/환불</option>
-                            <option value="입점문의">입점문의</option>
-                            <option value="건의사항">건의사항</option>
-                            <option value="고객센터/기타">고객센터/기타</option>
-                        </select>
-                    </div>
-                                <button type="submit" class="btn btn-primary">검색</button>
-           
-                        </div>
-              
-            </form>
-        </div>
-        <br> <br> --%>
-        <div class="event-button">
-		<ul>
-			<li class="promotion-link"><a href="/CsAllUser">유저 고객센터</a></li>
-			<li class="promotion-link"><a href="CsAllStore">매장 고객센터</a></li>
-		</ul>
-	</div>
 
         <table id="table">
             <tr>
                 <th>문의번호</th>
-                <th>문의자ID</th>
                 <th>카테고리</th>
                 <th>문의제목</th>
                 <th>문의날짜</th>
                 <th>답변날짜</th>
             </tr>
 
-            <!-- 검색하지 않았을떄  -->
-            <c:if test="${not empty csalluserList}">
-                <c:forEach var="ucs" items="${csalluserList }">
-                    <tr>
-                       <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_idx}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.u_id}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_category}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_title}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.uw_date}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.res_date}</a></td>
-                    </tr>
-                </c:forEach>
-            </c:if>
+                <c:forEach var="scs" items="${storecsList}">
 
- 
- 
-             <%--      <c:if test="${not empty csalluserList}">
-                <c:forEach var="ucs" items="${csalluserList }">
                     <tr>
-                      <td>${ucs.ucs_idx }</td>
-                        <td>${ucs.u_id}</td>
-                        <td>${ucs.ucs_category}</td>
-                        <td>${ucs.ucs_title}</td>
-                        <td>${ucs.uw_date}</td>
-                        <td>${ucs.res_date}</td>
+                        <td>${scs.scs_idx}</td>
+                        <td>${scs.scs_category}</td>
+                        <td>${scs.scs_title}</td>
+                        <td>${scs.sw_date}</td>
+                        <td>${scs.res_date}</td>
                     </tr>
                 </c:forEach>
-            </c:if> --%>
 
         </table>
+          <a href="/StoreCsInquiryForm?s_no=${sloginVo.s_no }" class="btn btn-primary">글쓰기</a>
 
-        <!-- 매장 홈으로 버튼 -->
-        <div class="back-home-button">홈버튼</div>
-        
- 
+   
+
     </main>
-    <script>
         
-    </script>
 </body>
 </html>

@@ -19,7 +19,7 @@ SYSDATE,
 )
 </insert>
 
-<insert id=" StoreCsInsert">
+<insert id="StoreCsInsert">
 
 INSERT INTO STORECS (SCS_IDX , S_NO, SCS_TITLE, SCS_CONT, SW_DATE, SCS_IMG, SCS_CATEGORY)
 VALUES(
@@ -67,5 +67,18 @@ SYSDATE,
 	   WHERE CS.UCS_IDX = ${ucs_idx}
 	  
   </select> 
+
+   <select id="StorecsList" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  STORECS
+	   WHERE S_NO = #{s_no}
+	   ORDER BY SCS_IDX DESC
+  </select> 
+  
+ <select id="CsAllStoreList" resultType="com.green.cs.vo.CsVo">
+      SELECT CS.SCS_IDX , S.S_ID, CS.SCS_CATEGORY, CS.SCS_TITLE, CS.SW_DATE, CS.RES_DATE
+	   FROM  STORECS CS LEFT JOIN STORE S ON CS.S_NO = S.S_NO
+	   ORDER BY CS.SCS_IDX DESC
+  </select>   
 
 </mapper>

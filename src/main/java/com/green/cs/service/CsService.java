@@ -6,6 +6,7 @@ import com.green.cs.vo.CsVo;
 
 public interface CsService {
 
+	
 	void userCsInsert(CsVo vo);
 	
 	List<CsVo> getusercsList(CsVo vo);
@@ -17,5 +18,9 @@ public interface CsService {
 	List<CsVo> getcsviewList(CsVo vo);
 
 	List<CsVo> getadmincsviewList(CsVo vo);
+	
+	List<CsVo> getstorecsList(CsVo vo);
+
+	List<CsVo> getcsAllStoreList(CsVo vo);
 
 }

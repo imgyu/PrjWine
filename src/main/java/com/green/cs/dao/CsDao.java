@@ -19,4 +19,8 @@ public interface CsDao {
 
 	List<CsVo> getadmincsviewList(CsVo vo);
 
+	List<CsVo> getstorecsList(CsVo vo);
+
+	List<CsVo> getcsAllStoreList(CsVo vo);
+
 }
