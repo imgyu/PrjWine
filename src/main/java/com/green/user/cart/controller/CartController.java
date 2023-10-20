@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.green.store.vo.HavingWineVo;
 import com.green.user.cart.service.CartService;
 import com.green.user.cart.vo.CartVo;
 import com.green.user.cart.vo.PaymentVo;
@@ -62,6 +63,18 @@ public class CartController {
          mv.addObject("u_no", u_no);
          return mv;
       }
+   
+   @RequestMapping("/AddCartForm")
+   public ModelAndView addCartForm(HavingWineVo vo) {
+	   
+	   List<HavingWineVo> selCartList  =  cartService.selCartList(vo);
+	   
+	   ModelAndView mv  =  new ModelAndView();
+	   mv.setViewName("user/selcartlist");
+	   mv.addObject("wineList", selCartList);
+	   return mv;
+   }
+   
    
    // /AddtoCart?u_no=${wine.u_no}&wl_idx=${wine.wl_idx}
    @RequestMapping("/AddCart")

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.store.vo.HavingWineVo;
 import com.green.user.cart.dao.CartDao;
 import com.green.user.cart.service.CartService;
 import com.green.user.cart.vo.CartVo;
@@ -54,6 +55,14 @@ public String insertPay(PaymentVo pay) {
 	cartDao.insertPay(pay);
 	
 	return view;
+}
+
+@Override
+public List<HavingWineVo> selCartList(HavingWineVo vo) {
+	
+	List<HavingWineVo> selCartList  =  cartDao.selCartList(vo);
+	
+	return selCartList;
 }
 
 

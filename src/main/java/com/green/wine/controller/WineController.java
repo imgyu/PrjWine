@@ -31,7 +31,7 @@ public class WineController {
 			
 			// 보유한 주변 매장 찾기
 			List<HavingWineVo> storeList  =  wineService.getStoreList(store);
-			
+			int w_no  =  vo.getW_no();
 			// 와인별 정보 보기 
 			List<WineVo> wineInfo  =  wineService.getWineInfo(vo);
 			
@@ -39,7 +39,7 @@ public class WineController {
 			mv.setViewName("/wine/wineinfo");
 			mv.addObject("wineInfo", wineInfo);
 			mv.addObject("storeList", storeList);
-			
+			mv.addObject("w_no", w_no);
 			
 			return mv;
 		}

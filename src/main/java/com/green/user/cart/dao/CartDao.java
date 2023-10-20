@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.green.store.vo.HavingWineVo;
 import com.green.user.cart.vo.CartVo;
 import com.green.user.cart.vo.PaymentVo;
 
@@ -18,5 +19,7 @@ public interface CartDao {
    void addCart(CartVo vo);
 
    void insertPay(PaymentVo pay);
+
+   List<HavingWineVo> selCartList(HavingWineVo vo);
 
 }
