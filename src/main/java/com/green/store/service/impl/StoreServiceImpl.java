@@ -15,6 +15,7 @@ import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
+import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
@@ -152,6 +153,10 @@ public class StoreServiceImpl implements StoreService {
 		List<HavingWineVo> wineList2  =  storeDao.wineList2(pds, s_no);
 		
 		return wineList2;
+	}
+	@Override
+	public void updateShistory(PaymentVo vo) {
+		storeDao.updateShistory(vo);
 	}
 }
    

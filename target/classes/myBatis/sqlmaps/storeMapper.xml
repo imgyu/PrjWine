@@ -504,8 +504,27 @@ WHERE RN BETWEEN #{start} AND #{end}
  
  </select>
  
+<update id="UpdateShistory">
+    UPDATE SALESHISTORY
+    SET P_STATE =
+    <choose>
+        <when test="p_state == 0">
+            '결제완료'
+        </when>
+        <when test="p_state == 1">
+            '배송 준비완료'
+        </when>
+        <when test="p_state == 2">
+            '배송중'
+        </when>
+        <when test="p_state == 3">
+            '배송완료'
+        </when>
+    </choose>
+    WHERE S_NO = #{s_no}
+    AND PAYNUM = #{paynum}
+</update>
  
-   
 </mapper>
 
 
