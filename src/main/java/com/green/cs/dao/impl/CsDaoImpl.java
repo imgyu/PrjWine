@@ -18,6 +18,12 @@ public class CsDaoImpl implements CsDao {
 	private SqlSession sqlSession;
 
 	@Override
+	public void userCsInsert(CsVo vo) {
+		
+		sqlSession.insert("Cs.UserCsInsert", vo);
+	}
+	
+	
 	public List<CsVo> getusercsList(CsVo vo) {
 		List<CsVo> getusercsList = sqlSession.selectList("Cs.UsercsList",vo);
 		System.out.println(getusercsList); 
@@ -30,5 +36,12 @@ public class CsDaoImpl implements CsDao {
 		
 		System.out.println(csalluserList); 
 		return csalluserList;
+	}
+
+	@Override
+	public void storeCsInsert(CsVo vo) {
+		
+		sqlSession.insert("Cs.StoreCsInsert", vo);
+		
 	}
 }

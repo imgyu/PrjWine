@@ -17,6 +17,10 @@ public class CsServiceImpl implements CsService {
 	private CsDao csDao;
 
 	@Override
+	public void userCsInsert(CsVo vo) {
+		
+		csDao.userCsInsert(vo);
+	}
 	public List<CsVo> getusercsList(CsVo vo) {
 		List<CsVo> getusercsList = csDao.getusercsList( vo );
 		return getusercsList;
@@ -26,5 +30,12 @@ public class CsServiceImpl implements CsService {
 	public List<CsVo> getcsalluserList(CsVo vo) {
 		List<CsVo> csalluserList = csDao.getcsalluserList( vo );
 		return csalluserList;
+	}
+	
+	@Override
+	public void storeCsInsert(CsVo vo) {
+		
+		csDao.storeCsInsert(vo);
+		
 	}
 }
