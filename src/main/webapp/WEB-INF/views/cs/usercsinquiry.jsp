@@ -117,7 +117,7 @@ input[type="submit"] {
                <br>
                   <h1>고객 문의</h1>
                   <br>
-                  <p>User Information</p>
+                  <p>Customer Service</p>
                </div>
             </div>
          </div>
@@ -126,8 +126,8 @@ input[type="submit"] {
    <br>
    <br>
 	<div class="container1" id="board" style="width: 50%; height: 350px; float: center;">
-			<form action="/UserCsInquiry" method="POST">
-			<input type="hidden" name="uw_date">
+			<form action="/UserCsInquiry?u_no=${u_no }" method="POST">
+			<input type="hidden" name="ucs_idx" value="${ucs_idx }">
 			 <table id="table">
 			    <div>
 			     <select id="category" name="ucs_category">
@@ -141,7 +141,7 @@ input[type="submit"] {
                 </div>
                 <div>
             	 <label>문의사항 제목</label>
-                 <input type="text" name="ucc_title" placeholder="공지사항 제목을 입력하세요">
+                 <input type="text" name="ucs_title" placeholder="공지사항 제목을 입력하세요">
                 <div>
                  <label>문의사항 내용 </label>
                  <textarea name="ucs_cont" placeholder="공지사항 내용을 입력하세요"></textarea>
@@ -150,7 +150,7 @@ input[type="submit"] {
                 <input type="file" name="ucs_img"  accept="image/*" onchange="readURL(this)"> <br>
                 <img id="preview" style="max-width: 300px;">	
 			  </table>
-			  <input type="button" value="등록" onclick="confirmSubmit();"class="btn btn-primary" >
+			  <input type="submit" value="등록" onclick="confirmSubmit();" class="btn btn-primary" >
 			</form>
     </div>
 <script>
