@@ -44,4 +44,22 @@ public class CsDaoImpl implements CsDao {
 		sqlSession.insert("Cs.StoreCsInsert", vo);
 		
 	}
+
+
+	@Override
+	public List<CsVo> getcsviewList(CsVo vo) {
+List<CsVo> csviewList = sqlSession.selectList("Cs.CsviewList",vo);	
+		
+		System.out.println(csviewList); 
+		return csviewList;
+	}
+
+
+	@Override
+	public List<CsVo> getadmincsviewList(CsVo vo) {
+List<CsVo> admincsviewList = sqlSession.selectList("Cs.AdminCsviewList",vo);	
+		
+		System.out.println(admincsviewList); 
+		return admincsviewList;
+	}
 }

@@ -237,17 +237,18 @@ form#search-form input[type="text"] {
             <c:if test="${not empty csalluserList}">
                 <c:forEach var="ucs" items="${csalluserList }">
                     <tr>
-                        <td>${ucs.ucs_idx }</td>
-                        <td>${ucs.u_id}</td>
-                        <td>${ucs.ucs_category}</td>
-                        <td>${ucs.ucs_title}</td>
-                        <td>${ucs.uw_date}</td>
-                        <td>${ucs.res_date}</td>
+                       <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_idx}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.u_id}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_category}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_title}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.uw_date}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.res_date}</a></td>
                     </tr>
                 </c:forEach>
             </c:if>
 
-
+ 
+ 
              <%--      <c:if test="${not empty csalluserList}">
                 <c:forEach var="ucs" items="${csalluserList }">
                     <tr>

@@ -14,4 +14,8 @@ public interface CsService {
 
 	List<CsVo> getcsalluserList(CsVo vo);
 
+	List<CsVo> getcsviewList(CsVo vo);
+
+	List<CsVo> getadmincsviewList(CsVo vo);
+
 }

@@ -42,9 +42,30 @@ SYSDATE,
   
   
   <select id="CsAllUserList" resultType="com.green.cs.vo.CsVo">
-      SELECT CS.UCS_IDX , U.U_ID, CS.UCS_CATEGORY, CS.UCS_TITLE, CS.UW_DATE, CS.RES_DATE
+      SELECT CS.UCS_IDX, U.U_ID, CS.UCS_CATEGORY, CS.UCS_TITLE, CS.UW_DATE, CS.RES_DATE
 	   FROM  USERCS CS LEFT JOIN TUSER U ON CS.U_NO = U.U_NO
 	   ORDER BY CS.UCS_IDX DESC
+  </select> 
+  
+  
+  
+  
+  
+  <select id="CsviewList" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  USERCS CS LEFT JOIN TUSER U ON CS.U_NO = U.U_NO
+	   WHERE CS.UCS_IDX = ${ucs_idx}
+  </select> 
+  
+  
+  
+  
+  
+  <select id="AdminCsviewList" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  USERCS CS LEFT JOIN TUSER U ON CS.U_NO = U.U_NO
+	   WHERE CS.UCS_IDX = ${ucs_idx}
+	  
   </select> 
 
 </mapper>

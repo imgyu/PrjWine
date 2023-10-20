@@ -97,4 +97,34 @@ public class CsController {
 		
 	}
 	
+	@RequestMapping("/CsView")
+	public ModelAndView csview(CsVo vo)
+	{
+		List<CsVo> csviewList  =  csService.getcsviewList(vo);  
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cs/usercsview");
+		mv.addObject("csviewList", csviewList );
+		
+		System.out.println(mv);
+		return mv;
+		
+	}
+	
+	@RequestMapping("/AdminCsView")
+	public ModelAndView admincsview(CsVo vo)
+	{
+		List<CsVo> admincsviewList  =  csService.getadmincsviewList(vo);  
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cs/adminusercsview");
+		mv.addObject("admincsviewList", admincsviewList );
+		
+		System.out.println(mv);
+		return mv;
+		
+	}
+	
+	
+	
 }

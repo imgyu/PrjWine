@@ -32,15 +32,11 @@
                 <a style="color: #e6e6fa;" class="nav-link" href="/UserCs?u_no=${loginVo.u_no }"><b>고객 문의</b></a>
             </li>
              </c:when>
-             </c:choose>
-             <c:choose>
              <c:when test="${loginVo eq null and sloginVo ne null and sloginVo.s_no ne 99}">
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/StoreCs?s_no=${sloginVo.s_no }"><b>고객센터</b></a>
             </li>
              </c:when>
-            </c:choose>
-            <c:choose>
             <c:when test="${loginVo.u_no eq null and sloginVo.s_no eq 99}">
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/CsAllUser"><b>고객센터</b></a>
