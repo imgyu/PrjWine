@@ -23,4 +23,12 @@ public class CsDaoImpl implements CsDao {
 		System.out.println(getusercsList); 
 	    return getusercsList;
 	}
+
+	@Override
+	public List<CsVo> getcsalluserList(CsVo vo) {
+		List<CsVo> csalluserList = sqlSession.selectList("Cs.CsAllUserList",vo);	
+		
+		System.out.println(csalluserList); 
+		return csalluserList;
+	}
 }

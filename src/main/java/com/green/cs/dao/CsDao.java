@@ -8,4 +8,6 @@ public interface CsDao {
 
 	List<CsVo> getusercsList(CsVo vo);
 
+	List<CsVo> getcsalluserList(CsVo vo);
+
 }

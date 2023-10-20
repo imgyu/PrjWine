@@ -26,9 +26,27 @@
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
             </li>
+            <c:choose>
+            <c:when test="${loginVo ne null and sloginVo eq null}">
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/UserCs?u_no=${loginVo.u_no }"><b>고객센터</b></a>
             </li>
+             </c:when>
+             </c:choose>
+             <c:choose>
+             <c:when test="${loginVo eq null and sloginVo ne null and sloginVo.s_no ne 99}">
+            <li> 
+                <a style="color: #e6e6fa;" class="nav-link" href="/UserCs?s_no=${sloginVo.s_no }"><b>고객센터</b></a>
+            </li>
+             </c:when>
+            </c:choose>
+            <c:choose>
+            <c:when test="${loginVo.u_no eq null and sloginVo.s_no eq 99}">
+            <li> 
+                <a style="color: #e6e6fa;" class="nav-link" href="/CsAllUser"><b>고객센터</b></a>
+            </li>
+             </c:when>
+            </c:choose>
         </ul>
     </li>
                         <c:choose>
@@ -99,6 +117,7 @@
                                             <li><a class="dropdown-item" href="/AdminTastingList?s_no=99"><b>시음회 목록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminUserList?s_no=99"><b>유저목록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminStoreList?s_no=99"><b>매장목록</b></a></li>
+                                            <li><a class="dropdown-item" href="/CsAllUser"><b>고객센터관리</b></a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="/StoreLogOut"><b>로그 아웃</b></a></li>
                                         </ul>

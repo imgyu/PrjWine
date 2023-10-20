@@ -9,7 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.green.cs.service.CsService;
 import com.green.cs.vo.CsVo;
-import com.green.user.cart.vo.CartVo;
 
 @Controller
 public class CsController {
@@ -32,6 +31,19 @@ public class CsController {
          
          System.out.println(mv);
          return mv;
+		
+	}
+	@RequestMapping("/CsAllUser")
+	public ModelAndView csalluser(CsVo vo)
+	{
+		List<CsVo> csalluserList  =  csService.getcsalluserList(vo);  
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cs/csuser");
+		mv.addObject("csalluserList", csalluserList );
+		
+		System.out.println(mv);
+		return mv;
 		
 	}
 	

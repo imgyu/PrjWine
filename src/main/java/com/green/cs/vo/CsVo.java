@@ -14,6 +14,14 @@ public class CsVo {
 	private Date   res_date;
 	private String response;
 	private String ucs_category;
+	private String u_id;
+	
+	public String getU_id() {
+		return u_id;
+	}
+	public void setU_id(String u_id) {
+		this.u_id = u_id;
+	}
 	public int getUcs_idx() {
 		return ucs_idx;
 	}
@@ -78,7 +86,7 @@ public class CsVo {
 	public String toString() {
 		return "CsVo [ucs_idx=" + ucs_idx + ", u_no=" + u_no + ", s_no=" + s_no + ", ucs_title=" + ucs_title
 				+ ", ucs_cont=" + ucs_cont + ", uw_date=" + uw_date + ", ucs_img=" + ucs_img + ", res_date=" + res_date
-				+ ", response=" + response + ", ucs_category=" + ucs_category + "]";
+				+ ", response=" + response + ", u_id=" + u_id +", ucs_category=" + ucs_category + "]";
 	}
 	
 	public CsVo() {}
@@ -94,6 +102,10 @@ public class CsVo {
 		this.res_date = res_date;
 		this.response = response;
 		this.ucs_category = ucs_category;
+	}
+	
+	public CsVo(String u_id) {
+		this.u_id = u_id;
 	}
 	
 	
