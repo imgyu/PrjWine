@@ -47,14 +47,24 @@ SYSDATE,
 	   ORDER BY CS.UCS_IDX DESC
   </select> 
   
-  
-  
-  
-  
   <select id="CsviewList" resultType="com.green.cs.vo.CsVo">
       SELECT *
 	   FROM  USERCS CS LEFT JOIN TUSER U ON CS.U_NO = U.U_NO
 	   WHERE CS.UCS_IDX = ${ucs_idx}
+  </select> 
+  
+  
+  <select id="CsStoreView" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  STORECS CS LEFT JOIN STORE S ON CS.S_NO = S.S_NO
+	   WHERE CS.SCS_IDX = ${scs_idx}
+  </select> 
+  
+  
+  <select id="AdminCsStoreView" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  STORECS CS LEFT JOIN STORE S ON CS.S_NO = S.S_NO
+	   WHERE CS.SCS_IDX = ${scs_idx}
   </select> 
   
   

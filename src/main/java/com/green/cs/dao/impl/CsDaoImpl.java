@@ -78,4 +78,22 @@ List<CsVo> admincsviewList = sqlSession.selectList("Cs.AdminCsviewList",vo);
 		
 		return csAllStoreList;
 	}
+
+
+	@Override
+	public List<CsVo> getcsstoreviewList(CsVo vo) {
+
+		List<CsVo> csstoreviewList  =  sqlSession.selectList("Cs.CsStoreView", vo);
+		
+		return csstoreviewList;
+	}
+
+
+	@Override
+	public List<CsVo> getadmincsstoreviewList(CsVo vo) {
+
+		List<CsVo> admincsstoreviewList  =  sqlSession.selectList("Cs.AdminCsStoreView", vo);
+		
+		return admincsstoreviewList;
+	}
 }

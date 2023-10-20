@@ -124,6 +124,34 @@ public class CsController {
 		
 	}
 	
+	@RequestMapping("/CsStoreView")
+	public ModelAndView csstoreview(CsVo vo)
+	{
+		List<CsVo> csstoreviewList  =  csService.getcsstoreviewList(vo);  
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cs/storecsview");
+		mv.addObject("csstoreviewList", csstoreviewList );
+		
+		System.out.println(mv);
+		return mv;
+		
+	}
+	
+	@RequestMapping("/AdminStoreView")
+	public ModelAndView admincsstoreview(CsVo vo)
+	{
+		List<CsVo> admincsstoreviewList  =  csService.getadmincsstoreviewList(vo);  
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cs/adminstorecsview");
+		mv.addObject("admincsstoreviewList", admincsstoreviewList );
+		
+		System.out.println(mv);
+		return mv;
+		
+	}
+	
 	
 	@RequestMapping("/CsAllStore")
 	public ModelAndView csAllStore(CsVo vo) {

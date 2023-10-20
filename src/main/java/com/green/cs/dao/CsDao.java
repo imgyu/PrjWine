@@ -23,4 +23,8 @@ public interface CsDao {
 
 	List<CsVo> getcsAllStoreList(CsVo vo);
 
+	List<CsVo> getcsstoreviewList(CsVo vo);
+
+	List<CsVo> getadmincsstoreviewList(CsVo vo);
+
 }

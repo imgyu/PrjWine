@@ -237,12 +237,12 @@ form#search-form input[type="text"] {
             <c:if test="${not empty allStore}">
                 <c:forEach var="scs" items="${allStore }">
                     <tr>
-                        <td>${scs.scs_idx }</td>
-                        <td>${scs.s_id}</td>
-                        <td>${scs.scs_category}</td>
-                        <td>${scs.scs_title}</td>
-                        <td>${scs.sw_date}</td>
-                        <td>${scs.res_date}</td>
+                         <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.ucs_idx }</a></td>
+                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.s_id}</a></td>
+                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.scs_category}</a></td>
+                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.scs_title}</a></td>
+                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.sw_date}</a></td>
+                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.res_date}</a></td>
                     </tr>
                 </c:forEach>
             </c:if>
