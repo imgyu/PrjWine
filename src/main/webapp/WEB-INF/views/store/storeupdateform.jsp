@@ -149,10 +149,14 @@
                     <textarea name="s_cont">${check.s_cont }</textarea>
                 </div>
                 <div class="mb-3">
-                    <label for="storeIMG" class="form-label">매장 사진</label>
-                   <input type="file" accept="image/*" name="upfile" class="upfile" id="fileInput">
-<img id="imagePreview" src="/img/${check.s_simgname}" alt="Image Preview" />
-
+                    <label for="storeIMG" class="form-label">현재 매장사진:</label>
+                   <img src="/pageimg/${check.s_simgname}" alt="매장사진" style="max-width: 300px;" />
+                   </div>
+                   <div>
+					<label for="storeIMG" class="form-label">변경할 매장사진:</label>
+                  <img id="preview" style="max-width: 300px;">
+                  <br>
+                  <input type="file" accept="image/*" onchange="readURL(this)" name="upfile" class="upfile" />
                 </div>
         
                 
@@ -214,37 +218,19 @@ function s_execDaumPostcode() {
     }).open();
 }
 
-// 파일 입력 필드 엘리먼트 가져오기
 
-   var fileInput = document.getElementById('fileInput');
 
- //이미지 미리보기 엘리먼트 가져오기
- var imagePreview = document.getElementById('imagePreview');
-
- //파일 입력 필드의 change 이벤트를 감지하고 함수 실행
- fileInput.addEventListener('change', function() {
-   readURL(this);
- });
-
- //파일 입력 필드의 기본값을 설정하는 함수
- function setDefaultValue() {
-   // 여기서 필요한 기본값을 설정합니다
-   fileInput.value = "/img/${check.s_simgname}";
-
- }
-
- function readURL(input) {
- 	  if (input.files && input.files[0]) {
- 	    var reader = new FileReader();
- 	    
- 	    reader.onload = function(e) {
- 	      imagePreview.src = e.target.result;
- 	    };
- 	    
- 	    reader.readAsDataURL(input.files[0]);
- 	  }
- 	}
-
+	function readURL(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				document.getElementById('preview').src = e.target.result;
+			};
+			reader.readAsDataURL(input.files[0]);
+		} else {
+			document.getElementById('preview').src = "";
+		}
+	}
 
 </script>
 </body>

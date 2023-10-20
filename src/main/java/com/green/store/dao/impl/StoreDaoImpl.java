@@ -158,8 +158,14 @@ public class StoreDaoImpl implements StoreDao {
 
    @Override
    public void setJoin(HashMap<String, Object> map) {
-      System.out.println(map);
-      sqlSession.insert("Store.StoreInsert",  map );      
+	   String s_simgname = (String) map.get("s_simgname");
+	   
+	   if (s_simgname == null || s_simgname.isEmpty()) {
+		   sqlSession.insert("Store.StoreInsert2",  map );      
+		} else {
+		   sqlSession.insert("Store.StoreInsert",  map );      
+		}
+	System.out.println(map);
    }
 
    // 매장검색

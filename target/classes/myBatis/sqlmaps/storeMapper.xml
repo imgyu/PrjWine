@@ -163,7 +163,7 @@
    </select>
    
    <!--  매장가입 -->
-   <insert id="StoreInsert">
+   <insert id="StoreInsert" parameterType="map">
 
       INSERT INTO STORE (
          S_NO,
@@ -195,6 +195,36 @@
       #{ s_imgname   },     
        #{ s_imgext    },     
       #{ s_simgname  }   
+      )
+   </insert>
+   
+   
+   <insert id="StoreInsert2" parameterType="map">
+
+      INSERT INTO STORE (
+         S_NO,
+         S_ID,
+         S_PW,
+         S_NAME,
+         S_SN,
+          S_POSTCODE,
+           S_ADDRESS,
+         S_PHONE,
+         S_CONT,
+            S_DETAILADDRESS,
+           S_EXTRAADDRESS
+      ) VALUES (
+      ( SELECT NVL(MAX(S_NO),0)+1 FROM STORE),
+      #{ s_id },
+      #{ s_pw },
+      #{ s_name },
+      #{ s_sn },
+      #{ s_postcode },
+      #{ s_address },
+      #{ s_phone },
+      #{ s_cont },
+      #{ s_detailAddress },
+      #{ s_extraAddress }
       )
    </insert>
    

@@ -2,7 +2,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
 <style>
-</style> 
+</style>
   <div class="top-header-area" id="sticker">
         <div class="container">
             <div class="row">
@@ -10,7 +10,7 @@
                     <div class="main-menu-wrap">
 <ul class="nav" style="justify-content: space-between; align-items: center; display: flex;">
     <li class="nav-item">
-        <div class="site-logo"><a href="/"><img src="/img/winestory.png" alt="로고"></a></div>
+        <div class="site-logo"><a href="/"><img src="/pageimg/winestory.png" alt="로고"></a></div>
     </li>
     <li class="nav-item">
         <ul class="navbar" style="justify-content: space-between; list-style-type: none; display: flex;">
@@ -37,6 +37,7 @@
                 <a style="color: #e6e6fa;" class="nav-link" href="/StoreCs?s_no=${sloginVo.s_no }"><b>고객센터</b></a>
             </li>
              </c:when>
+             
             <c:when test="${loginVo.u_no eq null and sloginVo.s_no eq 99}">
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/CsAllUser"><b>고객센터</b></a>
@@ -61,7 +62,7 @@
                                         <b> ${loginVo.u_name } 님 환영합니다 </b>
                                     </li>
                                     <li class="nav-item">
-                                        <img src="/img/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="/pageimg/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item" href="/UserTasting?u_no=${loginVo.u_no}"><b>신청한 시음회</b></a></li>
                                             <li><a class="dropdown-item" href="/UserFavoriteStores?u_no=${loginVo.u_no }"><b>관심 매장</b></a></li>
@@ -82,7 +83,7 @@
                                         <b> ${sloginVo.s_name } 님 환영합니다 </b>
                                     </li>
                                     <li class="nav-item">
-                                        <img src="/img/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="/pageimg/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item" href="/StoreCheck?s_no=${sloginVo.s_no }"><b>매장정보</b></a></li>
                                             <li><a class="dropdown-item" href="/StoreWineRegisterForm?s_no=${ sloginVo.s_no }"><b>매장와인 등록</b></a></li>
@@ -102,7 +103,7 @@
                                         <b> ${sloginVo.s_name } 님 환영합니다 </b>
                                     </li>
                                     <li class="nav-item">
-                                        <img src="/img/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="/pageimg/logon.png" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <ul class="dropdown-menu">
                                             <li><a class="dropdown-item" href="/AdminWineInsertForm"><b>와인등록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminWineList?s_no=99"><b>와인목록</b></a></li>

@@ -47,7 +47,7 @@
             margin: 10px;
         }
         img {
-            max-width: 100%;
+            max-width: 30%;
             height: auto;
         }
          .btn1 {
@@ -145,7 +145,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="storeIMG" class="form-label">매장 사진</label>
-                    <img src="/img/${check.s_simgname }" alt="매장사진" />
+                    <img src="/pageimg/${check.s_simgname}" alt="매장사진" />
                 </div>
             </c:forEach>
             <div class="text-center">
