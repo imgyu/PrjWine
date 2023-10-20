@@ -5,5 +5,21 @@
 
 <mapper namespace="Cs">
 
+<insert id="UserCsInsert">
+
+INSERT INTO USERCS (UCS_IDX , U_NO, UCC_TITLE, UCS_CONT, UW_DATE, UCS_IMG, UCS_CATEGORY)
+VALUES(
+(SELECT NVL(MAX(UCS_IDX), 0)_1 FROM USERCS),
+#{u_no},
+#{ucc_title},
+#{ucs_cont},
+SYSDATE,
+#{ucs_img},
+#{ucs_category}
+)
+
+
+
+</insert>
 
 </mapper>
