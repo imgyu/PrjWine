@@ -26,6 +26,13 @@
             <li> 
                 <a style="color: #e6e6fa;" class="nav-link" href="/TastingList"><b>시음회 정보</b></a>
             </li>
+            <c:choose>
+            <c:when test="${loginVo ne null and sloginVo eq null }">
+            <li> 
+                <a style="color: #e6e6fa;" class="nav-link" href="/UserCs?u_no=${loginVo.u_no }"><b>고객 문의</b></a>
+            </li>
+            </c:when>
+            </c:choose>
         </ul>
     </li>
                         <c:choose>
