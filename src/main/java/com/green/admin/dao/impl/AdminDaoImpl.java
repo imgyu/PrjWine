@@ -1,7 +1,9 @@
 package com.green.admin.dao.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.green.admin.dao.AdminDao;
 import com.green.board.vo.BoardVo;
 import com.green.pds.vo.PdsPagingVo;
+import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
 import com.green.tasting.vo.TastingVo;
@@ -131,6 +134,20 @@ public class AdminDaoImpl implements AdminDao {
 		
 		sqlSession.delete("Admin.AdminDeleteWineList", vo);
 		
+	}
+
+	@Override
+	public List<WineVo> searchList(PdsPagingVo pds, String searchKeyword, String searchOption, String kindOption) {
+		List<WineVo> searchList = new ArrayList<>();
+		Map<String, Object> map = new HashMap<>();
+		map.put("searchKeyword", searchKeyword);
+  	    map.put("searchOption", searchOption);
+  	    map.put("kindOption", kindOption);
+  	    map.put("pds", pds);
+  	    map.put("start", pds.getStart());
+  	    map.put("end", pds.getEnd());
+  	    searchList = sqlSession.selectList("Admin.AdWineList", map);
+		return searchList;
 	}
 
 

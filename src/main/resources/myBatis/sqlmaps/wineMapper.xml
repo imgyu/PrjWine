@@ -98,7 +98,7 @@ WHERE WL.W_NO  =  #{w_no}
     WHERE W_KIND = 'DESSERT' AND WL.WL_IDX >= 1 
     OR W_KIND = 'PORT' AND WL.WL_IDX >= 1
    </select>
-	
+   
 </mapper>
 
 

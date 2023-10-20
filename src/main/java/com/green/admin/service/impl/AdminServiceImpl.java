@@ -14,6 +14,7 @@ import com.green.admin.service.AdminService;
 import com.green.board.vo.BoardVo;
 import com.green.pds.vo.PdsPagingVo;
 import com.green.store.service.impl.ImgFile;
+import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
 import com.green.tasting.vo.TastingVo;
@@ -132,6 +133,12 @@ public class AdminServiceImpl implements AdminService {
 		
 		adminDao.deleteWineList(vo);
 		
+	}
+
+	@Override
+	public List<WineVo> searchList(PdsPagingVo pds,String searchKeyword, String searchOption, String kindOption) {
+		List<WineVo> searchList = adminDao.searchList(pds,searchKeyword,searchOption,kindOption);
+		return searchList;
 	}
 
 

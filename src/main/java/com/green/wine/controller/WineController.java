@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.WineVo;
@@ -123,5 +124,6 @@ public class WineController {
        mv.setViewName("/wine/winelist");
        return mv;
     }
+   
     
 }

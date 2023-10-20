@@ -122,8 +122,7 @@
 				</div>
 			</form>
 		</div>
-
-	<table id="table">
+			<table id="table">
 	<tr class="first-row">
 	    <th><input type="checkbox" id="allCheck"></th>
 		<th>Wineery</th>

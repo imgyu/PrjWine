@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.green.board.vo.BoardVo;
 import com.green.pds.vo.PdsPagingVo;
+import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
 import com.green.tasting.vo.TastingVo;
@@ -43,6 +44,8 @@ public interface AdminDao {
 	int countWine();
 
 	void deleteWineList(WineVo vo);
+
+	List<WineVo> searchList(PdsPagingVo pds, String searchKeyword, String searchOption, String kindOption);
 
 
 }

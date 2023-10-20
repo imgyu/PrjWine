@@ -25,4 +25,5 @@ public interface WineService {
     List<RegVo> roseClick(String rose_click);
 
     List<RegVo> otherClick(String other_click);
+
 }
