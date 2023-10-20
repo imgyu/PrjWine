@@ -82,11 +82,39 @@ List<CsVo> admincsviewList = sqlSession.selectList("Cs.AdminCsviewList",vo);
 
 
 	@Override
-	public void adminCsResponse(CsVo vo) {
+
+	public int adminCsResponse(CsVo vo) {
 		
-		sqlSession.update("Cs.AdminCsResponse", vo);
+		int UserCsResponse  =  sqlSession.update("Cs.AdminCsResponse", vo);
 		
+		return UserCsResponse;
 	}
 
+
+
+	public List<CsVo> getcsstoreviewList(CsVo vo) {
+
+		List<CsVo> csstoreviewList  =  sqlSession.selectList("Cs.CsStoreView", vo);
+		
+		return csstoreviewList;
+	}
+
+
+	@Override
+	public List<CsVo> getadmincsstoreviewList(CsVo vo) {
+
+		List<CsVo> admincsstoreviewList  =  sqlSession.selectList("Cs.AdminCsStoreView", vo);
+		
+		return admincsstoreviewList;
+	}
+
+
+	@Override
+	public int adminCsStoreResponse(CsVo vo) {
+		
+		int StoreCsresponse  =  sqlSession.update("Cs.AdminCsStoreResponse", vo);
+		
+		return StoreCsresponse;
+	}
 
 }

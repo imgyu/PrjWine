@@ -126,6 +126,34 @@ public class CsController {
 		
 	}
 	
+	@RequestMapping("/CsStoreView")
+	public ModelAndView csstoreview(CsVo vo)
+	{
+		List<CsVo> csstoreviewList  =  csService.getcsstoreviewList(vo);  
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cs/storecsview");
+		mv.addObject("csstoreviewList", csstoreviewList );
+		
+		System.out.println(mv);
+		return mv;
+		
+	}
+	
+	@RequestMapping("/AdminStoreView")
+	public ModelAndView admincsstoreview(CsVo vo)
+	{
+		List<CsVo> admincsstoreviewList  =  csService.getadmincsstoreviewList(vo);  
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cs/adminstorecsview");
+		mv.addObject("admincsstoreviewList", admincsstoreviewList );
+		
+		System.out.println(mv);
+		return mv;
+		
+	}
+	
 	
 	@RequestMapping("/CsAllStore")
 	public ModelAndView csAllStore(CsVo vo) {
@@ -156,10 +184,19 @@ public class CsController {
 	@RequestMapping("/AdminCsResponse")
 	public ModelAndView adminCsResponse(CsVo vo) {
 	
-	csService.adminCsResponse(vo);
-	
 	ModelAndView mv  =  new ModelAndView();
-	mv.setViewName("redirect:/AdminCsView?ucs_idx=" + vo.getUcs_idx());
+	// User
+	int UserCsResponse   =  csService.adminCsResponse(vo);
+	
+	// Store
+	int StoreCsResponse  =  csService.adminCsStoreResponse(vo);
+	
+	if(UserCsResponse == 1) {
+		mv.setViewName("redirect:/AdminCsView?ucs_idx=" + vo.getUcs_idx());
+	} else {
+		mv.setViewName("redirect:/AdminStoreView?scs_idx=" + vo.getScs_idx());
+	}
+	
 	return mv;
 	}
 }
