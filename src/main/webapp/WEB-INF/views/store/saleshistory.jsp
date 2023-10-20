@@ -80,6 +80,28 @@
    <script src="/assets/js/sticker.js"></script>
    <!-- main js -->
    <script src="/assets/js/main.js"></script>
+ <script>
+$(document).ready(function() {
+    // 셀렉트 박스 값이 변경될 때 이벤트 처리
+    $("#select").change(function() {
+        var selectedValue = $(this).val(); // 선택한 값 가져오기
+        var dataToSend = { selectedValue: selectedValue };
+
+        // AJAX 요청 보내기
+        $.ajax({
+            type: "POST", // 또는 "GET", 요청 방식 선택
+            url: "/SalesHistoryUpdate", // 업데이트를 처리할 서버 측 URL
+            data: dataToSend,
+            success: function(response) {
+                alert("판매상태 업데이트가 되었습니다."); // 성공 시 메시지
+            },
+            error: function(error) {
+                alert("판매상태 업데이트가 실패했습니다."); // 실패 시 메시지
+            }
+        });
+    });
+});
+</script>  
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -100,16 +122,6 @@
    <br>
    <br>
 
-
-
-	<div style="text-align: left;">
-    <select>
-      <option value="날짜">판매날짜</option>
-      <option value="손님이름">손님이름</option>
-      <option value="판매와인">판매와인</option>
-      <option value="총가격">총가격</option>
-    </select>
-  </div>
 	<table id="table">
 	<tr class="first-row">
 		<th>판매날짜</th>
@@ -119,10 +131,18 @@
 		<th>판매와인</th>
 		<th>와인단가</th>
 		<th>총가격</th>
+		<th>
+		  <select id="select" name="s_Option">
+    		<option value="PaymentCompleted">결제완료</option>
+    		<option value="ShippingPreparation">배송 준비완료</option>
+    		<option value="ShippingInTransit">배송중</option>
+    		<option value="ShippingCompleted">배송완료</option>
+		  </select>
+		</th>
 	</tr>
 	
 	
-	<c:forEach var="sales" items="${salesHistory }">
+	<c:forEach var="sales" items="${salesHistory}">
 	<tr>
 		<td>${sales.sh_date }</td>
 		<td>${sales.u_no}</td>
@@ -131,6 +151,7 @@
 		<td>${sales.w_name }</td>
 		<td>${sales.w_price }</td>
 		<td>${sales.p_allprice }</td>
+		<td>${sales.p_state}</td>
 	</tr>
 	</c:forEach>
 	</table>

@@ -7,13 +7,16 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.green.board.service.BoardService;
 import com.green.board.vo.BoardVo;
 import com.green.store.service.StoreService;
+import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.user.cart.vo.PaymentVo;
 
@@ -122,4 +125,10 @@ public class StoreController {
 		mv.addObject("boardList", boardList);
 		return mv;
 	}
+	
+	@PostMapping("/SalesHistoryUpdate")
+	@ResponseBody
+	public List<RegVo>  tastingWineList(@RequestParam HashMap<String, Object> map) {
+		List<PaymentVo> salesHistory  =  storeService.salesHistory(map);
+		return salesHistory;
 }
