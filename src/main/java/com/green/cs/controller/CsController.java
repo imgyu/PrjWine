@@ -21,6 +21,7 @@ public class CsController {
 		 
 		int s_no  =  vo.getS_no();
 		int scs_idx = vo.getScs_idx();
+		List<CsVo> storecsList  =  csService.getstorecsList(vo);
 		ModelAndView  mv  = new ModelAndView();  
 		mv.setViewName("cs/storecsinquiry");
 		mv.addObject("scs_idx", scs_idx);
@@ -37,7 +38,7 @@ public class CsController {
 		csService.storeCsInsert(vo);
 		
 		ModelAndView mv  =  new ModelAndView();
-		mv.setViewName("redirect:/StoreCs?u_no=" + vo.getU_no());
+		mv.setViewName("redirect:/StoreCs?s_no=" + vo.getS_no());
 		return mv;
 	}
 	
@@ -79,7 +80,6 @@ public class CsController {
          mv.addObject("usercsList", usercsList );
          mv.addObject("u_no", u_no);
          
-         System.out.println(mv);
          return mv;
 		
 	}
@@ -92,9 +92,34 @@ public class CsController {
 		mv.setViewName("cs/csuser");
 		mv.addObject("csalluserList", csalluserList );
 		
-		System.out.println(mv);
 		return mv;
 		
+	}
+	
+	@RequestMapping("/CsAllStore")
+	public ModelAndView csAllStore(CsVo vo) {
+		
+		List<CsVo> csAllStoreList  =  csService.getcsAllStoreList(vo);
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("cs/adminstorecs");
+		mv.addObject("allStore", csAllStoreList);
+		return mv;
+	}
+	
+	
+	@RequestMapping("/StoreCs")
+	public ModelAndView storecs(CsVo vo) {
+		
+		int s_no  =  vo.getS_no();
+		
+		List<CsVo> storecsList  =  csService.getstorecsList(vo);
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("cs/storecs");
+		mv.addObject("storecsList", storecsList);
+		mv.addObject("s_no", s_no);
+		return mv; 
 	}
 	
 }

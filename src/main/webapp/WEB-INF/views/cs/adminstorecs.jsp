@@ -219,7 +219,7 @@ form#search-form input[type="text"] {
         <div class="event-button">
 		<ul>
 			<li class="promotion-link"><a href="/CsAllUser">유저 고객센터</a></li>
-			<li class="promotion-link"><a href="CsAllStore">매장 고객센터</a></li>
+			<li class="promotion-link"><a href="/CsAllStore">매장 고객센터</a></li>
 		</ul>
 	</div>
 
@@ -234,15 +234,15 @@ form#search-form input[type="text"] {
             </tr>
 
             <!-- 검색하지 않았을떄  -->
-            <c:if test="${not empty csalluserList}">
-                <c:forEach var="ucs" items="${csalluserList }">
+            <c:if test="${not empty allStore}">
+                <c:forEach var="scs" items="${allStore }">
                     <tr>
-                        <td>${ucs.ucs_idx }</td>
-                        <td>${ucs.u_id}</td>
-                        <td>${ucs.ucs_category}</td>
-                        <td>${ucs.ucs_title}</td>
-                        <td>${ucs.uw_date}</td>
-                        <td>${ucs.res_date}</td>
+                        <td>${scs.scs_idx }</td>
+                        <td>${scs.s_id}</td>
+                        <td>${scs.scs_category}</td>
+                        <td>${scs.scs_title}</td>
+                        <td>${scs.sw_date}</td>
+                        <td>${scs.res_date}</td>
                     </tr>
                 </c:forEach>
             </c:if>

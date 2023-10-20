@@ -15,4 +15,8 @@ public interface CsDao {
 
 	List<CsVo> getcsalluserList(CsVo vo);
 
+	List<CsVo> getstorecsList(CsVo vo);
+
+	List<CsVo> getcsAllStoreList(CsVo vo);
+
 }
