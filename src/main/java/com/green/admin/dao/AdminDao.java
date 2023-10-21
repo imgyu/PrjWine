@@ -1,9 +1,9 @@
 package com.green.admin.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.green.board.vo.BoardVo;
+import com.green.event.vo.EventVo;
 import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
@@ -43,6 +43,20 @@ public interface AdminDao {
 	int countWine();
 
 	void deleteWineList(WineVo vo);
+
+	List<EventVo> AdminEventList(PdsPagingVo pds);
+
+	int countEvent();
+
+	List<EventVo> AdminEventEndList(PdsPagingVo pds);
+
+	int countEndEvent();
+
+	void admineventlistdelete(EventVo vo);
+
+	void adminendeventlistdelete(EventVo vo); 
+
+
 
 
 }

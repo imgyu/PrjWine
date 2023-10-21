@@ -1,19 +1,15 @@
 package com.green.admin.service.impl;
 
-import java.util.HashMap;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.green.admin.dao.AdminDao;
 import com.green.admin.service.AdminService;
 import com.green.board.vo.BoardVo;
+import com.green.event.vo.EventVo;
 import com.green.pds.vo.PdsPagingVo;
-import com.green.store.service.impl.ImgFile;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
 import com.green.tasting.vo.TastingVo;
@@ -131,6 +127,43 @@ public class AdminServiceImpl implements AdminService {
 	public void deleteWineList(WineVo vo) {
 		
 		adminDao.deleteWineList(vo);
+		
+	}
+
+	
+
+	@Override
+	public List<EventVo> AdminEventEndList(PdsPagingVo pds) {
+		List<EventVo> admineventendlist = adminDao.AdminEventEndList(pds);
+		return admineventendlist;
+	}
+
+	@Override
+	public List<EventVo> AdminEventList(PdsPagingVo pds) {
+		List<EventVo> admineventlist = adminDao.AdminEventList(pds);
+		
+		return admineventlist;
+	}
+
+	@Override
+	public int countEvent() {
+		return adminDao.countEvent();
+	}
+
+	@Override
+	public int countEndEvent() {
+		return adminDao.countEndEvent();
+	}
+
+	@Override
+	public void admineventlistdelete(EventVo vo) {
+		adminDao.admineventlistdelete(vo);
+		
+	}
+
+	@Override
+	public void adminendeventlistdelete(EventVo vo) {
+		adminDao.adminendeventlistdelete(vo);
 		
 	}
 

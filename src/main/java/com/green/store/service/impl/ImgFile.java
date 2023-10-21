@@ -15,7 +15,7 @@ public class ImgFile {
 
     public static void save(HashMap<String, Object> map, HttpServletRequest request) {
         // 자료실에 파일이 저장될 경로(디렉토리) 지정 없으면 생성
-        String filePath = "C:\\Users\\kim00\\git\\PrjWine\\src\\main\\webapp\\WEB-INF\\resources\\img\\";
+        String filePath = "/WEB-INF/resources/img/";
         File dir = new File(filePath);
         if (!dir.exists()) {
             dir.mkdir(); // make directory

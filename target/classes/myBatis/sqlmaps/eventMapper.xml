@@ -8,7 +8,7 @@
   <select id="EventList" resultType="com.green.event.vo.EventVo">
 	SELECT *
 	FROM EVENT
-	WHERE E_EDATE &gt; SYSDATE
+		WHERE SYSDATE BETWEEN E_SDATE AND E_EDATE
 	ORDER BY E_EDATE DESC  
   </select> 
   <select id="EventListEnd" resultType="com.green.event.vo.EventVo">

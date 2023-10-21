@@ -108,8 +108,7 @@
                                             <li><a class="dropdown-item" href="/AdminWineInsertForm"><b>와인등록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminWineList?s_no=99"><b>와인목록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminBoardList?s_no=99"><b>공지사항 목록</b></a></li>
-                                            <li><a class="dropdown-item" href="#"><b>프로모션 목록</b></a></li>
-                                            <li><a class="dropdown-item" href="#"><b>이벤트 목록</b></a></li>
+                                            <li><a class="dropdown-item" href="/AdminEvent"><b>프로모션 목록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminTastingList?s_no=99"><b>시음회 목록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminUserList?s_no=99"><b>유저목록</b></a></li>
                                             <li><a class="dropdown-item" href="/AdminStoreList?s_no=99"><b>매장목록</b></a></li>
