@@ -107,6 +107,16 @@ margin-top: 50px;
 <script src="assets/js/jquery.meanmenu.min.js"></script>
 <script src="assets/js/sticker.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+function goToPage(pageNumber) {
+	
+    // 페이지 번호를 눌렀을 때 이동할 URL을 생성
+    var url = '?nowPage=' + pageNumber + '&cntPerPage=${pds.cntPerPage}';
+
+    // 페이지 이동
+    window.location.href = url;
+}
+</script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -211,7 +221,28 @@ margin-top: 50px;
    </div>
          </form>
       </div>
+     </div>
    </div>
-   </div></div></div>
+  </div>
+</div>
+<div style="display: block; text-align: center;">
+
+    <c:if test="${pds.startPage != 1}">
+     <a href="#" onclick="goToPage(${pds.startPage - 1}); return false;">&lt;</a>
+</c:if>
+<c:forEach begin="${pds.startPage}" end="${pds.endPage}" var="p">
+    <c:choose>
+        <c:when test="${p == pds.nowPage}">
+            <b>${p}</b>
+        </c:when>
+        <c:when test="${p != pds.nowPage}">
+             <a href="#" onclick="goToPage(${p}); return false;">${p}</a>
+        </c:when>
+    </c:choose>
+</c:forEach>
+<c:if test="${pds.endPage != pds.lastPage}">
+      <a href="#" onclick="goToPage(${pds.endPage + 1}); return false;">&gt;</a>
+</c:if>
+</div>
 </body>
 </html>

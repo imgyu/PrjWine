@@ -58,13 +58,13 @@
       AND     W.W_KIND     = 'DESSERT'   
 </select>
 <select id="SearchList10" resultType="com.green.store.vo.RegVo">
-    SELECT W.*, WL.W_AMOUNT
+    SELECT W.*
     FROM WINE W
     WHERE     W.W_NAME     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
       AND     W.W_KIND     = 'RED'
 </select>
 <select id="SearchList11" resultType="com.green.store.vo.RegVo">
-    SELECT W.*, WL.W_AMOUNT
+    SELECT W.*
     FROM WINE W
     WHERE     W.W_LOCATION     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
       AND     W.W_KIND     = 'RED'   

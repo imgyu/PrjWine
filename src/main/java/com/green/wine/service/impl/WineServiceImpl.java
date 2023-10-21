@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.WineVo;
@@ -33,45 +34,50 @@ public class WineServiceImpl implements WineService {
 	}
 	
 	@Override
-	public List<RegVo> nameSearch(String name_Search) {
-		List<RegVo> nameSearch = wineDao.getNameSearch(name_Search);
+	public List<RegVo> nameSearch(String name_Search, PdsPagingVo pds) {
+		List<RegVo> nameSearch = wineDao.getNameSearch(name_Search, pds);
 		return nameSearch;
 	}
 
 	@Override
-	public List<RegVo> allClick(String all_click) {
-		List<RegVo> allClick = wineDao.getAllClick(all_click);
+	public List<RegVo> allClick(String all_click, PdsPagingVo pds) {
+		List<RegVo> allClick = wineDao.getAllClick(all_click, pds);
  		return allClick;
 	}
 
 	@Override
-	public List<RegVo> redClick(String red_click) {
-		List<RegVo> redClick = wineDao.getRedClick(red_click);
+	public List<RegVo> redClick(String red_click, PdsPagingVo pds) {
+		List<RegVo> redClick = wineDao.getRedClick(red_click, pds);
 		return redClick;
 	}
 
 	@Override
-	public List<RegVo> whiteClick(String white_click) {
-		List<RegVo> whiteClick = wineDao.getWhiteClick(white_click);
+	public List<RegVo> whiteClick(String white_click, PdsPagingVo pds) {
+		List<RegVo> whiteClick = wineDao.getWhiteClick(white_click, pds);
 		return whiteClick;
 	}
 
 	@Override
-	public List<RegVo> sparkClick(String sparkling_click) {
-		List<RegVo> sparkClick = wineDao.getSparkClick(sparkling_click);
+	public List<RegVo> sparkClick(String sparkling_click, PdsPagingVo pds) {
+		List<RegVo> sparkClick = wineDao.getSparkClick(sparkling_click, pds);
 		return sparkClick;
 	}
 
 	@Override
-	public List<RegVo> roseClick(String rose_click) {
-		List<RegVo> roseClick = wineDao.getRoseClick(rose_click);
+	public List<RegVo> roseClick(String rose_click, PdsPagingVo pds) {
+		List<RegVo> roseClick = wineDao.getRoseClick(rose_click, pds);
 		return roseClick;
 	}
 
 	@Override
-	public List<RegVo> otherClick(String other_click) {
-		List<RegVo> otherClick = wineDao.getOtherClick(other_click);
+	public List<RegVo> otherClick(String other_click, PdsPagingVo pds) {
+		List<RegVo> otherClick = wineDao.getOtherClick(other_click, pds);
 		return otherClick;
+	}
+
+	@Override
+	public int countWine() {
+		return wineDao.countWine();
 	}
 
 }
