@@ -122,6 +122,7 @@
         </tr>
 
         <c:forEach var="sales" items="${salesHistory}">
+        <input type="hidden" value="${sales.s_no}" name="s_no">
             <tr>
                 <td><input type="checkbox" name="valueArr" value="${sales.paynum}"></td>
                 <td>${sales.sh_date}</td>

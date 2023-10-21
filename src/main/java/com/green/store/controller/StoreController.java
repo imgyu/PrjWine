@@ -133,7 +133,7 @@ public class StoreController {
 	    }
 		
 		ModelAndView mv  =  new ModelAndView();
-		mv.setViewName("redirect:/SalesHistory");
+		mv.setViewName("redirect:/SalesHistory?s_no="+vo.getS_no());
 		return mv;
 	}
 	

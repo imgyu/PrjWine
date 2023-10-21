@@ -75,16 +75,7 @@
    </div>
    <br>
    <br>
-	<div style="text-align: left;">
-    <select>
-      <option value="날짜">날짜</option>
-      <option value="구매매장">구매매장</option>
-      <option value="와인이름">와인이름</option>
-      <option value="구매수량">구매수량</option>
-      <option value="구매단가">구매단가</option>
-      <option value="총가격">총가격</option>
-    </select>
-  </div>
+
 	<table id="table">
 	<tr class="first-row">
 		<th>구매날짜</th>
@@ -92,6 +83,7 @@
 		<th>와인이름</th>
 		<th>와인단가</th>
 		<th>총가격</th>
+		<th>상태</th>
 	</tr>
 	<c:forEach var="purch" items="${purch }">
 	<tr>
@@ -100,6 +92,7 @@
 		<td>${purch.w_name }</td>
 		<td>${purch.w_price }</td>
 		<td>${purch.p_allprice }</td>
+		<td>${purch.p_state }</td>
 	</tr>
 	</c:forEach>
 	</table>
