@@ -64,7 +64,7 @@ public class WineController {
 		  @RequestParam(value="nowPage", required = false)String nowPage,
 		  @RequestParam(value="cntPerPage", required = false)String cntPerPage ) {
      
-  	int total  =  wineService.countWine();
+  	int total  =  wineService.countWineAll();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
 			cntPerPage = "6";
@@ -93,7 +93,7 @@ public class WineController {
 			@RequestParam(value="nowPage", required = false)String nowPage,
 			@RequestParam(value="cntPerPage", required = false)String cntPerPage ) {
        
-    	int total  =  wineService.countWine();
+    	int total  =  wineService.countWineAll();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
 			cntPerPage = "6";
@@ -124,7 +124,7 @@ public class WineController {
 			@RequestParam(value="nowPage", required = false)String nowPage,
 			@RequestParam(value="cntPerPage", required = false)String cntPerPage ) {
        
-    	int total  =  wineService.countWine();
+    	int total  =  wineService.countWineRed();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
 			cntPerPage = "6";
@@ -151,7 +151,7 @@ public class WineController {
 			@RequestParam(value="nowPage", required = false)String nowPage,
 			@RequestParam(value="cntPerPage", required = false)String cntPerPage ) {
        
-    	int total  =  wineService.countWine();
+    	int total  =  wineService.countWineWhite();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
 			cntPerPage = "6";
@@ -178,7 +178,7 @@ public class WineController {
 			@RequestParam(value="nowPage", required = false)String nowPage,
 			@RequestParam(value="cntPerPage", required = false)String cntPerPage ) {
        
-    	int total  =  wineService.countWine();
+    	int total  =  wineService.countWineSpark();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
 			cntPerPage = "6";
@@ -206,7 +206,7 @@ public class WineController {
 			@RequestParam(value="nowPage", required = false)String nowPage,
 			@RequestParam(value="cntPerPage", required = false)String cntPerPage ) {
        
-    	int total  =  wineService.countWine();
+    	int total  =  wineService.countWineRose();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
 			cntPerPage = "6";
@@ -234,7 +234,7 @@ public class WineController {
 			@RequestParam(value="nowPage", required = false)String nowPage,
 			@RequestParam(value="cntPerPage", required = false)String cntPerPage ) {
        
-    	int total  =  wineService.countWine();
+    	int total  =  wineService.countWineOther();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
 			cntPerPage = "6";

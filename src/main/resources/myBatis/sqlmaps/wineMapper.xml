@@ -147,11 +147,30 @@ FROM (
 )
 WHERE RN BETWEEN #{start} AND #{end} 
    </select>
-<select id="CountWine" resultType="int">
-
-SELECT COUNT(*) FROM WINE
-
+<select id="CountWineAll" resultType="int">
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
 </select> 
+<select id="CountWineRed" resultType="int">
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'RED'
+</select> 
+<select id="CountWineWhite" resultType="int">
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'WHITE'
+</select> 
+<select id="CountWineSpark" resultType="int"> 
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'SPARKLING'
+</select>
+<select id="CountWineRose" resultType="int"> 
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'ROSE'
+</select>
+<select id="CountWineOther" resultType="int"> 
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'DESSERT' OR W.W_KIND = 'PORT'
+</select>
+
 </mapper>
 
 

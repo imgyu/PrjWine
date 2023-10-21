@@ -27,6 +27,16 @@ public interface WineDao {
 
 	List<RegVo> getOtherClick(String other_click, PdsPagingVo pds);
 
-	int countWine();
+	int countWineAll();
+
+	int countWineRed();
+
+	int countWineWhite();
+
+	int countWineSpark();
+
+	int countWineRose();
+
+	int countWineOther();
 
 }

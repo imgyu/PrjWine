@@ -49,5 +49,7 @@ public interface AdminService {
 
 	List<WineVo> searchList(PdsPagingVo pds, String searchKeyword, String searchOption, String kindOption);
 
+	int countWineSearch();
+
 
 }

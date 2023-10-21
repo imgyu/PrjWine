@@ -252,7 +252,7 @@ public class AdminController {
 				@RequestParam("searchOption") String searchOption,
 				@RequestParam("kindOption") String kindOption ){
 		 
-	 	int total  =  adminService.countWine();
+	 	int total  =  adminService.countWineSearch();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
 			cntPerPage = "5";

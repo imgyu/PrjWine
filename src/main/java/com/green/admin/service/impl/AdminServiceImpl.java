@@ -141,5 +141,10 @@ public class AdminServiceImpl implements AdminService {
 		return searchList;
 	}
 
+	@Override
+	public int countWineSearch() {
+		return adminDao.countWineSearch();
+	}
+
 
 }

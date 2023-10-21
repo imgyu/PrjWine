@@ -114,8 +114,28 @@ public class WineDaoImpl implements WineDao {
 	}
 
 	@Override
-	public int countWine() {
-		return sqlSession.selectOne("Wine.CountWine");
+	public int countWineAll() {
+		return sqlSession.selectOne("Wine.CountWineAll");
+	}
+	@Override
+	public int countWineRed() {
+		return sqlSession.selectOne("Wine.CountWineRed");
+	}
+	@Override
+	public int countWineWhite() {
+		return sqlSession.selectOne("Wine.CountWineWhite");
+	}
+	@Override
+	public int countWineSpark() {
+		return sqlSession.selectOne("Wine.CountWineSpark");
+	}
+	@Override
+	public int countWineRose() {
+		return sqlSession.selectOne("Wine.CountWineRose");
+	}
+	@Override
+	public int countWineOther() {
+		return sqlSession.selectOne("Wine.CountWineOther");
 	}
 
 }

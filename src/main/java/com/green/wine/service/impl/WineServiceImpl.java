@@ -76,8 +76,29 @@ public class WineServiceImpl implements WineService {
 	}
 
 	@Override
-	public int countWine() {
-		return wineDao.countWine();
+	public int countWineAll() {
+		return wineDao.countWineAll();
+	}
+
+	@Override
+	public int countWineRed() {
+		return wineDao.countWineRed();
+	}
+	@Override
+	public int countWineWhite() {
+		return wineDao.countWineWhite();
+	}
+	@Override
+	public int countWineSpark() {
+		return wineDao.countWineSpark();
+	}
+	@Override
+	public int countWineRose() {
+		return wineDao.countWineRose();
+	}
+	@Override
+	public int countWineOther() {
+		return wineDao.countWineOther();
 	}
 
 }

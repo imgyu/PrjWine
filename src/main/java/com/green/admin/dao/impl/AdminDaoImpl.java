@@ -150,5 +150,10 @@ public class AdminDaoImpl implements AdminDao {
 		return searchList;
 	}
 
+	@Override
+	public int countWineSearch() {
+		return sqlSession.selectOne("Admin.countWineSearch");
+	}
+
 
 }
