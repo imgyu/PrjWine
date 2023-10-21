@@ -141,7 +141,29 @@
 				</div>
 			</div>
 		</c:forEach>
-	</div>
+ </div>
+   <div style="display: block; text-align: center;">
+    <c:choose>
+        <c:when test="${not empty pds && pds.startPage != 1 }">
+            <a href="/StoreList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+        </c:when>
+    </c:choose>
+    <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
+        <c:choose>
+            <c:when test="${p == pds.nowPage }">
+                <b>${p}</b> 
+            </c:when>
+            <c:when test="${p != pds.nowPage }">
+                <a href="/StoreList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+            </c:when>
+        </c:choose>
+    </c:forEach>
+    <c:choose>
+        <c:when test="${not empty pds && pds.endPage != pds.lastPage && pds.endPage != 0 }">
+            <a href="/StoreList?nowPage=${pds.endPage+1 }&cntPerPage${pds.cntPerPage}">&gt;</a>
+        </c:when>
+    </c:choose>
+</div>
 
 	<!--  매장 리스트  -->
 	<div class="container"

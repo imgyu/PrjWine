@@ -237,7 +237,7 @@ form#search-form input[type="text"] {
             <c:if test="${not empty allStore}">
                 <c:forEach var="scs" items="${allStore }">
                     <tr>
-                         <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.ucs_idx }</a></td>
+                         <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.scs_idx }</a></td>
                         <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.s_id}</a></td>
                         <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.scs_category}</a></td>
                         <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.scs_title}</a></td>
@@ -262,6 +262,26 @@ form#search-form input[type="text"] {
             </c:if> --%>
 
         </table>
+            <div style="display: block; text-align: center;">
+
+    <c:if test="${pds.startPage != 1 }">
+    <a href="/CsAllStore?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+    </c:if>
+    <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
+      <c:choose>
+       <c:when test="${p == pds.nowPage }">
+         <b>${p}</b> 
+       </c:when>
+        <c:when test="${p != page.nowPage }">
+          <a href="/CsAllStore?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+        </c:when>
+      </c:choose>
+    </c:forEach>
+ <c:if test="${pds.endPage != pds.lastPage }">
+   <a href="/CsAllStore?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
+ </c:if>
+ </div>
+        
 
         <!-- 매장 홈으로 버튼 -->
         <div class="back-home-button">홈버튼</div>

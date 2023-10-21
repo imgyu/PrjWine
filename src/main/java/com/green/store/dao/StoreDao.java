@@ -52,6 +52,10 @@ public interface StoreDao {
 
    List<HavingWineVo> wineList2(PdsPagingVo pds, int s_no);
 
+   int countStore(StoreVo vo);
+
+   List<StoreVo> storeList2(PdsPagingVo pds);
+
 
 
 

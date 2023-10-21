@@ -192,6 +192,25 @@ form#search-form input[type="text"] {
                 </c:forEach>
 
         </table>
+           <div style="display: block; text-align: center;">
+
+    <c:if test="${pds.startPage != 1 }">
+    <a href="/UserCs?u_no=${u_no }&nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+    </c:if>
+    <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
+      <c:choose>
+       <c:when test="${p == pds.nowPage }">
+         <b>${p}</b> 
+       </c:when>
+        <c:when test="${p != page.nowPage }">
+          <a href="/UserCs?u_no=${u_no }&nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+        </c:when>
+      </c:choose>
+    </c:forEach>
+ <c:if test="${pds.endPage != pds.lastPage }">
+   <a href="/UserCs?u_no=${u_no }&nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
+ </c:if>
+ </div>
           <a href="UserCsInquiryForm?u_no=${loginVo.u_no }" class="btn btn-primary">글쓰기</a>
 
    

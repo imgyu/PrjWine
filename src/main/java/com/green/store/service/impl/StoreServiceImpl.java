@@ -153,5 +153,17 @@ public class StoreServiceImpl implements StoreService {
 		
 		return wineList2;
 	}
+	@Override
+	public int countStore(StoreVo vo) {
+		
+		return storeDao.countStore(vo);
+	}
+	@Override
+	public List<StoreVo> storeList2(PdsPagingVo pds) {
+		
+		List<StoreVo> storeList2  =  storeDao.storeList2(pds);
+		
+		return storeList2;
+	}
 }
    

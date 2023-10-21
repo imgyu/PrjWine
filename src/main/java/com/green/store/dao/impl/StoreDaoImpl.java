@@ -284,6 +284,20 @@ public class StoreDaoImpl implements StoreDao {
 		return wineList2;
 	}
 
+	@Override
+	public int countStore(StoreVo vo) {
+		
+		return sqlSession.selectOne("Store.CountStore", vo);
+	}
+
+	@Override
+	public List<StoreVo> storeList2(PdsPagingVo pds) {
+		
+		List<StoreVo> storeList2  =  sqlSession.selectList("Store.StoreList2", pds);
+		
+		return storeList2;
+	}
+
    } 
    
    

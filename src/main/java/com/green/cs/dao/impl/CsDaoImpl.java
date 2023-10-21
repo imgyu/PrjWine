@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.green.cs.dao.CsDao;
 import com.green.cs.vo.CsVo;
+import com.green.pds.vo.PdsPagingVo;
 
 @Repository("csDao")
 public class CsDaoImpl implements CsDao {
@@ -115,6 +116,82 @@ List<CsVo> admincsviewList = sqlSession.selectList("Cs.AdminCsviewList",vo);
 		int StoreCsresponse  =  sqlSession.update("Cs.AdminCsStoreResponse", vo);
 		
 		return StoreCsresponse;
+	}
+
+
+	@Override
+	public int countCsUser(CsVo vo) {
+		
+		return sqlSession.selectOne("Cs.CountCsUser", vo);
+	}
+
+
+	@Override
+	public List<CsVo> getUserCsList2(PdsPagingVo pds, int u_no) {
+		
+		HashMap<String, Object> map  =  new HashMap<>();
+		map.put("pds", pds);
+		map.put("u_no", u_no);
+		map.put("start", pds.getStart());
+		map.put("end", pds.getEnd());
+		
+		List<CsVo>  getUserCsList2  =  sqlSession.selectList("Cs.GetUserCsList2", map);
+		
+		return getUserCsList2;
+	}
+
+
+	@Override
+	public int countCsStore(CsVo vo) {
+		
+		return sqlSession.selectOne("Cs.CountCsStore", vo);
+	}
+
+
+	@Override
+	public List<CsVo> getStoreCsList2(PdsPagingVo pds, int s_no) {
+		
+		HashMap<String, Object> map  =  new HashMap<>();
+		map.put("pds", pds);
+		map.put("s_no", s_no);
+		map.put("start", pds.getStart());
+		map.put("end", pds.getEnd());
+		
+		List<CsVo> getStoreCsList2  =  sqlSession.selectList("Cs.GetStoreCsList2", map);
+		
+		return getStoreCsList2;
+	}
+
+
+	@Override
+	public int countAdminCsUser() {
+		
+		return sqlSession.selectOne("Cs.CountAdminCsUser");
+	}
+
+
+	@Override
+	public List<CsVo> csAdminUserList(PdsPagingVo pds) {
+		
+		List<CsVo> csAdminUserList  =  sqlSession.selectList("Cs.CsAdminUserList", pds);
+		
+		return csAdminUserList;
+	}
+
+
+	@Override
+	public int countAdminCsStore() {
+		
+		return sqlSession.selectOne("Cs.CountAdminCsStore");
+	}
+
+
+	@Override
+	public List<CsVo> csAdminStoreList(PdsPagingVo pds) {
+		
+		List<CsVo> csAdminStoreList  =  sqlSession.selectList("Cs.CsAdminStoreList", pds);
+		
+		return csAdminStoreList;
 	}
 
 }

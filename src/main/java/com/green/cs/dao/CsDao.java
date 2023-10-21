@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.green.cs.vo.CsVo;
+import com.green.pds.vo.PdsPagingVo;
 
 public interface CsDao {
 
@@ -31,6 +32,22 @@ public interface CsDao {
 	List<CsVo> getadmincsstoreviewList(CsVo vo);
 
 	int adminCsStoreResponse(CsVo vo);
+
+	int countCsUser(CsVo vo);
+
+	List<CsVo> getUserCsList2(PdsPagingVo pds, int u_no);
+
+	int countCsStore(CsVo vo);
+
+	List<CsVo> getStoreCsList2(PdsPagingVo pds, int s_no);
+
+	int countAdminCsUser();
+
+	List<CsVo> csAdminUserList(PdsPagingVo pds);
+
+	int countAdminCsStore();
+
+	List<CsVo> csAdminStoreList(PdsPagingVo pds);
 
 
 }

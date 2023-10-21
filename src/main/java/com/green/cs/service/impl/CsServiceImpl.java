@@ -10,6 +10,7 @@ import com.green.board.vo.BoardVo;
 import com.green.cs.dao.CsDao;
 import com.green.cs.service.CsService;
 import com.green.cs.vo.CsVo;
+import com.green.pds.vo.PdsPagingVo;
 
 @Service("csService")
 public class CsServiceImpl implements CsService {
@@ -94,5 +95,53 @@ public class CsServiceImpl implements CsService {
 		int StoreCsResponse  =  csDao.adminCsStoreResponse(vo);
 		
 		return StoreCsResponse;
+	}
+	@Override
+	public int countCsUser(CsVo vo) {
+		
+		return csDao.countCsUser(vo);
+	}
+	@Override
+	public List<CsVo> getUserCsList2(PdsPagingVo pds, int u_no) {
+		
+		List<CsVo> getUserCsList2  =  csDao.getUserCsList2(pds, u_no);
+		
+		return getUserCsList2;
+	}
+	@Override
+	public int countCsStore(CsVo vo) {
+		
+		return csDao.countCsStore(vo);
+	}
+	@Override
+	public List<CsVo> getStoreCsList2(PdsPagingVo pds, int s_no) {
+		
+		List<CsVo> getStoreCsList2  =  csDao.getStoreCsList2(pds, s_no);
+		
+		return getStoreCsList2;
+	}
+	@Override
+	public int countAdminCsUser() {
+		
+		return csDao.countAdminCsUser();
+	}
+	@Override
+	public List<CsVo> csAdminUserList(PdsPagingVo pds) {
+		
+		List<CsVo> csAdminUserList  =  csDao.csAdminUserList(pds);
+		
+		return csAdminUserList;
+	}
+	@Override
+	public int countAdminCsStore() {
+		
+		return csDao.countAdminCsStore();
+	}
+	@Override
+	public List<CsVo> csAdminStoreList(PdsPagingVo pds) {
+		
+	    List<CsVo> csAdminStoreList  =  csDao.csAdminStoreList(pds);
+		
+		return csAdminStoreList;
 	}
 }
