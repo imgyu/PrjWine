@@ -42,7 +42,7 @@ WHERE WL.W_NO  =  #{w_no}
          W.W_NAME LIKE '%' || UPPER(#{name_Search}) || '%' AND WL.WL_IDX >= 1 
       OR W.W_NAME LIKE '%' || LOWER(#{name_Search}) || '%' AND WL.WL_IDX >= 1
       OR W.W_NAME LIKE '%' || INITCAP(#{name_Search}) || '%' AND WL.WL_IDX >= 1
-   </select>
+    </select>
    
    <!-- 영태 모든와인종류 클릭 -->
      <select id="AllClick" resultType="com.green.store.vo.RegVo">

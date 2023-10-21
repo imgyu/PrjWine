@@ -152,9 +152,7 @@ margin-top: 50px;
          <form action="/NameSearch" method="POST">
             <input type="search"   name="name_Search" placeholder="와인이름">
             <input type="submit"   value="찾기">
-         </form>
-      </div>
-   </div>
+   
    <!-- 와인 검색end -->
    
    <c:set var="wine" value="" />
@@ -210,6 +208,9 @@ margin-top: 50px;
             </div>
          </div>
       </c:forEach>
+   </div>
+         </form>
+      </div>
    </div>
    </div></div></div>
 </body>
