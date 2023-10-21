@@ -151,8 +151,13 @@ public class AdminDaoImpl implements AdminDao {
 	}
 
 	@Override
-	public int countWineSearch() {
-		return sqlSession.selectOne("Admin.countWineSearch");
+	public int countWineSearch(String searchKeyword, String searchOption, String kindOption) {
+		List<WineVo> searchList = new ArrayList<>();
+		Map<String, Object> map = new HashMap<>();
+		map.put("searchKeyword", searchKeyword);
+  	    map.put("searchOption", searchOption);
+  	    map.put("kindOption", kindOption);
+		return sqlSession.selectOne("Admin.countWineSearch", map);
 	}
 
 

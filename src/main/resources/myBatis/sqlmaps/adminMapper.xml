@@ -128,7 +128,7 @@ SELECT COUNT(*) FROM TESTING
 SELECT COUNT(*) FROM BOARD
 
 </select>
-<select id="countWineSearch" resultType="int">
+<select id="countWineSearch" resultType="int" parameterType="Map">
 
 SELECT COUNT(*) FROM WINE WHERE W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%'
 

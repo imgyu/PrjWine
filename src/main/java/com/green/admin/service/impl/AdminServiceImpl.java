@@ -142,8 +142,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public int countWineSearch() {
-		return adminDao.countWineSearch();
+	public int countWineSearch(String searchKeyword, String searchOption, String kindOption) {
+		return adminDao.countWineSearch(searchKeyword,searchOption,kindOption);
 	}
 
 
