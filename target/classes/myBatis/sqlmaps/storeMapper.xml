@@ -376,52 +376,44 @@
     AND S.S_NO  =  #{s_no}
 </select>
 
-<select id="Port" resultType="com.green.store.vo.RegVo">
+<select id="AllSearch" resultType="com.green.store.vo.RegVo">
     SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
-    FROM WINE W
-    LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
+    FROM WINELIST WL
     LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
-    WHERE     W.W_NAME     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_LOCATION   LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_VINTAGE   LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_KIND     = 'PORT'
-      AND     S.S_NO  =  #{s_no}
+    LEFT JOIN WINE W      ON WL.W_NO = W.W_NO
+    WHERE S.S_NO  =  #{s_no}
 </select>
 
-<select id="Dessert" resultType="com.green.store.vo.RegVo">
-    SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
-    FROM WINE W
-    LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
+<select id="KindSearch" resultType="com.green.store.vo.RegVo">
+   SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
+    FROM WINELIST WL
     LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
-    WHERE     W.W_NAME       LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_LOCATION   LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_VINTAGE    LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_KIND     = 'DESSERT'
-      AND     S.S_NO  =  #{s_no}
+    LEFT JOIN WINE W      ON WL.W_NO = W.W_NO
+    WHERE     W.W_KIND  LIKE  #{w_kind}
+      AND     S.S_NO    =  #{s_no}
 </select>
 
-<select id="Red" resultType="com.green.store.vo.RegVo">
-    SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
-    FROM WINE W
-    LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
-    LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
-    WHERE     W.W_NAME       LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_LOCATION   LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_VINTAGE    LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_KIND     = 'RED'
-      AND     S.S_NO  =  #{s_no}
+<select id="OptionSearch" resultType="com.green.store.vo.RegVo">
+   SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
+    FROM WINELIST WL
+    LEFT JOIN STORE S      ON WL.S_NO = S.S_NO
+    LEFT JOIN WINE W       ON WL.W_NO = W.W_NO
+     WHERE     S.S_NO    =  #{s_no}
+     <if test="searchOption != null">
+      AND ${searchOption} LIKE '%' || #{searchKeyword} || '%'
+    </if>
 </select>
 
-<select id="Rose" resultType="com.green.store.vo.RegVo">
-    SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
-    FROM WINE W
-    LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
-    LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
-    WHERE     W.W_NAME       LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_LOCATION   LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_VINTAGE    LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-      AND     W.W_KIND     = 'ROSE'
-      AND     S.S_NO  =  #{s_no}
+<select id="WineSearch" resultType="com.green.store.vo.RegVo">
+   SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
+    FROM WINELIST WL
+    LEFT JOIN STORE S      ON WL.S_NO = S.S_NO
+    LEFT JOIN WINE W       ON WL.W_NO = W.W_NO
+    WHERE     W.W_KIND  LIKE  #{w_kind}
+    <if test="searchOption != null">
+      AND ${searchOption} LIKE '%' || #{searchKeyword} || '%'
+    </if>
+      AND     S.S_NO    =  #{s_no}
 </select>
 
 <select id="White" resultType="com.green.store.vo.RegVo">

@@ -178,7 +178,7 @@ form#search-form input[type="text"] {
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-select" name="kindOption">
+                        <select class="form-select" name="w_kind">
                             <option value="w_kind">품종</option>
                             <option value="PORT">PORT</option>
                             <option value="DESSERT">DESSERT</option>
