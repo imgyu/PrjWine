@@ -117,6 +117,40 @@ function goToPage(pageNumber) {
     window.location.href = url;
 }
 </script>
+<script>
+function goToPage(pageNumber, filter) {
+    // 현재 필터 정보를 URL에 추가
+    var url = '?' + filter + '&nowPage=' + pageNumber + '&cntPerPage=${pds.cntPerPage}';
+    
+    // 페이지 이동
+    window.location.href = url;
+}
+
+// 필터 버튼 클릭 이벤트 핸들러
+document.querySelector('[name="all_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=all');
+});
+
+document.querySelector('[name="red_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=red_click');
+});
+
+document.querySelector('[name="white_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=white_click');
+});
+
+document.querySelector('[name="sparkling_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=sparkling_click');
+});
+
+document.querySelector('[name="rose_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=rose_click');
+});
+
+document.querySelector('[name="other_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=other_click');
+});
+</script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -227,21 +261,23 @@ function goToPage(pageNumber) {
 </div>
 <div style="display: block; text-align: center;">
 
-    <c:if test="${pds.startPage != 1}">
-     <a href="#" onclick="goToPage(${pds.startPage - 1}); return false;">&lt;</a>
+   <c:if test="${pds.startPage != 1}">
+    <a href="#" onclick="goToPage(${pds.startPage - 1}, '${wine}'); return false;">&lt;</a>
 </c:if>
+
 <c:forEach begin="${pds.startPage}" end="${pds.endPage}" var="p">
     <c:choose>
         <c:when test="${p == pds.nowPage}">
             <b>${p}</b>
         </c:when>
         <c:when test="${p != pds.nowPage}">
-             <a href="#" onclick="goToPage(${p}); return false;">${p}</a>
+             <a href="#" onclick="goToPage(${p}, '${wine}'); return false;">${p}</a>
         </c:when>
     </c:choose>
 </c:forEach>
+
 <c:if test="${pds.endPage != pds.lastPage}">
-      <a href="#" onclick="goToPage(${pds.endPage + 1}); return false;">&gt;</a>
+    <a href="#" onclick="goToPage(${pds.endPage + 1}, '${wine}'); return false;">&gt;</a>
 </c:if>
 </div>
 </body>
