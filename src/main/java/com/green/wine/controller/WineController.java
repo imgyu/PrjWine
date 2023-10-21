@@ -64,7 +64,7 @@ public class WineController {
 		  @RequestParam(value="nowPage", required = false)String nowPage,
 		  @RequestParam(value="cntPerPage", required = false)String cntPerPage ) {
      
-  	int total  =  wineService.countWineAll();
+    	int total  =  wineService.countWineSearch(name_Search);
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
 			cntPerPage = "6";

@@ -170,6 +170,10 @@ WHERE W.W_KIND = 'ROSE'
 SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
 WHERE W.W_KIND = 'DESSERT' OR W.W_KIND = 'PORT'
 </select>
+<select id="CountWineSearch" resultType="int"> 
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%'
+</select>
 
 </mapper>
 

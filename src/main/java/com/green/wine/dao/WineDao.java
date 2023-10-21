@@ -39,4 +39,6 @@ public interface WineDao {
 
 	int countWineOther();
 
+	int countWineSearch(String name_Search);
+
 }

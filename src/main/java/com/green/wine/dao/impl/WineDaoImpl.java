@@ -138,4 +138,9 @@ public class WineDaoImpl implements WineDao {
 		return sqlSession.selectOne("Wine.CountWineOther");
 	}
 
+	@Override
+	public int countWineSearch(String name_Search) {
+		return sqlSession.selectOne("Wine.CountWineSearch",name_Search);
+	}
+
 }

@@ -101,4 +101,9 @@ public class WineServiceImpl implements WineService {
 		return wineDao.countWineOther();
 	}
 
+	@Override
+	public int countWineSearch(String name_Search) {
+		return wineDao.countWineSearch(name_Search);
+	}
+
 }

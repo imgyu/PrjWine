@@ -39,5 +39,7 @@ public interface WineService {
 
 	int countWineOther();
 
+	int countWineSearch(String name_Search);
+
 
 }
