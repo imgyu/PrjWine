@@ -233,6 +233,7 @@ form#search-form input[type="text"] {
                                     <form action="/AddCart" method="POST">
                                         <input type="hidden" name="u_no" value="${loginVo.u_no}">
                                         <input type="hidden" name="w_no" value="${wine.w_no}">
+                                        <input type="hidden" name="wl_idx" value="${wine.wl_idx}">
                                         <input type="hidden" name="s_no" value="${wine.s_no}">
                                         <input id="text1" type="text" name="c_count" placeholder="수량 입력">
                                         <input type="submit" value="장바구니에 추가" onclick="myFunction()">
@@ -263,6 +264,7 @@ form#search-form input[type="text"] {
                                     <form action="/AddCart" method="POST">
                                         <input type="hidden" name="u_no" value="${loginVo.u_no}">
                                         <input type="hidden" name="w_no" value="${Search.w_no}">
+                                        <input type="hidden" name="wl_idx" value="${Search.wl_idx}">
                                         <input type="hidden" name="s_no" value="${Search.s_no}">
                                         <input id="text1" type="text" name="c_count" placeholder="수량 입력">
                                         <input type="submit" value="장바구니에 추가" onclick="myFunction()">

@@ -14,10 +14,11 @@
              C.C_COUNT,
              WL.W_PRICE,
              U.U_NO,
-             C.C_COUNT * WL.W_PRICE AS C_ALLPRICE
+             C.C_COUNT * WL.W_PRICE AS C_ALLPRICE,
+             WL.WL_IDX
         FROM CART C 
                LEFT JOIN WINE W ON C.W_NO = W.W_NO 
-               LEFT JOIN WINELIST WL ON C.W_NO = WL.W_NO 
+               LEFT JOIN WINELIST WL ON C.WL_IDX = WL.WL_IDX 
                LEFT JOIN STORE S ON C.S_NO = S.S_NO
                LEFT JOIN TUSER U ON C.U_NO = U.U_NO
                WHERE U.U_NO = #{u_no}
@@ -40,10 +41,11 @@ SELECT C.C_IDX,
        U.U_NO,
        S.S_NO,
        C.C_COUNT * WL.W_PRICE AS C_ALLPRICE,
-       W.W_NO
+       W.W_NO,
+       WL.WL_IDX
   FROM CART C
   LEFT JOIN WINE W ON C.W_NO = W.W_NO
-  LEFT JOIN WINELIST WL ON C.W_NO = WL.W_NO
+  LEFT JOIN WINELIST WL ON C.WL_IDX = WL.WL_IDX
   LEFT JOIN STORE S ON C.S_NO = S.S_NO
   LEFT JOIN TUSER U ON C.U_NO = U.U_NO
   WHERE U.U_NO = #{u_no}
@@ -55,17 +57,30 @@ SELECT C.C_IDX,
 </select>
 
 	<insert id="InsertCart" >
-INSERT INTO CART (C_IDX, W_NO, S_NO, C_COUNT, U_NO) 
-SELECT (NVL(MAX(C.C_IDX), 0) + 1), #{w_no}, #{s_no}, #{c_count}, #{u_no}
-FROM CART C
+INSERT INTO CART (
+C_IDX, 
+W_NO, 
+S_NO, 
+C_COUNT, 
+U_NO, 
+WL_IDX) 
+VALUES (
+(SELECT (NVL(MAX(C_IDX), 0) + 1) FROM CART), 
+#{w_no}, 
+#{s_no}, 
+#{c_count}, 
+#{u_no}, 
+#{wl_idx}
+)
+
 	   	
    	</insert>
    	
    	
  <insert id="InsertPay" >
  
- INSERT INTO SALESHISTORY (PAYNUM, U_NO, S_NO, SH_DATE, P_ALLPRICE, W_NO )
- VALUES (#{paynum}, #{u_no}, #{s_no}, SYSDATE, #{p_allprice}, #{w_no})
+ INSERT INTO SALESHISTORY (PAYNUM, U_NO, S_NO, SH_DATE, P_ALLPRICE, W_NO, WL_IDX )
+ VALUES (#{paynum}, #{u_no}, #{s_no}, SYSDATE, #{p_allprice}, #{w_no}, #{wl_idx})
  
  </insert>  
  
