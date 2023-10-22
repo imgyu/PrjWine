@@ -139,8 +139,25 @@ input[type="submit"] {
                  <textarea name="b_cont" placeholder="공지사항 내용을 입력하세요"></textarea>
                 </div>	
 			  </table>
-			  <input type="submit" value="등록">
+			  <input type="submit" value="등록" id="submit-button">
 			</form>
     </div>
+<script>
+document.getElementById('submit-button').addEventListener('click', function (event) {
+    var titleInput = document.querySelector('input[name="b_title"]');
+    var contentTextarea = document.querySelector('textarea[name="b_cont"]');
+    
+    if (!titleInput.value || !contentTextarea.value) {
+        alert("빈 칸을 모두 채워주세요.");
+        event.preventDefault();
+    } else {
+        var confirmation = confirm("등록하시겠습니까?");
+        if (!confirmation) {
+            event.preventDefault(); // "아니요"를 선택한 경우에는 이벤트 막음
+        }
+    }
+});
+
+</script>
 </body>
 </html>

@@ -164,13 +164,13 @@
             <td>${select.w_name }</td>
             <td>${select.w_location}</td>
             <td>${select.w_kind}</td>
-            <td><input type="text" name="w_amount" value="${select.w_amount}"></td>
-            <td><input type="text" name="w_price" value="${select.w_price }"></td>
+            <td><input type="text" name="w_amount" value="${select.w_amount}" ></td>
+            <td><input type="text" name="w_price" value="${select.w_price }" ></td>
             <td>${select.w_vintage}</td>
             
              <td class="edit-delete-buttons">
-             <button type="submit"class="btn btn-primary">수정</button>    
-             <a class="btn btn-danger" href="/WineDelete?s_no=${select.s_no }&wl_idx=${select.wl_idx}">삭제</a>
+             <button type="submit"class="btn btn-primary" id="editButton">수정</button>    
+             <a class="btn btn-danger" href="/WineDelete?s_no=${select.s_no }&wl_idx=${select.wl_idx}"  id="deleteLink">삭제</a>
                        
             </td>
             
@@ -182,6 +182,26 @@
 
     <!-- 매장 홈으로 버튼 -->
     <a href="/" class="btn btn-primary " style="">매장 홈으로</a>
+    
 </main>
+<script>
+
+document.getElementById("editButton").addEventListener("click", function(event) {
+    var confirmation = confirm("수정 하시겠습니까?");
+    if (!confirmation) {
+        event.preventDefault(); // 수정 이벤트를 막음
+    }
+});
+
+document.getElementById("deleteLink").addEventListener("click", function(event) {
+    var confirmation = confirm("삭제하시겠습니까?");
+    if (!confirmation) {
+        event.preventDefault(); // 삭제 이벤트를 막음
+    }
+});
+
+</script>
+
+</script>
 </body>
 </html>

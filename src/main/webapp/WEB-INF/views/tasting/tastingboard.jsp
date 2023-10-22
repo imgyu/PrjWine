@@ -191,7 +191,7 @@ function goBack() {
     	<c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq tast.s_no}">
     	    <a href="TastingRequestList?s_no=${sloginVo.s_no }&t_idx=${tast.t_idx}" class="btn btn-primary">신청자 목록 </a>
         	<form action="/TastingListDelete?t_idx=${tast.t_idx}" method="POST">
-              <button type="submit" class="btn btn-primary">삭제</button>
+              <button type="submit" class="btn btn-primary" id="delete-confirm">삭제</button>
               <button type="button" class="btn btn-primary" onclick="goBack()">뒤로가기</button>
         	</form>
         </c:when>
@@ -205,6 +205,14 @@ document.getElementById("applyButton").addEventListener("click", function() {
         alert("신청이 완료되었습니다."); 
     } else {
         alert("신청이 취소되었습니다."); 
+    }
+});
+
+document.getElementById("delete-confirm").addEventListener("click", function() {
+    if (confirm("삭제하시겠습니까?")) {
+        alert("삭제가 완료되었습니다."); 
+    } else {
+        alert("삭제가 취소되었습니다."); 
     }
 });
 

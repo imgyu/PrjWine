@@ -207,11 +207,11 @@ form#search-form input[type="search"] {
 		
         <div>
             <label>시음회 이름</label>
-            <input type="text" name="t_title" placeholder="시음회 이름을 입력하세요">
+            <input type="text" name="t_title" id="t_title"  placeholder="시음회 이름을 입력하세요">
         </div>
         <div>
             <label>시음회 내용 설명</label>
-            <textarea name="t_cont" placeholder="시음회 내용 설명을 입력하세요"></textarea>
+            <textarea name="t_cont" id="t_cont" placeholder="시음회 내용 설명을 입력하세요"></textarea>
         </div>
         	<div class="container">
 				<div>
@@ -240,14 +240,36 @@ form#search-form input[type="search"] {
 				</div>
         <div>
             <label>시음회 날짜/시간</label>
-            <input type="text" name="t_date" placeholder="날짜/시간을 입력하세요">
+            <input type="text" name="t_date" id="t_date" placeholder="날짜/시간을 입력하세요">
         </div>
         <div>
             <label>참가비</label>
-            <input type="number" name="t_cost" placeholder="숫자만입력:>">
+            <input type="number" name="t_cost" id="t_cost" placeholder="숫자만입력:>">
         </div>
-    	<button type="submit">등록</button>
+    	<button type="submit" id="registerButton">등록</button>
     </form>
 </div>
+<script>
+
+document.getElementById("registerButton").addEventListener("click", function(event) {
+    var t_title = document.getElementById("t_title").value;
+    var t_cont = document.getElementById("t_cont").value;
+    var t_date = document.getElementById("t_date").value;
+    var t_cost = document.getElementById("t_cost").value;
+
+    if (t_title === "" || t_cont === "" || t_date === "" || t_cost === "") {
+        alert("모든 필수 입력란을 작성해주세요.");
+        event.preventDefault();
+        return;
+    }
+
+    var confirmation = confirm("등록하시겠습니까?");
+    if (!confirmation) {
+        // 아니요를 누르면 이벤트를 막음
+        event.preventDefault();
+    }
+});
+
+</script>
 </body>
 </html>

@@ -164,7 +164,7 @@
             <div class="text-center">
                 <div class="btn-group">
                     <a type="button" class="btn1" onclick="location.href='/';">메인 화면</a>
-                    <input type="submit" value="수정하기">
+                    <input type="submit" value="수정하기" id="edit-btn">
                 </div>
             </div>
         </form>
@@ -231,7 +231,13 @@ function s_execDaumPostcode() {
 			document.getElementById('preview').src = "";
 		}
 	}
-
+	
+	document.getElementById("edit-btn").addEventListener("click", function(event) {
+	    var confirmation = confirm("수정하시겠습니까?");
+	    if (!confirmation) {
+	        event.preventDefault(); // 이벤트(수정)를 막음
+	    }
+	});
 </script>
 </body>
 </html>

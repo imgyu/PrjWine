@@ -167,10 +167,20 @@ table {
             </div>
         </table>
             
-                    <button type="submit" class="btn1">수정</button>
+                    <button type="submit" class="btn1" id="update-button">수정</button>
                     <a type="button" class="boxed-btn" onclick="goBack()">뒤로가기</a>
 </c:forEach>
                 </form>
     </div>
+<script>
+document.getElementById('update-button').addEventListener('click', function () {
+
+    var success = confirm("수정하시겠습니까?.");
+    if (!success) {
+        event.preventDefault(); // 수정 성공 메시지 표시 후, 이벤트 막음
+    }
+});
+
+</script>
 </body>
 </html>

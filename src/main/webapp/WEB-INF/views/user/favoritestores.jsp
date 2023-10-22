@@ -127,6 +127,7 @@ function deleteValue() {
 	   }
 	   else {
 	      var chk  =  confirm("정말 삭제하시겠습니까?");
+	      if(chk){
 	      $.ajax({
 	         url  :  url,
 	         type : 'post',
@@ -142,12 +143,13 @@ function deleteValue() {
 	            }
 	            else {
 	               alert("삭제 실패");
+	               event.preventDefault();
 	            }
 	         }
 	      });
 	   }
 	}  // deleteValue
-      
+	}     
 
 
 </script>

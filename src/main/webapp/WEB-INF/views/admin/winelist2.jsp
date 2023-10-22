@@ -183,7 +183,7 @@ $("input[id='allCheck']").click(function() {
 });
 
 function deleteValue() {
-      var u_no =  ${w_no};
+      var w_no =  ${w_no};
       var url  =  "/AdminWineListDelete?w_no=" + w_no;
       var valueArr  =  [];
       var list  =  $("input[name='rowCheck']");
@@ -197,6 +197,7 @@ function deleteValue() {
       }
       else {
          var chk  =  confirm("정말 삭제하시겠습니까?");
+         if(chk) {
          $.ajax({
             url  :  url,
             type : 'post',
@@ -212,12 +213,13 @@ function deleteValue() {
                }
                else {
                   alert("삭제 실패");
+                  event.preventDefault();
                }
             }
          });
       }
    }  // deleteValue
-
+}
 
 </script>
 </body>

@@ -166,13 +166,31 @@ table {
         <c:choose>
             <c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq board.s_no}">
                 <form action="/BoardDelete?s_no=${board.s_no}&b_idx=${board.b_idx}" method="POST" id="search-form">  
-                    <button type="submit" class="btn1">삭제</button>
-					<a href="/BoardContUpdateForm?s_no=${board.s_no }&b_idx=${board.b_idx}&b_title=${board.b_title}" class="btn1">수정</a>                    
+                    <button type="submit" class="btn1" id="delete-button">삭제</button>
+					<a href="/BoardContUpdateForm?s_no=${board.s_no }&b_idx=${board.b_idx}&b_title=${board.b_title}" class="btn1" id="update-link">수정</a>                    
                     <a type="submit" class="boxed-btn" onclick="goBack()">뒤로가기</a>
                 </form>
             </c:when>
         </c:choose>
     </div>
 </c:forEach>
+<script>
+
+document.getElementById('delete-button').addEventListener('click', function () {
+    var confirmation = confirm("삭제하시겠습니까?");
+    if (!confirmation) {
+        event.preventDefault();
+    }
+});
+
+document.getElementById('update-link').addEventListener('click', function (event) {
+    var confirmation = confirm("수정하시겠습니까?");
+    if (!confirmation) {
+        event.preventDefault(); // "아니요"를 선택한 경우 이벤트 막음
+    }
+});
+
+
+</script>
 </body>
 </html>
