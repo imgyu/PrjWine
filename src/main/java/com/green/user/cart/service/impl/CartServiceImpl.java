@@ -48,23 +48,21 @@ public void AddCart(CartVo vo) {
 			
 }
 
-@Override
-public String insertPay(PaymentVo pay) {
-	
-	String view  =  null;
-	
-	cartDao.insertPay(pay);
-	
-	return view;
-}
 
 @Override
-public List<HavingWineVo> selCartList(HavingWineVo vo) {
+public List<HavingWineVo>  selCartList(HavingWineVo vo) {
 	
 	List<HavingWineVo> selCartList  =  cartDao.selCartList(vo);
 	
 	return selCartList;
 }
+
+@Override
+public void insertPay(PaymentVo pay, String[] cartids) {
+	cartDao.insertPay(pay, cartids);
+}
+
+
 
 
 

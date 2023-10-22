@@ -62,14 +62,6 @@ public void addCart(CartVo vo) {
 	
 }
 
-@Override
-public void insertPay(PaymentVo pay) {
-	
-	sqlSession.insert("Cart.InsertPay", pay);
-	
-	sqlSession.delete("Cart.DeleteCart", pay);
-	
-}
 
 @Override
 public List<HavingWineVo> selCartList(HavingWineVo vo) {
@@ -78,6 +70,20 @@ public List<HavingWineVo> selCartList(HavingWineVo vo) {
 	
 	
 	return selCartList;
+}
+
+@Override
+public void insertPay(PaymentVo pay, String[] cartids) {
+	
+	Map<String, Object> map = new HashMap<>();
+	
+	map.put("cartids", cartids);
+	map.put("pay", pay);
+	
+	sqlSession.insert("Cart.InsertPay", map);
+	
+	sqlSession.delete("Cart.DeleteCart", cartids);
+	
 }
 
 

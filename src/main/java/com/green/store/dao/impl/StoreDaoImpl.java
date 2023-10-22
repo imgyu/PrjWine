@@ -193,11 +193,12 @@ public class StoreDaoImpl implements StoreDao {
    }
 
    @Override
-   public List<RegVo> getStoreListSearch(int s_no, String w_kind ,String searchKeyword, String searchOption, String amountOption) {
+   public List<RegVo> getStoreListSearch(int s_no, String w_kind ,String searchKeyword, String searchOption) {
       
       List<RegVo> storeListSearch  =  new ArrayList<>();
       
       Map<String, Object> map  =  new HashMap<>();
+      
       map.put("s_no", s_no);
       map.put("searchKeyword", searchKeyword);
       map.put("searchOption", searchOption);
@@ -206,7 +207,7 @@ public class StoreDaoImpl implements StoreDao {
       System.out.println(map);
       
       
-      if ("All".equals(searchOption) || searchOption == null) {
+      if ("All".equals(searchOption) || searchKeyword == null) {
     	  if ("w_kind".equals(w_kind)) {
     		  storeListSearch  =  sqlSession.selectList("Store.AllSearch", map);  
       }   else if (!"w_kind".equals(w_kind)) {
@@ -214,7 +215,7 @@ public class StoreDaoImpl implements StoreDao {
       }
     
       }
-      else if (!"All".equals(searchOption) && searchOption != null) {
+      else if (!"All".equals(searchOption) && searchKeyword != null) {
     	  if("w_kind".equals(w_kind)) {
     		  storeListSearch  =  sqlSession.selectList("Store.OptionSearch", map);
     	  }

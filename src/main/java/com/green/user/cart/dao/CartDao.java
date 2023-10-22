@@ -18,7 +18,7 @@ public interface CartDao {
 
    void addCart(CartVo vo);
 
-   void insertPay(PaymentVo pay);
+   void insertPay(PaymentVo pay, String[] cartids);
 
    List<HavingWineVo> selCartList(HavingWineVo vo);
 
