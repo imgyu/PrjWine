@@ -113,6 +113,7 @@ public class TastingDaoImpl implements TastingDao {
 
 	@Override
 	public void insertTaste(TastingVo vo) {
+		
 		sqlSession.insert("Taste.InsertTaste", vo);
 	}
 
@@ -141,8 +142,15 @@ public class TastingDaoImpl implements TastingDao {
 
 	@Override
 	public void tastingRequest(TastingVo vo) {
-		sqlSession.insert("Taste.TastingRequest", vo);
 		
+		int TastingRequestCheck;
+		
+		TastingRequestCheck = sqlSession.selectOne("Taste.TastingRequestCheck", vo);
+		
+		if (TastingRequestCheck == 0) {
+		sqlSession.insert("Taste.TastingRequest", vo);
+		}
+			
 	}
 
 	@Override

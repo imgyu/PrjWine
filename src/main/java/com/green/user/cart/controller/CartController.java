@@ -86,7 +86,8 @@ public class CartController {
    @RequestMapping("/AddCart")
    public ModelAndView AddCart(CartVo vo) {
 	   
-	   int u_no   =  vo.getU_no();        
+	   int u_no   =  vo.getU_no();
+	   int wl_idx = vo.getWl_idx();
  
        
        cartService.AddCart(vo);
@@ -94,6 +95,7 @@ public class CartController {
        ModelAndView  mv  =  new ModelAndView();
        mv.addObject("vo", vo);
        mv.addObject("u_no", u_no);
+       mv.addObject("wl_idx", wl_idx);
        mv.setViewName("redirect:/CartList");
        mv.addObject("message", "장바구니에 추가되었습니다");
       

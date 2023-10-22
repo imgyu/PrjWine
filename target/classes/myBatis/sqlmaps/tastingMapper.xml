@@ -73,8 +73,12 @@
 
 INSERT INTO TESTINGJOIN (T_IDX, U_NO)
 VALUES (#{t_idx}, #{u_no})
-
 </insert>
+
+<select id="TastingRequestCheck" resultType = "int" >
+SELECT COUNT(*)
+FROM TESTINGJOIN WHERE U_NO = #{u_no} AND T_IDX = #{t_idx}
+</select>
 
 <select id="RequestCount" resultType="Integer" >
 

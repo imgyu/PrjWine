@@ -106,10 +106,11 @@ WHERE  C_IDX =  #{c_idx}
        S.S_NO,
        W.W_NO
       FROM WINELIST WL
-       INNER JOIN WINE W ON WL.W_NO = W.W_NO
-       INNER JOIN STORE S ON S.S_NO = WL.S_NO
+       LEFT JOIN WINE W ON WL.W_NO = W.W_NO
+       LEFT JOIN STORE S ON S.S_NO = WL.S_NO
        WHERE S.S_NO  = #{s_no}
        AND   W.W_NO  = #{w_no}  
+       AND   WL.WL_IDX  = #{wl_idx}  
    
    </select> 
 

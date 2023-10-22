@@ -173,7 +173,7 @@
 function confirmAndRedirect() {
     if (confirm('관심매장 등록하시겠습니까?')) {
         alert('등록되었습니다');
-    } else {
+    } else  {
     	alert("취소하였습니다");
         return false; // 링크를 직접 실행하지 않음
     }
