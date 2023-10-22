@@ -188,13 +188,7 @@ form#search-form input[type="text"] {
                             <option value="SPARKLING">SPARKLING</option>
                         </select>
                     </div>
-                    <div class="col-md-3">
-                        <select class="form-select" name="amountOption">
-                            <option value="choose">선택</option>
-                            <option value="w_amount">수량↑</option>
-                            <option value="w_amountDown">수량↓</option>
-                        </select>
-                    </div>
+                    
                     <div class="col-md-3">
                         <div class="input-group">
                             <input type="text" class="form-control" name="searchKeyword" placeholder="검색어 입력">

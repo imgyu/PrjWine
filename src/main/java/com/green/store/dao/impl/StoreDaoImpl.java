@@ -205,8 +205,28 @@ public class StoreDaoImpl implements StoreDao {
       System.out.println(map);
       
       
+      if ("All".equals(searchOption) || searchOption == null) {
+    	  if ("w_kind".equals(w_kind)) {
+    		  storeListSearch  =  sqlSession.selectList("Store.AllSearch", map);  
+      }   else if (!"w_kind".equals(w_kind)) {
+    	  storeListSearch  =  sqlSession.selectList("Store.KindSearch", map);
+      }
+    
+      }
+      else if (!"All".equals(searchOption) && searchOption != null) {
+    	  if("w_kind".equals(w_kind)) {
+    		  storeListSearch  =  sqlSession.selectList("Store.OptionSearch", map);
+    	  }
+    	  else {
+    		  storeListSearch  =  sqlSession.selectList("Store.WineSearch", map);
+    		  System.out.println("1");
+    	  }
+      }
       
-      if("All".equals(searchOption) && "w_kind".equals(w_kind)) {
+      return storeListSearch;
+   }
+    	  
+     /* if("All".equals(searchOption) && "w_kind".equals(w_kind)) {
     	  if (searchOption == null)
          storeListSearch  =  sqlSession.selectList("Store.AllSearch", map);   
       } else if ("All".equals(searchOption)){
@@ -217,9 +237,7 @@ public class StoreDaoImpl implements StoreDao {
           storeListSearch  =  sqlSession.selectList("Store.OptionSearch", map);
        } else {
     	   storeListSearch  =  sqlSession.selectList("Store.WineSearch", map);
-       }
-      return storeListSearch;
-   }
+       }*/
    
    
    
