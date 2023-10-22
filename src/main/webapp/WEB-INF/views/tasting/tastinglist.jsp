@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
 <!DOCTYPE html>
 <html>
 <head>
@@ -113,7 +113,7 @@
                <td><a href="/TastingBoard?t_idx=${tast.t_idx}">${tast.t_title}</a></td>
                <td>${tast.s_address}${tast.s_detailaddress}</td>
                <td>${tast.t_cont}</td>
-               <td>${tast.t_date}</td>
+               <td><fmt:formatDate value="${tast.t_date}" pattern="yyyy.MM.dd HH:mm" /></td>
                <td>${tast.t_cost}</td>
             </tr>
          </c:forEach>

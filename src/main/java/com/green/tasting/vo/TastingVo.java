@@ -1,5 +1,9 @@
 package com.green.tasting.vo;
 
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class TastingVo {
 	private int s_no;
 	private String s_id;
@@ -19,7 +23,8 @@ public class TastingVo {
 	private String t_title;
 	private String t_cont;
 	private int w_no;
-	private String t_date;
+@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+	private Date t_date;
 	private int t_cost;
 	private int u_no;
 	private String u_id;
@@ -47,10 +52,10 @@ public class TastingVo {
 	public TastingVo(int s_no, String s_id, String s_pw, String s_name, String s_sn, String s_postcode,
 			String s_address, String s_phone, String s_cont, String s_detailaddress, String s_extraaddress,
 			String s_imgname, String s_imgext, String s_simgname, int t_idx, String t_title, String t_cont, int w_no,
-			String t_date, int t_cost, int u_no, String u_id, String u_pw, String u_name, int u_birth,
-			String u_postcode, String u_address, String u_phone, int u_point, String u_detailaddress,
-			String u_extraaddress, String w_wineery, String w_name, String w_vintage, int w_avg, String w_reviews,
-			String w_location, String w_image, String w_kind, int w_amount, int w_price, int wl_idx) {
+			Date t_date, int t_cost, int u_no, String u_id, String u_pw, String u_name, int u_birth, String u_postcode,
+			String u_address, String u_phone, int u_point, String u_detailaddress, String u_extraaddress,
+			String w_wineery, String w_name, String w_vintage, int w_avg, String w_reviews, String w_location,
+			String w_image, String w_kind, int w_amount, int w_price, int wl_idx) {
 		this.s_no = s_no;
 		this.s_id = s_id;
 		this.s_pw = s_pw;
@@ -202,10 +207,10 @@ public class TastingVo {
 	public void setW_no(int w_no) {
 		this.w_no = w_no;
 	}
-	public String getT_date() {
+	public Date getT_date() {
 		return t_date;
 	}
-	public void setT_date(String t_date) {
+	public void setT_date(Date t_date) {
 		this.t_date = t_date;
 	}
 	public int getT_cost() {
@@ -361,4 +366,5 @@ public class TastingVo {
 				+ w_image + ", w_kind=" + w_kind + ", w_amount=" + w_amount + ", w_price=" + w_price + ", wl_idx="
 				+ wl_idx + "]";
 	}
+	
 }
