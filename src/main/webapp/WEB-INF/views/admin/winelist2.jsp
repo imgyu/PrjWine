@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
 <title>판매기록</title>
@@ -89,9 +89,9 @@
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>판매기록</h1>
+                  <h1>와인목록</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>Admin</p>
                </div>
             </div>
          </div>
@@ -100,43 +100,125 @@
    <br>
    <br>
 
-	<form action="/SalesHistoryUpdate" method="post">
-    <table id="table">
-        <tr>
-            <th><input type="checkbox" id="allCheck"></th>
-            <th>판매날짜</th>
-            <th>손님고유번호</th>
-            <th>손님이름</th>
-            <th>손님연락처</th>
-            <th>판매와인</th>
-            <th>와인단가</th>
-            <th>총가격</th>
-            <th>
-                <select id="select" name="p_state">
-                    <option value="0">결제완료</option>
-                    <option value="1">배송 준비완료</option>
-                    <option value="2">배송중</option>
-                    <option value="3">배송완료</option>
-                </select>
-            </th>
-        </tr>
+	<div class="container">
+			<form action="/AdWineSearch" method="GET" id="search-form">
+				<div>
+					<select id="select" name="searchOption">
+						<option value="W_NAME">이름</option>
+						<option value="W_LOCATION">국가</option>
+						<option value="W_VINTAGE">빈티지</option>
+					</select>
+					<select id="select2" name="kindOption">
+						<option value="W_KIND">전체</option>
+						<option value="PORT">PORT</option>
+						<option value="DESSERT">DESSERT</option>
+						<option value="RED">RED</option>
+						<option value="ROSE">ROSE</option>
+						<option value="WHITE">WHITE</option>
+						<option value="SPARKLING">SPARKLING</option>
+					</select>
+				<input type="text" name="searchKeyword" placeholder="검색어 입력">
+				<button type="submit">검색</button>
+				</div>
+			</form>
+		</div>
+			<table id="table">
+	<tr class="first-row">
+	    <th><input type="checkbox" id="allCheck"></th>
+		<th>Wineery</th>
+		<th>Wine</th>
+		<th>Vintage</th>
+		<th>Average</th>
+		<th>Reviews</th>
+		<th>Location</th>
+		<th>Image</th>
+		<th>Kind</th>
+	</tr>
+	
+	
+	<c:forEach var="all" items="${Allwine }">
+	<tr>
+	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${all.w_no }"></td>
+		<td>${all.w_wineery }</td>
+		<td>${all.w_name}</td>
+		<td>${all.w_vintage }</td>
+		<td>${all.w_avg }</td>
+		<td>${all.w_reviews }</td>
+		<td>${all.w_location }</td>
+		<td><img class="wine-image" src="${all.w_image}" alt="와인 사진"></td>
+		<td>${all.w_kind }</td>
+	</tr>
+	</c:forEach>
+	</table>
+	<div style="display: block; text-align: center;">
 
-        <c:forEach var="sales" items="${salesHistory}">
-        <input type="hidden" value="${sales.s_no}" name="s_no">
-            <tr>
-                <td><input type="checkbox" name="valueArr" value="${sales.paynum}"></td>
-                <td>${sales.sh_date}</td>
-                <td>${sales.u_no}</td>
-                <td>${sales.u_name}</td>
-                <td>${sales.u_phone}</td>
-                <td>${sales.w_name}</td>
-                <td>${sales.w_price}</td>
-                <td>${sales.p_allprice}</td>
-                <td>${sales.p_state}</td>
-            </tr>
-        </c:forEach>
-    </table>
-    <button type="submit" class="btn btn-primary">수정</button>
-</form>
+    <c:if test="${pds.startPage != 1}">
+    <a href="/AdminWineList?nowPage=${pds.startPage - 1}&cntPerPage=${pds.cntPerPage}">&lt;</a>
+</c:if>
+<c:forEach begin="${pds.startPage}" end="${pds.endPage}" var="p">
+    <c:choose>
+        <c:when test="${p == pds.nowPage}">
+            <b>${p}</b>
+        </c:when>
+        <c:when test="${p != pds.nowPage}">
+            <a href="/AdminWineList?nowPage=${p}&cntPerPage=${pds.cntPerPage}">${p}</a>
+        </c:when>
+    </c:choose>
+</c:forEach>
+<c:if test="${pds.endPage != pds.lastPage}">
+    <a href="/AdminWineList?nowPage=${pds.endPage + 1}&cntPerPage=${pds.cntPerPage}">&gt;</a>
+</c:if>
+</div>
+	<a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
+<script>
+//전체 체크    
+var chkObj  =  document.getElementsByName("rowCheck");
+var rowCnt  =  chkObj.length;
+
+$("input[id='allCheck']").click(function() {
+   var chk_listArr  =  $("input[name='rowCheck']");
+   for (var i=0; i<chk_listArr.length; i++) {
+      chk_listArr[i].checked  =  this.checked;
+   }
+});
+
+function deleteValue() {
+	   var u_no =  ${w_no};
+	   var url  =  "/AdminWineListDelete?w_no=" + w_no;
+	   var valueArr  =  [];
+	   var list  =  $("input[name='rowCheck']");
+	   for(var i = 0; i < list.length; i++) {
+	      if(list[i].checked) {
+	         valueArr.push(list[i].value);
+	      }
+	   }
+	   if(valueArr.length == 0) {
+	      alert("선택하신 게 없습니다.");
+	   }
+	   else {
+	      var chk  =  confirm("정말 삭제하시겠습니까?");
+	      $.ajax({
+	         url  :  url,
+	         type : 'post',
+	         traditional : true,
+	         data : {
+	            'valueArr[]'  :  valueArr
+	         },
+	         success: function(jdata) {
+	            if(jdata == 1) {
+	               alert("삭제성공");
+	               location.reload();
+	               
+	            }
+	            else {
+	               alert("삭제 실패");
+	            }
+	         }
+	      });
+	   }
+	}  // deleteValue
+
+
+</script>
 </body>
 </html>

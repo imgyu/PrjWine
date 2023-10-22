@@ -15,6 +15,7 @@ import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
+import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
@@ -316,6 +317,11 @@ public class StoreDaoImpl implements StoreDao {
 		List<StoreVo> snameSearch2  =  sqlSession.selectList("Store.SnameSearch2", map);
 	
 		return snameSearch2;
+   }
+
+	@Override
+	public void updateShistory(PaymentVo vo) {
+		sqlSession.update("Store.UpdateShistory", vo);
 	}
 
    } 

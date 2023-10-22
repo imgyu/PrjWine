@@ -128,6 +128,11 @@ SELECT COUNT(*) FROM TESTING
 SELECT COUNT(*) FROM BOARD
 
 </select>
+<select id="countWineSearch" resultType="int" parameterType="Map">
+
+SELECT COUNT(*) FROM WINE WHERE W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%'
+
+</select>
 
 
 <insert id="AdminWineInsert">
@@ -159,4 +164,94 @@ DELETE FROM WINE
 WHERE W_NO  =  #{w_no}
 
 </delete>
+
+<select id="AdWineList" resultType="com.green.store.vo.WineVo" parameterType="Map">
+SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+SELECT *
+    FROM WINE
+    <where>
+    <if test="searchOption == 'W_NAME'">
+    <choose>
+    <when test="kindOption == 'W_KIND'">
+    		W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = W_KIND
+    </when>
+    <when test="kindOption == 'PORT'">
+    		W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'DESSERT'">
+    		W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'RED'">
+    		W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'ROSE'">
+    		W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'WHITE'">
+    		W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'SPARKLING'">
+    		W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    </choose>
+    </if>
+    <if test="searchOption == 'W_LOCATION'">
+    <choose>
+    <when test="kindOption == 'W_KIND'">
+    		W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = W_KIND
+    </when>
+    <when test="kindOption == 'PORT'">
+    		W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'DESSERT'">
+    		W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'RED'">
+    		W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'ROSE'">
+    		W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'WHITE'">
+    		W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'SPARKLING'">
+    		W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    </choose>
+    </if>
+    <if test="searchOption == 'W_VINTAGE'">
+    <choose>
+    <when test="kindOption == 'W_KIND'">
+    		W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = W_KIND
+    </when>
+    <when test="kindOption == 'PORT'">
+    		W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'DESSERT'">
+    		W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'RED'">
+    		W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'ROSE'">
+    		W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'WHITE'">
+    		W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'SPARKLING'">
+    		W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    </choose>
+    </if>
+    </where>
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
+</select>
+
 </mapper>

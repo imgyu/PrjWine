@@ -33,7 +33,11 @@ WHERE WL.W_NO  =  #{w_no}
 </select>
 
 <!-- 영태 와인이름으로 검색 -->
-     <select id="NameSearch" resultType="com.green.store.vo.RegVo">
+     <select id="NameSearch" resultType="com.green.store.vo.RegVo" parameterType="Map">
+       SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
       SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
       FROM WINE W
          LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
@@ -42,63 +46,135 @@ WHERE WL.W_NO  =  #{w_no}
          W.W_NAME LIKE '%' || UPPER(#{name_Search}) || '%' AND WL.WL_IDX >= 1 
       OR W.W_NAME LIKE '%' || LOWER(#{name_Search}) || '%' AND WL.WL_IDX >= 1
       OR W.W_NAME LIKE '%' || INITCAP(#{name_Search}) || '%' AND WL.WL_IDX >= 1
-   </select>
+       ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
+    </select>
    
    <!-- 영태 모든와인종류 클릭 -->
-     <select id="AllClick" resultType="com.green.store.vo.RegVo">
+     <select id="AllClick" resultType="com.green.store.vo.RegVo" parameterType="Map">
+      SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
       SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
       FROM WINE W
          LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
          LEFT JOIN STORE S ON WL.S_NO = S.S_NO
 	     WHERE 1 = 1 AND WL.WL_IDX >= 1 
+	     ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
    </select>
    
    <!-- 영태 레드와인 클릭 -->
-     <select id="RedClick" resultType="com.green.store.vo.RegVo">
+    <select id="RedClick" resultType="com.green.store.vo.RegVo" parameterType="Map">
+          SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
     SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
     WHERE W_KIND = 'RED'  AND WL.WL_IDX >= 1 
+     ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
    </select>
    
    <!-- 영태 화이트와인 클릭 -->
-     <select id="WhiteClick" resultType="com.green.store.vo.RegVo">
+     <select id="WhiteClick" resultType="com.green.store.vo.RegVo" parameterType="Map">
+   SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
     SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
     WHERE W_KIND = 'WHITE' AND WL.WL_IDX >= 1
+     ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
    </select>
 
 <!-- 영태 스파클링와인 클릭 -->
-     <select id="SparkClick" resultType="com.green.store.vo.RegVo">
+     <select id="SparkClick" resultType="com.green.store.vo.RegVo" parameterType="Map">
+       SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
     SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
     WHERE W_KIND = 'SPARKLING' AND WL.WL_IDX >= 1
+     ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
    </select>
    
    <!-- 영태 로제와인 클릭 -->
-     <select id="RoseClick" resultType="com.green.store.vo.RegVo">
+     <select id="RoseClick" resultType="com.green.store.vo.RegVo" parameterType="Map">
+           SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
     SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
     WHERE W_KIND = 'ROSE' AND WL.WL_IDX >= 1
+     ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
    </select>
    
    <!-- 영태 나머지버튼 클릭 -->
-     <select id="OtherClick" resultType="com.green.store.vo.RegVo">
+     <select id="OtherClick" resultType="com.green.store.vo.RegVo" parameterType="Map">
+           SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
     SELECT W.*, WL.W_AMOUNT, WL.W_PRICE, S.S_NO
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
     WHERE W_KIND = 'DESSERT' AND WL.WL_IDX >= 1 
     OR W_KIND = 'PORT' AND WL.WL_IDX >= 1
+     ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
    </select>
-	
+<select id="CountWineAll" resultType="int">
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+</select> 
+<select id="CountWineRed" resultType="int">
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'RED'
+</select> 
+<select id="CountWineWhite" resultType="int">
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'WHITE'
+</select> 
+<select id="CountWineSpark" resultType="int"> 
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'SPARKLING'
+</select>
+<select id="CountWineRose" resultType="int"> 
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'ROSE'
+</select>
+<select id="CountWineOther" resultType="int"> 
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_KIND = 'DESSERT' OR W.W_KIND = 'PORT'
+</select>
+<select id="CountWineSearch" resultType="int"> 
+SELECT COUNT(*) FROM WINELIST WL LEFT JOIN WINE W ON W.W_NO = WL.W_NO
+WHERE W.W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%'
+</select>
+
 </mapper>
 
 

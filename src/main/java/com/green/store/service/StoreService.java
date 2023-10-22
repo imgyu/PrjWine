@@ -10,6 +10,7 @@ import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
+import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
@@ -69,7 +70,6 @@ public interface StoreService {
 
    List<StoreVo> snameSearch2(PdsPagingVo pds, String sname_Search);
 
-
-
+   void updateShistory(PaymentVo vo);
 
 }

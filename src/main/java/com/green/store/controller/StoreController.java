@@ -16,6 +16,7 @@ import com.green.board.vo.BoardVo;
 import com.green.pds.vo.PdsPagingVo;
 import com.green.store.service.StoreService;
 import com.green.store.vo.StoreVo;
+import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.vo.PaymentVo;
 
 
@@ -161,4 +162,25 @@ public class StoreController {
 		mv.addObject("boardList", boardList);
 		return mv;
 	}
+	
+	@RequestMapping("/SalesHistoryUpdate")
+	public ModelAndView sHistoryUpdate(@RequestParam(value = "valueArr") String[] valueArr, PaymentVo vo) {
+		
+		for (String paynum : valueArr) {
+			vo.setPaynum(paynum);
+	        storeService.updateShistory(vo);
+	    }
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("redirect:/SalesHistory?s_no="+vo.getS_no());
+		return mv;
+	}
+	
 }
+
+	
+	
+	
+	
+	
+	

@@ -15,6 +15,7 @@ import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
+import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
@@ -176,6 +177,10 @@ public class StoreServiceImpl implements StoreService {
 		List<StoreVo> snameSearch2  =  storeDao.snameSearch2(pds, sname_Search);
 		
 		return snameSearch2;
+   }
+   
+	public void updateShistory(PaymentVo vo) {
+		storeDao.updateShistory(vo);
 	}
 }
    

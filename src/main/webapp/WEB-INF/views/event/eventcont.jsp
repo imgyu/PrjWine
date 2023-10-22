@@ -115,7 +115,7 @@
 			<img src="/img/${event.e_bimg}">
 		</div>
 		</table>
-		<c:if test="${sloginVo.s_no == 1}">
+		<c:if test="${sloginVo.s_no == 99}">
 			<input type="submit" value="삭제">
 		</c:if>
 		<input class="btn1" type="button" value="목록으로" onclick="history.back()" style="margin: auto">

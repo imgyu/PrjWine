@@ -100,10 +100,33 @@
    <br>
    <br>
 
+	<div class="container">
+			<form action="/AdWineSearch" method="GET" id="search-form">
+				<div>
+					<select id="select" name="searchOption">
+						<option value="W_NAME">이름</option>
+						<option value="W_LOCATION">국가</option>
+						<option value="W_VINTAGE">빈티지</option>
+					</select>
+					<select id="select2" name="kindOption">
+						<option value="W_KIND">전체</option>
+						<option value="PORT">PORT</option>
+						<option value="DESSERT">DESSERT</option>
+						<option value="RED">RED</option>
+						<option value="ROSE">ROSE</option>
+						<option value="WHITE">WHITE</option>
+						<option value="SPARKLING">SPARKLING</option>
+					</select>
+				<input type="text" name="searchKeyword" placeholder="검색어 입력">
+				<button type="submit">검색</button>
+				</div>
+			</form>
+		</div>
+
 	<table id="table">
 	<tr class="first-row">
 	    <th><input type="checkbox" id="allCheck"></th>
-		<th>Winery</th>
+		<th>Wineery</th>
 		<th>Wine</th>
 		<th>Vintage</th>
 		<th>Average</th>

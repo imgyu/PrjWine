@@ -107,6 +107,50 @@ margin-top: 50px;
 <script src="assets/js/jquery.meanmenu.min.js"></script>
 <script src="assets/js/sticker.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+function goToPage(pageNumber) {
+	
+    // 페이지 번호를 눌렀을 때 이동할 URL을 생성
+    var url = '?nowPage=' + pageNumber + '&cntPerPage=${pds.cntPerPage}';
+
+    // 페이지 이동
+    window.location.href = url;
+}
+</script>
+<script>
+function goToPage(pageNumber, filter) {
+    // 현재 필터 정보를 URL에 추가
+    var url = '?' + filter + '&nowPage=' + pageNumber + '&cntPerPage=${pds.cntPerPage}';
+    
+    // 페이지 이동
+    window.location.href = url;
+}
+
+// 필터 버튼 클릭 이벤트 핸들러
+document.querySelector('[name="all_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=all');
+});
+
+document.querySelector('[name="red_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=red_click');
+});
+
+document.querySelector('[name="white_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=white_click');
+});
+
+document.querySelector('[name="sparkling_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=sparkling_click');
+});
+
+document.querySelector('[name="rose_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=rose_click');
+});
+
+document.querySelector('[name="other_click"]').addEventListener('click', function() {
+    goToPage(1, 'filter=other_click');
+});
+</script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -116,9 +160,9 @@ margin-top: 50px;
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>전체와인</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>Wine Information</p>
                </div>
             </div>
          </div>
@@ -152,9 +196,7 @@ margin-top: 50px;
          <form action="/NameSearch" method="POST">
             <input type="search"   name="name_Search" placeholder="와인이름">
             <input type="submit"   value="찾기">
-         </form>
-      </div>
-   </div>
+   
    <!-- 와인 검색end -->
    
    <c:set var="wine" value="" />
@@ -211,6 +253,32 @@ margin-top: 50px;
          </div>
       </c:forEach>
    </div>
-   </div></div></div>
+         </form>
+      </div>
+     </div>
+   </div>
+  </div>
+</div>
+<div style="display: block; text-align: center;">
+
+   <c:if test="${pds.startPage != 1}">
+    <a href="#" onclick="goToPage(${pds.startPage - 1}, '${wine}'); return false;">&lt;</a>
+</c:if>
+
+<c:forEach begin="${pds.startPage}" end="${pds.endPage}" var="p">
+    <c:choose>
+        <c:when test="${p == pds.nowPage}">
+            <b>${p}</b>
+        </c:when>
+        <c:when test="${p != pds.nowPage}">
+             <a href="#" onclick="goToPage(${p}, '${wine}'); return false;">${p}</a>
+        </c:when>
+    </c:choose>
+</c:forEach>
+
+<c:if test="${pds.endPage != pds.lastPage}">
+    <a href="#" onclick="goToPage(${pds.endPage + 1}, '${wine}'); return false;">&gt;</a>
+</c:if>
+</div>
 </body>
 </html>
