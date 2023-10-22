@@ -261,10 +261,16 @@ public class StoreDaoImpl implements StoreDao {
 
 	@Override
 	public void storeUpdate(HashMap<String, Object> map) {
+		String s_simgname = (String) map.get("s_simgname");
+		   
+		   if (s_simgname == null || s_simgname.isEmpty()) {
+			   sqlSession.update("Store.StoreUpdate2",  map );      
+			} else {
+			   sqlSession.update("Store.StoreUpdate",  map );      
+			}
+		System.out.println(map);
+	   }
 		
-		sqlSession.update("Store.StoreUpdate", map );
-		
-	}
 
 	@Override
 	public List<PaymentVo> salesHistory(PaymentVo vo) {

@@ -364,6 +364,14 @@ SELECT *
        WHERE S_NO = #{s_no}
 
 </select>
+
+<select id="GetStoreInfo" resultType="com.green.store.vo.StoreVo">
+
+SELECT *
+       FROM STORE
+       WHERE S_NO = #{s_no}
+
+</select>
  
 <update id="StoreUpdate" parameterType="Map">
 
@@ -375,6 +383,20 @@ SET S_NAME  =  #{s_name},
     S_IMGNAME = #{s_imgname},
     s_IMGEXT  = #{s_imgext},
     S_SIMGNAME = #{s_simgname},
+    S_EXTRAADDRESS = #{s_extraAddress},
+    S_POSTCODE = #{s_postcode}
+       
+    WHERE S_NO = #{s_no}
+
+
+</update>
+<update id="StoreUpdate2" parameterType="Map">
+
+UPDATE STORE
+SET S_NAME  =  #{s_name},
+    S_ADDRESS = #{s_address},
+    S_DETAILADDRESS = #{s_detailAddress},
+    S_CONT = #{s_cont},
     S_EXTRAADDRESS = #{s_extraAddress},
     S_POSTCODE = #{s_postcode}
        

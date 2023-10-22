@@ -39,12 +39,12 @@ public class CartController {
    @PostMapping("/insertPay")
    @ResponseBody
    public String insertPay(@RequestBody PaymentVo pay) {
-	   
-	   System.out.println(pay);
-	    
+      
+      System.out.println(pay);
+       
        String view  =  cartService.insertPay(pay);
        
-	   return view;
+      return view;
    }
    
    //장바구니 목록   

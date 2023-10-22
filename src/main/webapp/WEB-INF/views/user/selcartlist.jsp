@@ -193,6 +193,7 @@ form#search-form input[type="text"] {
                                         <input type="hidden" name="u_no" value="${loginVo.u_no}">
                                         <input type="hidden" name="w_no" value="${wine.w_no}">
                                         <input type="hidden" name="s_no" value="${wine.s_no}">
+                                        <input type="hidden" name="wl_idx" value="${wine.wl_idx}">
                                         <input id="text1" type="text" name="c_count" placeholder="수량 입력">
                                         <input type="submit" value="장바구니에 추가" onclick="myFunction()">
                                     </form>

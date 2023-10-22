@@ -13,7 +13,6 @@ import com.green.admin.dao.AdminDao;
 import com.green.board.vo.BoardVo;
 import com.green.event.vo.EventVo;
 import com.green.pds.vo.PdsPagingVo;
-import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
 import com.green.tasting.vo.TastingVo;
@@ -171,6 +170,7 @@ public class AdminDaoImpl implements AdminDao {
 	@Override
 	public List<WineVo> searchList(PdsPagingVo pds, String searchKeyword, String searchOption, String kindOption) {
 		List<WineVo> searchList = new ArrayList<>();
+		Map<String, Object> map = new HashMap<>();
 		map.put("searchKeyword", searchKeyword);
   	    map.put("searchOption", searchOption);
   	    map.put("kindOption", kindOption);
@@ -183,7 +183,6 @@ public class AdminDaoImpl implements AdminDao {
 
 	@Override
 	public int countWineSearch(String searchKeyword, String searchOption, String kindOption) {
-		List<WineVo> searchList = new ArrayList<>();
 		Map<String, Object> map = new HashMap<>();
 		map.put("searchKeyword", searchKeyword);
   	    map.put("searchOption", searchOption);
