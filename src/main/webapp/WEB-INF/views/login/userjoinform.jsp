@@ -28,20 +28,37 @@
 
 .container1 {
 	margin: 0 auto; /* 상하여백 좌우여백 */
+	max-width: 50%; /* 로그인 폼의 최대 너비 */
+	padding-top: 80px;
 }
 
-table {
+.tb {
 	margin: 0 auto;
-	border: 2px solid;
 	border-collapse: collapse;
+	width: 100%;
+	background-color: #fff;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
+	border-radius: .25rem;
 }
 
-tr>td:nth-child(1) {
+.tb tr>td:nth-child(1) {
 	text-align: center;
+	padding-right: 10px; /* 필드명과 입력 필드 사이 간격 조정 */
+	width: 30%;
+	font-weight:bold;
+}
+.tb1 tr>td:nth-child(2) {
+	text-align: left;
+	padding-right: 10px; /* 필드명과 입력 필드 사이 간격 조정 */
+	width: 30%;
+	font-weight:bold;
 }
 
-tr, td {
-	border: 2px solid;
+tr,
+td {
+	border-bottom:solid thin #e6e6e6 ;
+	padding-bottom:.5em ;
+	padding-top:.5em ;
 }
 
 .redFont {
@@ -51,7 +68,9 @@ tr, td {
 }
 
 textarea {
-	resize: none;
+	resize:none ;
+	width :100% ; /* 텍스트 영역 가로 폭 조정 */
+	height :100% ; /* 텍스트 영역 세로 높이 조정 */
 }
 
 .id_ok{
@@ -104,7 +123,7 @@ display: none;
 
 <div class="container1">
  <form action="/UserJoin" method="POST">
-   <table>
+   <table class="tb1">
       <colgroup>
          <col width="25%">
          <col width="*">
