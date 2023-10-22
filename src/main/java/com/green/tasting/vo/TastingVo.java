@@ -23,7 +23,7 @@ public class TastingVo {
 	private String t_title;
 	private String t_cont;
 	private int w_no;
-@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm")
+	@DateTimeFormat(pattern = "yy-mm-dd")
 	private Date t_date;
 	private int t_cost;
 	private int u_no;

@@ -182,7 +182,7 @@ form#search-form input[type="search"] {
 </script>
 <script>
 const config = {
-		dateFormat: 'yyyy-MM-dd HH:mm'
+		dateFormat: 'yy-mm-dd'	
 	}
 	$(function() {
 		$("#datepicker").datepicker(config);
