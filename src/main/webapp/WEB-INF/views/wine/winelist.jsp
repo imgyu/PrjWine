@@ -160,9 +160,9 @@ document.querySelector('[name="other_click"]').addEventListener('click', functio
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>전체와인</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>Wine Information</p>
                </div>
             </div>
          </div>
