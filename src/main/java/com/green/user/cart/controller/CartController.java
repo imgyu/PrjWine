@@ -52,6 +52,7 @@ public class CartController {
       public ModelAndView cart(CartVo vo) {
          
         int c_idx  =  vo.getC_idx();
+        int wl_idx  =  vo.getWl_idx();
         int u_no   =  vo.getU_no();      
          List<CartVo> cartList  =  cartService.getCartList(vo);  
          
@@ -60,6 +61,7 @@ public class CartController {
          mv.setViewName("user/cart");
          mv.addObject("cartList", cartList );
          mv.addObject("c_idx", c_idx);
+         mv.addObject("wl_idx", wl_idx);
          mv.addObject("u_no", u_no);
          return mv;
       }

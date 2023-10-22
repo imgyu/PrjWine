@@ -48,7 +48,7 @@ public interface StoreService {
    // 매장이름검색기능
 
 
-   List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption);
+   List<RegVo> getStoreListSearch(int s_no, String w_kind, String searchKeyword, String searchOption, String kindOption);
 
    int idCheck(String s_id);
 

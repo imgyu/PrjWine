@@ -136,6 +136,7 @@ public class StoreController {
 		return mv;
 	}
 	
+	// 매장 정보 업데이트
 	@RequestMapping("StoreCheckUpdate")
 	public ModelAndView storeCheckUpdate(@RequestParam HashMap<String, Object> map, HttpServletRequest request) {
 		
@@ -150,6 +151,7 @@ public class StoreController {
 		return mv;
 	}
 	
+	// 매장정보
 	@RequestMapping("/StoreInfo")
 	public ModelAndView storeinfo(StoreVo vo, BoardVo vo2) {
 		

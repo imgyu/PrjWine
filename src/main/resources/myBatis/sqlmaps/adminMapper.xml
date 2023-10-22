@@ -254,4 +254,61 @@ SELECT *
 WHERE RN BETWEEN #{start} AND #{end} 
 </select>
 
+
+<select id="AdminEventList" resultType="com.green.event.vo.EventVo">
+	
+	
+	SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+        SELECT *
+	FROM EVENT
+	WHERE SYSDATE BETWEEN E_SDATE AND E_EDATE
+	ORDER BY E_EDATE DESC  
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end}
+  </select> 
+  
+<select id="AdminEventEndList" resultType="com.green.event.vo.EventVo">
+	
+	
+	SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+      SELECT *
+	FROM EVENT
+	WHERE E_EDATE &lt; SYSDATE
+	ORDER BY E_EDATE DESC  
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end}
+  </select> 
+  
+  <select id="CountEvent" resultType="int">
+
+SELECT COUNT(*) FROM EVENT WHERE SYSDATE BETWEEN E_SDATE AND E_EDATE
+</select>
+
+  <select id="CountEndEvent" resultType="int">
+
+SELECT COUNT(*) FROM EVENT WHERE E_EDATE &lt; SYSDATE
+</select>
+
+<delete id="AdminEventListDelete">
+
+DELETE FROM EVENT
+WHERE  E_IDX  =  #{e_idx}
+
+</delete>
+
+<delete id="AdminEndEventListDelete">
+
+DELETE FROM EVENT
+WHERE  E_IDX  =  #{e_idx}
+
+</delete>
+  
 </mapper>

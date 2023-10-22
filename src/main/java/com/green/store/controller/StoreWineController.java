@@ -28,21 +28,19 @@ public class StoreWineController {
    public ModelAndView storeListSearch(   HavingWineVo vo,    
          @RequestParam("searchKeyword") String searchKeyword, 
          @RequestParam("searchOption")  String searchOption,
-         @RequestParam("kindOption")    String kindOption,
          @RequestParam("amountOption")  String amountOption,
          HttpSession session) {
       
-      System.out.println("searchOption:" + searchOption);
       int s_no  =  vo.getS_no();
-      List<RegVo> storeListSearch  =  storeService.getStoreListSearch( s_no, searchKeyword, searchOption, kindOption, amountOption);
+      String w_kind  =  vo.getW_kind();
+      List<RegVo> storeListSearch  =  storeService.getStoreListSearch( s_no, w_kind, searchKeyword, searchOption, amountOption);
       
-      System.out.println("searchKeyword2:"+searchKeyword);
-      System.out.println("searchOption3:"+searchOption);
       
       ModelAndView mv  =  new ModelAndView();
       mv.setViewName("store/storewinemanage");
       mv.addObject("storeListSearch", storeListSearch);
       mv.addObject("s_no", s_no);
+      mv.addObject("w_kind", w_kind);	
       return mv;
    }
    
@@ -56,6 +54,8 @@ public class StoreWineController {
       
       String s_name  =  vo.getS_name();
       int s_no       =  vo.getS_no();
+      int wl_idx       =  vo.getWl_idx();
+      
       
       int total  =  storeService.countManage(vo);
 		if (nowPage == null && cntPerPage == null ) {
@@ -82,9 +82,10 @@ public class StoreWineController {
       mv.setViewName("store/storewinemanage");
       mv.addObject("wineList", wineList2);
       mv.addObject("s_name", s_name);
+      mv.addObject("wl_idx", wl_idx);
       mv.addObject("s_no", s_no);
       mv.addObject("pds", pds);
-
+      
       return mv;
    }
 

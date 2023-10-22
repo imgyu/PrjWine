@@ -1165,7 +1165,7 @@ input[type="submit"] {
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;
   transition: 0.3s;
-  border-radius: 8px !important;
+  border-radius: 5px;
 }
 
 input[type="submit"]:hover {

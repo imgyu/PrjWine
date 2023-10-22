@@ -42,6 +42,7 @@ public List<CartVo> getSelectList(int u_no, String cartids) {
 
 @Override
 public void AddCart(CartVo vo) {
+	System.out.println(vo);
 
 	cartDao.addCart(vo);
 			

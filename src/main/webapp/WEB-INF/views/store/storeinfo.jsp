@@ -40,7 +40,6 @@ body {
 	text-align: center;
 	margin: 0;
 	padding: 0;
-	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
@@ -50,15 +49,15 @@ body {
 	flex-wrap: wrap;
 	max-width: 60%;
 	margin: 20px auto;
-	padding: 20px;
+	padding: 40px;
 	background-color: #fff;
 	border-radius: 10px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	height: 100vh;
+	padding-bottom: 40px; /* 아래쪽 여백을 추가합니다. */
 }
 
 .store-image {
-	max-width: 100%;
+	max-width: 50%;
 	max-height: 300px;
 	width: 50%;
 	margin-top: 50px;
@@ -166,7 +165,7 @@ body {
 
    <c:forEach var="info" items="${storeInfo}">
       <div class="store-container">
-         <img class="store-image" src="/img/${info.s_simgname}" alt="매장사진" />
+         <img class="store-image" src="/pageimg/${info.s_simgname}" alt="매장사진" />
 
          <div class="wine-details">
             <div class="store-name">${info.s_name }</div>

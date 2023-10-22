@@ -11,6 +11,7 @@ public class PaymentVo {
 	private Date   ph_date;
 	private Date   sh_date;
 	private int    c_idx;
+	private int    wl_idx;
 	private int    p_allprice;
 	private int    u_no;
 	private int    s_no;
@@ -20,25 +21,6 @@ public class PaymentVo {
 	private String u_phone;
 	private String w_price;
 	private int w_amount;
-	public PaymentVo() {}
-	public PaymentVo(String u_name, String s_name, String w_name, Date ph_date, Date sh_date, int c_idx, int p_allprice,
-			int u_no, int s_no, int w_no, String paynum, String p_state, String u_phone, String w_price, int w_amount) {
-		this.u_name = u_name;
-		this.s_name = s_name;
-		this.w_name = w_name;
-		this.ph_date = ph_date;
-		this.sh_date = sh_date;
-		this.c_idx = c_idx;
-		this.p_allprice = p_allprice;
-		this.u_no = u_no;
-		this.s_no = s_no;
-		this.w_no = w_no;
-		this.paynum = paynum;
-		this.p_state = p_state;
-		this.u_phone = u_phone;
-		this.w_price = w_price;
-		this.w_amount = w_amount;
-	}
 	public String getU_name() {
 		return u_name;
 	}
@@ -75,6 +57,12 @@ public class PaymentVo {
 	public void setC_idx(int c_idx) {
 		this.c_idx = c_idx;
 	}
+	public int getWl_idx() {
+		return wl_idx;
+	}
+	public void setWl_idx(int wl_idx) {
+		this.wl_idx = wl_idx;
+	}
 	public int getP_allprice() {
 		return p_allprice;
 	}
@@ -105,12 +93,6 @@ public class PaymentVo {
 	public void setPaynum(String paynum) {
 		this.paynum = paynum;
 	}
-	public String getP_state() {
-		return p_state;
-	}
-	public void setP_state(String p_state) {
-		this.p_state = p_state;
-	}
 	public String getU_phone() {
 		return u_phone;
 	}
@@ -132,8 +114,32 @@ public class PaymentVo {
 	@Override
 	public String toString() {
 		return "PaymentVo [u_name=" + u_name + ", s_name=" + s_name + ", w_name=" + w_name + ", ph_date=" + ph_date
-				+ ", sh_date=" + sh_date + ", c_idx=" + c_idx + ", p_allprice=" + p_allprice + ", u_no=" + u_no
-				+ ", s_no=" + s_no + ", w_no=" + w_no + ", paynum=" + paynum + ", p_state=" + p_state + ", u_phone="
-				+ u_phone + ", w_price=" + w_price + ", w_amount=" + w_amount + "]";
+				+ ", sh_date=" + sh_date + ", c_idx=" + c_idx + ", wl_idx=" + wl_idx + ", p_allprice=" + p_allprice
+				+ ", u_no=" + u_no + ", s_no=" + s_no + ", w_no=" + w_no + ", paynum=" + paynum + ", u_phone=" + u_phone
+				+ ", w_price=" + w_price + ", w_amount=" + w_amount + "]";
 	}
+	
+	public PaymentVo() {}
+	public PaymentVo(String u_name, String s_name, String w_name, Date ph_date, Date sh_date, int c_idx, int wl_idx,
+			int p_allprice, int u_no, int s_no, int w_no, String paynum, String u_phone, String w_price, int w_amount) {
+		this.u_name = u_name;
+		this.s_name = s_name;
+		this.w_name = w_name;
+		this.ph_date = ph_date;
+		this.sh_date = sh_date;
+		this.c_idx = c_idx;
+		this.wl_idx = wl_idx;
+		this.p_allprice = p_allprice;
+		this.u_no = u_no;
+		this.s_no = s_no;
+		this.w_no = w_no;
+		this.paynum = paynum;
+		this.u_phone = u_phone;
+		this.w_price = w_price;
+		this.w_amount = w_amount;
+	}
+	
+	
+	
+	
 }

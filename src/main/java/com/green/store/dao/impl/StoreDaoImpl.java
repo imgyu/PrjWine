@@ -159,8 +159,14 @@ public class StoreDaoImpl implements StoreDao {
 
    @Override
    public void setJoin(HashMap<String, Object> map) {
-      System.out.println(map);
-      sqlSession.insert("Store.StoreInsert",  map );      
+	   String s_simgname = (String) map.get("s_simgname");
+	   
+	   if (s_simgname == null || s_simgname.isEmpty()) {
+		   sqlSession.insert("Store.StoreInsert2",  map );      
+		} else {
+		   sqlSession.insert("Store.StoreInsert",  map );      
+		}
+	System.out.println(map);
    }
 
    // 매장검색
@@ -187,52 +193,54 @@ public class StoreDaoImpl implements StoreDao {
    }
 
    @Override
-   public List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption) {
+   public List<RegVo> getStoreListSearch(int s_no, String w_kind ,String searchKeyword, String searchOption, String amountOption) {
       
       List<RegVo> storeListSearch  =  new ArrayList<>();
       
       Map<String, Object> map  =  new HashMap<>();
       map.put("s_no", s_no);
       map.put("searchKeyword", searchKeyword);
-      map.put("kindOption", kindOption);
+      map.put("searchOption", searchOption);
+      map.put("w_kind", w_kind);
       
-      if("All".equals(searchOption)) {
-         storeListSearch  =  sqlSession.selectList("Store.WineList", map);   
-      } else if("w_name".equals(searchOption)) {
-         storeListSearch  =  sqlSession.selectList("Store.GetName", map);
-      } else if ("w_location".equals(searchOption)) {
-         storeListSearch  =  sqlSession.selectList("Store.GetLocation", map);
-      } else if ("w_vintage".equals(searchOption)) {
-         storeListSearch  =  sqlSession.selectList("Store.GetVintage", map);
+      System.out.println(map);
+      
+      
+      if ("All".equals(searchOption) || searchOption == null) {
+    	  if ("w_kind".equals(w_kind)) {
+    		  storeListSearch  =  sqlSession.selectList("Store.AllSearch", map);  
+      }   else if (!"w_kind".equals(w_kind)) {
+    	  storeListSearch  =  sqlSession.selectList("Store.KindSearch", map);
       }
-      
-      if("w_kind".equals(kindOption)) {
-         if("PORT".equals(kindOption)) {
-            storeListSearch  =  sqlSession.selectList("Store.Port", map);
-         } else if("DESSERT".equals(kindOption)) {
-            storeListSearch  =  sqlSession.selectList("Store.Dessert", map);
-         } else if("RED".equals(kindOption)) {
-            storeListSearch  =  sqlSession.selectList("Store.Red", map);
-         } else if("ROSE".equals(kindOption)) {
-            storeListSearch  =  sqlSession.selectList("Store.Rose", map);
-         }else if("WHITE".equals(kindOption)) {
-            storeListSearch  =  sqlSession.selectList("Store.White", map);
-         }else if("SPARKLING".equals(kindOption)) {
-            storeListSearch  =  sqlSession.selectList("Store.Sparkling", map);
-         }
+    
       }
-      
-      if("choose".equals(amountOption)) {
-         if("w_amount".equals(amountOption)) {
-            storeListSearch  =  sqlSession.selectList("Store.GetAmount",map);
-         } else if("w_amountDown".equals(amountOption)) {
-            storeListSearch  =  sqlSession.selectList("Store.GetAmountDown", map);
-         }
+      else if (!"All".equals(searchOption) && searchOption != null) {
+    	  if("w_kind".equals(w_kind)) {
+    		  storeListSearch  =  sqlSession.selectList("Store.OptionSearch", map);
+    	  }
+    	  else {
+    		  storeListSearch  =  sqlSession.selectList("Store.WineSearch", map);
+    		  System.out.println("1");
+    	  }
       }
-      
       
       return storeListSearch;
    }
+    	  
+     /* if("All".equals(searchOption) && "w_kind".equals(w_kind)) {
+    	  if (searchOption == null)
+         storeListSearch  =  sqlSession.selectList("Store.AllSearch", map);   
+      } else if ("All".equals(searchOption)){
+    	  if (searchOption == null)
+         storeListSearch  =  sqlSession.selectList("Store.KindSearch", map);
+      } else if ("w_kind".equals(w_kind)){
+    	  if (searchOption != null)
+          storeListSearch  =  sqlSession.selectList("Store.OptionSearch", map);
+       } else {
+    	   storeListSearch  =  sqlSession.selectList("Store.WineSearch", map);
+       }*/
+   
+   
    
    // 매장아이디 중복확인
    @Override

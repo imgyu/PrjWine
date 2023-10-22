@@ -46,31 +46,54 @@
         .btn-group button {
             margin: 10px;
         }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-         .btn1 {
-    font-family: 'Poppins', sans-serif;
-    display: inline-block;
-    background-color: #F28123;
-    color: #fff;
-    padding: 13px 25px;
-    border-radius: 50px;
-    transition: 0.3s;
-    box-sizing: border-box;
-    border: none; /* 경계선 없음 */
-    cursor: pointer; /* 포인터 커서로 변경 */
-    font-weight: 700;
-    font-size: 15px;
-    border: none;
+        body img {
+  max-width: 30%;
+  max-height: auto;
 }
 
-/* 호버(마우스 오버) 시의 버튼 스타일 */
+.btn1 {
+    display: inline-block;
+    background-color: #3498DB; /* 배경색을 원하는 색으로 변경 */
+    color: white !important; /* 텍스트 색상을 흰색으로 변경 */
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: none; /* 테두리 제거 */
+    border-radius: 5px;
+    font-weight: bold !important;
+}
+
 .btn1:hover {
-    background-color: #000; 
-    color: #F28123;
-} 
+    background-color: #2980B9; /* 호버 효과에 맞게 배경색 변경 */
+    color: #D3D3D3 !important;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    display: inline-block;
+    background-color: #E74C3C;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border: 1px solid #C0392B;
+    border-radius: 5px;
+}
+
+input[type="submit"]:hover {
+    background-color: #C0392B;
+    color: #FFFFE0 !important;
+    border-radius: 5px;
+}
+
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
@@ -145,7 +168,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="storeIMG" class="form-label">매장 사진</label>
-                    <img src="/img/${check.s_simgname }" alt="매장사진" />
+                    <img src="/pageimg/${check.s_simgname}" alt="매장사진" />
                 </div>
             </c:forEach>
             <div class="text-center">

@@ -178,7 +178,7 @@ form#search-form input[type="text"] {
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-select" name="kindOption">
+                        <select class="form-select" name="w_kind">
                             <option value="w_kind">품종</option>
                             <option value="PORT">PORT</option>
                             <option value="DESSERT">DESSERT</option>
@@ -188,13 +188,7 @@ form#search-form input[type="text"] {
                             <option value="SPARKLING">SPARKLING</option>
                         </select>
                     </div>
-                    <div class="col-md-3">
-                        <select class="form-select" name="amountOption">
-                            <option value="choose">선택</option>
-                            <option value="w_amount">수량↑</option>
-                            <option value="w_amountDown">수량↓</option>
-                        </select>
-                    </div>
+                    
                     <div class="col-md-3">
                         <div class="input-group">
                             <input type="text" class="form-control" name="searchKeyword" placeholder="검색어 입력">
@@ -233,6 +227,7 @@ form#search-form input[type="text"] {
                                     <form action="/AddCart" method="POST">
                                         <input type="hidden" name="u_no" value="${loginVo.u_no}">
                                         <input type="hidden" name="w_no" value="${wine.w_no}">
+                                        <input type="hidden" name="wl_idx" value="${wine.wl_idx}">
                                         <input type="hidden" name="s_no" value="${wine.s_no}">
                                         <input id="text1" type="text" name="c_count" placeholder="수량 입력">
                                         <input type="submit" value="장바구니에 추가" onclick="myFunction()">
@@ -263,6 +258,7 @@ form#search-form input[type="text"] {
                                     <form action="/AddCart" method="POST">
                                         <input type="hidden" name="u_no" value="${loginVo.u_no}">
                                         <input type="hidden" name="w_no" value="${Search.w_no}">
+                                        <input type="hidden" name="wl_idx" value="${Search.wl_idx}">
                                         <input type="hidden" name="s_no" value="${Search.s_no}">
                                         <input id="text1" type="text" name="c_count" placeholder="수량 입력">
                                         <input type="submit" value="장바구니에 추가" onclick="myFunction()">
