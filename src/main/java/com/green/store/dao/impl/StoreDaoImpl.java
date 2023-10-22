@@ -298,6 +298,26 @@ public class StoreDaoImpl implements StoreDao {
 		return storeList2;
 	}
 
+	@Override
+	public int countSearchStore(String sname_Search) {
+		
+		return sqlSession.selectOne("Store.CountSearchStore", sname_Search);
+	}
+
+	@Override
+	public List<StoreVo> snameSearch2(PdsPagingVo pds, String sname_Search) {
+		
+		HashMap<String, Object> map  =  new HashMap<>();
+		map.put("pds", pds);
+		map.put("sname_Search", sname_Search);
+		map.put("start", pds.getStart());
+		map.put("end", pds.getEnd());
+		
+		List<StoreVo> snameSearch2  =  sqlSession.selectList("Store.SnameSearch2", map);
+	
+		return snameSearch2;
+	}
+
    } 
    
    

@@ -116,12 +116,12 @@
 			</form>
 		</div>
 		</div>
-	<!-- 매장 검색end -->
+
 
 	<!--  매장 리스트  -->
 	<div class="container"
 		style="margin-top: 60px; display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; justify-content: start;">
-		<c:forEach var="store" items="${storeList}">
+		<c:forEach var="store" items="${snameSearch}">
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
 					<div style="max-width: 300px; max-height: 300px; margin: 0 auto;">
@@ -130,22 +130,23 @@
 					</div>
 					<h5 class="card-title"><i class="fas fa-briefcase">&nbsp;${store.s_name}</i></h5>
 					<p class="card-text" style="max-height: 3em; overflow: hidden; line-height: 3em;">${store.s_cont}</p>
-					<p class="card-text"><i class="fas fa-user">&nbsp;${store.s_phone}</i></p>
-					<p class="card-text"><i class="fas fa-map">&nbsp;${store.s_address}&nbsp;${store.s_detailAddress}</i></p>
-					<a href="/StoreInfo?s_no=${store.s_no}" class="cart-btn">매장정보</a>
+					<p class="card-text"><i class="fas fa-user">${store.s_phone}</i></p>
+					<p class="card-text">${store.s_address}</p>
+					<p class="card-text">${store.s_detailAddress}</p>
+					<a href="/StoreInfo?s_no=${store.s_no}" class="btn cart-btn">매장정보</a>
 					<c:choose>
-					<c:when test="${not empty loginVo.u_no}">
-					 <a href="/UserFavoritesInsert?u_no=${loginVo.u_no}&s_no=${store.s_no}" class="btn cart-btn" onclick="return confirmAndRedirect();">관심매장</a>
-					</c:when>
+					 <c:when test="${not empty loginVo.u_no}">
+					  <a href="/UserFavoritesInsert?u_no=${loginVo.u_no}&s_no=${store.s_no}" class="btn cart-btn" onclick="confirmAndRedirect();">관심매장</a>
+					 </c:when>
 					</c:choose>
 				</div>
 			</div>
 		</c:forEach>
- </div>
-   <div style="display: block; text-align: center;">
+	</div>
+  <div style="display: block; text-align: center;">
     <c:choose>
         <c:when test="${not empty pds && pds.startPage != 1 }">
-            <a href="/StoreList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+            <a href="/SnameSearch?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
         </c:when>
     </c:choose>
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
@@ -154,18 +155,16 @@
                 <b>${p}</b> 
             </c:when>
             <c:when test="${p != pds.nowPage }">
-                <a href="/StoreList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+                <a href="/SnameSearch?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
             </c:when>
         </c:choose>
     </c:forEach>
     <c:choose>
         <c:when test="${not empty pds && pds.endPage != pds.lastPage && pds.endPage != 0 }">
-            <a href="/StoreList?nowPage=${pds.endPage+1 }&cntPerPage${pds.cntPerPage}">&gt;</a>
+            <a href="/SnameSearch?nowPage=${pds.endPage+1 }&cntPerPage${pds.cntPerPage}">&gt;</a>
         </c:when>
     </c:choose>
 </div>
-
-
 
 
 </body>

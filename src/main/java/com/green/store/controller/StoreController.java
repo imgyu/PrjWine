@@ -29,13 +29,31 @@ public class StoreController {
 	
 	//매장 검색
 	@RequestMapping("/SnameSearch")
-    public ModelAndView sname_Search(
+    public ModelAndView sname_Search(PdsPagingVo pds,
+    	  @RequestParam(value="nowPage", required = false)String nowPage,
+ 		  @RequestParam(value="cntPerPage", required = false)String cntPerPage,
           @RequestParam("sname_Search") String sname_Search
           ) {
+		
+		int total  =   storeService.countSearchStore(sname_Search);
+		System.out.println(total);
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "6";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "6";
+		}
+		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+		
        List<StoreVo> snameSearch = storeService.snameSearch(sname_Search);
+       List<StoreVo> snameSearch2  =  storeService.snameSearch2(pds, sname_Search);
        ModelAndView mv = new ModelAndView();
-       mv.addObject("snameSearch",snameSearch);
-       mv.setViewName("/store/storelist");
+       mv.addObject("snameSearch",snameSearch2);
+       mv.setViewName("/store/searchstorelist");
+       mv.addObject("pds", pds);
        return mv;
        
     }

@@ -281,7 +281,7 @@ form#search-form input[type="text"] {
         </table>
         <div style="display: block; text-align: center;">
 
-    <c:if test="${pds.startPage != 1 }">
+    <c:if test="${not empty pds && pds.startPage != 1 }">
     <a href="/StoreWineManaget?s_no=${s_no }&nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
     </c:if>
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">

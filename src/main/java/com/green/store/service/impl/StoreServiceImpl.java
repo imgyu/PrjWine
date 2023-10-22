@@ -165,5 +165,17 @@ public class StoreServiceImpl implements StoreService {
 		
 		return storeList2;
 	}
+	@Override
+	public int countSearchStore(String sname_Search) {
+		
+		return storeDao.countSearchStore(sname_Search);
+	}
+	@Override
+	public List<StoreVo> snameSearch2(PdsPagingVo pds, String sname_Search) {
+		
+		List<StoreVo> snameSearch2  =  storeDao.snameSearch2(pds, sname_Search);
+		
+		return snameSearch2;
+	}
 }
    

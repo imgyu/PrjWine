@@ -528,7 +528,32 @@ WHERE RN BETWEEN #{start} AND #{end}
  
  </select>
  
+ <select id="CountSearchStore" resultType="int">
  
+  SELECT COUNT(*)
+    FROM STORE
+   WHERE
+         UPPER(S_NAME) LIKE '%' || UPPER(#{sname_Search}) || '%'
+      OR LOWER(S_NAME) LIKE '%' || LOWER(#{sname_Search}) || '%'
+ 
+ </select>
+ 
+ <select id="SnameSearch2" resultType="com.green.store.vo.StoreVo">
+ 
+ SELECT  *
+ FROM (
+ SELECT ROWNUM RN, A.*
+ FROM(
+ SELECT S_NAME , S_CONT, S_PHONE, 
+           S_ADDRESS, S_DETAILADDRESS, S_NO, S_SIMGNAME
+    FROM STORE
+    WHERE
+         UPPER(S_NAME) LIKE '%' || UPPER(#{sname_Search}) || '%'
+      OR LOWER(S_NAME) LIKE '%' || LOWER(#{sname_Search}) || '%'
+ ) A
+ )
+ WHERE RN BETWEEN #{start} AND #{end} AND S_NO &lt;&gt; 99
+ </select>
    
 </mapper>
 

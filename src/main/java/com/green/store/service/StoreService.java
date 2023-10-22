@@ -65,6 +65,10 @@ public interface StoreService {
 
    List<StoreVo> storeList2(PdsPagingVo pds);
 
+   int countSearchStore(String sname_Search);
+
+   List<StoreVo> snameSearch2(PdsPagingVo pds, String sname_Search);
+
 
 
 
