@@ -138,19 +138,22 @@ $("#user_pw2").blur(function() {
 });
 
 document.getElementById("updateButton").addEventListener("click", function(event) {
-	 var user_pw1 = document.getElementById("user_pw1").value;
-     var user_pw2 = document.getElementById("user_pw2").value;
-     var confirmation = confirm("수정하시겠습니까?");
-     
-     if (user_pw1 === "" || user_pw2 === "") {
-         alert("비밀번호를 입력하세요.");
-         event.preventDefault();
-     }
-     if (!confirmation) {
-         // 아니요를 누를 경우 이벤트를 막음
-         event.preventDefault();
-     }
- });
+    var user_pw1 = document.getElementById("user_pw1").value;
+    var user_pw2 = document.getElementById("user_pw2").value;
+    
+    if (user_pw1 === "" || user_pw2 === "") {
+        alert("비밀번호를 입력하세요.");
+        event.preventDefault();
+        return false; // 수정을 막음
+    }
+    
+    var confirmation = confirm("수정하시겠습니까?");
+
+    if (!confirmation) {
+        // 아니요를 선택하면 수정 프로세스가 막힘
+        event.preventDefault();
+    }
+});
 
 </script>
 </body>

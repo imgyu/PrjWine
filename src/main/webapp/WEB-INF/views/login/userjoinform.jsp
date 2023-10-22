@@ -103,7 +103,7 @@ display: none;
 <br>
 
 <div class="container1">
- <form action="/UserJoin" method="POST">
+ <form action="/UserJoin" method="POST" onsubmit="validateForm()">
    <table>
       <colgroup>
          <col width="25%">
@@ -120,7 +120,7 @@ display: none;
             <span class="redFont">*</span>아이디:
          </td>
  <td>
-    <input type="text" name="u_id" id="u_id" style="width: 200px">
+    <input type="text" name="u_id" id="u_id" style="width: 200px" required>
     <button type="button" onclick="checkId()">중복 체크</button>
 </td>
       </tr>
@@ -129,14 +129,14 @@ display: none;
             <span class="redFont">*</span>비밀번호:
          </td>
          <td>
-            <input type="password" name="u_pw" id="user_pw1" style="width: 200px">
+            <input type="password" name="u_pw" id="user_pw1" style="width: 200px" required>
             <span id=pwdcheck_1 ></span>
          </td>
       </tr>
       <tr>
         <td><span class="redFont">*</span>비밀번호 확인:
         </td>
-        <td><input type="password"  id="user_pw2" style="width: 200px" onKeyUp="fn_compare_pwd();">
+        <td><input type="password"  id="user_pw2" style="width: 200px" onKeyUp="fn_compare_pwd();" required>
             <span id="pwdcheck_2"></span>
         </td>
       </tr>
@@ -145,7 +145,7 @@ display: none;
             <span class="redFont">*</span>이름:
          </td>
          <td>
-            <input type="text" name="u_name" id="u_name" style="width: 200px">
+            <input type="text" name="u_name" id="u_name" style="width: 200px" required>
          </td>
       </tr>
       <tr>
@@ -162,22 +162,22 @@ display: none;
                <td><span class="redFont">*</span>주소:</td>
                <td>
                   <div>
-                     <input type="text" id="u_postcode" name="u_postcode" placeholder="우편번호">
+                     <input type="text" id="u_postcode" name="u_postcode" placeholder="우편번호" required>
                      <input type="button" onclick="u_execDaumPostcode()"
                         value="우편번호 찾기"><br> <input type="text"
                         id="u_address" name="u_address" placeholder="주소"><br> <input
-                        type="text" id="u_detailAddress" name="u_detailAddress" placeholder="상세주소">
+                        type="text" id="u_detailAddress" name="u_detailAddress" placeholder="상세주소" required>
                      <input type="text" id="u_extraAddress" name="u_extraAddress" placeholder="참고항목">
                   </div>
                </td>
             </tr>
       <tr>
       	<td>
-      	   연락처:
+      	   <span class="redFont">*</span>연락처:
       	</td>
       	<td>
       	   <div>
-      	   	   <input type="text" name="u_phone" placeholder="(-)빼고 입력"> 
+      	   	   <input type="text" name="u_phone" placeholder="(-)빼고 입력" required> 
       	   </div>
       	</td>
       </tr>
@@ -307,6 +307,17 @@ display: none;
                }
            }).open();
        }
+    
+	function validateForm() {
+        var requiredFields = document.querySelectorAll('input[required]');
+        for (var i = 0; i < requiredFields.length; i++) {
+            if (requiredFields[i].value.trim() === '') {
+                alert("필수 입력란을 작성하세요.");
+                return false;
+            }
+        }
+        return true;
+    }
    
   </script>
 

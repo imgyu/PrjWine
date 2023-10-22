@@ -86,11 +86,11 @@ tr, td{
         </colgroup>
         <tr>
             <td>I D</td>
-            <td><input type="text" name="u_id" placeholder="Input your ID"></td>
+            <td><input type="text" name="u_id" placeholder="Input your ID" autocomplete="off"></td>
         </tr>
         <tr>
             <td>P W</td>
-            <td><input type="password" name="u_pw" placeholder="Input your password"></td>
+            <td><input type="password" name="u_pw" placeholder="Input your password" autocomplete="off"></td>
         </tr>
         <tr>
             <td colspan="2"> <button type="submit">로그인</button>

@@ -88,11 +88,11 @@ tr, td{
         </colgroup>
         <tr>
             <td>I D</td>
-            <td><input type="text" name="s_id" placeholder="Input your ID"></td>
+            <td><input type="text" name="s_id" placeholder="Input your ID" autocomplete="off"></td>
         </tr>
         <tr>
             <td>P W</td>
-            <td><input type="password" name="s_pw" placeholder="Input your password"></td>
+            <td><input type="password" name="s_pw" placeholder="Input your password" autocomplete="off"></td>
         </tr>
         <tr>
             <td colspan="2">

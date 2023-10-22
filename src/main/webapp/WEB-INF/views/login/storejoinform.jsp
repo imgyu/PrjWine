@@ -93,7 +93,7 @@ textarea {
 <br>
 <br>
 	<div class="container">
-		<form action="/StoreJoin" method="POST" enctype="multipart/form-data">
+		<form action="/StoreJoin" method="POST" enctype="multipart/form-data" onsubmit="validateForm()">
 			<table>
 				<colgroup>
 					<col width="25%">
@@ -106,31 +106,31 @@ textarea {
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>아이디:</td>
-					<td><input type="text" name="s_id" id="s_id"
+					<td><input type="text" name="s_id" id="s_id" required
 						style="width: 200px">
 						<button type="button" onclick="checkSId()">중복 체크</button></td>
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>비밀번호:</td>
-					<td><input type="password" id="store_pw1" name="s_pw"
+					<td><input type="password" id="store_pw1" name="s_pw" required
 						style="width: 200px" value=><span id=pwdcheck_1></span></td>
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>비밀번호 확인:</td>
-					<td><input type="password" id="store_pw2" style="width: 200px"
+					<td><input type="password" id="store_pw2" style="width: 200px" required
 						onKeyUp="fn_compare_pwd();"> <span id="pwdcheck_2"></span>
 					</td>
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>매장이름:</td>
-					<td><input type="text" name="s_name" style="width: 200px">
+					<td><input type="text" name="s_name" style="width: 200px" required>
 					</td>
 				</tr>
 				<tr>
-					<td>사업자 등록 번호:</td>
+					<td><span class="redFont">*</span>사업자 등록 번호:</td>
 					<td>
 						<div>
-							<input type="text" name="s_sn" placeholder="(-)빼고 입력"
+							<input type="text" name="s_sn" placeholder="(-)빼고 입력" required
 								style="width: 200px" class="redFont">
 						</div>
 					</td>
@@ -139,22 +139,22 @@ textarea {
 					<td>주소:</td>
 					<td>
 						<div>
-							<input type="text" id="s_postcode" name="s_postcode"
+							<input type="text" id="s_postcode" name="s_postcode" required
 								placeholder="우편번호"> <input type="button"
 								onclick="s_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text" id="s_address" name="s_address"
-								placeholder="주소"><br> <input type="text"
-								id="s_detailAddress" name="s_detailAddress" placeholder="상세주소">
+							<input type="text" id="s_address" name="s_address" required
+								placeholder="주소"><br> <input type="text" 
+								id="s_detailAddress" name="s_detailAddress" placeholder="상세주소" required>
 							<input type="text" id="s_extraAddress" name="s_extraAddress"
 								placeholder="참고항목">
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<td>연락처:</td>
+					<td><span class="redFont">*</span>연락처:</td>
 					<td>
 						<div>
-							<input type="text" name="s_phone" placeholder="(-)빼고 입력"
+							<input type="text" name="s_phone" placeholder="(-)빼고 입력" required
 								class="redFont">
 						</div>
 					</td>
@@ -188,9 +188,6 @@ textarea {
 				</tr>
 			</table>
 		</form>
-		<script>
-			
-		</script>
 
 	</div>
 	<input type="button" value="뒤로가기" onclick="location.href='/'"
@@ -320,6 +317,19 @@ textarea {
 						store_pw2 = false;
 					}
 				});
+		
+		function validateForm() {
+            var requiredFields = document.querySelectorAll('input[required]');
+            for (var i = 0; i < requiredFields.length; i++) {
+                if (requiredFields[i].value.trim() === '') {
+                    alert("필수 입력란을 작성하세요.");
+                    return false;
+                }
+            }
+            return true;
+        }
+		
+		
 	</script>
 </body>
 </html>
