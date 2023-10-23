@@ -131,7 +131,7 @@ input[type="submit"] {
 			 <table id="table">
 			    <div>
 			     <select id="category" name="ucs_category">
-			     <option value="*">카테고리</option>
+			     <option value="no">카테고리</option>
 			     <option value="계정관리">계정관리</option>
 			     <option value="결제/환불">결제/환불</option>
 			     <option value="입점문의">입점문의</option>
@@ -166,12 +166,19 @@ function readURL(input) {
 	}
 }
 function confirmSubmit() {
+	var category = document.getElementById('category').value;
 	if(confirm('등록하시겠습니까?')) {
+		if( category != "no"){
 		alert("등록되었습니다");
+		}		else{
+			alert("카테고리를 선택해주세요")
+			event.preventDefault();
+			}
 	} else {
 		alert("등록 실패!")
 		event.preventDefault();
 	}
+	
 }
 
 </script>
