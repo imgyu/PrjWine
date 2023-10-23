@@ -96,6 +96,12 @@ INSERT INTO FAVORITESTORE ( U_NO, S_NO)
 VALUES(#{u_no},  #{s_no})
 
 </insert>
+<select id="favoritesInsertCheck" resultType = "int" >
+SELECT COUNT(*)
+FROM FAVORITESTORE WHERE U_NO = #{u_no} AND S_NO = #{s_no}
+</select>
+
+
 
 <select id="FavoritesStoreList" resultType="com.green.store.vo.RegVo">
 

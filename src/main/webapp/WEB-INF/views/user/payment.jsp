@@ -72,7 +72,8 @@
                 <p><strong>판매점번호:</strong><span id="s_no">${sel.s_no }</span></p>
                 <p><strong>와인번호:</strong><span id="w_no">${sel.w_no }</span></p>
                 <p><strong>장바구니번호:</strong><span id="c_idx">${sel.c_idx }</span></p>
-                <p><strong>와인목록:</strong><span id="wl_idx">${sel.wl_idx }</span></p>
+                <p><strong>장바구니번호:</strong><span id="wl_idx">${sel.wl_idx }</span></p>
+                <p><strong>와인목록:</strong><span id="w_amount">${sel.w_amount }</span></p>
                 
                 
 		        <c:set var="totalPrice" value="${totalPrice + sel.c_allprice }" />
@@ -105,6 +106,10 @@ var c_idx = document.getElementById('c_idx').textContent;
 
 var wl_idx = document.getElementById('wl_idx').textContent;
 
+var w_amount = document.getElementById('w_amount').textContent;
+
+var c_count = document.getElementById('c_count').textContent;
+
 var wineName  =  wineNames.join(',');
 
 var totalPrice  =  document.getElementById('p_allprice').textContent;
@@ -133,7 +138,9 @@ $('#money-btn').click(function() {
 					"s_no" : s_no,
 					"w_no" : w_no,
 					"c_idx" : c_idx,
-					"wl_idx" : wl_idx
+					"wl_idx" : wl_idx,
+					"w_amount" : w_amount,
+					"c_count" : c_count
 			}
 			
 			$.ajax({

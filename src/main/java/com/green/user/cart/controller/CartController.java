@@ -37,18 +37,26 @@ public class CartController {
    
    
    @PostMapping("/insertPay")
-   public String insertPay(PaymentVo pay,
-		   @RequestParam(value = "cartids") String[] cartids
-		   ) {
+   @ResponseBody
+   public String insertPay(@RequestBody PaymentVo pay) {
 
-	   
-	   String paynum = pay.getPaynum();
-	     
-	   cartService.insertPay(pay, cartids);
-	   
-      
-     		 
-      return paynum;
+	   System.out.println(pay);
+
+       String view  =  cartService.insertPay(pay);
+
+	   return view;
+   }
+
+   @GetMapping("Payment")
+   public ModelAndView paymentContents(String paynum, HttpSession session  ) {
+
+	  ModelAndView mv  =  new ModelAndView(); 
+
+	  // 주문 정보 가져오기
+
+
+
+	  return mv; 
    }
    
    //장바구니 목록   
@@ -86,7 +94,8 @@ public class CartController {
    @RequestMapping("/AddCart")
    public ModelAndView AddCart(CartVo vo) {
 	   
-	   int u_no   =  vo.getU_no();        
+	   int u_no   =  vo.getU_no();
+	   int wl_idx = vo.getWl_idx();
  
        
        cartService.AddCart(vo);
@@ -94,6 +103,7 @@ public class CartController {
        ModelAndView  mv  =  new ModelAndView();
        mv.addObject("vo", vo);
        mv.addObject("u_no", u_no);
+       mv.addObject("wl_idx", wl_idx);
        mv.setViewName("redirect:/CartList");
        mv.addObject("message", "장바구니에 추가되었습니다");
       

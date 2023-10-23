@@ -137,11 +137,11 @@ body {
 		<ul>
 			<!-- forEach  -->
 			<li class="list-item"><a class="store-link"
-				href="/StoreInfo?s_no=${storeList.s_no }">매장 이름 :
+				href="/StoreInfo?s_no=${storeList.s_no}">매장 이름 :
 					${storeList.s_name }</a> <span>가격 : ${storeList.w_price }</span>
 			    <c:choose>
 					<c:when test="${not empty loginVo.u_no}">
-						<a href="/AddCartForm?u_no=${loginVo.u_no}&s_no=${storeList.s_no}&w_no=${w_no }" class="btn btn-primary">장바구니</a>
+						<a href="/AddCartForm?u_no=${loginVo.u_no}&s_no=${storeList.s_no}&w_no=${storeList.w_no}&wl_idx=${storeList.wl_idx}" class="btn btn-primary">장바구니</a>
 					</c:when>
 				</c:choose>
 		    </li>

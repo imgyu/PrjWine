@@ -15,7 +15,8 @@
              WL.W_PRICE,
              U.U_NO,
              C.C_COUNT * WL.W_PRICE AS C_ALLPRICE,
-             WL.WL_IDX
+             WL.WL_IDX,
+             WL.W_AMOUNT
         FROM CART C 
                LEFT JOIN WINE W ON C.W_NO = W.W_NO 
                LEFT JOIN WINELIST WL ON C.WL_IDX = WL.WL_IDX 
@@ -42,7 +43,8 @@ SELECT C.C_IDX,
        S.S_NO,
        C.C_COUNT * WL.W_PRICE AS C_ALLPRICE,
        W.W_NO,
-       WL.WL_IDX
+       WL.WL_IDX,
+       WL.W_AMOUNT
   FROM CART C
   LEFT JOIN WINE W ON C.W_NO = W.W_NO
   LEFT JOIN WINELIST WL ON C.WL_IDX = WL.WL_IDX
@@ -80,7 +82,7 @@ VALUES (
  <insert id="InsertPay" >
  
  INSERT INTO SALESHISTORY (PAYNUM, U_NO, S_NO, SH_DATE, P_ALLPRICE, W_NO, WL_IDX )
- SELCT #{paynum}, #{u_no}, #{s_no}, SYSDATE, #{p_allprice}, #{w_no}, #{wl_idx})
+VALUES (#{paynum}, #{u_no}, #{s_no}, SYSDATE, #{p_allprice}, #{w_no}, #{wl_idx})
  
  </insert>  
  
@@ -106,13 +108,19 @@ WHERE  C_IDX =  #{c_idx}
        S.S_NO,
        W.W_NO
       FROM WINELIST WL
-       INNER JOIN WINE W ON WL.W_NO = W.W_NO
-       INNER JOIN STORE S ON S.S_NO = WL.S_NO
+       LEFT JOIN WINE W ON WL.W_NO = W.W_NO
+       LEFT JOIN STORE S ON S.S_NO = WL.S_NO
        WHERE S.S_NO  = #{s_no}
        AND   W.W_NO  = #{w_no}  
+       AND   WL.WL_IDX  = #{wl_idx}  
    
    </select> 
 
+ <update id="UpdatePayWineList">
+   UPDATE WINELIST
+   SET    W_AMOUNT  =  #{w_amount} - #{c_count}
+   WHERE  WL_IDX  =  #{wl_idx}
+   </update>
  	
 
 </mapper>
