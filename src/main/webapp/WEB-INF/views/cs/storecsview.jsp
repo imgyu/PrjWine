@@ -6,7 +6,7 @@
 <title>고객 문의</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
@@ -139,7 +139,7 @@ input[type="submit"] {
                  <textarea readonly="readonly">${scs.scs_cont}</textarea>
                 </div>
                 <label>문의사진</label>
-              <img id="imagePreview" src="/img/${scs.scs_img}" alt="Image Preview" />
+              <img id="imagePreview" src="/imgpage/${scs.scs_img}" alt="Image Preview" />
               <c:choose>
             <c:when test="${not empty scs.response}">
             <div>

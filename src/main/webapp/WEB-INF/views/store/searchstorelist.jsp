@@ -6,7 +6,7 @@
 <title>매장 찾기</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -125,7 +125,7 @@
 			<div class="card" style="width: 18rem;">
 				<div class="card-body">
 					<div style="max-width: 300px; max-height: 300px; margin: 0 auto;">
-						<img src="/img/${store.s_simgname}" alt="매장사진"
+						<img src="/imgpage/${store.s_simgname}" alt="매장사진"
 							style="width: 100%; height: 100%; object-fit: contain;" />
 					</div>
 					<h5 class="card-title"><i class="fas fa-briefcase">&nbsp;${store.s_name}</i></h5>
