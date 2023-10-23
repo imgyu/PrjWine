@@ -12,6 +12,7 @@ import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.RegVo;
 import com.green.tasting.dao.TastingDao;
 import com.green.tasting.vo.TastingVo;
+
 @Repository("tastingDao")
 public class TastingDaoImpl implements TastingDao {
 	@Autowired

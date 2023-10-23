@@ -67,11 +67,11 @@ public class WineController {
     	int total  =  wineService.countWineSearch(name_Search);
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "18";
+			cntPerPage = "6";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "18";
+			cntPerPage = "6";
 		}
 		
 		int w_no  =  vo.getW_no();

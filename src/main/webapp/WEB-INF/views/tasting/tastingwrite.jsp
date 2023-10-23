@@ -32,7 +32,7 @@
     margin-top: 40px;
 }
 
-.container {
+.container1 {
     margin: 0 auto; /* 상하여백 좌우여백 */
     max-width: 600px; /* 최대 폭 지정 */
 }
@@ -128,7 +128,7 @@ form#search-form input[type="search"] {
    <script src="assets/js/sticker.js"></script>
    <!-- main js -->
    <script src="assets/js/main.js"></script>
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	
   function make_table( wineList ) {
@@ -180,7 +180,6 @@ form#search-form input[type="search"] {
 	  
   })
 </script>
-
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -201,7 +200,7 @@ form#search-form input[type="search"] {
    <br>
    <br>
 
-	<div class="container">
+	<div class="container1">
     <form action="/TastingWrite" method="post" id="search-form">
 		<input type="hidden" name="s_no"            value="${sloginVo.s_no}">
 		
@@ -213,7 +212,7 @@ form#search-form input[type="search"] {
             <label>시음회 내용 설명</label>
             <textarea name="t_cont" id="t_cont" placeholder="시음회 내용 설명을 입력하세요"></textarea>
         </div>
-        	<div class="container">
+        	<div class="container1">
 				<div>
 					<select id="select" name="searchOption">
 						<option value="w_name">이름</option>
@@ -237,11 +236,11 @@ form#search-form input[type="search"] {
 				<table id="searchWineList" name="${w_no}" >
 				
 				</table>
-				</div>
+			</div>
         <div>
-            <label>시음회 날짜/시간</label>
-            <input type="text" name="t_date" id="t_date" placeholder="날짜/시간을 입력하세요">
-        </div>
+    	<label>시음회 날짜/시간</label>
+   		 	<input type="datetime-local" id="datetime" name="t_date">
+		</div>
         <div>
             <label>참가비</label>
             <input type="number" name="t_cost" id="t_cost" placeholder="숫자만입력:>">

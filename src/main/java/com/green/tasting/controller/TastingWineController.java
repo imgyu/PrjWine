@@ -1,5 +1,7 @@
 package com.green.tasting.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 
@@ -14,7 +16,6 @@ import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.RegVo;
 import com.green.tasting.service.TastingService;
 import com.green.tasting.vo.TastingVo;
-import com.green.user.cart.vo.CartVo;
 
 @Controller
 public class TastingWineController {
@@ -62,7 +63,8 @@ public class TastingWineController {
 
 	// 시음회 등록
 	@RequestMapping("/TastingWrite")
-	public ModelAndView TastingWrite(TastingVo vo ){
+	public ModelAndView TastingWrite(TastingVo vo){
+	    System.out.println("vo : " + vo);
 		tastingService.insertTaste(vo);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("vo", vo);
