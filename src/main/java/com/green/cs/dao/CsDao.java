@@ -9,11 +9,11 @@ import com.green.pds.vo.PdsPagingVo;
 
 public interface CsDao {
 
-	void userCsInsert(CsVo vo);
+	void userCsInsert(HashMap<String, Object> map);
 	
 	List<CsVo> getusercsList(CsVo vo);
 	
-    void storeCsInsert(CsVo vo);
+    void storeCsInsert(HashMap<String, Object> map);
 
 	List<CsVo> getcsalluserList(CsVo vo);
 

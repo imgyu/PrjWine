@@ -3,6 +3,8 @@ package com.green.cs.service.impl;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,18 +13,14 @@ import com.green.cs.dao.CsDao;
 import com.green.cs.service.CsService;
 import com.green.cs.vo.CsVo;
 import com.green.pds.vo.PdsPagingVo;
+import com.green.store.service.impl.ImgFile;
 
 @Service("csService")
 public class CsServiceImpl implements CsService {
 	
 	@Autowired
-	private CsDao csDao;
-
+	private CsDao csDao;	
 	@Override
-	public void userCsInsert(CsVo vo) {
-		
-		csDao.userCsInsert(vo);
-	}
 	public List<CsVo> getusercsList(CsVo vo) {
 		List<CsVo> getusercsList = csDao.getusercsList( vo );
 		return getusercsList;
@@ -34,12 +32,6 @@ public class CsServiceImpl implements CsService {
 		return csalluserList;
 	}
 	
-	@Override
-	public void storeCsInsert(CsVo vo) {
-		
-		csDao.storeCsInsert(vo);
-		
-	}
 	@Override
 	public List<CsVo> getcsviewList(CsVo vo) {
 		List<CsVo> csviewList = csDao.getcsviewList( vo );
@@ -143,5 +135,24 @@ public class CsServiceImpl implements CsService {
 	    List<CsVo> csAdminStoreList  =  csDao.csAdminStoreList(pds);
 		
 		return csAdminStoreList;
+	}
+
+	@Override
+	public void userCsInsert(HashMap<String, Object> map, HttpServletRequest request) {
+		
+
+		ImgFile2.save( map, request );      
+		
+		csDao.userCsInsert(map);
+
+	}
+
+	@Override
+	public void storeCsInsert(HashMap<String, Object> map, HttpServletRequest request) {
+
+		ImgFile3.save( map, request );      
+
+		csDao.storeCsInsert(map);
+
 	}
 }

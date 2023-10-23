@@ -21,8 +21,15 @@ public class UserDaoImpl implements UserDao {
 	public void insertUser(UserVo vo) {
 
 		// sqlSession :Mybatis 라이브러리를 사용한다
+		
+		
+		int cnt = sqlSession.selectOne("User.IdCheck", vo);
+		
+		if(cnt==0) {
 		sqlSession.insert("User.UserInsert", vo);
-
+		} else {
+			
+		}
 	}
 
 	@Override

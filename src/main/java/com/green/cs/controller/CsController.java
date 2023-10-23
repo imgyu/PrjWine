@@ -3,6 +3,8 @@ package com.green.cs.controller;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,11 +36,12 @@ public class CsController {
 	}
 	
 	@RequestMapping("/StoreCsInquiry")
-	public ModelAndView storeCsInquiry(CsVo vo) {
-		
-		
-		
-		csService.storeCsInsert(vo);
+	public ModelAndView storeCsInquiry(CsVo vo,
+			@RequestParam  HashMap<String, Object> map,    // String 정보
+		HttpServletRequest   request                   // String + File(Binary)
+			) {
+		map.put("vo", vo);
+		csService.storeCsInsert(map, request);
 		
 		ModelAndView mv  =  new ModelAndView();
 		mv.setViewName("redirect:/StoreCs?s_no=" + vo.getS_no());
@@ -61,9 +64,12 @@ public class CsController {
 	}
 	
 	@RequestMapping("/UserCsInquiry")
-	public ModelAndView userCsInquiry(CsVo vo) {
-		
-		csService.userCsInsert(vo);
+	public ModelAndView userCsInquiry(CsVo vo,
+			@RequestParam  HashMap<String, Object> map,    // String 정보
+		HttpServletRequest   request                   // String + File(Binary)
+			) {
+		map.put("vo", vo);
+		csService.userCsInsert(map, request);
 		
 		ModelAndView mv  =  new ModelAndView();
 		mv.setViewName("redirect:/UserCs?u_no=" + vo.getU_no());
