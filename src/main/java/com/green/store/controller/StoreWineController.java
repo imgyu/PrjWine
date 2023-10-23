@@ -28,12 +28,11 @@ public class StoreWineController {
    public ModelAndView storeListSearch(   HavingWineVo vo,    
          @RequestParam("searchKeyword") String searchKeyword, 
          @RequestParam("searchOption")  String searchOption,
-         @RequestParam("amountOption")  String amountOption,
          HttpSession session) {
       
       int s_no  =  vo.getS_no();
       String w_kind  =  vo.getW_kind();
-      List<RegVo> storeListSearch  =  storeService.getStoreListSearch( s_no, w_kind, searchKeyword, searchOption, amountOption);
+      List<RegVo> storeListSearch  =  storeService.getStoreListSearch( s_no, w_kind, searchKeyword, searchOption);
       
       
       ModelAndView mv  =  new ModelAndView();

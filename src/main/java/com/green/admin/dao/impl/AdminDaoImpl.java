@@ -21,178 +21,181 @@ import com.green.user.vo.UserVo;
 @Repository("adminDao")
 public class AdminDaoImpl implements AdminDao {
 
-	@Autowired
-	private SqlSession sqlSession;
+   @Autowired
+   private SqlSession sqlSession;
 
-	@Override
-	public void deleteTastingList(TastingVo vo) {
+   @Override
+   public void deleteTastingList(TastingVo vo) {
 
-		sqlSession.delete("Admin.AdminTastingListDelete", vo);
+      sqlSession.delete("Admin.AdminTastingListDelete", vo);
 
-	}
+   }
 
-	@Override
-	public void deleteStoreList(StoreVo vo) {
-		sqlSession.delete("Admin.AdminStoreListDelete", vo);
+   @Override
+   public void deleteStoreList(StoreVo vo) {
+      sqlSession.delete("Admin.AdminStoreListDelete", vo);
 
-	}
+   }
 
-	@Override
-	public void deleteBoardList(BoardVo vo) {
+   @Override
+   public void deleteBoardList(BoardVo vo) {
 
-		sqlSession.delete("Admin.AdminBoardListDelete", vo);
+      sqlSession.delete("Admin.AdminBoardListDelete", vo);
 
-	}
+   }
 
-	@Override
-	public void deleteUserList(UserVo vo) {
+   @Override
+   public void deleteUserList(UserVo vo) {
 
-		sqlSession.delete("Admin.AdminUserListDelete", vo);
+      sqlSession.delete("Admin.AdminUserListDelete", vo);
 
-	}
+   }
 
-	@Override
-	public int countUser() {
+   @Override
+   public int countUser() {
 
-		return sqlSession.selectOne("Admin.CountUser");
-	}
+      return sqlSession.selectOne("Admin.CountUser");
+   }
 
-	@Override
-	public List<UserVo> userList2(PdsPagingVo pds) {
+   @Override
+   public List<UserVo> userList2(PdsPagingVo pds) {
 
-		List<UserVo> userList2 = sqlSession.selectList("Admin.AdminUserList2", pds);
+      List<UserVo> userList2 = sqlSession.selectList("Admin.AdminUserList2", pds);
 
-		return userList2;
-	}
+      return userList2;
+   }
 
-	@Override
-	public List<StoreVo> storeList2(PdsPagingVo pds) {
+   @Override
+   public List<StoreVo> storeList2(PdsPagingVo pds) {
 
-		List<StoreVo> storeList2 = sqlSession.selectList("Admin.AdminStoreList2", pds);
+      List<StoreVo> storeList2 = sqlSession.selectList("Admin.AdminStoreList2", pds);
 
-		return storeList2;
-	}
+      return storeList2;
+   }
 
-	@Override
-	public int countStore() {
+   @Override
+   public int countStore() {
 
-		return sqlSession.selectOne("Admin.CountStore");
-	}
+      return sqlSession.selectOne("Admin.CountStore");
+   }
 
-	@Override
-	public int countTasting() {
+   @Override
+   public int countTasting() {
 
-		return sqlSession.selectOne("Admin.CountTasting");
-	}
+      return sqlSession.selectOne("Admin.CountTasting");
+   }
 
-	@Override
-	public List<TastingVo> tastingList2(PdsPagingVo pds) {
+   @Override
+   public List<TastingVo> tastingList2(PdsPagingVo pds) {
 
-		List<TastingVo> tastingList2 = sqlSession.selectList("Admin.AdminTastingList2", pds);
+      List<TastingVo> tastingList2 = sqlSession.selectList("Admin.AdminTastingList2", pds);
 
-		return tastingList2;
-	}
+      return tastingList2;
+   }
 
-	@Override
-	public int countBoard() {
+   @Override
+   public int countBoard() {
 
-		return sqlSession.selectOne("Admin.CountBoard");
-	}
+      return sqlSession.selectOne("Admin.CountBoard");
+   }
 
-	@Override
-	public List<BoardVo> boardList2(PdsPagingVo pds) {
+   @Override
+   public List<BoardVo> boardList2(PdsPagingVo pds) {
 
-		List<BoardVo> boardList2 = sqlSession.selectList("Admin.AdminBoardList2", pds);
+      List<BoardVo> boardList2 = sqlSession.selectList("Admin.AdminBoardList2", pds);
 
-		return boardList2;
-	}
+      return boardList2;
+   }
 
-	@Override
-	public void WineInsert(WineVo vo) {
+   @Override
+   public void WineInsert(WineVo vo) {
 
-		sqlSession.insert("Admin.AdminWineInsert", vo);
+      sqlSession.insert("Admin.AdminWineInsert", vo);
 
-	}
+   }
 
-	@Override
-	public List<WineVo> wineList(PdsPagingVo pds) {
+   @Override
+   public List<WineVo> wineList(PdsPagingVo pds) {
 
-		List<WineVo> wineList = sqlSession.selectList("Admin.AdminWineList", pds);
+      List<WineVo> wineList = sqlSession.selectList("Admin.AdminWineList", pds);
 
-		return wineList;
-	}
+      return wineList;
+   }
 
-	@Override
-	public int countWine() {
+   @Override
+   public int countWine() {
 
-		return sqlSession.selectOne("Admin.CountWine");
-	}
+      return sqlSession.selectOne("Admin.CountWine");
+   }
 
-	@Override
-	public void deleteWineList(WineVo vo) {
+   @Override
+   public void deleteWineList(WineVo vo) {
 
-		sqlSession.delete("Admin.AdminDeleteWineList", vo);
+      sqlSession.delete("Admin.AdminDeleteWineList", vo);
 
-	}
+   }
 
-	@Override
-	public List<EventVo> AdminEventList(PdsPagingVo pds) {
-		List<EventVo> admineventlist = sqlSession.selectList("Admin.AdminEventList", pds);
-		System.out.println(admineventlist);
-		return admineventlist;
-	}
+   @Override
+   public List<EventVo> AdminEventList(PdsPagingVo pds) {
+      List<EventVo> admineventlist = sqlSession.selectList("Admin.AdminEventList", pds);
+      System.out.println(admineventlist);
+      return admineventlist;
+   }
 
-	@Override
-	public int countEvent() {
+   @Override
+   public int countEvent() {
 
-		return sqlSession.selectOne("Admin.CountEvent");
-	}
+      return sqlSession.selectOne("Admin.CountEvent");
+   }
 
-	@Override
-	public List<EventVo> AdminEventEndList(PdsPagingVo pds) {
-		List<EventVo> admineventendlist =
-				sqlSession.selectList("Admin.AdminEventEndList", pds);
-				
-			return admineventendlist; }
-	
+   @Override
+   public List<EventVo> AdminEventEndList(PdsPagingVo pds) {
+      List<EventVo> admineventendlist =
+            sqlSession.selectList("Admin.AdminEventEndList", pds);
+            
+         return admineventendlist; }
+   
 
-	@Override
-	public int countEndEvent() {
-		return sqlSession.selectOne("Admin.CountEndEvent");
-	}
+   @Override
+   public int countEndEvent() {
+      return sqlSession.selectOne("Admin.CountEndEvent");
+   }
 
-	@Override
-	public void admineventlistdelete(EventVo vo) {
-		sqlSession.delete("Admin.AdminEventListDelete", vo);
-		
-	}
+   @Override
+   public void admineventlistdelete(EventVo vo) {
+      sqlSession.delete("Admin.AdminEventListDelete", vo);
+      
+   }
 
-	@Override
-	public List<WineVo> searchList(PdsPagingVo pds, String searchKeyword, String searchOption, String kindOption) {
-		List<WineVo> searchList = new ArrayList<>();
-		Map<String, Object> map = new HashMap<>();
-		map.put("searchKeyword", searchKeyword);
-  	    map.put("searchOption", searchOption);
-  	    map.put("kindOption", kindOption);
-  	    map.put("pds", pds);
-  	    map.put("start", pds.getStart());
-  	    map.put("end", pds.getEnd());
-  	    searchList = sqlSession.selectList("Admin.AdWineList", map);
-		return searchList;
-	}
+   @Override
+   public List<WineVo> searchList(PdsPagingVo pds, String searchKeyword, String searchOption, String kindOption) {
+      List<WineVo> searchList = new ArrayList<>();
+      Map<String, Object> map = new HashMap<>();
+      map.put("searchKeyword", searchKeyword);
+         map.put("searchOption", searchOption);
+         map.put("kindOption", kindOption);
+         map.put("pds", pds);
+         map.put("start", pds.getStart());
+         map.put("end", pds.getEnd());
+         searchList = sqlSession.selectList("Admin.AdWineList", map);
+      return searchList;
+   }
 
-	@Override
-	public int countWineSearch(String searchKeyword, String searchOption, String kindOption) {
-		Map<String, Object> map = new HashMap<>();
-		map.put("searchKeyword", searchKeyword);
-  	    map.put("searchOption", searchOption);
-  	    map.put("kindOption", kindOption);
-		return sqlSession.selectOne("Admin.countWineSearch", map);
-	}
-	
-	@Override
-	public void adminendeventlistdelete(EventVo vo) {
-		sqlSession.delete("Admin.AdminEndEventListDelete", vo);
-	}
+   @Override
+   public int countWineSearch(String searchKeyword, String searchOption, String kindOption) {
+      Map<String, Object> map = new HashMap<>();
+      map.put("searchKeyword", searchKeyword);
+         map.put("searchOption", searchOption);
+         map.put("kindOption", kindOption);
+         int countWineSearch = sqlSession.selectOne("Admin.countWineSearch", map);
+         System.out.println("countWineSearch" +countWineSearch);
+         
+      return countWineSearch;
+   }
+   
+   @Override
+   public void adminendeventlistdelete(EventVo vo) {
+      sqlSession.delete("Admin.AdminEndEventListDelete", vo);
+   }
 
 }

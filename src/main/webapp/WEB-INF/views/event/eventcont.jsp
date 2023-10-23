@@ -116,10 +116,21 @@
 		</div>
 		</table>
 		<c:if test="${sloginVo.s_no == 99}">
-			<input type="submit" value="삭제">
+			<input type="submit" value="삭제" onclick="confirmDelete(event)">
 		</c:if>
 		<input class="btn1" type="button" value="목록으로" onclick="history.back()" style="margin: auto">
 	</form>
 </c:forEach>	
+<script>
+
+function confirmDelete(event) {
+    var confirmDelete = confirm("정말 삭제하시겠습니까?");
+    
+    if (!confirmDelete) {
+        // "아니요"를 선택한 경우 이벤트를 중단하여 삭제 동작을 막음
+        event.preventDefault();
+    }
+}
+</script>
 </body>
 </html>

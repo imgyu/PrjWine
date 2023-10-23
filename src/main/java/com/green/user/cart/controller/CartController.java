@@ -37,14 +37,18 @@ public class CartController {
    
    
    @PostMapping("/insertPay")
-   @ResponseBody
-   public String insertPay(@RequestBody PaymentVo pay) {
+   public String insertPay(PaymentVo pay,
+		   @RequestParam(value = "cartids") String[] cartids
+		   ) {
+
+	   
+	   String paynum = pay.getPaynum();
+	     
+	   cartService.insertPay(pay, cartids);
+	   
       
-      System.out.println(pay);
-       
-       String view  =  cartService.insertPay(pay);
-       
-      return view;
+     		 
+      return paynum;
    }
    
    //장바구니 목록   

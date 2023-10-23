@@ -92,7 +92,7 @@
         </c:forEach>
         <div class="text-center">
           <div class="btn-group">
-             <button type="submit" class="btn btn-primary mx-2">수정하기</button>
+             <button type="submit" class="btn btn-primary mx-2" id="updateButton">수정하기</button>
           </div>
         </div>
     </form>
@@ -104,10 +104,12 @@ $("#user_pw1").blur(function () {
 	
 	if($("#user_pw1").val() == "") {
 		$("#pwdcheck_1").text("비밀번호를 입력하세요.");
+		
 		user_pwd1  =  false;
 	}
 	else if (!pwdCheck.test($("#user_pw1").val())) {
 		$("#pwdcheck_1").text("8~16 자리 영문과 숫자 조합하여주세요. ");
+		
 		user_pwd1  =  false;
 	} else {
 		$("#pwdcheck_1").text("안전한 비밀번호 입니다")
@@ -119,6 +121,7 @@ $("#user_pw2").blur(function() {
 	if($("user_pw2").val() == "") {
 		$("#pwdcheck_2").css("color", "red");
 		$("#pwdcheck_2").text("필수정보입니다");
+		
 		user_pw2 = false;
 	}
 	else if(user_pwd1 == true && $("#user_pw1").val() == $("#user_pw2").val()) {
@@ -129,11 +132,28 @@ $("#user_pw2").blur(function() {
 		$("#pwdcheck_2").text("비밀번호 다시 확인해주세요");
 		$("#pwdcheck_2").css("color", "red");
 		$("#user_pw2").val("");
+		
 		user_pw2 = false;
 	}
 });
 
+document.getElementById("updateButton").addEventListener("click", function(event) {
+    var user_pw1 = document.getElementById("user_pw1").value;
+    var user_pw2 = document.getElementById("user_pw2").value;
+    
+    if (user_pw1 === "" || user_pw2 === "") {
+        alert("비밀번호를 입력하세요.");
+        event.preventDefault();
+        return false; // 수정을 막음
+    }
+    
+    var confirmation = confirm("수정하시겠습니까?");
 
+    if (!confirmation) {
+        // 아니요를 선택하면 수정 프로세스가 막힘
+        event.preventDefault();
+    }
+});
 
 </script>
 </body>

@@ -213,11 +213,28 @@ button#btn1 {
 			<div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
 					<input id="text1" type="text" name="w_amount" placeholder="수량 입력"> 
 					<input id="text2" type="text" name="w_price" placeholder="가격 입력">
-				<button id="btn1" type="submit" class="btn btn-primary">등록</button>
+				<button id="btn1" type="submit" class="btn btn-primary" id="btn1">등록</button>
 			</div>
 			</form>
 
 		</div>
 	</main>
+	<script>
+	document.getElementById("btn1").addEventListener("click", function(event) {
+	    var amountValue = document.getElementById("text1").value;
+	    var priceValue = document.getElementById("text2").value;
+
+	    if (amountValue === "" || priceValue === "") {
+	        alert("값을 입력하세요."); // 값이 비어있을 때 알림 표시
+	        event.preventDefault(); // 이벤트(등록)를 막음
+	    } else {
+	        var confirmation = confirm("등록 하시겠습니까?");
+	        if (!confirmation) {
+	            event.preventDefault(); // 이벤트(등록)를 막음
+	        }
+	    }
+	});
+	
+	</script>
 </body>
 </html>

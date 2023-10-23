@@ -284,7 +284,7 @@ form#search-form input[type="text"] {
         
 
         <!-- 매장 홈으로 버튼 -->
-        <div class="back-home-button">홈버튼</div>
+        <a href="/" class="btn btn-primary">홈버튼</a>
         
  
     </main>

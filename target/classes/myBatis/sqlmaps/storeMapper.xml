@@ -332,7 +332,7 @@
     LEFT JOIN STORE S      ON WL.S_NO = S.S_NO
     LEFT JOIN WINE W       ON WL.W_NO = W.W_NO
      WHERE     S.S_NO    =  #{s_no}
-     <if test="searchOption != null">
+     <if test="searchOption != 'ALL' || searchKeyword !=null">
       AND ${searchOption} LIKE '%' || INITCAP(#{searchKeyword}) || '%'
     </if>
 </select>
@@ -343,7 +343,7 @@
     LEFT JOIN STORE S      ON WL.S_NO = S.S_NO
     LEFT JOIN WINE W       ON WL.W_NO = W.W_NO
     WHERE     W.W_KIND  =  #{w_kind}
-    <if test="searchOption != null">
+     <if test="searchOption != 'ALL' || searchKeyword != null">
       AND ${searchOption} LIKE '%' || INITCAP(#{searchKeyword}) || '%'
     </if>
       AND     S.S_NO    =  #{s_no}

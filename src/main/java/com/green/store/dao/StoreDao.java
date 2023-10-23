@@ -39,7 +39,7 @@ public interface StoreDao {
    List<StoreVo> getStoreInfo(StoreVo vo);
    
 
-   List<RegVo> getStoreListSearch(int s_no, String w_kind ,String searchKeyword, String searchOption, String amountOption);
+   List<RegVo> getStoreListSearch(int s_no, String w_kind ,String searchKeyword, String searchOption);
 
    int idCheck(String s_id);
 

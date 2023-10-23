@@ -69,6 +69,26 @@
       .first-row td {
       background-color: #f2f2f2;
       } 
+      
+          .promotion-link {
+        flex: 1;
+        text-align: center; /* 가운데 정렬 */
+    }
+
+    .promotion-link a {
+        display: block;
+        text-decoration: none;
+        color: #000;
+        font-weight: bold;
+        padding: 10px; /* 내부 여백 설정 */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    
+    
+    
+    
+      
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
    <!-- jquery -->
@@ -134,8 +154,12 @@
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${admineventlist.e_idx }"></td>
 		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link">${admineventlist.e_title }</a></td>
 		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link">${admineventlist.s_no}</a></td>
-		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link"><img src="/img/${admineventlist.e_fimg}"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link"><img src="/img/${admineventlist.e_bimg}"></a></td>
+		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link"><img src="/img/${admineventlist.e_fimg}" style="max-width: 100px;
+  max-height: 100px;
+  overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
+		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link"><img src="/img/${admineventlist.e_bimg}" style="max-width: 100px;
+  max-height: 100px;
+  overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
 		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link">${admineventlist.e_sdate }</a></td>
 		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link">${admineventlist.e_edate }</a></td>
 	</tr>
@@ -189,6 +213,7 @@ function deleteValue() {
 	   }
 	   else {
 	      var chk  =  confirm("정말 삭제하시겠습니까?");
+	      if(chk) {
 	      $.ajax({
 	         url  :  url,
 	         type : 'post',
@@ -204,11 +229,13 @@ function deleteValue() {
 	            }
 	            else {
 	               alert("삭제 실패");
+	               event.preventDefault();
 	            }
 	         }
 	      });
 	   }
 	}  // deleteValue
+}
 
 
 </script>

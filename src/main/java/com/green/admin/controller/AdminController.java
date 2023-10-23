@@ -297,36 +297,40 @@ public class AdminController {
 		return mv;
 	}
 	
-	 @RequestMapping("/AdWineSearch")
-	 public ModelAndView adWineSearch(WineVo vo,  PdsPagingVo pds,
-				@RequestParam(value="nowPage", required = false)String nowPage,
-				@RequestParam(value="cntPerPage", required = false)String cntPerPage,
-				@RequestParam("searchKeyword") String searchKeyword,
-				@RequestParam("searchOption") String searchOption,
-				@RequestParam("kindOption") String kindOption ){
-		 
-	 	int total  =  adminService.countWineSearch(searchKeyword,searchOption,kindOption);
-		if (nowPage == null && cntPerPage == null ) {
-			nowPage  = "1";
-			cntPerPage = "5";
-		} else if(nowPage == null) {
-			nowPage = "1";
-		} else if (cntPerPage == null) {
-			cntPerPage = "5";
-		}
-		int w_no  =  vo.getW_no();
-		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-	 
-		List<WineVo> searchList = adminService.searchList(pds, searchKeyword, searchOption, kindOption);
+	@RequestMapping("/AdWineSearch")
+    public ModelAndView adWineSearch(WineVo vo,  PdsPagingVo pds,
+            @RequestParam(value="nowPage", required = false)String nowPage,
+            @RequestParam(value="cntPerPage", required = false)String cntPerPage,
+            @RequestParam("searchKeyword") String searchKeyword,
+            @RequestParam("searchOption") String searchOption,
+            @RequestParam("kindOption") String kindOption ){
+       
+       int total  =  adminService.countWineSearch(searchKeyword,searchOption,kindOption);
+      if (nowPage == null && cntPerPage == null ) {
+         nowPage  = "1";
+         cntPerPage = "5";
+      } else if(nowPage == null) {
+         nowPage = "1";
+      } else if (cntPerPage == null) {
+         cntPerPage = "5";
+      }
+      System.out.println(total);
+      int w_no  =  vo.getW_no();
+      pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+    
+      List<WineVo> searchList = adminService.searchList(pds, searchKeyword, searchOption, kindOption);
 
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("admin/winelist2");
-		mv.addObject("Allwine", searchList);
-		mv.addObject("pds", pds);
-		mv.addObject("w_no", w_no);
-		return mv;
-		 
-	}
+      ModelAndView mv = new ModelAndView();
+      mv.setViewName("admin/winelist2");
+      mv.addObject("Allwine", searchList);
+      mv.addObject("searchKeyword", searchKeyword);
+      mv.addObject("searchOption", searchOption);
+      mv.addObject("kindOption", kindOption);
+      mv.addObject("pds", pds);
+      mv.addObject("w_no", w_no);
+      return mv;
+       
+   }
 	
 	@ResponseBody
 	@RequestMapping("/AdminEventListDelete")

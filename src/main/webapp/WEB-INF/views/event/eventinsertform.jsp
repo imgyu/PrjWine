@@ -70,30 +70,77 @@ const config = {
 		<table>
 			<div>
 				<label>이벤트 제목</label>
-				<input type="text" name="e_title" placeholder="이벤트 제목을 입력하세요">
+				<input type="text" name="e_title" id="e_title" placeholder="이벤트 제목을 입력하세요">
 			</div>
 			<div>
 				<label>메인 이미지</label>
 				<input type="file" accept="image/*" onchange="readURL(this)"
-					name="upfile" class="upfile" /><br>
+					name="upfile" class="upfile" id="upfile"/><br>
 				<img id="preview" style="max-width: 300px;">
 			</div>
 			<div>
 				<label>내용 이미지</label>
 				<input type="file" accept="image/*" onchange="readURL(this)"
-					name="upfile2" class="upfile2" /><br>
+					name="upfile2" class="upfile2" id="upfile2" /><br>
 				<img id="preview" style="max-width: 300px;">
 			</div>
 			<div>
                 <label>시작 날짜 선택</label>
-                <input type="text" id="datepicker1" name="e_sdate">
+                <input type="text" id="datepicker1" name="e_sdate" id="e_sdate">
             </div>
 			<div>
                 <label>종료 날짜 선택</label>
-                <input type="text" id="datepicker2" name="e_edate">
+                <input type="text" id="datepicker2" name="e_edate" id="e_edate">
             </div>
 		</table>
-		<input type="submit" value="글 쓰기">
+		<input type="submit" value="글 쓰기" onclick="checkForm();">
 	</form>
+<script>
+function checkForm() {
+    var e_title = document.getElementById('e_title').value;
+    var upfile = document.getElementById('upfile').value;
+    var upfile2 = document.getElementById('upfile2').value;
+    var e_sdate = document.getElementById('datepicker1').value;
+    var e_edate = document.getElementById('datepicker2').value;
+
+    if (e_title.trim() === '') {
+        alert('이벤트 제목을 입력하세요');
+        event.preventDefault();
+    }
+
+    if (upfile.trim() === '') {
+        alert('메인 이미지를 선택하세요');
+        event.preventDefault();
+    }
+
+    if (upfile2.trim() === '') {
+        alert('내용 이미지를 선택하세요');
+        event.preventDefault();
+    }
+
+    if (e_sdate.trim() === '') {
+        alert('시작 날짜를 선택하세요');
+        event.preventDefault();
+    }
+
+    if (e_edate.trim() === '') {
+        alert('종료 날짜를 선택하세요');
+        event.preventDefault();
+    }
+
+}
+
+function readURL(input) {
+	if (input.files && input.files[0]) {
+		var reader = new FileReader();
+		reader.onload = function(e) {
+			document.getElementById('preview').src = e.target.result;
+		};
+		reader.readAsDataURL(input.files[0]);
+	} else {
+		document.getElementById('preview').src = "";
+	}
+}
+</script>
 </body>
 </html>
