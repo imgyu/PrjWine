@@ -461,24 +461,25 @@ WHERE RN BETWEEN #{start} AND #{end}
  
  <select id="CountStore" resultType="int">
  
- SELECT COUNT(*) FROM STORE  
+ SELECT COUNT(*) FROM STORE WHERE S_NO != 99
  
  </select>
  
  <select id="StoreList2" resultType="com.green.store.vo.StoreVo">
-   
-   SELECT *
+
+	 SELECT *
     FROM (
     SELECT ROWNUM RN, A.*
     FROM(
       SELECT S_NAME , S_CONT, S_PHONE, 
            S_ADDRESS, S_DETAILADDRESS, S_NO, S_SIMGNAME
       FROM   STORE
+      WHERE S_NO != 99
       ORDER BY S_NO ASC
     
     ) A
     )
-   WHERE RN BETWEEN #{start} AND #{end} AND S_NO &lt;&gt; 99
+   WHERE RN BETWEEN #{start} AND #{end} AND S_NO != 99
    
  
  </select>

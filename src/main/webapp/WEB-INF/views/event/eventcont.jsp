@@ -112,7 +112,7 @@
 	<form action="/EventContDelete?e_idx=${event.e_idx}" method="POST">
 		<table>
 		<div class="div1">
-			<img src="/imgpage/${event.e_bimg}">
+			<img src="/pageimg/${event.e_bimg}">
 		</div>
 		</table>
 		<c:if test="${sloginVo.s_no == 99}">

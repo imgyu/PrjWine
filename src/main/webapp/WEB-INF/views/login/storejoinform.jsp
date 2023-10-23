@@ -28,7 +28,7 @@
 	margin-top: 40px;
 }
 
-.container {
+.container1 {
 	margin: 0 auto; /* 상하여백 좌우여백 */
 	max-width: 50%; /* 로그인 폼의 최대 너비 */
 	padding-top: 80px;
@@ -111,7 +111,7 @@ textarea {
 </div>
 <br>
 <br>
-	<div class="container">
+	<div class="container1">
 		<form action="/StoreJoin" method="POST" enctype="multipart/form-data" onsubmit="validateForm()">
 			<table>
 				<colgroup>

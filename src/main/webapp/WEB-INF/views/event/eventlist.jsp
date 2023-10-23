@@ -102,7 +102,7 @@
 				<div class="col-lg-6">
 					<a href="/EventCont?e_idx=${event.e_idx}&e_bimg=${e_bimg}">
 						<div class="event-card">
-							<img src="/imgpage/${event.e_fimg}" alt="이미지">
+							<img src="/pageimg/${event.e_fimg}" alt="이미지">
 							<h3>${event.e_title}</h3>
 							<p><fmt:formatDate value="${event.e_sdate}" pattern="yyyy.MM.dd" />~<fmt:formatDate value="${event.e_edate}" pattern="yyyy.MM.dd" /></p>
 						</div>
