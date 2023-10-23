@@ -164,8 +164,8 @@
             <td>${select.w_name }</td>
             <td>${select.w_location}</td>
             <td>${select.w_kind}</td>
-            <td><input type="text" name="w_amount" value="${select.w_amount}" ></td>
-            <td><input type="text" name="w_price" value="${select.w_price }" ></td>
+            <td><input type="text" name="w_amount" value="${select.w_amount}" autocomplete="off" ></td>
+            <td><input type="text" name="w_price" value="${select.w_price }" autocomplete="off"></td>
             <td>${select.w_vintage}</td>
             
              <td class="edit-delete-buttons">

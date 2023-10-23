@@ -70,7 +70,7 @@ const config = {
 		<table>
 			<div>
 				<label>이벤트 제목</label>
-				<input type="text" name="e_title" id="e_title" placeholder="이벤트 제목을 입력하세요">
+				<input type="text" name="e_title" id="e_title" placeholder="이벤트 제목을 입력하세요" autocomplete="off">
 			</div>
 			<div>
 				<label>메인 이미지</label>
