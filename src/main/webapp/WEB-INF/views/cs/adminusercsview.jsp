@@ -155,7 +155,7 @@ input[type="submit"] {
             <form action="/AdminCsResponse?ucs_idx=${ucs.ucs_idx }" method="POST">
              <div>
              <label>문의사항 내용 </label>
-              <textarea name="response" ></textarea></div>
+              <textarea name="response" autocomplete="off" ></textarea></div>
               <button type="submit" class="btn btn-primary" onclick="confirmSubmit();">등록</button>
               </form>
              </c:when>

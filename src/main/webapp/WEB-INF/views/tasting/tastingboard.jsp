@@ -108,11 +108,6 @@ th, td {
    <script src="assets/js/sticker.js"></script>
    <!-- main js -->
    <script src="assets/js/main.js"></script>
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -185,6 +180,24 @@ function goBack() {
     	<c:when test="${not empty loginVo.u_no}">
         	<form action="/UserTastingRequest?u_no=${loginVo.u_no}&t_idx=${tast.t_idx}" method="POST">
               <button type="submit" class="btn btn-primary" id="applyButton">신청</button>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var applyButton = document.getElementById("applyButton");
+
+    applyButton.addEventListener("click", function(event) {
+        if (confirm("신청하시겠습니까?")) {
+            alert("신청이 완료되었습니다.");
+        } else {
+            alert("신청이 취소되었습니다.");
+            event.preventDefault();
+        }
+    });
+
+    function goBack() {
+        window.history.back();
+    }
+});
+</script>
               <span>신청인원 : ${count }명</span>
         	</form>
         </c:when>
@@ -193,32 +206,25 @@ function goBack() {
         	<form action="/TastingListDelete?t_idx=${tast.t_idx}" method="POST">
               <button type="submit" class="btn btn-primary" id="delete-confirm">삭제</button>
               <button type="button" class="btn btn-primary" onclick="goBack()">뒤로가기</button>
-        	</form>
-        </c:when>
-	</c:choose>
-    </c:forEach>
-</div>
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+var deleteButton = document.getElementById("delete-confirm");
 
-document.getElementById("applyButton").addEventListener("click", function() {
-    if (confirm("신청하시겠습니까?")) {
-        alert("신청이 완료되었습니다."); 
-    } else {
-        alert("신청이 취소되었습니다."); 
-        event.preventDefault();
-    }
-});
-
-document.getElementById("delete-confirm").addEventListener("click", function() {
+deleteButton.addEventListener("click", function(event) {
     if (confirm("삭제하시겠습니까?")) {
-        alert("삭제가 완료되었습니다."); 
+        alert("삭제가 완료되었습니다.");
     } else {
         alert("삭제가 취소되었습니다.");
         event.preventDefault();
     }
 });
-
-
+});
 </script>
+        	</form>
+        </c:when>
+	</c:choose>
+    </c:forEach>
+</div>
 </body>
+
 </html>

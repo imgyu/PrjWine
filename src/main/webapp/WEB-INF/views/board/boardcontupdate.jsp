@@ -154,7 +154,7 @@ table {
             <div>
                 <label>공지사항 제목</label>
                 <div>
-                    <input type="text" name="b_title" value="${board.b_title}">
+                    <input type="text" name="b_title" value="${board.b_title}" autocomplete="off">
                 </div>
             </div>
             <div>
@@ -163,7 +163,7 @@ table {
                     <input type="text" name="s_name" value="${board.s_name}" readonly>
                 </div>
                 <label>공지사항 내용 설명</label>
-                <textarea name="b_cont">${board.b_cont}</textarea>
+                <textarea name="b_cont" autocomplete="off">${board.b_cont}</textarea>
             </div>
         </table>
             

@@ -141,10 +141,10 @@ input[type="submit"] {
                 </div>
                 <div>
             	 <label>문의사항 제목</label>
-                 <input type="text" name="scs_title" placeholder="공지사항 제목을 입력하세요">
+                 <input type="text" name="scs_title" placeholder="공지사항 제목을 입력하세요" autocomplete="off">
                 <div>
                  <label>문의사항 내용 </label>
-                 <textarea name="scs_cont" placeholder="공지사항 내용을 입력하세요"></textarea>
+                 <textarea name="scs_cont" placeholder="공지사항 내용을 입력하세요" autocomplete="off"></textarea>
                 </div>
                 <label>문의사진</label>
                 <input type="file" name="scs_img"  accept="image/*" onchange="readURL(this)"> <br>

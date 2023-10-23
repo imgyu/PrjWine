@@ -132,11 +132,11 @@ input[type="submit"] {
 			 <table id="table">
 			    <div>
             	 <label>공지사항 제목</label>
-                 <input type="text" name="b_title" placeholder="공지사항 제목을 입력하세요">
+                 <input type="text" name="b_title" placeholder="공지사항 제목을 입력하세요" autocomplete="off">
                 </div>
                 <div>
                  <label>공지사항 내용 설명</label>
-                 <textarea name="b_cont" placeholder="공지사항 내용을 입력하세요"></textarea>
+                 <textarea name="b_cont" placeholder="공지사항 내용을 입력하세요" autocomplete="off"></textarea>
                 </div>	
 			  </table>
 			  <input type="submit" value="등록" id="submit-button">
