@@ -47,6 +47,7 @@ FROM (
          W.W_NAME LIKE '%' || UPPER(#{name_Search}) || '%' AND WL.WL_IDX >= 1 
       OR W.W_NAME LIKE '%' || LOWER(#{name_Search}) || '%' AND WL.WL_IDX >= 1
       OR W.W_NAME LIKE '%' || INITCAP(#{name_Search}) || '%' AND WL.WL_IDX >= 1
+      ORDER BY WL.WL_IDX ASC
        ) A
 )
 WHERE RN BETWEEN #{start} AND #{end} 
@@ -62,7 +63,8 @@ FROM (
       FROM WINE W
          LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
          LEFT JOIN STORE S ON WL.S_NO = S.S_NO
-	     WHERE 1 = 1 AND WL.WL_IDX >= 1 
+	     WHERE 1 = 1 AND WL.WL_IDX >= 1
+	     ORDER BY WL.WL_IDX ASC
 	     ) A
 )
 WHERE RN BETWEEN #{start} AND #{end} 
@@ -78,7 +80,8 @@ FROM (
     FROM WINE W
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
-    WHERE W_KIND = 'RED'  AND WL.WL_IDX >= 1 
+    WHERE W_KIND = 'RED'  AND WL.WL_IDX >= 1
+    ORDER BY WL.WL_IDX ASC 
      ) A
 )
 WHERE RN BETWEEN #{start} AND #{end} 
@@ -95,6 +98,7 @@ FROM (
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
     WHERE W_KIND = 'WHITE' AND WL.WL_IDX >= 1
+    ORDER BY WL.WL_IDX ASC
      ) A
 )
 WHERE RN BETWEEN #{start} AND #{end} 
@@ -111,6 +115,7 @@ FROM (
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
     WHERE W_KIND = 'SPARKLING' AND WL.WL_IDX >= 1
+    ORDER BY WL.WL_IDX ASC
      ) A
 )
 WHERE RN BETWEEN #{start} AND #{end} 
@@ -127,6 +132,7 @@ FROM (
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
     WHERE W_KIND = 'ROSE' AND WL.WL_IDX >= 1
+    ORDER BY WL.WL_IDX ASC
      ) A
 )
 WHERE RN BETWEEN #{start} AND #{end} 
@@ -144,6 +150,7 @@ FROM (
     LEFT JOIN STORE S ON WL.S_NO = S.S_NO
     WHERE W_KIND = 'DESSERT' AND WL.WL_IDX >= 1 
     OR W_KIND = 'PORT' AND WL.WL_IDX >= 1
+    ORDER BY WL.WL_IDX ASC
      ) A
 )
 WHERE RN BETWEEN #{start} AND #{end} 

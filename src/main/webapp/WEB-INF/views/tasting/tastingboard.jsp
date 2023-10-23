@@ -200,7 +200,7 @@ function goBack() {
 </div>
 <script>
 
-document.getElementById("applyButton").addEventListener("click", function() {
+document.getElementById("applyButton").addEventListener("click", function(event) {
     if (confirm("신청하시겠습니까?")) {
         alert("신청이 완료되었습니다."); 
     } else {
@@ -209,9 +209,9 @@ document.getElementById("applyButton").addEventListener("click", function() {
     }
 });
 
-document.getElementById("delete-confirm").addEventListener("click", function() {
+document.getElementById("delete-confirm").addEventListener("click", function(event) {
     if (confirm("삭제하시겠습니까?")) {
-        alert("삭제가 완료되었습니다."); 
+        event.alert("삭제가 완료되었습니다."); 
     } else {
         alert("삭제가 취소되었습니다.");
         event.preventDefault();

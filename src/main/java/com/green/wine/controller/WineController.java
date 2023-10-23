@@ -81,6 +81,7 @@ public class WineController {
        ModelAndView mv = new ModelAndView();
        mv.addObject("nameSearch",nameSearch);
        mv.addObject("pds", pds);
+       mv.addObject("name_Search", name_Search);
        mv.setViewName("/wine/winelist");
        return mv;
        

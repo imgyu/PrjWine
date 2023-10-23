@@ -111,7 +111,7 @@ margin-top: 50px;
 function goToPage(pageNumber) {
 	
     // 페이지 번호를 눌렀을 때 이동할 URL을 생성
-    var url = '?nowPage=' + pageNumber + '&cntPerPage=${pds.cntPerPage}';
+    var url = '?name_Search=${name_Search}&nowPage=' + pageNumber + '&cntPerPage=${pds.cntPerPage}';
 
     // 페이지 이동
     window.location.href = url;
@@ -161,7 +161,7 @@ function goToPage(pageNumber) {
 	<div class="search-container">
          <form action="/NameSearch" method="POST">
             <input type="search"   name="name_Search" placeholder="와인이름">
-            <input type="submit"   value="찾기">
+            <input type="submit"   value="전체와인검색">
    
    <!-- 와인 검색end -->
    
