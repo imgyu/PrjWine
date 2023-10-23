@@ -19,12 +19,6 @@ public class CsDaoImpl implements CsDao {
 	private SqlSession sqlSession;
 
 	@Override
-	public void userCsInsert(CsVo vo) {
-		
-		sqlSession.insert("Cs.UserCsInsert", vo);
-	}
-	
-	
 	public List<CsVo> getusercsList(CsVo vo) {
 		List<CsVo> getusercsList = sqlSession.selectList("Cs.UsercsList",vo);
 		System.out.println(getusercsList); 
@@ -38,14 +32,6 @@ public class CsDaoImpl implements CsDao {
 		System.out.println(csalluserList); 
 		return csalluserList;
 	}
-
-	@Override
-	public void storeCsInsert(CsVo vo) {
-		
-		sqlSession.insert("Cs.StoreCsInsert", vo);
-		
-	}
-
 
 	@Override
 	public List<CsVo> getcsviewList(CsVo vo) {
@@ -193,5 +179,33 @@ List<CsVo> admincsviewList = sqlSession.selectList("Cs.AdminCsviewList",vo);
 		
 		return csAdminStoreList;
 	}
+
+	@Override
+	public void userCsInsert(HashMap<String, Object> map) {
+		
+		 String ucs_img = (String) map.get("ucs_img");
+		   
+		   if (ucs_img == null || ucs_img.isEmpty()) {
+				sqlSession.insert("Cs.UserCsInsert2", map);   
+			} else {
+				sqlSession.insert("Cs.UserCsInsert", map);
+			}
+		
+	}
+
+	@Override
+	public void storeCsInsert(HashMap<String, Object> map) {
+
+		 String scs_img = (String) map.get("scs_img");
+		   
+		   if (scs_img == null || scs_img.isEmpty()) {
+				sqlSession.insert("Cs.StoreCsInsert2", map);   
+			} else {
+				sqlSession.insert("Cs.StoreCsInsert", map);
+			}
+		
+	}
+	
+	
 
 }

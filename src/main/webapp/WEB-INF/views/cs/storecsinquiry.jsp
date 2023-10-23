@@ -126,7 +126,7 @@ input[type="submit"] {
    <br>
    <br>
 	<div class="container1" id="board" style="width: 50%; height: 350px; float: center;">
-			<form action="/StoreCsInquiry?s_no=${s_no }" method="POST">
+			<form action="/StoreCsInquiry?s_no=${s_no }" method="POST" enctype="multipart/form-data" >
 			<input type="hidden" name="scs_idx" value="${scs_idx }">
 			 <table id="table">
 			    <div>
@@ -147,7 +147,7 @@ input[type="submit"] {
                  <textarea name="scs_cont" placeholder="공지사항 내용을 입력하세요" autocomplete="off"></textarea>
                 </div>
                 <label>문의사진</label>
-                <input type="file" name="scs_img"  accept="image/*" onchange="readURL(this)"> <br>
+                <input type="file" name="upfile"  accept="image/*" onchange="readURL(this)" enctype="multipart/form-data"> <br>
                 <img id="preview" style="max-width: 300px;">	
 			  </table>
 			  <input type="submit" value="등록" onclick="confirmSubmit();" class="btn btn-primary" >
