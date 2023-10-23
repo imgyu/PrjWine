@@ -138,8 +138,12 @@ input[type="submit"] {
                  <label>문의사항 내용 </label>
                  <textarea readonly="readonly">${scs.scs_cont}</textarea>
                 </div>
+                 <c:choose>
+            <c:when test="${not empty scs.scs_img}">
                 <label>문의사진</label>
               <img id="imagePreview" src="/imgpage/${scs.scs_img}" alt="Image Preview" />
+              </c:when>
+              </c:choose>
               <c:choose>
             <c:when test="${not empty scs.response}">
             <div>
@@ -152,7 +156,7 @@ input[type="submit"] {
              <c:when test="${empty scs.response}">
              <div>
              <label>문의사항 내용 </label>
-              <textarea readonly="readonly">답변 대기중</textarea></div>
+              <input type="text" readonly="readonly" value="✈답변 대기중✈"></div>
              </c:when>
            </c:choose>
                   </c:forEach>

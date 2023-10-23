@@ -126,7 +126,7 @@ input[type="submit"] {
    <br>
    <br>
 	<div class="container1" id="board" style="width: 50%; height: 350px; float: center;">
-			<form action="/UserCsInquiry?u_no=${u_no }" method="POST">
+			<form action="/UserCsInquiry?u_no=${u_no }" method="POST" enctype="multipart/form-data" >
 			<input type="hidden" name="ucs_idx" value="${ucs_idx }">
 			 <table id="table">
 			    <div>
@@ -147,7 +147,7 @@ input[type="submit"] {
                  <textarea name="ucs_cont" placeholder="공지사항 내용을 입력하세요" autocomplete="off"></textarea>
                 </div>
                 <label>문의사진</label>
-                <input type="file" name="ucs_img"  accept="image/*" onchange="readURL(this)"> <br>
+                <input type="file" name="upfile"  accept="image/*" onchange="readURL(this)"> <br>
                 <img id="preview" style="max-width: 300px;">	
 			  </table>
 			  <input type="submit" value="등록" onclick="confirmSubmit();" class="btn btn-primary" >

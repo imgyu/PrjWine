@@ -18,6 +18,18 @@ SYSDATE,
 #{ucs_category}
 )
 </insert>
+<insert id="UserCsInsert2">
+
+INSERT INTO USERCS (UCS_IDX , U_NO, UCS_TITLE, UCS_CONT, UW_DATE, UCS_CATEGORY)
+VALUES(
+(SELECT NVL(MAX(UCS_IDX), 0)+1 FROM USERCS),
+#{u_no},
+#{ucs_title},
+#{ucs_cont},
+SYSDATE,
+#{ucs_category}
+)
+</insert>
 
 <insert id="StoreCsInsert">
 
@@ -29,6 +41,19 @@ VALUES(
 #{scs_cont},
 SYSDATE,
 #{scs_img},
+#{scs_category}
+)
+</insert>
+
+<insert id="StoreCsInsert2">
+
+INSERT INTO STORECS (SCS_IDX , S_NO, SCS_TITLE, SCS_CONT, SW_DATE, SCS_CATEGORY)
+VALUES(
+(SELECT NVL(MAX(SCS_IDX), 0)+1 FROM STORECS),
+#{s_no},
+#{scs_title},
+#{scs_cont},
+SYSDATE,
 #{scs_category}
 )
 </insert>

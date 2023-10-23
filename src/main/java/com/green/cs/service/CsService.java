@@ -3,17 +3,17 @@ package com.green.cs.service;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import com.green.cs.vo.CsVo;
 import com.green.pds.vo.PdsPagingVo;
 
 public interface CsService {
 
 	
-	void userCsInsert(CsVo vo);
-	
 	List<CsVo> getusercsList(CsVo vo);
 	
-    void storeCsInsert(CsVo vo);
+	void userCsInsert(HashMap<String, Object> map, HttpServletRequest request);
 
 	List<CsVo> getcsalluserList(CsVo vo);
 
@@ -48,6 +48,8 @@ public interface CsService {
 	int countAdminCsStore();
 
 	List<CsVo> csAdminStoreList(PdsPagingVo pds);
+
+	void storeCsInsert(HashMap<String, Object> map, HttpServletRequest request);
 
 
 }
