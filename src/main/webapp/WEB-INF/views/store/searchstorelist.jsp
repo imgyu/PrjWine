@@ -12,81 +12,13 @@
 	rel="stylesheet"
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
-	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
-	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
 <style>
-.search-container {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-}
-
-.search-container input[type="search"] {
-    background-color: #F5F5F5;
-    border: 2px solid #FFA500;
-    color: #333;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    placeholder-color: #FFA500;
-    width: 60%;
-    text-align: right;
-    margin-right: 10px; /* 오른쪽 여백을 주기 위해 margin-right 사용 */
-}
-
-.search-container button {
-    /* 버튼에 스타일을 적용하세요. */
-    background-color: #FFA500;
-    color: #FFF;
-    border: none;
-    padding: 5px 10px;
-    font-size: 16px;
-    font-weight: bold;
-}
 </style>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 	crossorigin="anonymous">
 </script>
-   <!-- jquery -->
-   <script src="assets/js/jquery-1.11.3.min.js"></script>
-   <!-- bootstrap -->
-   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-   <!-- count down -->
-   <script src="assets/js/jquery.countdown.js"></script>
-   <!-- isotope -->
-   <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-   <!-- waypoints -->
-   <script src="assets/js/waypoints.js"></script>
-   <!-- owl carousel -->
-   <script src="assets/js/owl.carousel.min.js"></script>
-   <!-- magnific popup -->
-   <script src="assets/js/jquery.magnific-popup.min.js"></script>
-   <!-- mean menu -->
-   <script src="assets/js/jquery.meanmenu.min.js"></script>
-   <!-- sticker js -->
-   <script src="assets/js/sticker.js"></script>
-   <!-- main js -->
-   <script src="assets/js/main.js"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>

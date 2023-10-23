@@ -12,14 +12,6 @@
    rel="stylesheet"
    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
    crossorigin="anonymous">
-<link rel="stylesheet" href="assets/css/all.min.css">
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/owl.carousel.css">
-<link rel="stylesheet" href="assets/css/magnific-popup.css">
-<link rel="stylesheet" href="assets/css/animate.css">
-<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
 <style>
 .search-container {
     display: flex;
@@ -96,18 +88,7 @@ margin-top: 50px;
     document.querySelector('[name="other_click"]').addEventListener('click', function() {
         location.href = '/Other_Click';
     });
-</script>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.countdown.js"></script>
-<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-<script src="assets/js/waypoints.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<script src="assets/js/sticker.js"></script>
-<script src="assets/js/main.js"></script>
-<script>
+    
 function goToPage(pageNumber) {
 	
     // 페이지 번호를 눌렀을 때 이동할 URL을 생성

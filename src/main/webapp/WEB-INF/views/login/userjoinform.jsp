@@ -12,77 +12,7 @@
 	rel="stylesheet"
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="assets/css/all.min.css">
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/owl.carousel.css">
-<link rel="stylesheet" href="assets/css/magnific-popup.css">
-<link rel="stylesheet" href="assets/css/animate.css">
-<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/responsive.css">	
 <style>
-.logintitle {
-	text-align: center;
-	margin-top: 40px;
-}
-
-.container1 {
-	margin: 0 auto; /* 상하여백 좌우여백 */
-	max-width: 50%; /* 로그인 폼의 최대 너비 */
-	padding-top: 80px;
-}
-
-.tb {
-	margin: 0 auto;
-	border-collapse: collapse;
-	width: 100%;
-	background-color: #fff;
-	box-shadow: 0px 2px 10px rgba(0, 0, 0, .1);
-	border-radius: .25rem;
-}
-
-.tb tr>td:nth-child(1) {
-	text-align: center;
-	padding-right: 10px; /* 필드명과 입력 필드 사이 간격 조정 */
-	width: 30%;
-	font-weight:bold;
-}
-.tb1 tr>td:nth-child(2) {
-	text-align: left;
-	padding-right: 10px; /* 필드명과 입력 필드 사이 간격 조정 */
-	width: 30%;
-	font-weight:bold;
-}
-
-tr,
-td {
-	border-bottom:solid thin #e6e6e6 ;
-	padding-bottom:.5em ;
-	padding-top:.5em ;
-}
-
-.redFont {
-	color: red;
-	font-size: 12px;
-	font-style: italic;
-}
-
-textarea {
-	resize:none ;
-	width :100% ; /* 텍스트 영역 가로 폭 조정 */
-	height :100% ; /* 텍스트 영역 세로 높이 조정 */
-}
-
-.id_ok{
-color:#008000;
-display: none;
-}
-
-.id_already{
-color:#6A82FB; 
-display: none;
-}
- 
 </style>
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -91,16 +21,6 @@ display: none;
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 	crossorigin="anonymous"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.countdown.js"></script>
-<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-<script src="assets/js/waypoints.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<script src="assets/js/sticker.js"></script>
-<script src="assets/js/main.js"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>

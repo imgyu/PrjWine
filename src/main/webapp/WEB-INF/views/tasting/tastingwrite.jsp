@@ -8,24 +8,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
-	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
-	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
 <style>
 .logintitle {
     text-align: center;
@@ -107,27 +89,6 @@ form#search-form input[type="search"] {
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-   <!-- jquery -->
-   <script src="assets/js/jquery-1.11.3.min.js"></script>
-   <!-- bootstrap -->
-   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-   <!-- count down -->
-   <script src="assets/js/jquery.countdown.js"></script>
-   <!-- isotope -->
-   <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-   <!-- waypoints -->
-   <script src="assets/js/waypoints.js"></script>
-   <!-- owl carousel -->
-   <script src="assets/js/owl.carousel.min.js"></script>
-   <!-- magnific popup -->
-   <script src="assets/js/jquery.magnific-popup.min.js"></script>
-   <!-- mean menu -->
-   <script src="assets/js/jquery.meanmenu.min.js"></script>
-   <!-- sticker js -->
-   <script src="assets/js/sticker.js"></script>
-   <!-- main js -->
-   <script src="assets/js/main.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script>
 	

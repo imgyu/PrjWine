@@ -9,102 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
-	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
-	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <style>
-.logintitle {
-    text-align: center;
-    margin-top: 40px;
-}
-
-.container1 {
-    margin: 0 auto;
-    max-width: 50%;
-    padding-top: 80px;
-}
-
-table {
-    margin: 0 auto;
-    border-collapse: collapse;
-    width: 100%;
-    background-color: #fff;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: .25rem;
-}
-
-tr>td:nth-child(1) {
-    text-align: center;
-    padding-right: 10px;
-    width: 30%;
-    font-weight: bold;
-}
-
-tr>td:nth-child(2) {
-    text-align: left;
-    padding-right: 10px;
-    width: 30%;
-    font-weight: bold;
-}
-
-tr,
-td {
-    border-bottom: solid thin #e6e6e6;
-    padding-bottom: 0.5em;
-    padding-top: 0.5em;
-    background-color: #D0E3F7;
-}
-
-.redFont {
-    color: red;
-    font-size: 12px;
-    font-style: italic;
-}
-
-textarea {
-    resize: none;
-    width: 100%;
-    height: 100%;
-}
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-       <!-- jquery -->
-   <script src="assets/js/jquery-1.11.3.min.js"></script>
-   <!-- bootstrap -->
-   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-   <!-- count down -->
-   <script src="assets/js/jquery.countdown.js"></script>
-   <!-- isotope -->
-   <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-   <!-- waypoints -->
-   <script src="assets/js/waypoints.js"></script>
-   <!-- owl carousel -->
-   <script src="assets/js/owl.carousel.min.js"></script>
-   <!-- magnific popup -->
-   <script src="assets/js/jquery.magnific-popup.min.js"></script>
-   <!-- mean menu -->
-   <script src="assets/js/jquery.meanmenu.min.js"></script>
-   <!-- sticker js -->
-   <script src="assets/js/sticker.js"></script>
-   <!-- main js -->
-   <script src="assets/js/main.js"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -169,7 +78,7 @@ textarea {
 					</tr>
 					<tr>
 						<td class="form-label">현재 매장사진:</td>
-						<td><img src="/pageimg/${check.s_simgname}" alt="매장사진"
+						<td><img src="/imgpage/${check.s_simgname}" alt="매장사진"
 							style="max-width: 300px;" /></td>
 					</tr>
 					<tr>
