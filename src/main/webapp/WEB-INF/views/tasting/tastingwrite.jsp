@@ -230,7 +230,7 @@ form#search-form input[type="search"] {
 						<option value="6">SPARKLING</option>
 					</select>
 				<input id="search" type="search" name="searchKeyword" placeholder="검색어 입력">
-				<button type="button" id="btnSearch">검색</button>
+				<button type="button" id="btnSearch" >검색</button>
 				</div>
 			</div>
 			<div style="overflow-y: auto; max-height: 340px;" id="div1">
@@ -256,8 +256,9 @@ document.getElementById("registerButton").addEventListener("click", function(eve
     var t_cont = document.getElementById("t_cont").value;
     var t_date = document.getElementById("t_date").value;
     var t_cost = document.getElementById("t_cost").value;
-
-    if (t_title === "" || t_cont === "" || t_date === "" || t_cost === "") {
+    var searchKeyword = document.getElementById("search").value;
+    
+    if (t_title === "" || t_cont === "" || t_date === "" || t_cost === "" || searchKeyword === "") {
         alert("모든 필수 입력란을 작성해주세요.");
         event.preventDefault();
         return;
@@ -269,6 +270,7 @@ document.getElementById("registerButton").addEventListener("click", function(eve
         event.preventDefault();
     }
 });
+
 
 </script>
 </body>

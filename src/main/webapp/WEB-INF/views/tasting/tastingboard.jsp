@@ -205,6 +205,7 @@ document.getElementById("applyButton").addEventListener("click", function() {
         alert("신청이 완료되었습니다."); 
     } else {
         alert("신청이 취소되었습니다."); 
+        event.preventDefault();
     }
 });
 
@@ -212,7 +213,8 @@ document.getElementById("delete-confirm").addEventListener("click", function() {
     if (confirm("삭제하시겠습니까?")) {
         alert("삭제가 완료되었습니다."); 
     } else {
-        alert("삭제가 취소되었습니다."); 
+        alert("삭제가 취소되었습니다.");
+        event.preventDefault();
     }
 });
 
