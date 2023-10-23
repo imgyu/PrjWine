@@ -21,6 +21,7 @@ public class PaymentVo {
 	private String u_phone;
 	private String w_price;
 	private int w_amount;
+	private int c_count;
 	public String getU_name() {
 		return u_name;
 	}
@@ -117,17 +118,25 @@ public class PaymentVo {
 	public void setW_amount(int w_amount) {
 		this.w_amount = w_amount;
 	}
+	public int getC_count() {
+		return c_count;
+	}
+	public void setC_count(int c_count) {
+		this.c_count = c_count;
+	}
 	@Override
 	public String toString() {
 		return "PaymentVo [u_name=" + u_name + ", s_name=" + s_name + ", w_name=" + w_name + ", ph_date=" + ph_date
 				+ ", sh_date=" + sh_date + ", c_idx=" + c_idx + ", wl_idx=" + wl_idx + ", p_allprice=" + p_allprice
 				+ ", u_no=" + u_no + ", s_no=" + s_no + ", w_no=" + w_no + ", paynum=" + paynum + ", p_state=" + p_state
-				+ ", u_phone=" + u_phone + ", w_price=" + w_price + ", w_amount=" + w_amount + "]";
+				+ ", u_phone=" + u_phone + ", w_price=" + w_price + ", w_amount=" + w_amount + ", c_count=" + c_count
+				+ "]";
 	}
+	
 	public PaymentVo() {}
 	public PaymentVo(String u_name, String s_name, String w_name, Date ph_date, Date sh_date, int c_idx, int wl_idx,
 			int p_allprice, int u_no, int s_no, int w_no, String paynum, String p_state, String u_phone, String w_price,
-			int w_amount) {
+			int w_amount, int c_count) {
 		this.u_name = u_name;
 		this.s_name = s_name;
 		this.w_name = w_name;
@@ -144,7 +153,10 @@ public class PaymentVo {
 		this.u_phone = u_phone;
 		this.w_price = w_price;
 		this.w_amount = w_amount;
+		this.c_count = c_count;
 	}
+	
+	
 	
 	
 	

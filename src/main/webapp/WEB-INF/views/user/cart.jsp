@@ -112,6 +112,7 @@
       
    <form action="/UserPayment?u_no=${u_no }" method="POST" id="formPayment">
    <input type="hidden" name="cartids" value="" />
+   
    <!-- 게시물 목록 -->
    <table id="table">
    
@@ -124,6 +125,8 @@
      <th>총가격</th>
    </tr>
    <c:forEach var="cart" items="${cartList}">
+            <input type="hidden" name="w_amount" value="${cart.w_amount}" />
+            <input type="hidden" name="c_count" value="${cart.c_count}" />
      <tr>   
         <th><input type="checkbox" name="rowCheck" id="rowCheck" value="${cart.c_idx }" /></th>
         <th>${cart.w_name}</th>

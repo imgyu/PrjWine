@@ -58,8 +58,13 @@ public List<HavingWineVo>  selCartList(HavingWineVo vo) {
 }
 
 @Override
-public void insertPay(PaymentVo pay, String[] cartids) {
-	cartDao.insertPay(pay, cartids);
+public String insertPay(PaymentVo pay) {
+
+	String view  =  null;
+
+	cartDao.insertPay(pay);
+
+	return view;
 }
 
 
