@@ -123,7 +123,7 @@ display: none;
 
 <div class="container1">
    
- <form action="/UserJoin" method="POST" onsubmit="validateForm()" id="myForm">
+ <form action="/UserJoin" method="POST" onsubmit="validateForm()">
    <table class="tb1">
       <colgroup>
          <col width="25%">
@@ -204,7 +204,7 @@ display: none;
       <tr>
       	<td colspan="2">
       	    <div>
-      	    	<button type="submit" id="joinButton" >회원가입 하기</button>
+      	    	<button type="submit"  >회원가입 하기</button>
       	    </div>
       	</td>
       </tr>
@@ -278,11 +278,8 @@ display: none;
 		    	        }
 		    	    });
 		    	}
-		    	
-		    	
 	
-		
-		    	    
+
     function u_execDaumPostcode() {
            new daum.Postcode({
                oncomplete: function(data) {
@@ -339,34 +336,7 @@ display: none;
                 return false;
             }
         }
-        var u_id = $('#u_id').val();
-        $.ajax({
-            url: '/UserIdChk',
-            type: 'post',
-            data: { u_id: u_id },
-            success: function (cnt) {
-                if (cnt == 0) {
-                    if (confirm('등록하시겠습니까?')) {
-                        // 중복 확인이 완료되면 폼을 제출
-                        document.getElementById("myForm").submit();
-                    } else {
-                        alert("취소되었습니다");
-                        submit.preventDefault();
-
-                    }
-                } else {
-                    alert("아이디가 중복되었습니다");
-           return false;
-
-                    $('.id_already').css("display", "inline-block");
-                    $('.id_ok').css("display", "none");
-                    $('#u_id').val('');
-                }
-            },
-            error: function () {
-                alert("에러입니다!");
-            }
-        });
+        return true;
     }
    
   </script>
