@@ -6,6 +6,7 @@
 <html>
 <head> 
     <title>와인 수정</title>
+    <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
           rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
@@ -164,8 +165,8 @@
             <td>${select.w_name }</td>
             <td>${select.w_location}</td>
             <td>${select.w_kind}</td>
-            <td><input type="text" name="w_amount" value="${select.w_amount}" ></td>
-            <td><input type="text" name="w_price" value="${select.w_price }" ></td>
+            <td><input type="text" name="w_amount" value="${select.w_amount}" autocomplete="off" ></td>
+            <td><input type="text" name="w_price" value="${select.w_price }" autocomplete="off"></td>
             <td>${select.w_vintage}</td>
             
              <td class="edit-delete-buttons">

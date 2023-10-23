@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link rel="stylesheet" href="/css/main.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/all.min.css">
@@ -102,7 +102,7 @@
 				<div class="col-lg-6">
 					<a href="/EventCont?e_idx=${event.e_idx}&e_bimg=${e_bimg}">
 						<div class="event-card">
-							<img src="/img/${event.e_fimg}" alt="이미지">
+							<img src="/pageimg/${event.e_fimg}" alt="이미지">
 							<h3>${event.e_title}</h3>
 							<p><fmt:formatDate value="${event.e_sdate}" pattern="yyyy.MM.dd" />~<fmt:formatDate value="${event.e_edate}" pattern="yyyy.MM.dd" /></p>
 						</div>

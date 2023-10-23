@@ -22,7 +22,7 @@ public class ImgFile1 {
 
     public static void save(HashMap<String, Object> map, HttpServletRequest request) {
         // 자료실에 파일이 저장될 경로(디렉토리) 지정 없으면 생성
-        String filePath = "d:\\dev\\data\\";
+        String filePath = "C:\\Users\\GGG\\git\\PrjWine\\src\\main\\webapp\\WEB-INF\\resources\\img\\";
         File dir = new File(filePath);
         if (!dir.exists()) {
             dir.mkdir(); // make directory

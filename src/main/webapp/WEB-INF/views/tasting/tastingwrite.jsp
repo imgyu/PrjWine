@@ -6,7 +6,7 @@
 <title>시음회 등록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
@@ -206,11 +206,11 @@ form#search-form input[type="search"] {
 		
         <div>
             <label>시음회 이름</label>
-            <input type="text" name="t_title" id="t_title"  placeholder="시음회 이름을 입력하세요">
+            <input type="text" name="t_title" id="t_title"  placeholder="시음회 이름을 입력하세요" autocomplete="off">
         </div>
         <div>
             <label>시음회 내용 설명</label>
-            <textarea name="t_cont" id="t_cont" placeholder="시음회 내용 설명을 입력하세요"></textarea>
+            <textarea name="t_cont" id="t_cont" placeholder="시음회 내용 설명을 입력하세요" autocomplete="off"></textarea>
         </div>
         	<div class="container1">
 				<div>
@@ -228,7 +228,7 @@ form#search-form input[type="search"] {
 						<option value="5">WHITE</option>
 						<option value="6">SPARKLING</option>
 					</select>
-				<input id="search" type="search" name="searchKeyword" placeholder="검색어 입력">
+				<input id="search" type="search" name="searchKeyword" placeholder="검색어 입력" autocomplete="off">
 				<button type="button" id="btnSearch" >검색</button>
 				</div>
 			</div>
@@ -243,7 +243,7 @@ form#search-form input[type="search"] {
 		</div>
         <div>
             <label>참가비</label>
-            <input type="number" name="t_cost" id="t_cost" placeholder="숫자만입력:>">
+            <input type="number" name="t_cost" id="t_cost" placeholder="숫자만입력:>" autocomplete="off">
         </div>
     	<button type="submit" id="registerButton">등록</button>
     </form>
@@ -253,7 +253,7 @@ form#search-form input[type="search"] {
 document.getElementById("registerButton").addEventListener("click", function(event) {
     var t_title = document.getElementById("t_title").value;
     var t_cont = document.getElementById("t_cont").value;
-    var t_date = document.getElementById("t_date").value;
+    var t_date = document.getElementById("datetime").value;
     var t_cost = document.getElementById("t_cost").value;
     var searchKeyword = document.getElementById("search").value;
     

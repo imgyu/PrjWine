@@ -6,7 +6,7 @@
 <title>시음회 등록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
@@ -154,7 +154,7 @@ table {
             <div>
                 <label>공지사항 제목</label>
                 <div>
-                    <input type="text" name="b_title" value="${board.b_title}">
+                    <input type="text" name="b_title" value="${board.b_title}" autocomplete="off">
                 </div>
             </div>
             <div>
@@ -163,7 +163,7 @@ table {
                     <input type="text" name="s_name" value="${board.s_name}" readonly>
                 </div>
                 <label>공지사항 내용 설명</label>
-                <textarea name="b_cont">${board.b_cont}</textarea>
+                <textarea name="b_cont" autocomplete="off">${board.b_cont}</textarea>
             </div>
         </table>
             

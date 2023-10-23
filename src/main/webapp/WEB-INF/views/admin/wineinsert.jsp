@@ -120,7 +120,7 @@ button#btn1 {
 </style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
@@ -179,13 +179,13 @@ button#btn1 {
 					<th>Kind</th>
 				</tr>
 						<tr>
-							<td><input type="text" name="w_wineery"></td>
-							<td><input type="text" name="w_name"></td>
-							<td><input type="text" name="w_vintage"></td>
-							<td><input type="text" name="w_avg"></td>
-							<td><input type="text" name="w_reviews"></td>
-							<td><input type="text" name="w_location"></td>
-							<td><input type="text" name="w_image">
+							<td><input type="text" name="w_wineery" autocomplete="off"></td>
+							<td><input type="text" name="w_name" autocomplete="off"></td>
+							<td><input type="text" name="w_vintage" autocomplete="off"></td>
+							<td><input type="text" name="w_avg" autocomplete="off"></td>
+							<td><input type="text" name="w_reviews" autocomplete="off"></td>
+							<td><input type="text" name="w_location" autocomplete="off"></td>
+							<td><input type="text" name="w_image" autocomplete="off">
 							    <img id="preview" style="max-width: 300px">
 							</td>
 							<td>					

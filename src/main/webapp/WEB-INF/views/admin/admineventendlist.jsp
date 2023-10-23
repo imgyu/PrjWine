@@ -7,7 +7,7 @@
 <title>이벤트목록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
@@ -154,10 +154,10 @@
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${admineventendlist.e_idx }"></td>
 		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_title }</a></td>
 		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.s_no}</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/img/${admineventendlist.e_fimg}" style="max-width: 100px;
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventendlist.e_fimg}" style="max-width: 100px;
   max-height: 100px;
   overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/img/${admineventendlist.e_bimg}" style="max-width: 100px;
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventendlist.e_bimg}" style="max-width: 100px;
   max-height: 100px;
   overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
 		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_sdate }</a></td>

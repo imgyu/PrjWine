@@ -6,13 +6,12 @@
 <title>Insert title here</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
 	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
 	crossorigin="anonymous">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 <link rel="stylesheet" href="/css/main.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <link rel="stylesheet" href="assets/css/all.min.css">
@@ -29,7 +28,7 @@
 	margin-top: 40px;
 }
 
-.container {
+.container1 {
 	margin: 0 auto; /* 상하여백 좌우여백 */
 	max-width: 50%; /* 로그인 폼의 최대 너비 */
 	padding-top: 80px;
@@ -112,7 +111,7 @@ textarea {
 </div>
 <br>
 <br>
-	<div class="container">
+	<div class="container1">
 		<form action="/StoreJoin" method="POST" enctype="multipart/form-data" onsubmit="validateForm()">
 			<table>
 				<colgroup>

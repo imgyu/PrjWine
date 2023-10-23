@@ -5,26 +5,26 @@
 <title>시음회 등록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
-	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
-	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
+   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+   <!-- fontawesome -->
+   <link rel="stylesheet" href="assets/css/all.min.css">
+   <!-- bootstrap -->
+   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+   <!-- owl carousel -->
+   <link rel="stylesheet" href="assets/css/owl.carousel.css">
+   <!-- magnific popup -->
+   <link rel="stylesheet" href="assets/css/magnific-popup.css">
+   <!-- animate css -->
+   <link rel="stylesheet" href="assets/css/animate.css">
+   <!-- mean menu css -->
+   <link rel="stylesheet" href="assets/css/meanmenu.min.css">
+   <!-- main style -->
+   <link rel="stylesheet" href="assets/css/main.css">
+   <!-- responsive -->
+   <link rel="stylesheet" href="assets/css/responsive.css">
 <style>
 .logintitle {
     text-align: center;
@@ -108,15 +108,10 @@ th, td {
    <script src="assets/js/sticker.js"></script>
    <!-- main js -->
    <script src="assets/js/main.js"></script>
-<script>
-function goBack() {
-    window.history.back();
-}
-</script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-	  <div class="breadcrumb-section breadcrumb-bg">
+     <div class="breadcrumb-section breadcrumb-bg">
       <div class="container">
          <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
@@ -135,7 +130,7 @@ function goBack() {
 
 <div class="container1">
 <c:forEach var="tast" items="${tastingBoard}">
-					<h1 class="centered-text">${tast.t_title}</h1>
+               <h1 class="centered-text">${tast.t_title}</h1>
    <table>
         <tr>
             <th>No.</th>
@@ -177,48 +172,57 @@ function goBack() {
             <th>참가비</th>
             <td>${tast.t_cost}</td>
         </tr>
-</div>
-</div>
     </table>
 <div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: left; margin: 0 auto; max-width: 600px;">
-	<c:choose>
-    	<c:when test="${not empty loginVo.u_no}">
-        	<form action="/UserTastingRequest?u_no=${loginVo.u_no}&t_idx=${tast.t_idx}" method="POST">
+   <c:choose>
+       <c:when test="${not empty loginVo.u_no}">
+           <form action="/UserTastingRequest?u_no=${loginVo.u_no}&t_idx=${tast.t_idx}" method="POST">
               <button type="submit" class="btn btn-primary" id="applyButton">신청</button>
-              <span>신청인원 : ${count }명</span>
-        	</form>
-        </c:when>
-    	<c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq tast.s_no}">
-    	    <a href="TastingRequestList?s_no=${sloginVo.s_no }&t_idx=${tast.t_idx}" class="btn btn-primary">신청자 목록 </a>
-        	<form action="/TastingListDelete?t_idx=${tast.t_idx}" method="POST">
-              <button type="submit" class="btn btn-primary" id="delete-confirm">삭제</button>
-              <button type="button" class="btn btn-primary" onclick="goBack()">뒤로가기</button>
-        	</form>
-        </c:when>
-	</c:choose>
-    </c:forEach>
-</div>
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+    var applyButton = document.getElementById("applyButton");
 
-document.getElementById("applyButton").addEventListener("click", function() {
-    if (confirm("신청하시겠습니까?")) {
-        alert("신청이 완료되었습니다."); 
-    } else {
-        alert("신청이 취소되었습니다."); 
-        event.preventDefault();
+    applyButton.addEventListener("click", function(event) {
+        if (confirm("신청하시겠습니까?")) {
+            alert("신청이 완료되었습니다.");
+        } else {
+            alert("신청이 취소되었습니다.");
+            event.preventDefault();
+        }
+    });
+
+    function goBack() {
+        window.history.back();
     }
 });
+</script>
+              <span>신청인원 : ${count }명</span>
+           </form>
+        </c:when>
+       <c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq tast.s_no}">
+           <a href="TastingRequestList?s_no=${sloginVo.s_no }&t_idx=${tast.t_idx}" class="btn btn-primary">신청자 목록 </a>
+           <form action="/TastingListDelete?t_idx=${tast.t_idx}" method="POST">
+              <button type="submit" class="btn btn-primary" id="delete-confirm">삭제</button>
+              <button type="button" class="btn btn-primary" onclick="history.back()">뒤로가기</button>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+var deleteButton = document.getElementById("delete-confirm");
 
-document.getElementById("delete-confirm").addEventListener("click", function() {
+deleteButton.addEventListener("click", function(event) {
     if (confirm("삭제하시겠습니까?")) {
-        alert("삭제가 완료되었습니다."); 
+        alert("삭제가 완료되었습니다.");
     } else {
         alert("삭제가 취소되었습니다.");
         event.preventDefault();
     }
 });
-
-
+});
 </script>
+           </form>
+        </c:when>
+   </c:choose>
+    </c:forEach>
+</div>
 </body>
+
 </html>

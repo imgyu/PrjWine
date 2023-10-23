@@ -6,6 +6,7 @@
 <html>
 <head>
 <title>와인 목록</title>
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -194,7 +195,7 @@ form#search-form input[type="text"] {
                                         <input type="hidden" name="w_no" value="${wine.w_no}">
                                         <input type="hidden" name="s_no" value="${wine.s_no}">
                                         <input type="hidden" name="wl_idx" value="${wine.wl_idx}">
-                                        <input id="text1" type="text" name="c_count" placeholder="수량 입력">
+                                        <input id="text1" type="text" name="c_count" placeholder="수량 입력" autocomplete="off">
                                         <input type="submit" value="장바구니에 추가" onclick="myFunction()">
                                     </form>
                                 </c:when>
