@@ -180,14 +180,6 @@ form#search-form input[type="search"] {
 	  
   })
 </script>
-<script>
-const config = {
-		dateFormat: 'yy-mm-dd'	
-	}
-	$(function() {
-		$("#datepicker").datepicker(config);
-	});
-</script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -246,9 +238,9 @@ const config = {
 				</table>
 			</div>
         <div>
-            <label>시음회 날짜/시간</label>
-            <input type="text" id="datepicker" name="t_date">
-        </div>
+    	<label>시음회 날짜/시간</label>
+   		 	<input type="datetime-local" id="datetime" name="t_date">
+		</div>
         <div>
             <label>참가비</label>
             <input type="number" name="t_cost" placeholder="숫자만입력:>">
