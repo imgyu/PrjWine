@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
 .container1 {
     margin: 20px auto;
@@ -44,38 +43,36 @@ th {
     width: auto;
 }
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script>
-	document.addEventListener("DOMContentLoaded", function() {
-		var deleteButton = document.getElementById("delete-confirm");
+   document.addEventListener("DOMContentLoaded", function() {
+      var deleteButton = document.getElementById("delete-confirm");
 
-		deleteButton.addEventListener("click", function(event) {
-			if (confirm("삭제하시겠습니까?")) {
-				alert("삭제가 완료되었습니다.");
-			} else {
-				alert("삭제가 취소되었습니다.");
-				event.preventDefault();
-			}
-		});
-	});
-	
-	document.addEventListener("DOMContentLoaded", function () {
-	    var applyButton = document.getElementById("applyButton");
+      deleteButton.addEventListener("click", function(event) {
+         if (confirm("삭제하시겠습니까?")) {
+            alert("삭제가 완료되었습니다.");
+         } else {
+            alert("삭제가 취소되었습니다.");
+            event.preventDefault();
+         }
+      });
+   });
+   
+   document.addEventListener("DOMContentLoaded", function () {
+       var applyButton = document.getElementById("applyButton");
 
-	    applyButton.addEventListener("click", function(event) {
-	        if (confirm("신청하시겠습니까?")) {
-	            alert("신청이 완료되었습니다.");
-	        } else {
-	            alert("신청이 취소되었습니다.");
-	            event.preventDefault();
-	        }
-	    });
+       applyButton.addEventListener("click", function(event) {
+           if (confirm("신청하시겠습니까?")) {
+               alert("신청이 완료되었습니다.");
+           } else {
+               alert("신청이 취소되었습니다.");
+               event.preventDefault();
+           }
+       });
 
-	    function goBack() {
-	        window.history.back();
-	    }
-	});
+       function goBack() {
+           window.history.back();
+       }
+   });
 </script>
 </head>
 <body>
@@ -97,10 +94,6 @@ th {
     <c:forEach var="tast" items="${tastingBoard}">
         <h1>${tast.t_title}</h1>
         <table>
-            <tr>
-                <th>No.</th>
-                <td>${tast.t_idx}</td>
-            </tr>
             <tr>
                 <th>시음회 이름</th>
                 <td>${tast.t_title}</td>

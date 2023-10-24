@@ -1,7 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
+<link
+   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+   rel="stylesheet"
+   integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+   crossorigin="anonymous">
+<script
+   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+   integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+   crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 
 <style>
 
@@ -90,6 +102,11 @@
 	color: #fff; /* 글씨 색상 추가 */
 }
 
+body {
+	margin-bottom: 5% !important;
+}
+
+
 /* 로그인/로그아웃 버튼 스타일 */
 .boxed-btn {
 	background-color: #e6e6fa;
@@ -126,6 +143,28 @@
 .site-logo img {
 	max-width: 150px;
 	transition: all 0.3s; /* 로고 크기 변경을 애니메이션화합니다. */
+}
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	margin-top: 5%;
+	
+}
+
+.pagination a {
+	display: inline-block;
+	padding: 5px 10px;
+	margin: 2px;
+	text-decoration: none;
+	background-color: #FF8C00; /* 배경 색상 */
+	color: #343a40; /* 글자 색상 */
+	border-radius: 5px;
+}
+
+.pagination a:hover {
+	background-color: #800021; /* 마우스 호버 시 배경 색상 변경 */
+	color: #fff; /* 글자 색상 */
 }
 </style>
 <ul class="nav" class="sticky-wrapper"

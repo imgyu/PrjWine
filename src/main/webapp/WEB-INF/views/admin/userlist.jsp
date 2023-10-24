@@ -1,16 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html>
 <head>
-<title>매장목록</title>
+<title>판매기록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
-
   #table { 
          width: 70%; 
          margin: 0 auto; /* 수평 가운데 정렬 */
@@ -41,11 +38,18 @@
       .first-row td {
       background-color: #f2f2f2;
       }
+      
+      .back-home-button {
+    text-align: center; /* 가로 중앙 정렬 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
+    margin-top: -440px;
+}	
+      
+      
 </style>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -63,36 +67,35 @@
 <br>
 
 
+
 	<table id="table">
 	<tr class="first-row">
 	    <th><input type="checkbox" id="allCheck"></th>
-		<th>매장No</th>
-		<th>매장ID</th>
-		<th>매장이름</th>
-		<th>매장주소</th>
-		<th>매장사업자번호</th>
-		<th>매장번호</th>
-		<th>매장설명</th>
+		<th>고객No</th>
+		<th>고객ID</th>
+		<th>고객이름</th>
+		<th>고객주소</th>
+		<th>고객번호</th>
+		<th>고객포인트</th>
 	</tr>
 	
 	
-	<c:forEach var="storeList" items="${storeList }">
+	<c:forEach var="userList" items="${userList }">
 	<tr>
-	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${storeList.s_no }"></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" >${storeList.s_no }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" >${storeList.s_id}</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" >${storeList.s_name }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" >${storeList.s_address } &nbsp; ${storeList.s_detailAddress }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" >${storeList.s_sn }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" >${storeList.s_phone }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" >${storeList.s_cont }</a></td>
+	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${userList.u_no }"></td>
+		<td>${userList.u_no }</td>
+		<td>${userList.u_id}</td>
+		<td>${userList.u_name }</td>
+		<td>${userList.u_address } &nbsp; ${userList.u_detailAddress }</td>
+		<td>${userList.u_phone }</td>
+		<td>${userList.u_point }</td>
 	</tr>
 	</c:forEach>
 	</table>
 	<div style="display: block; text-align: center;">
 
     <c:if test="${pds.startPage != 1 }">
-    <a href="/AdminStoreList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+    <a href="/AdminUserList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
     </c:if>
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
       <c:choose>
@@ -100,16 +103,18 @@
          <b>${p}</b> 
        </c:when>
         <c:when test="${p != page.nowPage }">
-          <a href="/AdminStoreList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+          <a href="/AdminUserList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
         </c:when>
       </c:choose>
     </c:forEach>
  <c:if test="${pds.endPage != pds.lastPage }">
-   <a href="/AdminStoreList?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
+   <a href="/AdminUserList?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
  </c:if>
 
 </div>
-	 <a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
+  <div class="back-home-button text-center">
+	<a type="button" class="btn btn-danger" onclick="deleteValue();">삭제</a>
+	</div>
 <script>
 //전체 체크    
 var chkObj  =  document.getElementsByName("rowCheck");
@@ -123,8 +128,8 @@ $("input[id='allCheck']").click(function() {
 });
 
 function deleteValue() {
-	   var s_no =  ${s_no};
-	   var url  =  "/AdminStoreListDelete?s_no" + s_no;
+	   var u_no =  ${u_no};
+	   var url  =  "/AdminUserListDelete?u_no=" + u_no;
 	   var valueArr  =  [];
 	   var list  =  $("input[name='rowCheck']");
 	   for(var i = 0; i < list.length; i++) {

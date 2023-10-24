@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
 <!DOCTYPE html>
 <html>
@@ -8,9 +8,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<link rel="stylesheet" href="/css/common.css" />
-
 <style>
    /* 게시판 스타일 */
    .container {
@@ -35,26 +32,11 @@
    }
 
    /* 페이징 스타일 */
-   .pagination {
-      justify-content: center; /* 페이징 중앙 정렬 */
-      margin-top: 20px; /* 페이지 상단 여백 */
-   }
-
-   .pagination a {
-      color: #343a40; /* 페이지 링크 색상 */
-      padding: 10px 15px; /* 페이지 링크 여백 */
-      text-decoration: none; /* 밑줄 제거 */
-   }
-
-   .pagination a:hover {
-      background-color: #800021; /* 호버 시 배경색 변경 */
-      color: #ffffff; /* 호버 시 글자색 변경 */
-   }
+   
    tr th {
     background-color: #800021 !important;
   }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>          
@@ -76,7 +58,6 @@
    <table class="table table-striped table-hover">
       <thead class="thead-white">
          <tr>
-            <th scope="col">No.</th>
             <th scope="col">주최매장</th>
             <th scope="col">시음회이름</th>
             <th scope="col">시음회장소</th>
@@ -87,10 +68,9 @@
       </thead>
       <tbody>
          <c:forEach var="tast" items="${tastList}">
-            <tr>
-               <td>${tast.t_idx}</td>
+            <tr onclick="window.location='/TastingBoard?t_idx=${tast.t_idx}'">
                <td>${tast.s_name}</td>
-               <td><a href="/TastingBoard?t_idx=${tast.t_idx}">${tast.t_title}</a></td>
+               <td>${tast.t_title}</td>
                <td>${tast.s_address}${tast.s_detailaddress}</td>
                <td>${tast.t_cont}</td>
                <td><fmt:formatDate value="${tast.t_date}" pattern="yyyy-MM-dd HH:mm" /></td>

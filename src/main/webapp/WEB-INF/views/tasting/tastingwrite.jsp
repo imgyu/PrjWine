@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
 .logintitle {
     text-align: center;
@@ -62,18 +61,6 @@ table, th, td {
 th, td {
     padding: 10px;
     text-align: center;
-}
-
-button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-    font-weight: bold;
-    margin: 20px auto;
-    display: block;
 }
 
 button[type="submit"]:hover {
@@ -186,7 +173,7 @@ form#search-form input[type="search"] {
 						<option value="6">SPARKLING</option>
 					</select>
 				<input id="search" type="search" name="searchKeyword" placeholder="검색어 입력" autocomplete="off">
-				<button type="button" id="btnSearch" >검색</button>
+				<input type="button" class="btn btn-primary" id="btnSearch" value="검색">
 				</div>
 			</div>
 			<div style="overflow-y: auto; max-height: 340px;" id="div1">
@@ -202,7 +189,10 @@ form#search-form input[type="search"] {
             <label>참가비</label>
             <input type="number" name="t_cost" id="t_cost" placeholder="숫자만입력:>" autocomplete="off">
         </div>
-    	<button type="submit" id="registerButton">등록</button>
+        <div style="text-align: center;">
+    	<button type="submit" class="btn btn-primary" id="registerButton">등록</button>
+    	<a class="btn btn-secondary" href="/TastingList">뒤로가기</a>
+    	</div>
     </form>
 </div>
 <script>

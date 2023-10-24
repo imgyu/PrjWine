@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
-.logintitle {
-	text-align: center;
-	margin-top: 40px;
-}
-
 .container {
 	margin: 0 auto;
 	max-width: 500px;
@@ -24,18 +16,7 @@
 	border-radius: 5px;
 }
 
-.container p {
-	margin: 10px 0;
-	font-weight: bold;
-}
-
-.btn {
-	display: block;
-	margin: 0 auto;
-}
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -53,22 +34,24 @@
    <br>
 <div class="container">
     <form action="/UserPwUpdate?u_no=${loginVo.u_no }" method="POST">
-    	<c:forEach var="user" items="${userList }">
-            <div class="mb-3">
-                 <label for="userpw" class="form-label"  >변경할 비밀번호</label>
-                 <input type="password" name="u_pw" id="user_pw1" minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합" ><br>
-                 <span id=pwdcheck_1 ></span>
-            </div>
-            <div class="mb-3">
-                <label for="userpw" class="form-label"  >비밀번호 확인</label>
-                <input type="password" name="u_pwChk" id="user_pw2" onKeyUp="fn_compare_pwd();" minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합" ><br>
-                <span id="pwdcheck_2"></span>
-            </div>
-        </c:forEach>
-        <div class="text-center">
-          <div class="btn-group">
+			<table class="table table-bordered">
+				<c:forEach var="user" items="${userList }">
+					<tr>
+						<td class="form-label">변경할 비밀번호</td>
+						<td><input type="password" name="u_pw" id="user_pw1" minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합">
+						<br><span id="pwdcheck_1"></span></td>
+					</tr>
+					<tr>
+						<td class="form-label">비밀번호 확인</td>
+						<td><input type="password" name="u_pwChk" id="user_pw2"  onKeyUp="fn_compare_pwd();"
+						minlength="8" maxlength="16" placeholder="8~16자리 특수문자 조합"><br>
+						<span id="pwdcheck_2"></span></td>
+					</tr>
+				</c:forEach>
+			</table>
+			<div style="text-align: center;">
              <button type="submit" class="btn btn-primary mx-2" id="updateButton">수정하기</button>
-          </div>
+             <a class="btn btn-secondary" onclick="location.href='/UserInfo?u_no=${loginVo.u_no}'">뒤로가기</a>
         </div>
     </form>
 </div>

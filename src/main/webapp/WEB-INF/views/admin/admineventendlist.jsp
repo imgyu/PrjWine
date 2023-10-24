@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +7,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
  .event-button {
         width: 70%; /* 중앙 70% 폭 설정 */
@@ -69,20 +65,16 @@
         border-radius: 5px;
     }
     
-    .back-home-button {
+.back-home-button {
     text-align: center; /* 가로 중앙 정렬 */
     display: flex;
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 수직 중앙 정렬 */
     height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
+    margin-top: -440px;
 }	
     
-    .back-home-button {
-        text-align: center;
-        margin-top: -450px;
-    }
       
-
 </style>
 </head>
 <body>
@@ -118,19 +110,19 @@
 	</tr>
 	
 	
-	<c:forEach var="admineventlist" items="${admineventlist }">
+	<c:forEach var="admineventendlist" items="${admineventendlist }">
 	<tr>
-	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${admineventlist.e_idx }"></td>
-		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link">${admineventlist.e_title }</a></td>
-		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link">${admineventlist.s_no}</a></td>
-		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventlist.e_fimg}" style="max-width: 100px;
+	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${admineventendlist.e_idx }"></td>
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_title }</a></td>
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.s_no}</a></td>
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventendlist.e_fimg}" style="max-width: 100px;
   max-height: 100px;
   overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventlist.e_bimg}" style="max-width: 100px;
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventendlist.e_bimg}" style="max-width: 100px;
   max-height: 100px;
   overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link">${admineventlist.e_sdate }</a></td>
-		<td><a href="/EventCont?e_idx=${admineventlist.e_idx }" class="nav-link">${admineventlist.e_edate }</a></td>
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_sdate }</a></td>
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_edate }</a></td>
 	</tr>
 	</c:forEach>
 	</table>
@@ -138,7 +130,7 @@
 	<div style="display: block; text-align: center;">
 
     <c:if test="${pds.startPage != 1 }">
-    <a href="/AdminEvent?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+    <a href="/AdminEndEventList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
     </c:if>
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
       <c:choose>
@@ -146,17 +138,17 @@
          <b>${p}</b> 
        </c:when>
         <c:when test="${p != page.nowPage }">
-          <a href="/AdminEvent?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+          <a href="/AdminEndEventList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
         </c:when>
       </c:choose>
     </c:forEach>
  <c:if test="${pds.endPage != pds.lastPage }">
-   <a href="/AdminEvent?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
+   <a href="/AdminEndEventList?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
  </c:if>
 
 </div>
 <div class="back-home-button text-center">
-	 <a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
+	 <a type="button" class="btn btn-danger"" onclick="deleteValue();">삭제</a>
 	 </div>
 <script>
 //전체 체크    
@@ -172,7 +164,7 @@ $("input[id='allCheck']").click(function() {
 
 function deleteValue() {
 	   var e_idx =  ${e_idx};
-	   var url  =  "/AdminEventListDelete?e_idx" + e_idx;
+	   var url  =  "/AdminEndEventListDelete?e_idx" + e_idx;
 	   var valueArr  =  [];
 	   var list  =  $("input[name='rowCheck']");
 	   for(var i = 0; i < list.length; i++) {
@@ -208,7 +200,6 @@ function deleteValue() {
 	   }
 	}  // deleteValue
 }
-
 
 </script>
 </body>

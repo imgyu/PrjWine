@@ -1,28 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
 <!DOCTYPE html>
 <html>
 <head>
-<title>이벤트목록</title>
+<title>매장목록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <style>
- .event-button {
-        width: 70%; /* 중앙 70% 폭 설정 */
-        margin: 0 auto; /* 가운데 정렬 */
-    }
 
-    .event-button ul {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        justify-content: space-between;
-    }
   #table { 
          width: 70%; 
          margin: 0 auto; /* 수평 가운데 정렬 */
@@ -52,35 +38,17 @@
       /* 첫번째 열의 td들 색변경 */
       .first-row td {
       background-color: #f2f2f2;
-      } 
+      }
       
-        .promotion-link {
-        flex: 1;
-        text-align: center; /* 가운데 정렬 */
-    }
-
-       .promotion-link a {
-        display: block;
-        text-decoration: none;
-        color: #000;
-        font-weight: bold;
-        padding: 10px; /* 내부 여백 설정 */
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-    
-    .back-home-button {
+      .back-home-button {
     text-align: center; /* 가로 중앙 정렬 */
     display: flex;
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 수직 중앙 정렬 */
     height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
+    margin-top: -440px;
 }	
-    
-    .back-home-button {
-        text-align: center;
-        margin-top: -400px;
-    }
+      
       
 </style>
 </head>
@@ -98,46 +66,38 @@
       </div>
 <br>
 <br>
-   <div class="event-button">
-		<ul>
-			<li class="promotion-link"><a href="/AdminEvent">이달의 프로모션</a></li>
-			<li class="promotion-link"><a href="/AdminEndEventList">종료된 프로모션</a></li>
-		</ul>
-	</div>
+
 
 	<table id="table">
 	<tr class="first-row">
 	    <th><input type="checkbox" id="allCheck"></th>
-		<th>이벤트제목</th>
-		<th>주최매장</th>
-		<th>미리보기사진</th>
-		<th>메인사진</th>
-		<th>이벤트시작날짜</th>
-		<th>이벤트마감날짜</th>
+		<th>매장No</th>
+		<th>매장ID</th>
+		<th>매장이름</th>
+		<th>매장주소</th>
+		<th>매장사업자번호</th>
+		<th>매장번호</th>
+		<th>매장설명</th>
 	</tr>
 	
 	
-	<c:forEach var="admineventendlist" items="${admineventendlist }">
+	<c:forEach var="storeList" items="${storeList }">
 	<tr>
-	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${admineventendlist.e_idx }"></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_title }</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.s_no}</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventendlist.e_fimg}" style="max-width: 100px;
-  max-height: 100px;
-  overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventendlist.e_bimg}" style="max-width: 100px;
-  max-height: 100px;
-  overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_sdate }</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_edate }</a></td>
+	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${storeList.s_no }"></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link" >${storeList.s_no }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_id}</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_name }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_address } &nbsp; ${storeList.s_detailAddress }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_sn }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_phone }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_cont }</a></td>
 	</tr>
 	</c:forEach>
 	</table>
-	<br>
 	<div style="display: block; text-align: center;">
 
     <c:if test="${pds.startPage != 1 }">
-    <a href="/AdminEndEventList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+    <a href="/AdminStoreList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
     </c:if>
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
       <c:choose>
@@ -145,17 +105,17 @@
          <b>${p}</b> 
        </c:when>
         <c:when test="${p != page.nowPage }">
-          <a href="/AdminEndEventList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+          <a href="/AdminStoreList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
         </c:when>
       </c:choose>
     </c:forEach>
  <c:if test="${pds.endPage != pds.lastPage }">
-   <a href="/AdminEndEventList?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
+   <a href="/AdminStoreList?nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
  </c:if>
 
 </div>
-<div class="back-home-button text-center">
-	 <a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
+ <div class="back-home-button text-center">
+	 <a type="button" class="btn btn-danger"" onclick="deleteValue();">삭제</a>
 	 </div>
 <script>
 //전체 체크    
@@ -170,8 +130,8 @@ $("input[id='allCheck']").click(function() {
 });
 
 function deleteValue() {
-	   var e_idx =  ${e_idx};
-	   var url  =  "/AdminEndEventListDelete?e_idx" + e_idx;
+	   var s_no =  ${s_no};
+	   var url  =  "/AdminStoreListDelete?s_no" + s_no;
 	   var valueArr  =  [];
 	   var list  =  $("input[name='rowCheck']");
 	   for(var i = 0; i < list.length; i++) {

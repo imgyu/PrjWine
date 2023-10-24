@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,13 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"> 
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <style>
-.logintitle {
-	text-align: center;
-	margin-top: 40px;
-}
-
 .container1 {
 	margin: 0 auto;
 	max-width: 500px;
@@ -24,19 +17,12 @@
 	border-radius: 5px;
 }
 
-.container1 p {
-	margin: 10px 0;
-	font-weight: bold;
-}
 
-.btn {
-	display: block;
-	margin: 0 auto;
+th {
+    width: 120px !important;
+    text-align: center;
 }
 </style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -53,37 +39,39 @@
    <br>
    <br>
 <div class="container1">
-    <form action="/UserUpdate?u_no=${loginVo.u_no }" method="POST">
-    	<c:forEach var="user" items="${userList }">
-            <div class="mb-3">
-                <label for="userId" class="form-label">아이디:</label>
-                <span id="userId" class="form-text">${user.u_id }</span>
-            </div>
-            <div class="mb-3">
-                <label for="userName" class="form-label">이름:</label>
-                <span id="userName" class="form-text">${user.u_name }</span>
-            </div>
-           <div>	
-                     <label for="useraddress" class="form-label">주소:</label>
-                     <input type="text" id="u_postcode" name="u_postcode" value="${user.u_postcode}">
-                     <input type="button" onclick="u_execDaumPostcode()"
-                        value="우편번호 찾기"><br> <input type="text"
-                        id="u_address" name="u_address" value="${user.u_address}"><br> <input
-                        type="text" id="u_detailAddress" name="u_detailAddress" value="${user.u_detailAddress}">
-                     <input type="text" id="u_extraAddress" name="u_extraAddress" value="${user.u_extraAddress}">
-                  </div>
-            <div class="mb-3">
-                <label for="userPhone" class="form-label">연락처:</label>
-                <input type="text" name="u_phone" value="${user.u_phone }">
-            </div>
-        </c:forEach>
-        <div class="text-center">
-          <div class="btn-group">
-             <button type="submit" class="btn btn-primary mx-2"  id="updateButton">수정하기</button>
-          </div>
-        </div>
-    </form>
-</div>
+		<form action="/UserUpdate?u_no=${loginVo.u_no }" method="POST">
+			<table class="table table-bordered">
+				<c:forEach var="user" items="${userList}">
+					<tr>
+						<th>아이디:</td>
+						<td>${user.u_id }</td>
+					</tr>
+					<tr>
+						<th>이름:</th>
+						<td>${user.u_name }</td>
+					</tr>
+					<tr>
+						<th>주소:</th>
+						<td>
+						    <input type="text" id="u_postcode" name="u_postcode" style="margin-bottom: 5px;" value="${user.u_postcode}">
+						    <input type="button" onclick="u_execDaumPostcode()" class="btn btn-primary btn-sm"  value="우편번호 찾기"><br>
+							<input type="text" id="u_address" name="u_address" style="width: 100%; margin-bottom: 5px;" value="${user.u_address}">
+							<input type="text" id="u_detailAddress" name="u_detailAddress" style="width: 100%; margin-bottom: 5px;" value="${user.u_detailAddress}">
+							<input type="text" id="u_extraAddress" name="u_extraAddress" style="width: 100%; margin-bottom: 5px;" value="${user.u_extraAddress}">
+						</td>
+					</tr>
+					<tr>
+						<th>연락처:</th>
+						<td><input type="text" name="u_phone" value="${user.u_phone }"></td>
+					</tr>
+				</c:forEach>
+			</table>
+			<div style="text-align: center;">
+				<button type="submit" class="btn btn-primary" id="updateButton">수정하기</button>
+				<button class="btn btn-secondary" onclick="window.history.back()">뒤로가기</button>
+			</div>
+		</form>
+	</div>
 <script>
 function u_execDaumPostcode() {
     new daum.Postcode({

@@ -1,17 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
 <title>고객 센터(유저)</title>
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-    crossorigin="anonymous">
 <style>
 
     /* 테이블 스타일 */
@@ -58,11 +51,6 @@
         cursor: pointer;
     }
 
-    /* 매장 홈으로 버튼 스타일 */
-    .back-home-button {
-        text-align: center;
-        margin-top: -400px;
-    }
       .event-button {
         width: 70%; /* 중앙 70% 폭 설정 */
         margin: 0 auto; /* 가운데 정렬 */
@@ -96,13 +84,10 @@
     justify-content: center; /* 가로 중앙 정렬 */
     align-items: center; /* 수직 중앙 정렬 */
     height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
+    margin-top: -440px;
 }	
 
 </style>
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -176,7 +161,7 @@
 
         <!-- 매장 홈으로 버튼 -->
         <div class="back-home-button text-center">
-        <a href="/" class="btn btn-primary">홈버튼</a>
+        <a href="/" class="btn btn-secondary">홈버튼</a>
         </div>
  
     </main>

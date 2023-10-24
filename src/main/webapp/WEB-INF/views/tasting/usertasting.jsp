@@ -1,17 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>     
 <!DOCTYPE html>
 <html>
 <head>
 <title>신청한 시음회 목록</title>
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link
-   href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-   rel="stylesheet"
-   integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-   crossorigin="anonymous">
-<link rel="stylesheet" href="/css/common.css" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -43,12 +37,6 @@
         text-align: center;
     }
 </style>
-<script   src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script
-   src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-   integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-   crossorigin="anonymous"></script>
-<script>
       $(function() {
 
          // 전체 체크    
@@ -125,10 +113,9 @@
    <br>
 
     <main>
-        <table id="table">
+        <table id="table" class="table table-striped table-hover">
             <tr>
                 <th><input type="checkbox" name="allCheck" id="allCheck" /></th>
-                <th>No.</th>
                 <th>주최매장</th>
                 <th>시음회이름</th>
                 <th>시음회장소</th>
@@ -139,7 +126,6 @@
             <c:forEach var="taste" items="${usertasting}">
                 <tr>
                     <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${taste.t_idx}" /></td>
-                    <td>${taste.t_idx}</td>
                     <td>${taste.s_name}</td>
                     <td>${taste.t_title}</td>
                     <td>${taste.s_address}${taste.s_detailaddress}</td>
@@ -151,7 +137,8 @@
         </table>
         <br>
         <div class="text-center">
-        <input type="button" value="삭제" class="btn btn-outline-info" onclick="deleteValue();">
+        <input type="button" value="삭제" class="btn btn-danger" onclick="deleteValue();">
+        <button type="button" class="btn btn-secondary" onclick="location.href='/ '">메인 화면</button>
        </div>
     </main>
 

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,21 +52,18 @@
   
    <main>
    <table id="table" class="table table-striped table-hover">
-      <div class="container">
-               <tr>
-                  <th>고객 이름</th>
-                  <th>고객 전화번호</th>
-               </tr>
-      </div>
-      <div class="container">
+            <tr>
+               <th>고객 이름</th>
+               <th>고객 전화번호</th>
+            </tr>
          <c:forEach var="list" items="${requestList}">
             <tr>
                <td>${list.u_name}</td>
                <td>${list.u_phone}</td>
             </tr>
          </c:forEach>
-      </div>
    </table>
+   <br>
    <div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
    <a href="/" class="btn btn-primary">홈으로</a>
    </div>

@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +7,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>장바 구니</title>
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
       /* 전체 테이블 스타일 */
       #table { 
@@ -20,7 +17,8 @@
 
       /* 테이블 헤더 스타일 */
       #table th { 
-         background-color: #f2f2f2; /* 헤더 배경색 */
+         background-color: #800021 !important;
+   		 color: #f2f2f2;
          border: 1px solid #dddddd; /* 테두리 선 스타일 */
          padding: 10px; /* 셀 안 여백 */
          text-align: center; /* 가운데 정렬 */
@@ -46,34 +44,13 @@
       padding: 10px 15px; /* 여백 */
       cursor: pointer; /* 포인터로 마우스 커서 변경 */
    }
- .btn1 {
-    font-family: 'Poppins', sans-serif;
-    display: inline-block;
-    background-color: #F28123;
-    color: #fff;
-    padding: 13px 25px;
-    border-radius: 50px;
-    transition: 0.3s;
-    box-sizing: border-box;
-    border: none; /* 경계선 없음 */
-    cursor: pointer; /* 포인터 커서로 변경 */
-    font-weight: 700;
-    font-size: 15px;
-    border: none;
-}
 
 /* 호버(마우스 오버) 시의 버튼 스타일 */
 .btn1:hover {
     background-color: #000; 
     color: #F28123;
 }  
-th {
-    background-color: #800021 !important;
-    color: #f2f2f2;
-  }   
 </style>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <script>
 
 $(function() {
@@ -172,7 +149,7 @@ function deleteValue() {
    <input type="hidden" name="cartids" value="" />
    
    <!-- 게시물 목록 -->
-   <table id="table">
+   <table id="table" class="table table-striped table-hover">
    
    <tr>
      <th><input type="checkbox" id="allCheck" /></th>
@@ -198,8 +175,9 @@ function deleteValue() {
    </table>
    <br><br>
     <div class="text-center">
-    <input type="submit" value="결제" class="btn btn-outline-info" >
-    <a type="button" class="btn1" onclick="deleteValue();">삭제</a>
+    <input type="submit" value="결제" class="btn btn-primary" >
+    <button type="button" class="btn btn-secondary" onclick="location.href='/ '">메인 화면</button>
+    <a type="button" class="btn btn-danger" onclick="deleteValue();">삭제</a>
     </div> 
     </form>
     </main>

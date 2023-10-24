@@ -1,13 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 <style>
   #table { 
          width: 70%; 
@@ -17,7 +15,8 @@
 
       /* 테이블 헤더 스타일 */
       #table th { 
-         background-color: #f2f2f2; /* 헤더 배경색 */
+         background-color: #800021; /* 헤더 배경색 - 빨간색 */
+         color: #f2f2f2;
          border: 1px solid #dddddd; /* 테두리 선 스타일 */
          padding: 10px; /* 셀 안 여백 */
          text-align: center; /* 가운데 정렬 */
@@ -36,7 +35,6 @@
       background-color: #f2f2f2;
       } 
 </style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -52,22 +50,26 @@
    </div>
    <br>
    <br>
-	<table id="table">
+	<table id="table" class="table table-striped table-hover">
 	<tr class="first-row">
 	    <th><input type="checkbox" id="allCheck"></th>
 		<th>매장이름</th>
 		<th>매장주소</th>
 	</tr>
 	<c:forEach var="favorite" items="${favorites}">
-	<tr>
+	 <tr onclick="window.location='/StoreInfo?s_no=${favorite.s_no }'">
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${favorite.s_no }">
-	         <input type="hidden" value="${favorite.u_no }"></td>
-		<td><a href="StoreInfo?s_no=${favorite.s_no }" class="nav-link">${favorite.s_name}</a></td>
+	        <input type="hidden" value="${favorite.u_no }"></td>
+		<td>${favorite.s_name}</td>
 		<td>${favorite.s_address }&nbsp;${favorite.s_detailAddress }</td>
 	</tr>
    </c:forEach>
 	</table>
-	<a type="button" class="btn btn-primary" onclick="deleteValue();">삭제</a>
+	<br>
+	<div style="text-align: center;">
+		<a type="button" class="btn btn-danger" onclick="deleteValue();">삭제</a>
+		<button type="button" class="btn btn-secondary" onclick="location.href='/ '">메인 화면</button>
+	</div>
 </body>
 <script>
 function confirmDelete() {

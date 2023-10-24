@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- 
 <!DOCTYPE html>
 <html> 
 <head>
@@ -10,16 +7,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-	crossorigin="anonymous"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>
  .container {
             background-color: #fff;
@@ -103,7 +90,7 @@
                     <th>Kind</th>
                 </tr>
                 <tr>
-                    <td><input type="text" name="w_winery" autocomplete="off"></td>
+                    <td><input type="text" name="w_wineery" autocomplete="off"></td>
                     <td><input type="text" name="w_name" autocomplete="off"></td>
                     <td><input type="text" name="w_vintage" autocomplete="off"></td>
                     <td><input type="text" name="w_avg" autocomplete="off"></td>
@@ -127,9 +114,12 @@
             </table>
             <br>
             <button id="btn1" type="submit" class="btn btn-primary" onclick="myconfirm();">등록</button>
+        </form>
+    </div>
+</body>
 <script>
 var wineery = document.querySelector('input[name="w_wineery"]').value;
-var wine = document.querySelector('input[name="w_wine"]').value;
+var wine = document.querySelector('input[name="w_name"]').value;
 var vintage = document.querySelector('input[name="w_vintage"]').value;
 var avg = document.querySelector('input[name="w_avg"]').value;
 var reviews = document.querySelector('input[name="w_reviews"]').value;
@@ -158,7 +148,4 @@ document.getElementById("kind").addEventListener("change", function () {
 
 
 </script>
-        </form>
-    </div>
-</body>
 </html>
