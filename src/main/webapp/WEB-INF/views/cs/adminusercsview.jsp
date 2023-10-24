@@ -8,8 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <style>
-.container {
-    width: 80%;
+.container1 {
+    width: 50%;
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
@@ -21,7 +21,7 @@
 }
 
 table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
@@ -51,10 +51,10 @@ textarea {
 }
 
 img#imagePreview {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
     display: block;
-    margin: 10px 0;
+    margin: auto;
 }
 
 button {
@@ -78,7 +78,7 @@ button:hover {
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>고객 센터(매장)</h1>
+               <h1>고객 센터(고객)</h1>
                <br>
                <p>Customer Service</p>
             </div>
@@ -86,7 +86,7 @@ button:hover {
       </div>
 <br>
 <br>
-	<div class="container" id="board" >
+	<div class="container1" id="board" >
 			 <table id="table">
 		         <c:forEach var="ucs" items="${admincsviewList}">
             	 <label>문의사항 제목</label>

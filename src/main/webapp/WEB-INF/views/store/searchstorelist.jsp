@@ -162,7 +162,7 @@
 	</div>
 	<br>
 
-	<div style="display: block; text-align: center;">
+	<div class="pagination">
 		<c:choose>
 			<c:when test="${not empty pds && pds.startPage != 1 }">
 				<a
@@ -172,7 +172,7 @@
 		<c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
 			<c:choose>
 				<c:when test="${p == pds.nowPage }">
-					<b>${p}</b>
+					 <a>${p}</a>
 				</c:when>
 				<c:when test="${p != pds.nowPage }">
 					<a href="/StoreList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>

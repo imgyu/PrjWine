@@ -39,17 +39,41 @@
       background-color: #f2f2f2;
       } 
       
-      /* 스타일 컨테이너 */
-.container {
-    text-align: center;
-    margin-top: 20px;
+.search-container {
+	align-items: center;
+	width: 95%;
+	margin-top: 50px;
+	text-align: center;
 }
 
+.search-container input[type="text"] {
+	background-color: #F5F5F5;
+	border: 2px solid #FFA500;
+	color: #333;
+	padding: 5px 15px;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	placeholder-color: #FFA500;
+	width: 200px;
+	text-align: right;
+	margin-right: 10px; /* 오른쪽 여백을 주기 위해 margin-right 사용 */
+}
+
+.search-container input[type="submit"] {
+	background-color: #FFA500; /* 배경색 */
+	color: #FFF; /* 글자색 */
+	padding: 6px 15px;
+	border-radius: 5px;
+	border: 2px solid #FFA500;
+	/* 원하는 다른 스타일 속성들을 추가할 수 있습니다. */
+}
 /* 스타일 검색 폼 */
 #search-form {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: auto;
 }
 
 /* 스타일 선택 드롭다운 */
@@ -57,24 +81,6 @@
 #select2 {
     padding: 5px;
     margin: 5px;
-}
-
-/* 스타일 검색어 입력 필드 */
-input[type="text"] {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 5px;
-}
-
-/* 스타일 검색 버튼 */
-button[type="submit"] {
-    padding: 5px 10px;
-    background-color: #007BFF; /* 버튼 배경색 */
-    color: #fff; /* 버튼 텍스트 색상 */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
 }
 
 
@@ -87,7 +93,15 @@ button[type="submit"] {
     margin-top: -440px;
 }	
 
-      
+tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
+         
       
 </style>
 </head>
@@ -97,16 +111,16 @@ button[type="submit"] {
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>고객 센터(매장)</h1>
+               <h1>와인목록</h1>
                <br>
-               <p>Customer Service</p>
+               <p>Wine List</p>
             </div>
          </div>
       </div>
 <br>
 <br>
 
-   <div class="container">
+   <div class="search-container">
          <form action="/AdWineSearch" method="GET" id="search-form">
             <div>
                <select id="select" name="searchOption">
@@ -124,7 +138,7 @@ button[type="submit"] {
                   <option value="SPARKLING">SPARKLING</option>
                </select>
             <input type="text" name="searchKeyword" placeholder="검색어 입력">
-            <button type="submit">검색</button>
+            <input type="submit" value="검색">
             </div>
          </form>
       </div>
@@ -158,7 +172,7 @@ button[type="submit"] {
    </c:forEach>
    </table>
    <br>
-   <div style="display: block; text-align: center;">
+   <div class="pagination">
 
     <c:if test="${pds.startPage != 1}">
     <a href="/AdminWineList?nowPage=${pds.startPage - 1}&cntPerPage=${pds.cntPerPage}">&lt;</a>
@@ -166,7 +180,7 @@ button[type="submit"] {
 <c:forEach begin="${pds.startPage}" end="${pds.endPage}" var="p">
     <c:choose>
         <c:when test="${p == pds.nowPage}">
-            <b>${p}</b>
+            <a>${p}</a>
         </c:when>
         <c:when test="${p != pds.nowPage}">
             <a href="/AdminWineList?nowPage=${p}&cntPerPage=${pds.cntPerPage}">${p}</a>

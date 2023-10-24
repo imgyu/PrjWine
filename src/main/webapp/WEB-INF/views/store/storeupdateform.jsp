@@ -9,6 +9,43 @@
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <script
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<style>
+	.container1 {
+	margin: 0 auto;
+	max-width: 500px;
+	padding: 20px;
+	background-color: #f5f5f5;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
+
+     .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .th, .td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .form-label {
+            background-color: #f2f2f2;
+            width: 30%; /* 표 제목 너비 조정 */
+        }
+
+        .form-text {
+            width: 70%; /* 표 데이터 너비 조정 */
+        }
+
+        .img {
+            max-width: 300px; /* 사진 크기 제한 */
+            display: block; /* 사진을 가운데 정렬하기 위해 추가 */
+            margin: 0 auto; /* 가운데 정렬 */
+        }
+	</style>
 </head>
 <body>
 	<%@include file="/WEB-INF/include/nav.jsp"%>
@@ -27,7 +64,7 @@
 	<div class="container1">
 		<form action="StoreCheckUpdate?s_no=${s_no }" method="POST"
 			enctype="multipart/form-data">
-			<table>
+			<table class="table">
 				<colgroup>
 					<col width="25%">
 					<col width="*">
@@ -84,10 +121,8 @@
 				</c:forEach>
 			</table>
 			<div class="text-center">
-				<div class="btn-group">
-					<a type="button" class="btn1" onclick="location.href='/';">메인
-						화면</a> <input type="submit" value="수정하기" id="edit-btn">
-				</div>
+					<a type="button" class="btn btn-secondary" onclick="location.href='/';">메인	화면</a>
+					<input type="submit" value="수정하기" class="btn btn-primary">
 			</div>
 		</form>
 	</div>

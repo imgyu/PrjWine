@@ -86,7 +86,15 @@ button[type="submit"] {
     height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
     margin-top: -440px;
 }	
-      
+ tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
+        
 </style>
 </head>
 <body>
@@ -95,9 +103,9 @@ button[type="submit"] {
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>고객 센터(매장)</h1>
+               <h1>와인목록</h1>
                <br>
-               <p>Customer Service</p>
+               <p>Wine List</p>
             </div>
          </div>
       </div>
@@ -153,7 +161,7 @@ button[type="submit"] {
    </tr>
    </c:forEach>
    </table>
-   <div style="display: block; text-align: center;">
+   <div class="pagination">
 	<br>
     <c:if test="${pds.startPage != 1}">
     <a href="/AdWineSearch?kindOption=${kindOption}&searchKeyword=${searchKeyword}&searchOption=${searchOption}&nowPage=${pds.startPage - 1}&cntPerPage=${pds.cntPerPage}">&lt;</a>
@@ -161,7 +169,7 @@ button[type="submit"] {
 <c:forEach begin="${pds.startPage}" end="${pds.endPage}" var="p">
     <c:choose>
         <c:when test="${p == pds.nowPage}">
-            <b>${p}</b>
+           <a>${p}</a>
         </c:when>
         <c:when test="${p != pds.nowPage}">
             <a href="/AdWineSearch?kindOption=${kindOption}&searchKeyword=${searchKeyword}&searchOption=${searchOption}&nowPage=${p}&cntPerPage=${pds.cntPerPage}">${p}</a>

@@ -8,6 +8,77 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	
+    <style>
+        /* Style for the container */
+        .container1 {
+            margin:  auto;
+            width: 50%; /* Reduced width */
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            
+        }
+
+        /* Style for the form */
+        form {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Style for table elements */
+        table {
+            width: 100%;
+            hieght: 700px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        td {
+            padding: 5px;
+        }
+
+        /* Style for required fields (add an asterisk) */
+        .redFont {
+            color: #7A001E; /* Red color */
+        }
+
+        /* Style for buttons */
+        .btn {
+            padding: 10px 20px;
+            background-color: #7A001E; /* Red color */
+            color: #fff;
+            border: none;
+            border-radius: .25rem;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        
+
+        /* Style for the "뒤로가기" button */
+       .btn ,
+       .btn-secondary {
+           margin : 12px !important;
+        }
+
+        /* Style for text inputs and textareas */
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 6px;
+            margin: 5px 0;
+            border: 1px solid #7A001E; /* Red border */
+            border-radius: 5px;
+        }
+
+        /* Style for the image preview */
+        #preview {
+            max-width: 300px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -39,7 +110,7 @@
 					<td><span class="redFont">*</span>아이디:</td>
 					<td><input type="text" name="s_id" id="s_id" required
 						style="width: 200px">
-						<button type="button" onclick="checkSId()">중복 체크</button></td>
+						<button type="button" onclick="checkSId()" class="btn btn-dark">중복 체크</button></td>
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>비밀번호:</td>
@@ -111,18 +182,16 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div>
-							<button class="btn btn-primary" type="submit">회원가입</button>
-							<a class="btn btn-primary" href="/" role="button">홈으로가기</a>
+						<div style="display: flex; justify-content: center;">
+						<a type="button" class="btn btn-secondary" onclick="location.href='/';" style="margin: auto;">메인
+							화면</a>
+							<button class="btn btn-primary" type="submit" style="margin: auto;">회원가입</button>
 						</div>
 					</td>
 				</tr>
 			</table>
 		</form>
-
 	</div>
-<input type="button" value="뒤로가기" onclick="location.href='/'"
-	style="margin: 30px; padding: 10px 20px; background-color: #ff5722; color: #fff; border: none; border-radius: .25rem; cursor: pointer;">
 
 
 

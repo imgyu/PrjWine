@@ -27,7 +27,6 @@
 
       /* 테이블 헤더 스타일 */
       #table th { 
-         background-color: #f2f2f2; /* 헤더 배경색 */
          border: 1px solid #dddddd; /* 테두리 선 스타일 */
          padding: 10px; /* 셀 안 여백 */
          text-align: center; /* 가운데 정렬 */
@@ -73,7 +72,21 @@
     height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
     margin-top: -440px;
 }	
-    
+.card-info {
+	text-decoration: none;
+	font-size: 18px; /* 글씨 크기 조절 */
+	color: #000; /* 글씨 색상 추가 */
+}   
+
+tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
+   
       
 </style>
 </head>
@@ -83,9 +96,9 @@
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>고객 센터(매장)</h1>
+               <h1>종료된 프로모션</h1>
                <br>
-               <p>Customer Service</p>
+               <p>End Event</p>
             </div>
          </div>
       </div>
@@ -98,7 +111,7 @@
 		</ul>
 	</div>
 
-	<table id="table">
+	<table id="table" class="table table-striped table-hover">
 	<tr class="first-row">
 	    <th><input type="checkbox" id="allCheck"></th>
 		<th>이벤트제목</th>
@@ -113,21 +126,21 @@
 	<c:forEach var="admineventendlist" items="${admineventendlist }">
 	<tr>
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${admineventendlist.e_idx }"></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_title }</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.s_no}</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventendlist.e_fimg}" style="max-width: 100px;
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info">${admineventendlist.e_title }</a></td>
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info">${admineventendlist.s_no}</a></td>
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info"><img src="/imgpage/${admineventendlist.e_fimg}" style="max-width: 100px;
   max-height: 100px;
   overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link"><img src="/imgpage/${admineventendlist.e_bimg}" style="max-width: 100px;
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info"><img src="/imgpage/${admineventendlist.e_bimg}" style="max-width: 100px;
   max-height: 100px;
   overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_sdate }</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="nav-link">${admineventendlist.e_edate }</a></td>
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info">${admineventendlist.e_sdate }</a></td>
+		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info">${admineventendlist.e_edate }</a></td>
 	</tr>
 	</c:forEach>
 	</table>
 	<br>
-	<div style="display: block; text-align: center;">
+	<div class="pagination">
 
     <c:if test="${pds.startPage != 1 }">
     <a href="/AdminEndEventList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
@@ -135,7 +148,7 @@
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
       <c:choose>
        <c:when test="${p == pds.nowPage }">
-         <b>${p}</b> 
+         <a>${p}</a>
        </c:when>
         <c:when test="${p != page.nowPage }">
           <a href="/AdminEndEventList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>

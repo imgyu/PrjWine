@@ -49,7 +49,21 @@
     margin-top: -440px;
 }	
       
-      
+.card-info {
+	text-decoration: none;
+	font-size: 18px; /* 글씨 크기 조절 */
+	color: #000; /* 글씨 색상 추가 */
+}  
+
+tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
+           
 </style>
 </head>
 <body>
@@ -58,9 +72,9 @@
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>고객 센터(매장)</h1>
+               <h1>매장목록</h1>
                <br>
-               <p>Customer Service</p>
+               <p>Store List</p>
             </div>
          </div>
       </div>
@@ -68,7 +82,7 @@
 <br>
 
 
-	<table id="table">
+	<table id="table" class="table table-striped table-hover">
 	<tr class="first-row">
 	    <th><input type="checkbox" id="allCheck"></th>
 		<th>매장No</th>
@@ -84,17 +98,17 @@
 	<c:forEach var="storeList" items="${storeList }">
 	<tr>
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${storeList.s_no }"></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link" >${storeList.s_no }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_id}</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_name }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_address } &nbsp; ${storeList.s_detailAddress }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_sn }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_phone }</a></td>
-		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="nav-link">${storeList.s_cont }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="card-info" >${storeList.s_no }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="card-info">${storeList.s_id}</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="card-info">${storeList.s_name }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="card-info">${storeList.s_address } &nbsp; ${storeList.s_detailAddress }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="card-info">${storeList.s_sn }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="card-info">${storeList.s_phone }</a></td>
+		<td><a href="StoreInfo?s_no=${storeList.s_no }" class="card-info">${storeList.s_cont }</a></td>
 	</tr>
 	</c:forEach>
 	</table>
-	<div style="display: block; text-align: center;">
+	<div class="pagination">
 
     <c:if test="${pds.startPage != 1 }">
     <a href="/AdminStoreList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
@@ -102,7 +116,7 @@
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
       <c:choose>
        <c:when test="${p == pds.nowPage }">
-         <b>${p}</b> 
+          <a>${p}</a>
        </c:when>
         <c:when test="${p != page.nowPage }">
           <a href="/AdminStoreList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>

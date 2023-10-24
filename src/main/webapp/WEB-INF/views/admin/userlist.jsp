@@ -48,7 +48,15 @@
     margin-top: -440px;
 }	
       
-      
+ tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
+        
 </style>
 </head>
 <body>
@@ -57,9 +65,9 @@
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>고객 센터(매장)</h1>
+               <h1>고객목록</h1>
                <br>
-               <p>Customer Service</p>
+               <p>Customer List</p>
             </div>
          </div>
       </div>
@@ -68,7 +76,7 @@
 
 
 
-	<table id="table">
+	<table id="table" class="table table-striped table-hover">
 	<tr class="first-row">
 	    <th><input type="checkbox" id="allCheck"></th>
 		<th>고객No</th>
@@ -92,7 +100,7 @@
 	</tr>
 	</c:forEach>
 	</table>
-	<div style="display: block; text-align: center;">
+	<div class="pagination">
 
     <c:if test="${pds.startPage != 1 }">
     <a href="/AdminUserList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
@@ -100,7 +108,7 @@
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
       <c:choose>
        <c:when test="${p == pds.nowPage }">
-         <b>${p}</b> 
+          <a>${p}</a>
        </c:when>
         <c:when test="${p != page.nowPage }">
           <a href="/AdminUserList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>

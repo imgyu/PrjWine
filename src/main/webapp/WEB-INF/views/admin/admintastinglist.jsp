@@ -40,7 +40,22 @@
     margin-top: -440px;
 }	
 
+.card-info {
+	text-decoration: none;
+	font-size: 18px; /* 글씨 크기 조절 */
+	color: #000; /* 글씨 색상 추가 */
+}
 
+tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
+   
+    
 </style>
 
 </head>
@@ -50,9 +65,9 @@
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>고객 센터(매장)</h1>
+               <h1>시음회 목록</h1>
                <br>
-               <p>Customer Service</p>
+               <p>Tasting List</p>
             </div>
          </div>
       </div>
@@ -60,7 +75,7 @@
 <br>
    <main>
    <div>
-   <table id="table">
+   <table id="table" class="table table-striped table-hover">
       <div class="container">
                <tr>
                   <th><input type="checkbox" id="allCheck"></th>
@@ -77,18 +92,18 @@
          <c:forEach var="tastingList" items="${tast}">
             <tr>
                <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${tastingList.t_idx }"></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link active">${tastingList.t_idx}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link active">${tastingList.s_name}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link active">${tastingList.t_title}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link active">${tastingList.s_address}&nbsp;${tastingList.s_detailaddress}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link active">${tastingList.t_cont}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link active">${tastingList.t_date}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="nav-link active">${tastingList.t_cost}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_idx}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.s_name}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_title}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.s_address}&nbsp;${tastingList.s_detailaddress}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_cont}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_date}</a></td>
+               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_cost}</a></td>
             </tr>
          </c:forEach>
       </div>
    </table>
-   <div style="display: block; text-align: center;">
+   <div class="pagination">
 
     <c:if test="${pds.startPage != 1 }">
     <a href="/AdminTastingList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
@@ -96,7 +111,7 @@
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
       <c:choose>
        <c:when test="${p == pds.nowPage }">
-         <b>${p}</b> 
+ <a>${p}</a>
        </c:when>
         <c:when test="${p != page.nowPage }">
           <a href="/AdminTastingList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>

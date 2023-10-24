@@ -8,16 +8,52 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
+<style>
+#table { 
+       width: 70%; 
+       margin: 0 auto; /* 수평 가운데 정렬 */
+       border-collapse: collapse; /* 테이블 셀 경계를 합칩니다. */
+    }
+
+    /* 테이블 헤더 스타일 */
+    #table th { 
+       background-color: #800021; /* 헤더 배경색 - 빨간색 */
+       color: #f2f2f2;
+       border: 1px solid #dddddd; /* 테두리 선 스타일 */
+       padding: 10px; /* 셀 안 여백 */
+       text-align: center; /* 가운데 정렬 */
+       font-weight: bold; /* 텍스트 굵게 표시 */
+    }
+
+    /* 테이블 내용 스타일 */
+    #table td { 
+       border: 2px solid #dddddd; /* 테두리 선 스타일 */
+       padding: 10px; /* 셀 안 여백 */
+       text-align: center; /* 가운데 정렬 */
+    }
+
+    /* 첫번째 열의 td들 색변경 */
+    .first-row td {
+    background-color: #f2f2f2;
+    } 
+     .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 70px;
+    }
+</style>
 </head>
+
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
 	<div class="breadcrumb-section breadcrumb-bg">
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>Welcome to Wine Story</h1>
+				<h1>판매기록</h1>
 				<br>
-				<p class="subtitle">Hello!!</p>
+				<p class="subtitle">Sale History</p>
 			</div>
 		</div>
 	</div>
@@ -60,7 +96,9 @@
             </tr>
         </c:forEach>
     </table>
+    <div class="center">
     <button type="submit" class="btn btn-primary">수정</button>
+    </div>
 </form>
 <script>
 

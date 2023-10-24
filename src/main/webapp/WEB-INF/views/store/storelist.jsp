@@ -172,7 +172,7 @@
 		<c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
 			<c:choose>
 				<c:when test="${p == pds.nowPage }">
-					<a>${p}</a>
+				 <a>${p}</a>
 				</c:when>
 				<c:when test="${p != pds.nowPage }">
 					<a href="/StoreList?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>

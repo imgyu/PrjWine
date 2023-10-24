@@ -86,7 +86,20 @@
     height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
     margin-top: -440px;
 }	
+.card-info {
+	text-decoration: none;
+	font-size: 18px; /* 글씨 크기 조절 */
+	color: #000; /* 글씨 색상 추가 */
+} 
 
+tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
 </style>
 </head>
 <body>
@@ -95,7 +108,7 @@
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>고객 센터(매장)</h1>
+               <h1>고객 센터(고객)</h1>
                <br>
                <p>Customer Service</p>
             </div>
@@ -113,7 +126,7 @@
 		</ul>
 	</div>
 
-        <table id="table">
+        <table id="table" class="table table-striped table-hover">
             <tr>
                 <th>문의번호</th>
                 <th>문의자ID</th>
@@ -127,12 +140,12 @@
             <c:if test="${not empty csalluserList}">
                 <c:forEach var="ucs" items="${csalluserList }">
                     <tr>
-                       <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_idx}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.u_id}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_category}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_title}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.uw_date}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.res_date}</a></td>
+                       <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.ucs_idx}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.u_id}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.ucs_category}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.ucs_title}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.uw_date}</a></td>
+                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.res_date}</a></td>
                     </tr>
                 </c:forEach>
             </c:if>
@@ -147,7 +160,7 @@
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
       <c:choose>
        <c:when test="${p == pds.nowPage }">
-         <b>${p}</b> 
+        <a>${p}</a>
        </c:when>
         <c:when test="${p != page.nowPage }">
           <a href="/CsAllUser?nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>

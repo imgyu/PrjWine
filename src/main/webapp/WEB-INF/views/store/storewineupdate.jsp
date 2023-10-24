@@ -4,6 +4,48 @@
 <head> 
     <title>와인 수정</title>
     <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
+    <style>
+    /* 테이블 스타일 */
+  #table { 
+         width: 70%; 
+         margin: 0 auto; /* 수평 가운데 정렬 */
+         border-collapse: collapse; /* 테이블 셀 경계를 합칩니다. */
+      }
+      
+      /* 테이블 헤더 스타일 */
+      #table th { 
+         border: 1px solid #dddddd; /* 테두리 선 스타일 */
+         padding: 10px; /* 셀 안 여백 */
+         text-align: center; /* 가운데 정렬 */
+         font-weight: bold; /* 텍스트 굵게 표시 */
+      }
+
+      /* 테이블 내용 스타일 */
+      #table td { 
+         border: 2px solid #dddddd; /* 테두리 선 스타일 */
+         padding: 10px; /* 셀 안 여백 */
+         text-align: center; /* 가운데 정렬 */
+         vertical-align: middle; /* 세로 가운데 정렬 */
+      }
+    
+  tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
+   
+.back-home-button {
+    text-align: center; /* 가로 중앙 정렬 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
+    margin-top: -440px;
+}	     
+    </style>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -11,9 +53,9 @@
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>Welcome to Wine Story</h1>
+				<h1>와인정보수정</h1>
 				<br>
-				<p class="subtitle">Hello!!</p>
+				<p>Store Information</p>
 			</div>
 		</div>
 	</div>
@@ -59,8 +101,9 @@
     </form>
 
     <!-- 매장 홈으로 버튼 -->
-    <a href="/" class="btn btn-primary " style="">매장 홈으로</a>
-    
+    <div class="back-home-button">
+    <a href="/" class="btn btn-secondary" >홈으로</a>
+    </div>
 </main>
 <script>
 

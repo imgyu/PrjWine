@@ -77,9 +77,9 @@ button:hover {
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>고객 센터(매장)</h1>
+				<h1>고객 센터</h1>
 				<br>
-				<p>Customer Service</p>
+				<p>Store Service</p>
 			</div>
 		</div>
 	</div>

@@ -146,45 +146,43 @@
 		});
 
 		function deleteValue() {
-			var u_no = $
-			{
-				u_no
+			   var u_no =  ${u_no};
+			   var url  =  "/CartDelete?u_no=" + u_no;
+			   var valueArr  =  [];
+			   var list  =  $("input[name='rowCheck']");
+			   for(var i = 0; i < list.length; i++) {
+			      if(list[i].checked) {
+			         valueArr.push(list[i].value);
+			      }
+			   }
+			   if(valueArr.length == 0) {
+			      alert("선택하신 게 없습니다.");
+			   }
+			   else {
+			      var chk  =  confirm("정말 삭제하시겠습니까?");
+			      if(chk) {
+			      $.ajax({
+			         url  :  url,
+			         type : 'post',
+			         traditional : true,
+			         data : {
+			            'valueArr[]'  :  valueArr
+			         },
+			         success: function(jdata) {
+			            if(jdata == 1) {
+			               alert("삭제성공");
+			               location.reload();
+			               
+			            }
+			            else {
+			               alert("삭제 실패");
+			               event.preventDefault();
+			            }
+			         }
+			      });
+			   }
+			}  // deleteValue
 			}
-			;
-			var url = "/CartDelete?u_no=" + u_no;
-			var valueArr = [];
-			var list = $("input[name='rowCheck']");
-			for (var i = 0; i < list.length; i++) {
-				if (list[i].checked) {
-					valueArr.push(list[i].value);
-				}
-			}
-			if (valueArr.length == 0) {
-				alert("선택하신 게 없습니다.");
-			} else {
-				var chk = confirm("정말 삭제하시겠습니까?");
-				if (chk) {
-					$.ajax({
-						url : url,
-						type : 'post',
-						traditional : true,
-						data : {
-							'valueArr[]' : valueArr
-						},
-						success : function(jdata) {
-							if (jdata == 1) {
-								alert("삭제성공");
-								location.reload();
-
-							} else {
-								alert("삭제 실패");
-								event.preventDefault();
-							}
-						}
-					});
-				}
-			} // deleteValue
-		}
 	</script>
 </body>
 

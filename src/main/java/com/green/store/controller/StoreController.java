@@ -40,11 +40,11 @@ public class StoreController {
 		System.out.println(total);
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "6";
+			cntPerPage = "8";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "6";
+			cntPerPage = "8";
 		}
 		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		
@@ -72,11 +72,11 @@ public class StoreController {
 		int total  =   storeService.countStore(vo);
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "6";
+			cntPerPage = "8";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "6";
+			cntPerPage = "8";
 		}
 		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		System.out.println(total);

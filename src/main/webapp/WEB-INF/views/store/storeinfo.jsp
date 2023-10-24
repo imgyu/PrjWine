@@ -85,6 +85,12 @@ table {
 table th, table td {
 	text-align: center;
 }
+.ellipsis {
+  white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트에 "..." 표시 */
+  max-width: 80px; /* 최대 너비를 설정 (원하는 너비로 조정) */
+}
 
 .table-container {
 	position: sticky;
@@ -92,6 +98,17 @@ table th, table td {
 	background-color: white;
 	padding: 10px;
 	text-align: center;
+}
+.tr1 th {
+	background-color: #800021 !important;
+    color: #f2f2f2 !important;
+}
+#div1 { 
+  position: sticky;
+  bottom: 0;
+  background-color: #F9F9F9;
+  padding: 10px;
+  text-align: center;
 }
 </style>
 </head>
@@ -131,23 +148,21 @@ table th, table td {
 				</div>
 				<div id="map"></div>
 				<div id="board">
-					<table id="table">
-							<tr>
-								<th>No.</th>
+					<table id="table" class="table table-striped table-hover">
+							<tr class="tr1">
 								<th>공지사항 제목</th>
 								<th>글작성자</th>
 							</tr>
-							<c:forEach var="board" items="${boardList}">
-								<tr>
-									<td>${board.b_idx}</td>
-									<td><a
-										href="/BoardCont?b_idx=${board.b_idx}&s_no=${board.s_no}">${board.b_title}</a></td>
-									<td>${board.s_name}</td>
+							<c:forEach var="board" items="${boardList}" varStatus="loop">
+							<c:if test="${loop.index < 5 }">
+								<tr onclick="window.location='/BoardCont?b_idx=${board.b_idx}&s_no=${board.s_no}'">
+									<td class="ellipsis">${board.b_title}</td>
+									<td class="ellipsis">${board.s_name}</td>
 								</tr>
+							</c:if>
 							</c:forEach>
 					</table>
-					<div
-						style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
+					<div id="div1">
 						<c:choose>
 							<c:when
 								test="${not empty sloginVo.s_no and sloginVo.s_no eq info.s_no}">

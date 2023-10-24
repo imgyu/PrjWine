@@ -67,11 +67,11 @@ public class WineController {
     	int total  =  wineService.countWineSearch(name_Search);
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "6";
+			cntPerPage = "8";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "6";
+			cntPerPage = "8";
 		}
 		
 		int w_no  =  vo.getW_no();
@@ -97,11 +97,11 @@ public class WineController {
     	int total  =  wineService.countWineAll();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "6";
+			cntPerPage = "8";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "6";
+			cntPerPage = "8";
 		}
 		
 		int w_no  =  vo.getW_no();
@@ -128,11 +128,11 @@ public class WineController {
     	int total  =  wineService.countWineRed();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "6";
+			cntPerPage = "8";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "6";
+			cntPerPage = "8";
 		}
 		
 	   int w_no  =  vo.getW_no();
@@ -155,11 +155,11 @@ public class WineController {
     	int total  =  wineService.countWineWhite();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "6";
+			cntPerPage = "8";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "6";
+			cntPerPage = "8";
 		}
 		
 	   int w_no  =  vo.getW_no();
@@ -182,11 +182,11 @@ public class WineController {
     	int total  =  wineService.countWineSpark();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "6";
+			cntPerPage = "8";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "6";
+			cntPerPage = "8";
 		}
 		
 	   int w_no  =  vo.getW_no();
@@ -210,11 +210,11 @@ public class WineController {
     	int total  =  wineService.countWineRose();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "6";
+			cntPerPage = "8";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "6";
+			cntPerPage = "8";
 		}
 		
 	   int w_no  =  vo.getW_no();
@@ -238,11 +238,11 @@ public class WineController {
     	int total  =  wineService.countWineOther();
 		if (nowPage == null && cntPerPage == null ) {
 			nowPage  = "1";
-			cntPerPage = "6";
+			cntPerPage = "8";
 		} else if(nowPage == null) {
 			nowPage = "1";
 		} else if (cntPerPage == null) {
-			cntPerPage = "6";
+			cntPerPage = "8";
 		}
 		
 	   int w_no  =  vo.getW_no();

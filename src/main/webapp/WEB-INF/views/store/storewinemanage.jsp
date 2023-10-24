@@ -6,6 +6,157 @@
 <title>와인 목록</title>
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 </head>
+<style>
+
+.form-control::placeholder {
+    text-align: left;
+}
+
+
+.search-container input[type="text"] {
+	background-color: #F5F5F5;
+	border: 2px solid #FFA500;
+	color: #333;
+	padding: 9px 40px;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	placeholder-color: #FFA500;
+	width: 200px;
+	text-align: right;
+	margin-right: -90px; /* 오른쪽 여백을 주기 위해 margin-right 사용 */
+}
+
+
+.search-container input[type="submit"] {
+	background-color: #FFA500; /* 배경색 */
+	color: #FFF; /* 글자색 */
+	padding: 10px 15px;
+	border-radius: 5px;
+	border: 2px solid #FFA500;
+	margin-left: 100px;
+	/* 원하는 다른 스타일 속성들을 추가할 수 있습니다. */
+}
+
+
+form#search-form {
+    text-align: center;
+    margin: 10px auto; /* 위아래 여백 추가 */
+    max-width: 400px; /* 최대 너비 설정 */
+}
+
+form#search-form .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* 입력 요소 간의 간격 */
+}
+
+form#search-form .col-md-3 {
+    flex: 1; /* 네 개의 컬럼을 동일하게 너비 분배 */
+}
+
+form#search-form select,
+form#search-form input[type="text"],
+form#search-form .btn {
+    width: 100%;
+    padding: 10px;
+}
+
+form#search-form .btn {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form#search-form .col-md-3 select {
+    width: 100%; /* 넓이를 100%로 설정 */
+    padding: 10px; /* 높이를 조정 */
+}
+
+.dropdown-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 드롭다운 버튼 스타일 */
+.dropdown {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* 테이블 스타일 */
+  #table { 
+         width: 70%; 
+         margin: 0 auto; /* 수평 가운데 정렬 */
+         border-collapse: collapse; /* 테이블 셀 경계를 합칩니다. */
+      }
+      
+      /* 테이블 헤더 스타일 */
+      #table th { 
+         border: 1px solid #dddddd; /* 테두리 선 스타일 */
+         padding: 10px; /* 셀 안 여백 */
+         text-align: center; /* 가운데 정렬 */
+         font-weight: bold; /* 텍스트 굵게 표시 */
+      }
+
+      /* 테이블 내용 스타일 */
+      #table td { 
+         border: 2px solid #dddddd; /* 테두리 선 스타일 */
+         padding: 10px; /* 셀 안 여백 */
+         text-align: center; /* 가운데 정렬 */
+         vertical-align: middle; /* 세로 가운데 정렬 */
+      }
+
+/* 수정/삭제 버튼 스타일 */
+.edit-delete-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-delete-buttons form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.edit-delete-buttons button {
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 매장 홈으로 버튼 스타일 */
+.back-home-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
+
+.back-home-button {
+    text-align: center; /* 가로 중앙 정렬 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
+    margin-top: -440px;
+}	
+
+</style>
 
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -13,9 +164,9 @@
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>Welcome to Wine Story</h1>
+				<h1>보유와인</h1>
 				<br>
-				<p class="subtitle">Hello!!</p>
+				<p>Store Information</p>
 			</div>
 		</div>
 	</div>
@@ -24,7 +175,7 @@
 
     <main>
         <!-- 버튼 검색 -->
-        <div class="container">
+        <div class="search-container" >
             <form action="/StoreListSearch" method="GET" id="search-form">
                 <input type="hidden" name="s_no" value="${s_no}" />
                 <div class="row">
@@ -50,16 +201,18 @@
                     
                     <div class="col-md-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="searchKeyword" placeholder="검색어 입력">
-                                <button type="submit" class="btn btn-primary">검색</button>
+                            <input type="text" class="form-control" name="searchKeyword" placeholder="검색어입력">
                         </div>
+                       </div>
+                        <div class="col-md-3">
+                                <input type="submit"  value="검색">
                     </div>
                 </div>
             </form>
         </div>
         <br> <br>
 
-        <table id="table">
+        <table id="table" class="table table-striped table-hover">
             <tr>
                 <th>와인명</th>
                 <th>국가</th>
@@ -134,7 +287,8 @@
                 </c:forEach>
             </c:if>
         </table>
-        <div style="display: block; text-align: center;">
+        <br>
+        <div class="pagination">
 
     <c:if test="${not empty pds && pds.startPage != 1 }">
     <a href="/StoreWineManaget?s_no=${s_no }&nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
@@ -142,7 +296,7 @@
     <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
       <c:choose>
        <c:when test="${p == pds.nowPage }">
-         <b>${p}</b> 
+         <a>${p}</a> 
        </c:when>
         <c:when test="${p != page.nowPage }">
           <a href="/StoreWineManage?s_no=${s_no }&nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
@@ -155,7 +309,7 @@
 </div>
         <!-- 매장 홈으로 버튼 -->
         <div class="back-home-button">
-            <button class="btn btn-primary" onclick="history.back();">매장 홈으로</button>
+            <button class="btn btn-secondary" onclick="history.back();">홈으로</button>
         </div>
     </main>
     <script>

@@ -8,8 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <style>
-.container {
-    width: 80%;
+.container1 {
+    width: 50%;
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
@@ -80,13 +80,13 @@ button:hover {
                <br>
                <h1>고객 센터(매장)</h1>
                <br>
-               <p>Customer Service</p>
+               <p>Store Service</p>
             </div>
          </div>
       </div>
 <br>
 <br>
-	<div class="container" id="board" >
+	<div class="container1" id="board" >
 			 <table id="table">
 		         <c:forEach var="scs" items="${admincsstoreviewList}">
             	 <label>문의사항 제목</label>
