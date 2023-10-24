@@ -22,16 +22,18 @@
 
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-	
-               <div class="breadcrumb-text">
-               <br>
-                  <h1>전체매장</h1>
-                  <br>
-                  <p>Store Information</p>
-               </div>
-        
-   <br>
-   <br>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>Welcome to Wine Story</h1>
+				<br>
+				<p class="subtitle">Hello!!</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
 
     <main>
         <!-- 버튼 검색 -->

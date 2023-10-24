@@ -25,6 +25,18 @@
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>Welcome to Wine Story</h1>
+				<br>
+				<p class="subtitle">Hello!!</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
 
 
     <main>
@@ -41,11 +53,11 @@
                 <c:forEach var="scs" items="${storecsList}">
 
                     <tr>
-                 <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.scs_idx }</a></td>
-                        <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.scs_category}</a></td>
-                        <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.scs_title}</a></td>
-                        <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.sw_date}</a></td>
-                        <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}" class="nav-link">${scs.res_date}</a></td>
+                 <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}">${scs.scs_idx }</a></td>
+                        <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}">${scs.scs_category}</a></td>
+                        <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}">${scs.scs_title}</a></td>
+                        <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}">${scs.sw_date}</a></td>
+                        <td><a href="/CsStoreView?scs_idx=${scs.scs_idx}">${scs.res_date}</a></td>
                     </tr>
                 </c:forEach>
 

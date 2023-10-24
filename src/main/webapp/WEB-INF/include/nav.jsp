@@ -4,6 +4,14 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <style>
+
+  .nav-item a{
+        margin-right: 10px; /* 원하는 간격 크기로 조정 가능 */
+    }
+    .user {
+    margin-right: 10px;
+    }
+    
 .breadcrumb-section {
 	padding: 50px 0;
 	background-size: cover;
@@ -154,27 +162,26 @@
 						href="/CsAllUser"><b>고객센터</b></a></li>
 				</c:when>
 			</c:choose>
-		</ul>
-	</li>
+		
+	
 	<c:choose>
 		<c:when test="${loginVo eq null and sloginVo eq null}">
 			<!-- 비로그인 상태 -->
 			<li class="nav-item"><a
 				style="background-color: #e6e6fa; color: #4b0082 !important; border-radius: 7px; font-family: Arial, sans-serif;"
-				class="boxed-btn" aria-current="page" href="/UserLoginForm"><b>고객로그인</b></a>
+				class="boxed-btn" aria-current="page" href="/UserLoginForm" class="nav-link"><b>고객로그인</b></a>
 				<a
 				style="background-color: #4b0082; color: #e6e6fa !important border-radius: 7px; margin-left: 10px; font-family: Arial, sans-serif;"
-				class="bordered-btn" href="/StoreLoginForm"><b>가게로그인</b></a></li>
+				class="bordered-btn" href="/StoreLoginForm" class="nav-link"><b>가게로그인</b></a></li>
 		</c:when>
 		<c:when test="${loginVo ne null and sloginVo eq null}">
 			<!-- 고객 로그인 상태 -->
-			<ul class="nav justify-content-end">
-				<li class="nav-item"><br> <b> ${loginVo.u_name } 님
+				<li class="nav-item user"><br> <b> ${loginVo.u_name } 님
 						환영합니다 </b></li>
-				<li class="nav-item"><img src="/imgpage/logon.png"
+				<li class="nav-item user"><img src="/imgpage/logon.png"
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false">
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu dropdown-menu-end">
 						<li><a class="dropdown-item"
 							href="/UserTasting?u_no=${loginVo.u_no}"><b>신청한 시음회</b></a></li>
 						<li><a class="dropdown-item"
@@ -190,12 +197,10 @@
 						<li><a class="dropdown-item" href="/UserLogOut"><b>로그
 									아웃</b></a></li>
 					</ul></li>
-			</ul>
 		</c:when>
 		<c:when
 			test="${loginVo eq null and sloginVo ne null and sloginVo.s_no ne 99}">
 			<!-- 가게 로그인 상태 -->
-			<ul class="nav justify-content-end">
 				<li class="nav-item"><br> <b> ${sloginVo.s_name } 님
 						환영합니다 </b></li>
 				<li class="nav-item"><img src="/imgpage/logon.png"
@@ -216,11 +221,9 @@
 						<li><a class="dropdown-item" href="/StoreLogOut"><b>로그
 									아웃</b></a></li>
 					</ul></li>
-			</ul>
 		</c:when>
 		<c:when test="${loginVo.u_no eq null and sloginVo.s_no eq 99}">
 			<!-- 가게 로그인 상태 -->
-			<ul class="nav justify-content-end">
 				<li class="nav-item"><br> <b> ${sloginVo.s_name } 님
 						환영합니다 </b></li>
 				<li class="nav-item"><img src="/imgpage/logon.png"
@@ -242,10 +245,11 @@
 						<li><a class="dropdown-item" href="/StoreLogOut"><b>로그
 									아웃</b></a></li>
 					</ul></li>
-			</ul>
 		</c:when>
 	</c:choose>
-</ul>
+	</ul>
+	</li>	
+	</ul>
   <script>
     // Your JavaScript code here
     const nav = document.querySelector('.nav');

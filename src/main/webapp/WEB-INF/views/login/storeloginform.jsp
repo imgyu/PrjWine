@@ -13,6 +13,17 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
+
+.login-user {
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+   margin-top: -230px; /* 50px 위로 이동 */
+}
+
+
 .login-form h1 {
   font-size: 32px;
   text-align: center;
@@ -82,7 +93,7 @@
 .btn-area button {
   width: 100%;
   height: 50px;
-  margin: 0px 10px;
+  margin: 0px 0px;
   color: #fff;
   background: #166caa;
   border: none;
@@ -106,18 +117,19 @@
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-<div class="breadcrumb-section breadcrumb-bg">
-         <div class="col-lg-8 offset-lg-2 text-center">
-            <div class="breadcrumb-text">
-               <br>
-               <h1>매장 로그인</h1>
-               <br>
-               <p>Wine Tasting Forum</p>
-            </div>
-         </div>
-      </div>
-<br>
-<br>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>Welcome to Wine Story</h1>
+				<br>
+				<p class="subtitle">Hello!!</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+<div class="login-user">
 <section class="login-form">
 
   <form action="/StoreLogin" method="POST" >
@@ -137,7 +149,7 @@
             <a href="/StoreJoinForm">회원가입</a>
        </div>     
 </section>
-
+</div>
 
 </body>
 </html>

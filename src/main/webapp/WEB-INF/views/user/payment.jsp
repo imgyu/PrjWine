@@ -13,7 +13,7 @@
     <script type="text/javascript"   src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <style>
         /* 컨테이너 스타일링 */
-        .container {
+        .container1 {
             margin-top: 40px;
         }
 
@@ -48,10 +48,20 @@
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp" %>
-<br>
-<h2 class="logintitle">결제 확인</h2>
-<br>
-<div class="container">
+<div class="breadcrumb-section breadcrumb-bg">
+            <div class="col-lg-8 offset-lg-2 text-center">
+               <div class="breadcrumb-text">
+               <br>
+                  <h1 class="logintitle">결제 확인</h1>
+                  <br>
+                  <p>Store Information</p>
+               </div>
+      </div>
+   </div>
+   <br>
+   <br>
+
+<div class="container1">
         <div class="user-info">
             <h2>주문자</h2>
             <c:forEach var="user" items="${userList}">

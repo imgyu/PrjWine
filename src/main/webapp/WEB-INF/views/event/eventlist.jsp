@@ -14,22 +14,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-<div class="breadcrumb-section breadcrumb-bg">
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-8 offset-lg-2 text-center">
-            <div class="breadcrumb-text">
-               <br>
-               <h1>이벤트</h1>
-               <br>
-               <p>프로모션 Information</p>
-            </div>
-         </div>
-      </div>
-   </div>
-</div>
-<br>
-<br>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>Welcome to Wine Story</h1>
+				<br>
+				<p class="subtitle">Hello!!</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
 	<div class="event-button">
 		<ul>
 			<li class="promotion-link"><a href="/EventList">이달의 프로모션</a></li>

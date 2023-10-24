@@ -26,17 +26,18 @@ function confirmDelete(event) {
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-            <div class="breadcrumb-text">
-               <br>
-               <h1>이벤트</h1>
-               <br>
-               <p>프로모션 Information</p>
-            </div>
-<br>
-<br>
-<div>
-
-</div>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>Welcome to Wine Story</h1>
+				<br>
+				<p class="subtitle">Hello!!</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
 <c:forEach var="event" items="${eventList}">
 <div>
   <ul class="ul1">

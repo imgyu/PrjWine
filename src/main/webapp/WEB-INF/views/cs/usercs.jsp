@@ -26,9 +26,19 @@
 
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>Welcome to Wine Story</h1>
+				<br>
+				<p class="subtitle">Hello!!</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
     <main>
-
         <table id="table">
             <tr>
                 <th>문의번호</th>
@@ -41,11 +51,11 @@
                 <c:forEach var="ucs" items="${usercsList}">
 
                     <tr>
-            <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_idx }</a></td>
-                        <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_category}</a></td>
-                        <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.ucs_title}</a></td>
-                        <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.uw_date}</a></td>
-                        <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}" class="nav-link">${ucs.res_date}</a></td>
+            <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}">${ucs.ucs_idx }</a></td>
+                        <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}">${ucs.ucs_category}</a></td>
+                        <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}">${ucs.ucs_title}</a></td>
+                        <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}">${ucs.uw_date}</a></td>
+                        <td><a href="/CsView?ucs_idx=${ucs.ucs_idx}">${ucs.res_date}</a></td>
                     </tr>
                 </c:forEach>
 

@@ -12,6 +12,18 @@
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>Welcome to Wine Story</h1>
+				<br>
+				<p class="subtitle">Hello!!</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
 	<div class="container1" id="board" style="width: 50%; height: 350px; float: center;">
 			<form action="/UserCsInquiry?u_no=${u_no }" method="POST" enctype="multipart/form-data" >
 			<input type="hidden" name="ucs_idx" value="${ucs_idx }">

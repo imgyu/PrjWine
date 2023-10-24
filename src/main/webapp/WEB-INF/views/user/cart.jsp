@@ -67,66 +67,13 @@
     background-color: #000; 
     color: #F28123;
 }  
-   
+th {
+    background-color: #800021 !important;
+    color: #f2f2f2;
+  }   
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-</head>
-<body>
-<%@include file="/WEB-INF/include/nav.jsp"%>
-	  <div class="breadcrumb-section breadcrumb-bg">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-               <div class="breadcrumb-text">
-               <br>
-                  <h1>전체매장</h1>
-                  <br>
-                  <p>Store Information</p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <br>
-   <br>
-   <main>
-      
-   <form action="/UserPayment?u_no=${u_no }" method="POST" id="formPayment">
-   <input type="hidden" name="cartids" value="" />
-   
-   <!-- 게시물 목록 -->
-   <table id="table">
-   
-   <tr>
-     <th><input type="checkbox" id="allCheck" /></th>
-     <th>와인이름</th>
-     <th>와인매장</th>
-     <th>수량</th>
-     <th>단가</th>
-     <th>총가격</th>
-   </tr>
-   <c:forEach var="cart" items="${cartList}">
-            <input type="hidden" name="w_amount" value="${cart.w_amount}" />
-            <input type="hidden" name="c_count" value="${cart.c_count}" />
-     <tr>   
-        <th><input type="checkbox" name="rowCheck" id="rowCheck" value="${cart.c_idx }" /></th>
-        <th>${cart.w_name}</th>
-        <th>${cart.s_name}</th>
-        <th>${cart.c_count}</th>
-        <th>${cart.w_price}</th>
-        <th>${cart.c_allprice}</th>
-</tr>
-
-    </c:forEach>
-   </table>
-   <br><br>
-    <div class="text-center">
-    <input type="submit" value="결제" class="btn btn-outline-info" >
-    <a type="button" class="btn1" onclick="deleteValue();">삭제</a>
-    </div> 
-    </form>
-    </main>
 <script>
 
 $(function() {
@@ -204,5 +151,57 @@ function deleteValue() {
 
 
 </script>
+</head>
+<body>
+<%@include file="/WEB-INF/include/nav.jsp"%>
+	  <div class="breadcrumb-section breadcrumb-bg">
+            <div class="col-lg-8 offset-lg-2 text-center">
+               <div class="breadcrumb-text">
+               <br>
+                  <h1>전체매장</h1>
+                  <br>
+                  <p>Store Information</p>
+               </div>
+      </div>
+   </div>
+   <br>
+   <br>
+   <main>
+      
+   <form action="/UserPayment?u_no=${u_no }" method="POST" id="formPayment">
+   <input type="hidden" name="cartids" value="" />
+   
+   <!-- 게시물 목록 -->
+   <table id="table">
+   
+   <tr>
+     <th><input type="checkbox" id="allCheck" /></th>
+     <th>와인이름</th>
+     <th>와인매장</th>
+     <th>수량</th>
+     <th>단가</th>
+     <th>총가격</th>
+   </tr>
+   <c:forEach var="cart" items="${cartList}">
+            <input type="hidden" name="w_amount" value="${cart.w_amount}" />
+            <input type="hidden" name="c_count" value="${cart.c_count}" />
+     <tr>   
+        <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${cart.c_idx }" /></th>
+        <td>${cart.w_name}</td>
+        <td>${cart.s_name}</td>
+        <td>${cart.c_count}</td>
+        <td>${cart.w_price}</td>
+        <td>${cart.c_allprice}</td>
+</tr>
+
+    </c:forEach>
+   </table>
+   <br><br>
+    <div class="text-center">
+    <input type="submit" value="결제" class="btn btn-outline-info" >
+    <a type="button" class="btn1" onclick="deleteValue();">삭제</a>
+    </div> 
+    </form>
+    </main>
 </body>
 </html>
