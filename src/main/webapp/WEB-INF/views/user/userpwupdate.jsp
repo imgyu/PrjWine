@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <style>
-.container {
+.container1 {
 	margin: 0 auto;
 	max-width: 500px;
 	padding: 20px;
@@ -32,7 +32,7 @@
    </div>
    <br>
    <br>
-<div class="container">
+<div class="container1">
     <form action="/UserPwUpdate?u_no=${loginVo.u_no }" method="POST">
 			<table class="table table-bordered">
 				<c:forEach var="user" items="${userList }">

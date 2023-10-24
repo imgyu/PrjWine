@@ -137,13 +137,13 @@ th {
             <!-- 검색하지 않았을떄  -->
             <c:if test="${not empty allStore}">
                 <c:forEach var="scs" items="${allStore }">
-                    <tr>
-                         <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="card-info" >${scs.scs_idx }</a></td>
-                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="card-info" >${scs.s_id}</a></td>
-                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="card-info">${scs.scs_category}</a></td>
-                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="card-info">${scs.scs_title}</a></td>
-                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="card-info">${scs.sw_date}</a></td>
-                        <td><a href="/AdminStoreView?scs_idx=${scs.scs_idx}" class="card-info">${scs.res_date}</a></td>
+                    <tr onclick="window.location='/AdminStoreView?scs_idx=${scs.scs_idx}'" class="card-info">
+                        <td>${scs.scs_idx }</td>
+                        <td>${scs.s_id}</td>
+                        <td>${scs.scs_category}</td>
+                        <td>${scs.scs_title}</td>
+                        <td>${scs.sw_date}</td>
+                        <td>${scs.res_date}</td>
                     </tr>
                 </c:forEach>
             </c:if>

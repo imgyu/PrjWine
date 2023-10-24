@@ -43,15 +43,15 @@ th {
 			<table class="table table-bordered">
 				<c:forEach var="user" items="${userList}">
 					<tr>
-						<th>아이디:</td>
+						<th>아이디</td>
 						<td>${user.u_id }</td>
 					</tr>
 					<tr>
-						<th>이름:</th>
+						<th>이름</th>
 						<td>${user.u_name }</td>
 					</tr>
 					<tr>
-						<th>주소:</th>
+						<th>주소</th>
 						<td>
 						    <input type="text" id="u_postcode" name="u_postcode" style="margin-bottom: 5px;" value="${user.u_postcode}">
 						    <input type="button" onclick="u_execDaumPostcode()" class="btn btn-primary btn-sm"  value="우편번호 찾기"><br>
@@ -61,7 +61,7 @@ th {
 						</td>
 					</tr>
 					<tr>
-						<th>연락처:</th>
+						<th>연락처</th>
 						<td><input type="text" name="u_phone" value="${user.u_phone }"></td>
 					</tr>
 				</c:forEach>

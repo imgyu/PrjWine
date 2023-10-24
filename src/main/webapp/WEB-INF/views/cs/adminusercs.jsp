@@ -139,13 +139,13 @@ th {
             <!-- 검색하지 않았을떄  -->
             <c:if test="${not empty csalluserList}">
                 <c:forEach var="ucs" items="${csalluserList }">
-                    <tr>
-                       <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.ucs_idx}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.u_id}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.ucs_category}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.ucs_title}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.uw_date}</a></td>
-                        <td><a href="/AdminCsView?ucs_idx=${ucs.ucs_idx}" class="card-info">${ucs.res_date}</a></td>
+                    <tr onclick="window.location='/AdminCsView?ucs_idx=${ucs.ucs_idx}'">
+                        <td class="card-info">${ucs.ucs_idx}</td>
+                        <td class="card-info">${ucs.u_id}</td>
+                        <td class="card-info">${ucs.ucs_category}</td>
+                        <td class="card-info">${ucs.ucs_title}</td>
+                        <td class="card-info">${ucs.uw_date}</td>
+                        <td class="card-info">${ucs.res_date}</td>
                     </tr>
                 </c:forEach>
             </c:if>

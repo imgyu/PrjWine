@@ -127,12 +127,12 @@
             <c:forEach var="taste" items="${usertasting}">
                 <tr>
                     <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${taste.t_idx}" /></td>
-                    <td>${taste.s_name}</td>
-                    <td>${taste.t_title}</td>
-                    <td>${taste.s_address}${taste.s_detailaddress}</td>
-                    <td>${taste.t_cont}</td>
-                    <td><fmt:formatDate value="${taste.t_date}" pattern="yyyy-MM-dd HH:mm" /></td>
-                    <td>${taste.t_cost}</td>
+                    <td onclick="window.location='/TastingBoard?t_idx=${taste.t_idx}'">${taste.s_name}</td>
+                    <td onclick="window.location='/TastingBoard?t_idx=${taste.t_idx}'">${taste.t_title}</td>
+                    <td onclick="window.location='/TastingBoard?t_idx=${taste.t_idx}'">${taste.s_address}${taste.s_detailaddress}</td>
+                    <td onclick="window.location='/TastingBoard?t_idx=${taste.t_idx}'">${taste.t_cont}</td>
+                    <td onclick="window.location='/TastingBoard?t_idx=${taste.t_idx}'"><fmt:formatDate value="${taste.t_date}" pattern="yyyy-MM-dd HH:mm" /></td>
+                    <td onclick="window.location='/TastingBoard?t_idx=${taste.t_idx}'">${taste.t_cost}</td>
                 </tr>
             </c:forEach>
         </table>

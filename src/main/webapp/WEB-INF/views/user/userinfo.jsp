@@ -50,19 +50,19 @@ th {
         <c:forEach var="user" items="${userList}">
             <table class="table table-bordered">
                 <tr>
-                    <th>아이디:</th>
+                    <th>아이디</th>
                     <td>${user.u_id}</td>
                 </tr>
                 <tr>
-                    <th>이름:</th>
+                    <th>이름</th>
                     <td>${user.u_name}</td>
                 </tr>
                 <tr>
-                    <th>주소:</th>
+                    <th>주소</th>
                     <td>${user.u_address}&nbsp;${user.u_detailAddress}</td>
                 </tr>
                 <tr>
-                    <th>연락처:</th>
+                    <th>연락처</th>
                     <td>${user.u_phone}</td>
                 </tr>
             </table>
