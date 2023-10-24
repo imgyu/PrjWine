@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>시음회 등록</title>
+<title>시음회 정보</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
@@ -13,67 +13,41 @@
     padding: 20px;
     background-color: #f2f2f2;
     border: 2px solid #ccc;
-    border-radius: 5px;
+    border-radius: 5px; 
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    background-color: #ffffff;
-}
+table.tab1 {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background-color: #ffffff;
+    }
 
-th, td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
+    /* 테이블의 th 스타일 */
+    table.tab1 th {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+        background-color: #f2f2f2;
+    }
 
-th {
-    background-color: #f2f2f2;
-}
-
-.btn-container {
+    /* 테이블의 td 스타일 */
+    table.tab1 td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+.container2 {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.btn-container button {
+.container2 button {
     width: auto;
 }
 </style>
-<script>
-   document.addEventListener("DOMContentLoaded", function() {
-      var deleteButton = document.getElementById("delete-confirm");
 
-      deleteButton.addEventListener("click", function(event) {
-         if (confirm("삭제하시겠습니까?")) {
-            alert("삭제가 완료되었습니다.");
-         } else {
-            alert("삭제가 취소되었습니다.");
-            event.preventDefault();
-         }
-      });
-   });
-   
-   document.addEventListener("DOMContentLoaded", function () {
-       var applyButton = document.getElementById("applyButton");
-
-       applyButton.addEventListener("click", function(event) {
-           if (confirm("신청하시겠습니까?")) {
-               alert("신청이 완료되었습니다.");
-           } else {
-               alert("신청이 취소되었습니다.");
-               event.preventDefault();
-           }
-       });
-
-       function goBack() {
-           window.history.back();
-       }
-   });
-</script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
@@ -93,7 +67,11 @@ th {
 <div class="container1">
     <c:forEach var="tast" items="${tastingBoard}">
         <h1>${tast.t_title}</h1>
-        <table>
+        <table class="tab1">
+            <tr>
+                <th>No.</th>
+                <td>${tast.t_idx}</td>
+            </tr>
             <tr>
                 <th>시음회 이름</th>
                 <td>${tast.t_title}</td>
@@ -131,7 +109,7 @@ th {
                 <td>${tast.t_cost}</td>
             </tr>
         </table>
-        <div class="btn-container">
+        <div class="container2">
             <c:choose>
                 <c:when test="${not empty loginVo.u_no}">
                     <form action="/UserTastingRequest?u_no=${loginVo.u_no}&t_idx=${tast.t_idx}" method="POST">
@@ -150,5 +128,37 @@ th {
         </div>
     </c:forEach>
 </div>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+      var deleteButton = document.getElementById("delete-confirm");
+
+      deleteButton.addEventListener("click", function(event) {
+         if (confirm("삭제하시겠습니까?")) {
+            alert("삭제가 완료되었습니다.");
+         } else {
+            alert("삭제가 취소되었습니다.");
+            event.preventDefault();
+         }
+      });
+   });
+   
+   document.addEventListener("DOMContentLoaded", function () {
+       var applyButton = document.getElementById("applyButton");
+
+       applyButton.addEventListener("click", function(event) {
+           if (confirm("신청하시겠습니까?")) {
+               alert("신청이 완료되었습니다.");
+           } else {
+               alert("신청이 취소되었습니다.");
+               event.preventDefault();
+           }
+       });
+
+       function goBack() {
+           window.history.back();
+       }
+   });
+</script>
 </body>
 </html>

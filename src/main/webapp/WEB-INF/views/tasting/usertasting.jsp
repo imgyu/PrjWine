@@ -37,6 +37,7 @@
         text-align: center;
     }
 </style>
+<script>
       $(function() {
 
          // 전체 체크    

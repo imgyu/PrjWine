@@ -57,11 +57,11 @@
 		<th>매장주소</th>
 	</tr>
 	<c:forEach var="favorite" items="${favorites}">
-	 <tr onclick="window.location='/StoreInfo?s_no=${favorite.s_no }'">
+	 <tr>
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${favorite.s_no }">
 	        <input type="hidden" value="${favorite.u_no }"></td>
-		<td>${favorite.s_name}</td>
-		<td>${favorite.s_address }&nbsp;${favorite.s_detailAddress }</td>
+		<td onclick="window.location='/StoreInfo?s_no=${favorite.s_no }'">${favorite.s_name}</td>
+		<td onclick="window.location='/StoreInfo?s_no=${favorite.s_no }'">${favorite.s_address }&nbsp;${favorite.s_detailAddress }</td>
 	</tr>
    </c:forEach>
 	</table>

@@ -61,7 +61,6 @@ h1 {
                 <p><strong>휴대폰:</strong><span id="u_phone">${user.u_phone }</span></p>
             </c:forEach>
         </div>
-        
         <div class="order-info">
             <h2>주문 정보</h2>
             <c:forEach var="sel" items="${selCartList}">
@@ -75,7 +74,6 @@ h1 {
                 <p><strong>장바구니번호:</strong><span id="c_idx">${sel.c_idx }</span></p>
                 <p><strong>장바구니번호:</strong><span id="wl_idx">${sel.wl_idx }</span></p>
                 <p><strong>와인목록:</strong><span id="w_amount">${sel.w_amount }</span></p>
-                
                 
 		        <c:set var="totalPrice" value="${totalPrice + sel.c_allprice }" />
             </c:forEach>
