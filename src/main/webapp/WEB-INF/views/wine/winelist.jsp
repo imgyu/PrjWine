@@ -29,7 +29,7 @@
     font-size: 16px;
     font-weight: bold;
     placeholder-color: #FFA500;
-    width: 60%;
+    width: 30%;
     text-align: right;
     margin-right: 10px; /* 오른쪽 여백을 주기 위해 margin-right 사용 */
 }
