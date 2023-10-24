@@ -14,7 +14,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
    crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <style>
 
@@ -218,7 +218,7 @@ body {
 		</c:when>
 		<c:when test="${loginVo ne null and sloginVo eq null}">
 			<!-- 고객 로그인 상태 -->
-				<li class="nav-item user"><br> <b> ${loginVo.u_name } 님
+				<li class="nav-item user"><br><b> ${loginVo.u_name } 님
 						환영합니다 </b></li>
 				<li class="nav-item user"><img src="/imgpage/logon.png"
 					class="nav-link dropdown-toggle" href="#" role="button"
@@ -238,7 +238,8 @@ body {
 						<li><hr class="dropdown-divider"></li>
 						<li><a class="dropdown-item" href="/UserLogOut"><b>로그
 									아웃</b></a></li>
-					</ul></li>
+					</ul>
+					</li>
 		</c:when>
 		<c:when
 			test="${loginVo eq null and sloginVo ne null and sloginVo.s_no ne 99}">
@@ -248,7 +249,7 @@ body {
 				<li class="nav-item"><img src="/imgpage/logon.png"
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false">
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu dropdown-menu-end">
 						<li><a class="dropdown-item"
 							href="/StoreCheck?s_no=${sloginVo.s_no }"><b>매장정보</b></a></li>
 						<li><a class="dropdown-item"
@@ -271,7 +272,7 @@ body {
 				<li class="nav-item"><img src="/imgpage/logon.png"
 					class="nav-link dropdown-toggle" href="#" role="button"
 					data-bs-toggle="dropdown" aria-expanded="false">
-					<ul class="dropdown-menu">
+					<ul class="dropdown-menu dropdown-menu-end">
 						<li><a class="dropdown-item" href="/AdminWineInsertForm"><b>와인등록</b></a></li>
 						<li><a class="dropdown-item" href="/AdminWineList?s_no=99"><b>와인목록</b></a></li>
 						<li><a class="dropdown-item" href="/AdminBoardList?s_no=99"><b>공지사항

@@ -13,7 +13,7 @@ body {
 }
 
 .container1 {
-    background-color: #fff;
+    background-color: #f2f2f2;
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 20px;
@@ -30,6 +30,7 @@ h1 {
     border-radius: 5px;
     padding: 20px;
     margin-top: 20px;
+     background-color: #fff;
 }
 
 .btn-primary {
