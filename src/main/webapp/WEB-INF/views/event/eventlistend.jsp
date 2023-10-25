@@ -111,7 +111,7 @@
 <br>
    <div class="event-button">
         <ul>
-            <li class="promotion-link"><a href="/EventList">이달의 프로모션</a></li>
+            <li class="promotion-link"><a href="/EventList">진행중인 프로모션</a></li>
             <li class="promotion-link"><a href="/EventListEnd">종료된 프로모션</a></li>
         </ul>
     </div>

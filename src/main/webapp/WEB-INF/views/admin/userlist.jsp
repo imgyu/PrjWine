@@ -3,7 +3,7 @@
 <!DOCTYPE html> 
 <html>
 <head>
-<title>판매기록</title>
+<title>고객목록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
@@ -86,7 +86,7 @@ th {
 	</tr>
 	
 	
-	<c:forEach var="userList" items="${userList }">
+	<c:forEach var="userList" items="${userList}">
 	<tr>
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${userList.u_no }"></td>
 		<td>${userList.u_no }</td>

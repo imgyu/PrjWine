@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>매장 찾기</title>
+<title>매장 목록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
@@ -115,9 +115,9 @@
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						<br>
-						<h1>전체매장</h1>
+						<h1>매장 목록</h1>
 						<br>
-						<p>Store Information</p>
+						<p>Store List</p>
 					</div>
 				</div>
 			</div>

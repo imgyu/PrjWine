@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>공지사항 글 등록</title>
+<title>공지사항 등록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
@@ -57,9 +57,9 @@
         <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                 <br>
-                <h1>Welcome to Wine Story</h1>
+                <h1>공지사항</h1>
                 <br>
-                <p class="subtitle">Hello!!</p>
+                <p>Announcement</p>
             </div>
         </div>
     </div>

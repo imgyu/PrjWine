@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>와인 목록</title>
+<title>등록한 와인 관리</title>
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 </head>
 <style>
@@ -164,9 +164,9 @@ th {
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>보유와인</h1>
+				<h1>보유한 와인 관리</h1>
 				<br>
-				<p>Store Information</p>
+				<p>My Wine List</p>
 			</div>
 		</div>
 	</div>

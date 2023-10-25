@@ -44,7 +44,7 @@
                <br>
                   <h1>관심매장</h1>
                   <br>
-                  <p>User Information</p>
+                  <p>Favorite Store</p>
                </div>
       </div>
    </div>

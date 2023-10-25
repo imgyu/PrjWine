@@ -288,7 +288,7 @@
     LEFT JOIN WINELIST WL ON W.W_NO = WL.W_NO
     LEFT JOIN STORE S     ON WL.S_NO = S.S_NO
     WHERE     W.W_NAME     LIKE '%' || INITCAP(#{searchKeyword}) || '%'
-    AND       S.S_NO  =  #{s_no}
+    AND       S.S_NO  =  #{s_no} 
    
    </select>
    
@@ -296,7 +296,7 @@
     SELECT S_NAME , S_CONT, S_PHONE, 
            S_ADDRESS, S_DETAILADDRESS, S_NO, S_SIMGNAME
     FROM   STORE
-    WHERE S_NO &lt;&gt; 99
+    WHERE S_NO &lt;&gt; 99 AND S_SIMGNAME != null
    </select>
    
     <select id="SnameSearch" resultType="com.green.store.vo.StoreVo">
@@ -306,6 +306,7 @@
    WHERE
          UPPER(S_NAME) LIKE '%' || UPPER(#{sname_Search}) || '%'
       OR LOWER(S_NAME) LIKE '%' || LOWER(#{sname_Search}) || '%'
+      AND S_SIMGNAME != null
    </select>
    
 

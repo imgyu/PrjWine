@@ -53,7 +53,7 @@
 				<br>
 				<h1>판매기록</h1>
 				<br>
-				<p class="subtitle">Sale History</p>
+				<p class="subtitle">Sales List</p>
 			</div>
 		</div>
 	</div>

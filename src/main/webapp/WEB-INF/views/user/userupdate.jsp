@@ -30,9 +30,9 @@ th {
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>내정보 수정</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>My Information Update</p>
                </div>
             </div>
    </div>

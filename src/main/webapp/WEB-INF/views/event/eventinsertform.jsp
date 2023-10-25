@@ -99,7 +99,7 @@ ui-datepicker             ui-widget                ui-widget-content            
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>프로모션 작성</h1>
+				<h1>프로모션</h1>
 				<br>
 				<p>Promotion</p>
 			</div>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>매장용 로그인</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
@@ -118,9 +118,9 @@
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>Welcome to Wine Story</h1>
+				<h1>매장용 회원가입</h1>
 				<br>
-				<p class="subtitle">Hello!!</p>
+				<p class="subtitle">Store Join</p>
 			</div>
 		</div>
 	</div>

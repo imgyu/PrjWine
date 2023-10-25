@@ -104,9 +104,9 @@
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>신청한 시음회</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>My Wine Tasting</p>
                </div>
             </div>
    </div>

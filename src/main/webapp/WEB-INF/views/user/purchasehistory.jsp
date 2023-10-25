@@ -45,7 +45,7 @@
                <br>
                   <h1>구매기록</h1>
                   <br>
-                  <p>User Information</p>
+                  <p>Purchase Records</p>
                </div>
             </div>
    </div>

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>와인 목록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
@@ -178,9 +178,9 @@ function goToPage(pageNumber) {
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>전체와인</h1>
+				<h1>와인 목록</h1>
 				<br>
-				<p>Wine Information</p>
+				<p>Wine List</p>
 			</div>
 		</div>
 	</div>

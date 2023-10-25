@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>이벤트목록</title>
+<title>진행중인 프로모션</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
@@ -96,7 +96,7 @@ th {
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>프로모션</h1>
+               <h1>진행중인 프로모션</h1>
                <br>
                <p>Promotion</p>
             </div>

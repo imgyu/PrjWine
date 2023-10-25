@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>신청한 시음회 목록</title>
+<title>시음회 목록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">

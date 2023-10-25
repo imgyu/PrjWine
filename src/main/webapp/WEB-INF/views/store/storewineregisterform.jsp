@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html> 
 <head>
-<title>Insert title here</title>
+<title>와인 등록</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <style>
 /* 전체 테이블 스타일 */
 #table {
-	width: 70%;
+	width: 100%;
 	margin: 0 auto; /* 수평 가운데 정렬 */
 	border-collapse: collapse; /* 테이블 셀 경계를 합칩니다. */
 }
@@ -110,6 +110,9 @@ button#btn1 {
     border-radius: 5px;
     cursor: pointer;
 }
+ .container {
+      margin: 20px auto; /* 페이지 중앙 정렬 */
+   }
 
 </style>
 </head>
@@ -119,9 +122,9 @@ button#btn1 {
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>와인등록</h1>
+               <h1>와인 등록</h1>
                <br>
-               <p>Store Information</p>
+               <p>My Store</p>
             </div>
          </div>
       </div>
@@ -129,6 +132,7 @@ button#btn1 {
 <br>
 	<main>
       <!-- 버튼 검색 -->
+      <div class="container">
 		<div >
 			<form action="/StoreWineSearch" method="GET" id="search-form">
 				<div>
@@ -181,6 +185,7 @@ button#btn1 {
 			</div>
 			</form>
 
+		</div>
 		</div>
 	</main>
 	<script>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head> 
-    <title>와인 수정</title>
+    <title>등록한 와인 수정</title>
     <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
     <style>
     /* 테이블 스타일 */
@@ -37,14 +37,12 @@ th {
       text-align: center; /* 헤더 텍스트 중앙 정렬 */
    }  
    
-.back-home-button {
-    text-align: center; /* 가로 중앙 정렬 */
-    display: flex;
-    justify-content: center; /* 가로 중앙 정렬 */
-    align-items: center; /* 수직 중앙 정렬 */
-    height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
-    margin-top: -440px;
-}	     
+ .back-home-button {
+	text-align: center; /* 가로 중앙 정렬 */
+	display: flex;
+	justify-content: center; /* 가로 중앙 정렬 */
+	margin-top: 20px; 
+}	
     </style>
 </head>
 <body>

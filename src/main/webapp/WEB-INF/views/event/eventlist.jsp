@@ -106,7 +106,7 @@
          <div class="col-lg-8 offset-lg-2 text-center">
             <div class="breadcrumb-text">
                <br>
-               <h1>프로모션</h1>
+               <h1>진행중인 프로모션</h1>
                <br>
                <p>Promotion</p>
             </div>
@@ -116,7 +116,7 @@
 <br>
    <div class="event-button">
         <ul>
-            <li class="promotion-link"><a href="/EventList">이달의 프로모션</a></li>
+            <li class="promotion-link"><a href="/EventList">진행중인 프로모션</a></li>
             <li class="promotion-link"><a href="/EventListEnd">종료된 프로모션</a></li>
         </ul>
     </div>

@@ -59,9 +59,9 @@
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>전체매장</h1>
+				<h1>장바구니</h1>
 				<br>
-				<p>Store Information</p>
+				<p>Cart List</p>
 			</div>
 		</div>
 	</div>

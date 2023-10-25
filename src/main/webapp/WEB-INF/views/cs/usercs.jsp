@@ -7,20 +7,11 @@
 <title>(유저)고객 센터</title>
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <style>
-/* 전체 페이지 스타일 */
-body {
-	margin: 0;
-	padding: 0;
-	font-family: Arial, sans-serif;
-}
 
-/* 제목 스타일 */
-h1 {
-	text-align: center;
-	margin-top: 60px;
-	margin-bottom: 60px;
-}
 
+.container {
+      margin: 20px auto; /* 페이지 중앙 정렬 */
+   }
 /* 검색 폼 스타일 */
 form#search-form {
 	text-align: center;
@@ -35,20 +26,9 @@ form#search-form input[type="text"] {
 	margin-right: 10px;
 }
 
-.dropdown-group {
-	text-align: center;
-	margin-top: 20px;
-}
-
-/* 드롭다운 버튼 스타일 */
-.dropdown {
-	display: inline-block;
-	margin-right: 10px;
-}
-
 /* 테이블 스타일 */
 #table {
-	width: 70%;
+	width: 100%;
 	margin: 0 auto;
 	border-collapse: collapse;
 	margin-bottom: 30px; /* 간격 추가 */
@@ -95,7 +75,6 @@ form#search-form input[type="text"] {
 	text-align: center; /* 가로 중앙 정렬 */
 	display: flex;
 	justify-content: center; /* 가로 중앙 정렬 */
-	margin-top: 20px; 	
 }
 
 .card-info {
@@ -112,6 +91,7 @@ th {
 	color: #ffffff !important; /* 테이블 헤더 글자색 */
 	text-align: center; /* 헤더 텍스트 중앙 정렬 */
 }
+
 </style>
 
 </head>
@@ -131,7 +111,7 @@ th {
 	<br>
 	<br>
 	<main>
-
+	<div class="container">
 		<table id="table" class="table table-striped table-hover">
 			<tr>
 				<th>문의번호</th>
@@ -153,6 +133,7 @@ th {
 			</c:forEach>
 
 		</table>
+		</div>
 		<div class="text-center">
 			<a href="UserCsInquiryForm?u_no=${loginVo.u_no }"
 				class="btn btn-primary">글쓰기</a>

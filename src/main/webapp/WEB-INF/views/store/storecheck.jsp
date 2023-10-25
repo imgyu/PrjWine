@@ -51,9 +51,9 @@
 		<div class="col-lg-8 offset-lg-2 text-center">
 			<div class="breadcrumb-text">
 				<br>
-				<h1>Welcome to Wine Story</h1>
+				<h1>내 매장 정보</h1>
 				<br>
-				<p class="subtitle">Hello!!</p>
+				<p class="subtitle">My Store</p>
 			</div>
 		</div>
 	</div>

@@ -120,7 +120,7 @@ table th, table td {
 				<div class="col-lg-8 offset-lg-2 text-center">
 					<div class="breadcrumb-text">
 						<br>
-						<h1>전체매장</h1>
+						<h1>매장 정보</h1>
 						<br>
 						<p>Store Information</p>
 					</div>

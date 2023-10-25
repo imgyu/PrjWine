@@ -51,7 +51,7 @@
                <br>
                <h1>시음회 게시판</h1>
                <br>
-               <p>Wine Tasting Forum</p>
+               <p>Wine Tasting</p>
             </div>
          </div>
       </div>

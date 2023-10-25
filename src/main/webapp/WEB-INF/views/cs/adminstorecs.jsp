@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>고객 센터(유저)</title>
+<title>고객 센터(매장)</title>
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <style>
 

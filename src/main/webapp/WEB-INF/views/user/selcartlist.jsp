@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>와인 목록</title>
+<title>장바구니 추가</title>
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <style>
 /* 전체 페이지 스타일 */
@@ -104,9 +104,9 @@ form#search-form input[type="text"] {
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>장바구니 추가</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>Add to Cart</p>
                </div>
       </div>
    </div>
