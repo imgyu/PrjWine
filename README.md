@@ -1,10 +1,10 @@
-# <div align="center"> 🌈 Hospital_System 🌈 </div>
-# <div align="center"> 🌈 MediConn 🌈 </div>
+# <div align="center"> 🌈 Wine Story 🌈 </div>
+# <div align="center"> 🌈 Wine Story 🌈 </div>
 <div align="center"> 🌈 프로젝트 기간 : 23-10-02 ~ 23-10-26
 <h3 align="center">조장 :  김영준</h3>
 <h3 align="center">조원 :  조영태</h3>
-<h3 align="center">조원 :  김병규</h3>
 <h3 align="center">조원 :  김임규</h3>
+<h3 align="center">조원 :  김병규</h3>
 <br />
 
 # <div align="center"> 📚 Use Main-Stack Skill 📚 </div>
