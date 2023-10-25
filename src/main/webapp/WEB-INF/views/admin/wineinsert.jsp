@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 	<style>
- .container {
+ .container1 {
             background-color: #fff;
             padding: 20px;
             border-radius: 10px;
@@ -83,7 +83,7 @@ th {
       </div>
 <br>
 <br>
-		 <div class="container">
+		 <div class="container1">
         <h2>와인 등록</h2>
         <form action="/AdminWineInsert" method="POST">
             <table>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -92,13 +93,13 @@ th {
          <c:forEach var="tastingList" items="${tast}">
             <tr>
                <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${tastingList.t_idx }"></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_idx}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.s_name}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_title}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.s_address}&nbsp;${tastingList.s_detailaddress}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_cont}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_date}</a></td>
-               <td><a href="/TastingBoard?t_idx=${tastingList.t_idx}" class="card-info">${tastingList.t_cost}</a></td>
+               <td onclick="window.location='/TastingBoard?t_idx=${tastingList.t_idx}'" class="card-info">${tastingList.t_idx}</td>
+               <td onclick="window.location='/TastingBoard?t_idx=${tastingList.t_idx}'" class="card-info">${tastingList.s_name}</td>
+               <td onclick="window.location='/TastingBoard?t_idx=${tastingList.t_idx}'" class="card-info">${tastingList.t_title}</td>
+               <td onclick="window.location='/TastingBoard?t_idx=${tastingList.t_idx}'" class="card-info">${tastingList.s_address}&nbsp;${tastingList.s_detailaddress}</td>
+               <td onclick="window.location='/TastingBoard?t_idx=${tastingList.t_idx}'" class="card-info">${tastingList.t_cont}</td>
+               <td onclick="window.location='/TastingBoard?t_idx=${tastingList.t_idx}'" class="card-info"><fmt:formatDate value="${tastingList.t_date}" pattern="yyyy-MM-dd HH:mm" /></td>
+               <td onclick="window.location='/TastingBoard?t_idx=${tastingList.t_idx}'" class="card-info">${tastingList.t_cost}</td>
             </tr>
          </c:forEach>
       </div>

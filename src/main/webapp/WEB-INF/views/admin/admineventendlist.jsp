@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>      
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,6 +39,7 @@
          border: 2px solid #dddddd; /* 테두리 선 스타일 */
          padding: 10px; /* 셀 안 여백 */
          text-align: center; /* 가운데 정렬 */
+         vertical-align: middle; /* 가운데 수직정렬 */
       }
 
       /* 테이블 내용 중 텍스트가 왼쪽 정렬되어야 하는 셀 */
@@ -126,16 +128,14 @@ th {
 	<c:forEach var="admineventendlist" items="${admineventendlist }">
 	<tr>
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${admineventendlist.e_idx }"></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info">${admineventendlist.e_title }</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info">${admineventendlist.s_no}</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info"><img src="/imgpage/${admineventendlist.e_fimg}" style="max-width: 100px;
-  max-height: 100px;
-  overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info"><img src="/imgpage/${admineventendlist.e_bimg}" style="max-width: 100px;
-  max-height: 100px;
-  overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info">${admineventendlist.e_sdate }</a></td>
-		<td><a href="/EventCont?e_idx=${admineventendlist.e_idx }" class="card-info">${admineventendlist.e_edate }</a></td>
+	    <td onclick="window.location='/EventCont?e_idx=${admineventendlist.e_idx }'" class="card-info">${admineventendlist.e_title }</td>
+	    <td onclick="window.location='/EventCont?e_idx=${admineventendlist.e_idx }'" class="card-info">${admineventendlist.s_no}</td>
+	    <td onclick="window.location='/EventCont?e_idx=${admineventendlist.e_idx }'" class="card-info"><img src="/imgpage/${admineventendlist.e_fimg}" style="max-width: 100px;
+		     max-height: 100px; overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></td>
+	    <td onclick="window.location='/EventCont?e_idx=${admineventendlist.e_idx }'" class="card-info"><img src="/imgpage/${admineventendlist.e_bimg}" style="max-width: 100px;
+		     max-height: 100px; overflow: hidden; /* 이미지를 컨테이너 크기로 자르기 */"></td>
+        <td onclick="window.location='/EventCont?e_idx=${admineventendlist.e_idx }'" class="card-info"><fmt:formatDate value="${admineventendlist.e_sdate }" pattern="yyyy-MM-dd HH:mm" /></td>		     
+        <td onclick="window.location='/EventCont?e_idx=${admineventendlist.e_idx }'" class="card-info"><fmt:formatDate value="${admineventendlist.e_edate }" pattern="yyyy-MM-dd HH:mm" /></td>		     
 	</tr>
 	</c:forEach>
 	</table>

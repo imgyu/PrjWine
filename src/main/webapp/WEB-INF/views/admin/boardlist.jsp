@@ -93,10 +93,10 @@ th {
 	<c:forEach var="board" items="${board }">
 	<tr>
 	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${board.b_idx }"></td>
-		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="card-info">${board.b_idx }</a></td>
-		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="card-info">${board.b_title}</a></td>
-		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="card-info">${board.b_cont }</a></td>
-		<td><a href="/BoardCont?b_idx=${board.b_idx}" class="card-info">${board.s_name }</a></td>
+	    <td onclick="window.location='/BoardCont?b_idx=${board.b_idx}'" class="card-info">${board.b_idx }</td>
+	    <td onclick="window.location='/BoardCont?b_idx=${board.b_idx}'" class="card-info">${board.b_title}</td>
+	    <td onclick="window.location='/BoardCont?b_idx=${board.b_idx}'" class="card-info">${board.b_cont }</td>
+	    <td onclick="window.location='/BoardCont?b_idx=${board.b_idx}'" class="card-info">${board.s_name }</td>
 	</tr>
 	</c:forEach>
 	</table>

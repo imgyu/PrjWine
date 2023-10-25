@@ -133,6 +133,7 @@ th {
             </div>
          </form>
       </div>
+      <br>
          <table id="table">
    <tr class="first-row">
        <th><input type="checkbox" id="allCheck"></th>
