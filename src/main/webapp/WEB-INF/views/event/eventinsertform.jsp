@@ -116,13 +116,13 @@ ui-datepicker             ui-widget                ui-widget-content            
         </div>
         <div class="form-group">
             <label for="upfile">메인 이미지</label>
-            <input type="file" accept="image/*" onchange="readURL(this, 'preview1')" name="upfile" class="upfile" id="upfile">
-            <img id="preview1" class="preview-image" alt="메인 이미지">
+            <input type="file" accept="image/*" onchange="readURL1(this)" name="upfile" class="upfile" id="upfile">
+            <img id="preview1" class="preview" alt="메인 이미지" style="max-width: 300px;">
         </div>
         <div class="form-group">
             <label for="upfile2">내용 이미지</label>
-            <input type="file" accept="image/*" onchange="readURL(this, 'preview2')" name="upfile2" class="upfile2" id="upfile2">
-            <img id="preview2" class="preview-image" alt="내용 이미지">
+            <input type="file" accept="image/*" onchange="readURL2(this)" name="upfile2" class="upfile2" id="upfile2">
+            <img id="preview2" class="preview" alt="내용 이미지" style="max-width: 300px;">
         </div>
         <div class="form-group">
             <label for="datepicker1">시작 날짜 선택</label>
@@ -170,15 +170,26 @@ ui-datepicker             ui-widget                ui-widget-content            
 
 		}
 
-		function readURL(input) {
+		function readURL1(input) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 				reader.onload = function(e) {
-					document.getElementById('preview').src = e.target.result;
+					document.getElementById('preview1').src = e.target.result;
 				};
 				reader.readAsDataURL(input.files[0]);
 			} else {
-				document.getElementById('preview').src = "";
+				document.getElementById('preview1').src = "";
+			}
+		}
+		function readURL2(input) {
+			if (input.files && input.files[0]) {
+				var reader = new FileReader();
+				reader.onload = function(e) {
+					document.getElementById('preview2').src = e.target.result;
+				};
+				reader.readAsDataURL(input.files[0]);
+			} else {
+				document.getElementById('preview2').src = "";
 			}
 		}
 
