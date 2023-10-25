@@ -126,6 +126,8 @@ th {
     </div>
 </body>
 <script>
+
+function myconfirm() {
 var wineery = document.querySelector('input[name="w_wineery"]').value;
 var wine = document.querySelector('input[name="w_name"]').value;
 var vintage = document.querySelector('input[name="w_vintage"]').value;
@@ -133,8 +135,6 @@ var avg = document.querySelector('input[name="w_avg"]').value;
 var reviews = document.querySelector('input[name="w_reviews"]').value;
 var location = document.querySelector('input[name="w_location"]').value;
 var kind = document.querySelector('select[name="w_kind"]').value;
-
-function myconfirm() {
 if (wineery === '' || wine === '' || vintage === '' || avg === '' || reviews === '' || location === '' || kind === 'kind') {
     alert("입력 필드를 모두 작성하세요.");
     event.preventDefault(); // 링크를 직접 실행하지 않음

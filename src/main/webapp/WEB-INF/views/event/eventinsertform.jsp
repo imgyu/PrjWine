@@ -6,6 +6,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <style>
 .event-create {
     width: 80%;
@@ -116,13 +118,13 @@ ui-datepicker             ui-widget                ui-widget-content            
         </div>
         <div class="form-group">
             <label for="upfile">메인 이미지</label>
-            <input type="file" accept="image/*" onchange="readURL1(this)" name="upfile" class="upfile" id="upfile">
-            <img id="preview1" class="preview" alt="메인 이미지" style="max-width: 300px;">
+            <input type="file" accept="image/*" onchange="readURL(this, 'preview1')" name="upfile" class="upfile" id="upfile">
+            <img id="preview1" class="preview-image" alt="메인 이미지">
         </div>
         <div class="form-group">
             <label for="upfile2">내용 이미지</label>
-            <input type="file" accept="image/*" onchange="readURL2(this)" name="upfile2" class="upfile2" id="upfile2">
-            <img id="preview2" class="preview" alt="내용 이미지" style="max-width: 300px;">
+            <input type="file" accept="image/*" onchange="readURL(this, 'preview2')" name="upfile2" class="upfile2" id="upfile2">
+            <img id="preview2" class="preview-image" alt="내용 이미지">
         </div>
         <div class="form-group">
             <label for="datepicker1">시작 날짜 선택</label>
@@ -170,38 +172,28 @@ ui-datepicker             ui-widget                ui-widget-content            
 
 		}
 
-		function readURL1(input) {
+		function readURL(input) {
 			if (input.files && input.files[0]) {
 				var reader = new FileReader();
 				reader.onload = function(e) {
-					document.getElementById('preview1').src = e.target.result;
+					document.getElementById('preview').src = e.target.result;
 				};
 				reader.readAsDataURL(input.files[0]);
 			} else {
-				document.getElementById('preview1').src = "";
-			}
-		}
-		function readURL2(input) {
-			if (input.files && input.files[0]) {
-				var reader = new FileReader();
-				reader.onload = function(e) {
-					document.getElementById('preview2').src = e.target.result;
-				};
-				reader.readAsDataURL(input.files[0]);
-			} else {
-				document.getElementById('preview2').src = "";
+				document.getElementById('preview').src = "";
 			}
 		}
 
-		const config = {
-			dateFormat : 'yy-mm-dd'
-		}
-		$(function() {
-			$("#datepicker1").datepicker(config);
-		});
-		$(function() {
-			$("#datepicker2").datepicker(config);
-		});
+		  // Flatpickr를 시작하고 옵션을 설정합니다.
+		  flatpickr("#datepicker1", {
+		    dateFormat:  'Y-m-d'
+		  });
+
+		  flatpickr("#datepicker2", {
+		    dateFormat:  'Y-m-d'
+		  });
+		  
+
 	</script>
 </body>
 </html>

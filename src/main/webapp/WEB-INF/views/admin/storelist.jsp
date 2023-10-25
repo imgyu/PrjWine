@@ -10,7 +10,7 @@
 <style>
 
   #table { 
-         width: 80%; 
+         width: 70%; 
          margin: 0 auto; /* 수평 가운데 정렬 */
          border-collapse: collapse; /* 테이블 셀 경계를 합칩니다. */
       }
@@ -40,12 +40,13 @@
       background-color: #f2f2f2;
       }
       
-      .back-home-button {
+       .back-home-button {
 	text-align: center; /* 가로 중앙 정렬 */
 	display: flex;
 	justify-content: center; /* 가로 중앙 정렬 */
 	margin-top: 20px; 
 }	
+      
       
 .card-info {
 	text-decoration: none;
@@ -106,7 +107,7 @@ th {
 	</tr>
 	</c:forEach>
 	</table>
-	 <div class="back-home-button text-center">
+	<div class="back-home-button text-center">
 	 <a type="button" class="btn btn-danger"" onclick="deleteValue();">삭제</a>
 	 </div>
 	<div class="pagination">
@@ -129,7 +130,7 @@ th {
  </c:if>
 
 </div>
-
+ 
 <script>
 //전체 체크    
 var chkObj  =  document.getElementsByName("rowCheck");

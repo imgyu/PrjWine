@@ -40,13 +40,12 @@
       background-color: #f2f2f2;
       } 
       
-      .back-home-button {
+    .back-home-button {
 	text-align: center; /* 가로 중앙 정렬 */
 	display: flex;
 	justify-content: center; /* 가로 중앙 정렬 */
 	margin-top: 20px; 
 }	
-
 .card-info {
 	text-decoration: none;
 	font-size: 18px; /* 글씨 크기 조절 */
@@ -101,6 +100,7 @@ th {
 	  <div class="back-home-button text-center">
 	 <a type="button" class="btn btn-danger" onclick="deleteValue();">삭제</a>
 	 </div>
+	
 	<div class="pagination">
 
     <c:if test="${pds.startPage != 1 }">

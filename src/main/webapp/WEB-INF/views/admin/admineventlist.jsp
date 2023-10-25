@@ -137,10 +137,10 @@ th {
 	</tr>
 	</c:forEach>
 	</table>
+	<br>
 	<div class="back-home-button text-center">
 	 <a type="button" class="btn btn-danger"" onclick="deleteValue();">삭제</a>
 	 </div>
-	
 	<div class="pagination">
 
     <c:if test="${pds.startPage != 1 }">

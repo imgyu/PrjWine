@@ -78,8 +78,9 @@ button[type="submit"] {
 }
       
 
+
 .back-home-button {
-	text-align: center; /* 가로 중앙 정렬 */
+ 	text-align: center; /* 가로 중앙 정렬 */
 	display: flex;
 	justify-content: center; /* 가로 중앙 정렬 */
 	margin-top: 20px; 
@@ -160,10 +161,11 @@ th {
    </tr>
    </c:forEach>
    </table>
-   <div class="pagination">
-	<div class="back-home-button text-center">
+   <div class="back-home-button text-center">
    <a type="button" class="btn btn-danger" onclick="deleteValue();">삭제</a>
    </div>
+   <div class="pagination">
+	<br>
     <c:if test="${pds.startPage != 1}">
     <a href="/AdWineSearch?kindOption=${kindOption}&searchKeyword=${searchKeyword}&searchOption=${searchOption}&nowPage=${pds.startPage - 1}&cntPerPage=${pds.cntPerPage}">&lt;</a>
 </c:if>

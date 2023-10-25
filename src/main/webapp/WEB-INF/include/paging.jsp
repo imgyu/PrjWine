@@ -3,7 +3,7 @@
 <%@taglib  prefix="c"  uri="http://java.sun.com/jsp/jstl/core" %> 
   
 <div style="display: block; text-align: center;">
- 
+  
     <c:if test="${pds.startPage != 1 }">
     <a href="/AdminUserList?nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
     </c:if>

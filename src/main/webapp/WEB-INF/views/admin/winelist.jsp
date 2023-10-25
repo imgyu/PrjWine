@@ -84,6 +84,7 @@
 }
 
 
+
 .back-home-button {
  	text-align: center; /* 가로 중앙 정렬 */
 	display: flex;
@@ -169,9 +170,7 @@ th {
    </tr>
    </c:forEach>
    </table>
-     <div class="back-home-button text-center">
-   <a type="button" class="btn btn-danger" onclick="deleteValue();">삭제</a>
-   </div>
+   <br>
    <div class="pagination">
 
     <c:if test="${pds.startPage != 1}">
@@ -191,7 +190,9 @@ th {
     <a href="/AdminWineList?nowPage=${pds.endPage + 1}&cntPerPage=${pds.cntPerPage}">&gt;</a>
 </c:if>
 </div>
-
+  <div class="back-home-button text-center">
+   <a type="button" class="btn btn-danger" onclick="deleteValue();">삭제</a>
+   </div>
 <script>
 //전체 체크    
 var chkObj  =  document.getElementsByName("rowCheck");

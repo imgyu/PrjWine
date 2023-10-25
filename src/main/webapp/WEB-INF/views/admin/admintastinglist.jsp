@@ -102,7 +102,8 @@ th {
          </c:forEach>
       </div>
    </table>
-     <div class="back-home-button text-center">
+   <br>
+   <div class="back-home-button text-center">
    <a type="button" class="btn btn-danger"" onclick="deleteValue();">삭제</a>
    </div>
    <div class="pagination">
@@ -125,7 +126,7 @@ th {
  </c:if>
 
 </div>
-
+  
    </div>
    </main>
    <script>
