@@ -5,16 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-<link rel="stylesheet" href="assets/css/all.min.css">
-<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/owl.carousel.css">
-<link rel="stylesheet" href="assets/css/magnific-popup.css">
-<link rel="stylesheet" href="assets/css/animate.css">
-<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-<link rel="stylesheet" href="assets/css/main.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <style>
   #table { 
          width: 70%; 
@@ -24,7 +15,8 @@
 
       /* 테이블 헤더 스타일 */
       #table th { 
-         background-color: #f2f2f2; /* 헤더 배경색 */
+         background-color: #800021; /* 헤더 배경색 - 빨간색 */
+         color: #f2f2f2;
          border: 1px solid #dddddd; /* 테두리 선 스타일 */
          padding: 10px; /* 셀 안 여백 */
          text-align: center; /* 가운데 정렬 */
@@ -43,49 +35,102 @@
       background-color: #f2f2f2;
       } 
 </style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-<script src="assets/js/jquery.countdown.js"></script>
-<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-<script src="assets/js/waypoints.js"></script>
-<script src="assets/js/owl.carousel.min.js"></script>
-<script src="assets/js/jquery.magnific-popup.min.js"></script>
-<script src="assets/js/jquery.meanmenu.min.js"></script>
-<script src="assets/js/sticker.js"></script>
-<script src="assets/js/main.js"></script>
 </head>
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
 	  <div class="breadcrumb-section breadcrumb-bg">
-      <div class="container">
-         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">
                <div class="breadcrumb-text">
                <br>
-                  <h1>전체매장</h1>
+                  <h1>관심매장</h1>
                   <br>
-                  <p>Store Information</p>
+                  <p>Favorite Store</p>
                </div>
-            </div>
-         </div>
       </div>
    </div>
    <br>
    <br>
-	<table id="table">
+	<table id="table" class="table table-striped table-hover">
 	<tr class="first-row">
-		<td>매장이름</td>
-		<td>매장주소</td>
+	    <th><input type="checkbox" id="allCheck"></th>
+		<th>매장이름</th>
+		<th>매장주소</th>
 	</tr>
-	<tr>
-		<td></td>
-		<td></td>
+	<c:forEach var="favorite" items="${favorites}">
+	 <tr>
+	    <td><input type="checkbox" name="rowCheck" id="rowCheck" value="${favorite.s_no }">
+	        <input type="hidden" value="${favorite.u_no }"></td>
+		<td onclick="window.location='/StoreInfo?s_no=${favorite.s_no }'">${favorite.s_name}</td>
+		<td onclick="window.location='/StoreInfo?s_no=${favorite.s_no }'">${favorite.s_address }&nbsp;${favorite.s_detailAddress }</td>
 	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-	</tr>
+   </c:forEach>
 	</table>
+	<br>
+	<div style="text-align: center;">
+		<a type="button" class="btn btn-danger" onclick="deleteValue();">삭제</a>
+		<button type="button" class="btn btn-secondary" onclick="location.href='/ '">메인 화면</button>
+	</div>
 </body>
+<script>
+function confirmDelete() {
+    if (confirm('삭제하시겠습니까?')) {
+        alert("삭제되었습니다.");
+    } else {
+    	alert("삭제 실패");
+    	event.preventDefault(); // 링크를 직접 실행하지 않음
+    }
+}
+
+var chkObj  =  document.getElementsByName("rowCheck");
+var rowCnt  =  chkObj.length;
+
+$("input[id='allCheck']").click(function() {
+   var chk_listArr  =  $("input[name='rowCheck']");
+   for (var i=0; i<chk_listArr.length; i++) {
+      chk_listArr[i].checked  =  this.checked;
+   }
+});
+
+function deleteValue() {
+	   var u_no =  ${u_no};
+	   var s_no =  ${s_no};
+	   var url  =  "/UserFavoriteDelete?u_no=" + u_no + "&s_no=" + s_no;
+	   var valueArr  =  [];
+	   var list  =  $("input[name='rowCheck']");
+	   for(var i = 0; i < list.length; i++) {
+	      if(list[i].checked) {
+	         valueArr.push(list[i].value);
+	      }
+	   }
+	   if(valueArr.length == 0) {
+	      alert("선택하신 게 없습니다.");
+	   }
+	   else {
+	      var chk  =  confirm("정말 삭제하시겠습니까?");
+	      if(chk){
+	      $.ajax({
+	         url  :  url,
+	         type : 'post',
+	         traditional : true,
+	         data : {
+	            'valueArr[]'  :  valueArr
+	         },
+	         success: function(jdata) {
+	            if(jdata == 1) {
+	               alert("삭제성공");
+	               location.reload();
+	               
+	            }
+	            else {
+	               alert("삭제 실패");
+	               event.preventDefault();
+	            }
+	         }
+	      });
+	   }
+	}  // deleteValue
+	}     
+
+
+</script>
 </html>

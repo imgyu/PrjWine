@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Cs">
+
+<insert id="UserCsInsert">
+
+INSERT INTO USERCS (UCS_IDX , U_NO, UCS_TITLE, UCS_CONT, UW_DATE, UCS_IMG, UCS_CATEGORY)
+VALUES(
+(SELECT NVL(MAX(UCS_IDX), 0)+1 FROM USERCS),
+#{u_no},
+#{ucs_title},
+#{ucs_cont},
+SYSDATE,
+#{ucs_img},
+#{ucs_category}
+)
+</insert>
+<insert id="UserCsInsert2">
+
+INSERT INTO USERCS (UCS_IDX , U_NO, UCS_TITLE, UCS_CONT, UW_DATE, UCS_CATEGORY)
+VALUES(
+(SELECT NVL(MAX(UCS_IDX), 0)+1 FROM USERCS),
+#{u_no},
+#{ucs_title},
+#{ucs_cont},
+SYSDATE,
+#{ucs_category}
+)
+</insert>
+
+<insert id="StoreCsInsert">
+
+INSERT INTO STORECS (SCS_IDX , S_NO, SCS_TITLE, SCS_CONT, SW_DATE, SCS_IMG, SCS_CATEGORY)
+VALUES(
+(SELECT NVL(MAX(SCS_IDX), 0)+1 FROM STORECS),
+#{s_no},
+#{scs_title},
+#{scs_cont},
+SYSDATE,
+#{scs_img},
+#{scs_category}
+)
+</insert>
+
+<insert id="StoreCsInsert2">
+
+INSERT INTO STORECS (SCS_IDX , S_NO, SCS_TITLE, SCS_CONT, SW_DATE, SCS_CATEGORY)
+VALUES(
+(SELECT NVL(MAX(SCS_IDX), 0)+1 FROM STORECS),
+#{s_no},
+#{scs_title},
+#{scs_cont},
+SYSDATE,
+#{scs_category}
+)
+</insert>
+
+   <select id="UsercsList" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  USERCS
+	   WHERE U_NO = #{u_no}
+	   ORDER BY UCS_IDX DESC
+  </select> 
+  
+  
+  <select id="CsAllUserList" resultType="com.green.cs.vo.CsVo">
+      SELECT CS.UCS_IDX, U.U_ID, CS.UCS_CATEGORY, CS.UCS_TITLE, CS.UW_DATE, CS.RES_DATE
+	   FROM  USERCS CS LEFT JOIN TUSER U ON CS.U_NO = U.U_NO
+	   ORDER BY CS.UCS_IDX DESC
+  </select> 
+  
+  <select id="CsviewList" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  USERCS CS LEFT JOIN TUSER U ON CS.U_NO = U.U_NO
+	   WHERE CS.UCS_IDX = ${ucs_idx}
+  </select> 
+  
+  
+  <select id="CsStoreView" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  STORECS CS LEFT JOIN STORE S ON CS.S_NO = S.S_NO
+	   WHERE CS.SCS_IDX = ${scs_idx}
+  </select> 
+  
+  
+  <select id="AdminCsStoreView" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  STORECS CS LEFT JOIN STORE S ON CS.S_NO = S.S_NO
+	   WHERE CS.SCS_IDX = ${scs_idx}
+  </select> 
+  
+  
+  
+  
+  
+  <select id="AdminCsviewList" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  USERCS CS LEFT JOIN TUSER U ON CS.U_NO = U.U_NO
+	   WHERE CS.UCS_IDX = ${ucs_idx}
+	  
+  </select> 
+
+   <select id="StorecsList" resultType="com.green.cs.vo.CsVo">
+      SELECT *
+	   FROM  STORECS
+	   WHERE S_NO = #{s_no}
+	   ORDER BY SCS_IDX DESC
+  </select> 
+  
+ <select id="CsAllStoreList" resultType="com.green.cs.vo.CsVo">
+      SELECT CS.SCS_IDX , S.S_ID, CS.SCS_CATEGORY, CS.SCS_TITLE, CS.SW_DATE, CS.RES_DATE
+	   FROM  STORECS CS LEFT JOIN STORE S ON CS.S_NO = S.S_NO
+	   ORDER BY CS.SCS_IDX DESC
+  </select>   
+
+<update id="AdminCsResponse">
+
+UPDATE USERCS
+SET    RES_DATE  =  SYSDATE,
+       RESPONSE  =  #{response}
+WHERE  UCS_IDX   =  #{ucs_idx}
+
+</update>
+
+<update id="AdminCsStoreResponse">
+
+UPDATE STORECS
+SET    RES_DATE  =  SYSDATE,
+       RESPONSE  =  #{response}
+WHERE  SCS_IDX   =  #{scs_idx}
+
+</update>
+
+<select id="CountCsUser" resultType="int">
+
+SELECT COUNT(*) FROM USERCS
+WHERE U_NO  =  #{u_no}
+
+</select>
+
+<select id="GetUserCsList2" resultType="com.green.cs.vo.CsVo">
+SELECT *
+FROM (
+ SELECT ROWNUM RN, A.*
+ FROM (
+ SELECT *
+ FROM USERCS
+ WHERE U_NO =  #{u_no}
+ ORDER BY UCS_IDX DESC
+ ) A
+)
+WHERE RN BETWEEN #{start} AND #{end}
+  
+
+</select>
+<select id="CountCsStore" resultType="int">
+
+SELECT COUNT(*) FROM STORECS
+WHERE S_NO  =  #{s_no}
+
+</select>
+
+<select id="GetStoreCsList2" resultType="com.green.cs.vo.CsVo">
+SELECT *
+FROM (
+ SELECT ROWNUM RN, A.*
+ FROM (
+ SELECT *
+ FROM STORECS
+ WHERE S_NO =  #{s_no}
+ ORDER BY SCS_IDX DESC
+ ) A
+)
+WHERE RN BETWEEN #{start} AND #{end}
+  
+
+</select>
+
+<select id="CountAdminCsUser" resultType="int">
+
+SELECT COUNT(*) FROM USERCS
+
+</select>
+
+  <select id="CsAdminUserList" resultType="com.green.cs.vo.CsVo">
+  SELECT *
+  FROM (
+  SELECT ROWNUM RN, A.*
+  FROM(
+      SELECT CS.UCS_IDX, U.U_ID, CS.UCS_CATEGORY, CS.UCS_TITLE, CS.UW_DATE, CS.RES_DATE
+	   FROM  USERCS CS LEFT JOIN TUSER U ON CS.U_NO = U.U_NO
+	   ORDER BY CS.UCS_IDX DESC  
+  ) A
+  )
+  WHERE RN BETWEEN #{start} AND #{end}
+  </select> 
+
+<select id="CountAdminCsStore" resultType="int">
+
+SELECT COUNT(*) FROM STORECS
+</select>
+
+<select id="CsAdminStoreList" resultType="com.green.cs.vo.CsVo">
+SELECT *
+FROM(
+SELECT ROWNUM RN, A.*
+FROM(
+       SELECT CS.SCS_IDX , S.S_ID, CS.SCS_CATEGORY, CS.SCS_TITLE, CS.SW_DATE, CS.RES_DATE
+	   FROM  STORECS CS LEFT JOIN STORE S ON CS.S_NO = S.S_NO
+	   ORDER BY CS.SCS_IDX DESC
+
+) A
+)
+WHERE RN BETWEEN #{start} AND #{end}  
+  </select> 
+
+
+</mapper>

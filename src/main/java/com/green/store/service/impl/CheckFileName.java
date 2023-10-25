@@ -14,22 +14,21 @@ public class CheckFileName {
 		String    fullFilePath    =  null;
 		File      file            =  null;
 		
-		String    s_fileName        =  orgFileName;
+		String    fileName        =  orgFileName;
 		
 		int i = 0;
 		while( isCheck ) {
-			fullFilePath  =  filePath  + s_fileName + s_imgExt;
+			fullFilePath  =  filePath  + fileName + s_imgExt;
 			
 			file          =  new File(  fullFilePath ); 
 			if( file.exists() ) {
 				i++;
-				s_fileName = String.format("%s_%d", orgFileName, i); 
+				fileName = String.format("%s_%d", orgFileName, i); 
 			} else {
 				isCheck = false;
 			}
 		}
-		returnFileName  =  s_fileName + s_imgExt;
-		System.out.println(returnFileName);
+		returnFileName  =  fileName + s_imgExt;
 		
 		return   returnFileName;
 	}

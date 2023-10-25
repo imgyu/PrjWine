@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Admin">
+
+<select id="AdminWineList" resultType="com.green.store.vo.WineVo">
+
+SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+        SELECT *
+        FROM WINE
+        ORDER BY W_NO ASC
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
+</select>
+ 
+<select id="AdminBoardList2" resultType="com.green.board.vo.BoardVo">
+
+SELECT *
+FROM (
+SELECT ROWNUM RN, A.* 
+    FROM(
+    SELECT B.*, S.S_NAME, S.S_ADDRESS, S_DETAILADDRESS
+    FROM  BOARD B
+    LEFT JOIN STORE S  ON B.S_NO = S.S_NO
+    ORDER BY B.B_IDX DESC
+) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
+</select>
+ 
+<select id="AdminTastingList2" resultType="com.green.tasting.vo.TastingVo">
+
+SELECT *
+FROM (
+SELECT ROWNUM RN, A.* 
+    FROM(
+    SELECT T.*, S.S_NAME, S.S_ADDRESS, S.S_DETAILADDRESS
+    FROM TESTING T
+    LEFT JOIN STORE S ON T.S_NO = S.S_NO
+    ORDER BY T.T_IDX DESC
+) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
+</select>
+ 
+<select id="AdminStoreList2" resultType="com.green.store.vo.StoreVo">
+
+SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+        SELECT *
+        FROM STORE
+        ORDER BY S_NO DESC
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} AND S_NO &lt;&gt; 99
+</select>
+
+<select id="AdminUserList2" resultType="com.green.user.vo.UserVo">
+
+SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+        SELECT *
+        FROM TUSER
+        ORDER BY U_NO DESC
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end}
+</select>
+
+
+<delete id="AdminTastingListDelete">
+
+DELETE FROM TESTING
+WHERE  T_IDX  =  #{t_idx}
+
+</delete>
+
+<delete id="AdminStoreListDelete">
+
+DELETE FROM STORE
+WHERE S_NO  =  #{s_no}
+
+</delete>
+
+<delete id="AdminBoardListDelete">
+
+DELETE FROM BOARD
+WHERE B_IDX = #{b_idx}
+
+</delete>
+
+<delete id="AdminUserListDelete">
+
+DELETE FROM TUSER
+WHERE U_NO  =  #{u_no}
+
+</delete>
+
+<select id="CountUser" resultType="int">
+
+SELECT COUNT(*) FROM TUSER
+</select>
+
+<select id="CountStore" resultType="int">
+
+SELECT COUNT(*) FROM Store
+
+</select>
+
+<select id="CountTasting" resultType="int">
+
+SELECT COUNT(*) FROM TESTING
+
+</select>
+
+<select id="CountBoard" resultType="int">
+
+SELECT COUNT(*) FROM BOARD
+
+</select>
+<select id="countWineSearch" resultType="int" parameterType="Map">
+
+SELECT COUNT(*)
+    FROM WINE
+    <where>
+    <if test="searchOption == 'W_NAME'">
+    <choose>
+    <when test="kindOption == 'W_KIND'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = W_KIND
+    </when>
+    <when test="kindOption == 'PORT'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'DESSERT'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'RED'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'ROSE'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'WHITE'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'SPARKLING'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    </choose>
+    </if>
+    <if test="searchOption == 'W_LOCATION'">
+    <choose>
+    <when test="kindOption == 'W_KIND'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = W_KIND
+    </when>
+    <when test="kindOption == 'PORT'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'DESSERT'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'RED'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'ROSE'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'WHITE'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'SPARKLING'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    </choose>
+    </if>
+    <if test="searchOption == 'W_VINTAGE'">
+    <choose>
+    <when test="kindOption == 'W_KIND'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = W_KIND
+    </when>
+    <when test="kindOption == 'PORT'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'DESSERT'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'RED'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'ROSE'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'WHITE'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'SPARKLING'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    </choose>
+    </if>
+    </where>
+
+</select>
+
+
+<insert id="AdminWineInsert">
+
+INSERT INTO WINE (W_NO, W_WINEERY, W_NAME, W_VINTAGE, W_AVG, W_REVIEWS, W_LOCATION, W_IMAGE, W_KIND)
+VALUES( 
+(SELECT NVL(MAX(W_NO),0)+1 FROM WINE), 
+#{w_wineery}, 
+#{w_name}, 
+#{w_vintage}, 
+#{w_avg}, 
+#{w_reviews}, 
+#{w_location}, 
+#{w_image}, 
+#{w_kind}
+)
+
+</insert>
+
+<select id="CountWine" resultType="int">
+
+SELECT COUNT(*) FROM WINE
+
+</select>
+
+ <delete id="AdminDeleteWineList">
+
+DELETE FROM WINE
+WHERE W_NO  =  #{w_no}
+
+</delete>
+
+<select id="AdWineList" resultType="com.green.store.vo.WineVo" parameterType="Map">
+SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+SELECT *
+    FROM WINE
+    <where>
+    <if test="searchOption == 'W_NAME'">
+    <choose>
+    <when test="kindOption == 'W_KIND'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = W_KIND
+    </when>
+    <when test="kindOption == 'PORT'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'DESSERT'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'RED'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'ROSE'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'WHITE'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'SPARKLING'">
+          W_NAME LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    </choose>
+    </if>
+    <if test="searchOption == 'W_LOCATION'">
+    <choose>
+    <when test="kindOption == 'W_KIND'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = W_KIND
+    </when>
+    <when test="kindOption == 'PORT'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'DESSERT'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'RED'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'ROSE'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'WHITE'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'SPARKLING'">
+          W_LOCATION LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    </choose>
+    </if>
+    <if test="searchOption == 'W_VINTAGE'">
+    <choose>
+    <when test="kindOption == 'W_KIND'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = W_KIND
+    </when>
+    <when test="kindOption == 'PORT'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'DESSERT'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'RED'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'ROSE'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'WHITE'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    <when test="kindOption == 'SPARKLING'">
+          W_VINTAGE LIKE '%' || INITCAP(#{searchKeyword}) || '%' AND W_KIND = #{kindOption}
+    </when>
+    </choose>
+    </if>
+    </where>
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end} 
+</select>
+
+
+<select id="AdminEventList" resultType="com.green.event.vo.EventVo">
+   
+   
+   SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+        SELECT *
+   FROM EVENT
+   WHERE SYSDATE BETWEEN E_SDATE AND E_EDATE
+   ORDER BY E_EDATE DESC  
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end}
+  </select> 
+  
+<select id="AdminEventEndList" resultType="com.green.event.vo.EventVo">
+   
+   
+   SELECT *
+FROM (
+    SELECT ROWNUM RN, A.*
+    FROM (
+      SELECT *
+   FROM EVENT
+   WHERE E_EDATE &lt; SYSDATE
+   ORDER BY E_EDATE DESC  
+    ) A
+)
+WHERE RN BETWEEN #{start} AND #{end}
+  </select> 
+  
+  <select id="CountEvent" resultType="int">
+
+SELECT COUNT(*) FROM EVENT WHERE SYSDATE BETWEEN E_SDATE AND E_EDATE
+</select>
+
+  <select id="CountEndEvent" resultType="int">
+
+SELECT COUNT(*) FROM EVENT WHERE E_EDATE &lt; SYSDATE
+</select>
+
+<delete id="AdminEventListDelete">
+
+DELETE FROM EVENT
+WHERE  E_IDX  =  #{e_idx}
+
+</delete>
+
+<delete id="AdminEndEventListDelete">
+
+DELETE FROM EVENT
+WHERE  E_IDX  =  #{e_idx}
+
+</delete>
+  
+</mapper>

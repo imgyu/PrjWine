@@ -5,10 +5,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
+import com.green.tasting.vo.TastingVo;
+import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
 public interface StoreService {
@@ -45,7 +48,7 @@ public interface StoreService {
    // 매장이름검색기능
 
 
-   List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption);
+   List<RegVo> getStoreListSearch(int s_no, String w_kind, String searchKeyword, String searchOption);
 
    int idCheck(String s_id);
 
@@ -53,7 +56,20 @@ public interface StoreService {
 
    void storeUpdate(HashMap<String, Object> map, HttpServletRequest request);
 
+   List<PaymentVo> salesHistory(PaymentVo vo);
 
+   int countManage(HavingWineVo vo);
 
+   List<HavingWineVo> wineList2(PdsPagingVo pds, int s_no);
+
+   int countStore(StoreVo vo);
+
+   List<StoreVo> storeList2(PdsPagingVo pds);
+
+   int countSearchStore(String sname_Search);
+
+   List<StoreVo> snameSearch2(PdsPagingVo pds, String sname_Search);
+
+   void updateShistory(PaymentVo vo);
 
 }

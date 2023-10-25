@@ -1,254 +1,228 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>매장 정보</title>
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-	crossorigin="anonymous">
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-	crossorigin="anonymous"></script>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
-	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
-	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3e1bc19bc313fda7048dd34538eebc17&libraries=services"></script>
 <style>
-body {
-	font-family: Arial, sans-serif;
-	background-color: #fff;
-	text-align: center;
-	margin: 0;
-	padding: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-}
-
 .store-container {
-	display: flex;
-	flex-wrap: wrap;
-	max-width: 60%;
-	margin: 20px auto;
+	display: grid;
+	grid-template-columns: repeat(2, 350px); /* 2개의 열을 생성, 각 열의 너비를 동일하게 1fr로 설정 */
+    grid-template-rows: repeat(2, 350px); /* 2개의 행을 생성, 각 행의 높이를 동일하게 1fr로 설정 */
+	gap: 20px;
 	padding: 20px;
-	background-color: #fff;
-	border-radius: 10px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-	height: 100vh;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	background-color: #f9f9f9;
+	width: 800px;
+	height: 800px;
+	place-items: center; /* 화면 중앙으로 배치합니다 */
+	margin: auto;
 }
 
 .store-image {
 	max-width: 100%;
-	max-height: 300px;
-	width: 50%;
-	margin-top: 50px;
-	object-fit: contain;
-	border-radius: 10px 10px 0 0;
+	max-height: 100%;
+	object-fit: cover;
+	border: 1px solid #ddd;
+	border-radius: 5px;
 }
 
 .wine-details {
-	flex-basis: 50%; /* 오른쪽 위 */
+    width: 95%;
+	height: 95%;
+	display: flex;
+	flex-direction: column;
 	padding: 20px;
 }
 
 .store-name {
-	font-size: 36px;
+	font-size: 1.5rem;
 	font-weight: bold;
-	margin-bottom: 20px;
-}
-
-.store-detailAddress {
-	font-size: 18px;
-	margin-bottom: 70px;
-}
-
-.store-address {
-	font-size: 18px;
-	margin-bottom: 70px;
+	margin-bottom: 10px;
 }
 
 .store-cont {
-	font-size: 26px;
-	font-weight: bold;
-	margin-bottom: 30px;
+	line-height: 1.5;
+	margin-bottom: 10px;
 }
 
-.store-link {
-	text-decoration: none;
-	color: #007bff;
-	font-weight: bold;
-	font-size: 18px;
+.store-address {
+	font-style: italic;
+	margin-bottom: 10px;
 }
 
-#table {
-   width: 70%;
-   margin: 0 auto; /* 수평 가운데 정렬 */
-   border-collapse: collapse; /* 테이블 셀 경계를 합칩니다. */
+.store-detailAddress {
+	margin-bottom: 10px;
 }
 
-/* 테이블 헤더 스타일 */
-#table th {
-   background-color: #f2f2f2; /* 헤더 배경색 */
-   border: 1px solid #dddddd; /* 테두리 선 스타일 */
-   padding: 10px; /* 셀 안 여백 */
-   text-align: center; /* 가운데 정렬 */
-   font-weight: bold; /* 텍스트 굵게 표시 */
+.winelist-link {
+	display: block;
+	margin-top: 10px;
 }
 
-/* 테이블 내용 스타일 */
-#table td {
-   border: 1px solid #dddddd; /* 테두리 선 스타일 */
-   padding: 10px; /* 셀 안 여백 */
-   text-align: center; /* 가운데 정렬 */
+#map {
+	width: 95%;
+	height: 95%;
+	float: left;
+	margin:auto;
 }
 
+#board {
+    width: 95%;
+	height: 95%;
+	float: right;
+	margin:auto;
+}
+
+table {
+	width: 100%;
+}
+
+table th, table td {
+	text-align: center;
+}
+.ellipsis {
+  white-space: nowrap; /* 텍스트를 한 줄로 표시 */
+  overflow: hidden; /* 넘치는 텍스트를 숨김 */
+  text-overflow: ellipsis; /* 넘치는 텍스트에 "..." 표시 */
+  max-width: 80px; /* 최대 너비를 설정 (원하는 너비로 조정) */
+}
+
+.table-container {
+	position: sticky;
+	bottom: 0;
+	background-color: white;
+	padding: 10px;
+	text-align: center;
+}
+.tr1 th {
+	background-color: #800021 !important;
+    color: #f2f2f2 !important;
+}
+#div1 { 
+  position: sticky;
+  bottom: 0;
+  background-color: #F9F9F9;
+  padding: 10px;
+  text-align: center;
+}
 </style>
-   <!-- jquery -->
-   <script src="assets/js/jquery-1.11.3.min.js"></script>
-   <!-- bootstrap -->
-   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-   <!-- count down -->
-   <script src="assets/js/jquery.countdown.js"></script>
-   <!-- isotope -->
-   <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-   <!-- waypoints -->
-   <script src="assets/js/waypoints.js"></script>
-   <!-- owl carousel -->
-   <script src="assets/js/owl.carousel.min.js"></script>
-   <!-- magnific popup -->
-   <script src="assets/js/jquery.magnific-popup.min.js"></script>
-   <!-- mean menu -->
-   <script src="assets/js/jquery.meanmenu.min.js"></script>
-   <!-- sticker js -->
-   <script src="assets/js/sticker.js"></script>
-   <!-- main js -->
-   <script src="assets/js/main.js"></script>
 </head>
 <body>
- <%@include file="/WEB-INF/include/nav.jsp"%>
-   <div class="breadcrumb-section breadcrumb-bg">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-               <div class="breadcrumb-text">
-               <br>
-                  <h1>전체매장</h1>
-                  <br>
-                  <p>Store Information</p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <br>
-   <br>
-<main>
+	<%@include file="/WEB-INF/include/nav.jsp"%>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 offset-lg-2 text-center">
+					<div class="breadcrumb-text">
+						<br>
+						<h1>매장 정보</h1>
+						<br>
+						<p>Store Information</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<main>
 
-   <c:forEach var="info" items="${storeInfo}">
-      <div class="store-container">
-         <img class="store-image" src="/img/${info.s_simgname}" alt="매장사진" />
+		<c:forEach var="info" items="${storeInfo}">
+			<div class="store-container">
+				<img class="store-image" src="/imgpage/${info.s_simgname}"
+					alt="매장사진" />
 
-         <div class="wine-details">
-            <div class="store-name">${info.s_name }</div>
-            <div class="store-cont">${info.s_cont}</div>
-            <div class="store-address">${info.s_address }</div>
-            <div class="store-detailAddress">${info.s_detailAddress } <a class="winelist-link" href="/StoreWineManage?s_no=${info.s_no}"
-            class="btn btn-primary">매장보유 와인</a></div>
-         </div>
-          <div id="map" style="width: 50%; height: 350px; float: left;"></div>
-         <div id="board" style="width: 50%; height: 350px; float: right;">
-          <table id="table">
-           <div class="container">
-            <tr>
-             <th>No.</th>
-             <th>공지사항 제목</th>
-             <th>글작성자</th>
-            </tr>
-           </div>
-           <div class="container">
-            <c:forEach var="board" items="${boardList}">
-             <tr>
-              <td>${board.b_idx}</td>
-              <td><a href="/BoardCont?b_idx=${board.b_idx}&s_no=${board.s_no}">${board.b_title}</a></td>
-              <td>${board.s_name}</td>
-             </tr>
-            </c:forEach>
-           </div>
-          </table>
-          <div style="position: sticky; bottom: 0; background-color: white; padding: 10px; text-align: center;">
-           <c:choose>
-            <c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq info.s_no}">
-            <form action="/BoardWriteForm?s_no=${sloginVo.s_no}" method="POST">
-             <input type="submit" class="btn btn-primary" value="새글작성">
-            </form>
-            </c:when>
-           </c:choose>
-          </div>
-          </div>
-      </div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=3e1bc19bc313fda7048dd34538eebc17&libraries=services"></script>
-<script>
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
+				<div class="wine-details">
+					<div class="store-name">${info.s_name }</div>
+					<div class="store-cont">${info.s_cont}</div>
+					<div class="store-address">${info.s_address }</div>
+					<div class="store-detailAddress">${info.s_detailAddress }
+						<a class="winelist-link" href="/StoreWineManage?s_no=${info.s_no}"
+							class="btn btn-primary">매장보유 와인</a>
+					</div>
+				</div>
+				<div id="map"></div>
+				<div id="board">
+					<table id="table" class="table table-striped table-hover">
+							<tr class="tr1">
+								<th>공지사항 제목</th>
+								<th>글작성자</th>
+							</tr>
+							<c:forEach var="board" items="${boardList}" varStatus="loop">
+							<c:if test="${loop.index < 5 }">
+								<tr onclick="window.location='/BoardCont?b_idx=${board.b_idx}&s_no=${board.s_no}'">
+									<td class="ellipsis">${board.b_title}</td>
+									<td class="ellipsis">${board.s_name}</td>
+								</tr>
+							</c:if>
+							</c:forEach>
+					</table>
+					<div id="div1">
+						<c:choose>
+							<c:when
+								test="${not empty sloginVo.s_no and sloginVo.s_no eq info.s_no}">
+								<form action="/BoardWriteForm?s_no=${sloginVo.s_no}"
+									method="POST">
+									<input type="submit" class="btn btn-primary" value="새글작성">
+								</form>
+							</c:when>
+						</c:choose>
+					</div>
+				</div>
+			</div>
+			<script>
+				var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+				mapOption = {
+					center : new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+					level : 3
+				// 지도의 확대 레벨
+				};
 
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
+				// 지도를 생성합니다    
+				var map = new kakao.maps.Map(mapContainer, mapOption);
 
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
+				// 주소-좌표 변환 객체를 생성합니다
+				var geocoder = new kakao.maps.services.Geocoder();
 
-// 주소로 좌표를 검색합니다
-geocoder.addressSearch('${info.s_address}', function(result, status) {
+				// 주소로 좌표를 검색합니다
+				geocoder
+						.addressSearch(
+								'${info.s_address}',
+								function(result, status) {
 
-    // 정상적으로 검색이 완료됐으면 
-     if (status === kakao.maps.services.Status.OK) {
+									// 정상적으로 검색이 완료됐으면 
+									if (status === kakao.maps.services.Status.OK) {
 
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+										var coords = new kakao.maps.LatLng(
+												result[0].y, result[0].x);
 
-        // 결과값으로 받은 위치를 마커로 표시합니다
-        var marker = new kakao.maps.Marker({
-            map: map,
-            position: coords
-        });
+										// 결과값으로 받은 위치를 마커로 표시합니다
+										var marker = new kakao.maps.Marker({
+											map : map,
+											position : coords
+										});
 
-        // 인포윈도우로 장소에 대한 설명을 표시합니다
-        var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">${info.s_name}</div>'
-        });
-        infowindow.open(map, marker);
+										// 인포윈도우로 장소에 대한 설명을 표시합니다
+										var infowindow = new kakao.maps.InfoWindow(
+												{
+													content : '<div style="width:150px;text-align:center;padding:6px 0;">${info.s_name}</div>'
+												});
+										infowindow.open(map, marker);
 
-        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-        map.setCenter(coords);
-    } 
-});    
-</script>
+										// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+										map.setCenter(coords);
+									}
+								});
+			</script>
 
-   </c:forEach>
-   
-   
-</main>
+		</c:forEach>
+
+
+	</main>
 </body>
 </html>

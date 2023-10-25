@@ -1,5 +1,7 @@
 package com.green.tasting.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 
@@ -10,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.RegVo;
 import com.green.tasting.service.TastingService;
 import com.green.tasting.vo.TastingVo;
-import com.green.user.cart.vo.CartVo;
 
 @Controller
 public class TastingWineController {
@@ -22,11 +24,29 @@ public class TastingWineController {
 	
 	// 시음회 정보
 	@RequestMapping("/TastingList")
-	public ModelAndView tastingList(TastingVo vo) {
+	public ModelAndView tastingList(TastingVo vo, PdsPagingVo pds,
+			 @RequestParam(value = "nowPage", required = false) String nowPage,
+			 @RequestParam(value="cntPerPage", required = false)String cntPerPage
+			) {
+		
+		int total  =  tastingService.countTasting();
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "8";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "8";
+		}
+		
+		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
 		List<TastingVo> tastList = tastingService.getTastList(vo);
+		List<TastingVo> tastList2 = tastingService.getTastList2(pds);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("tastList", tastList);
+		mv.addObject("tastList", tastList2);
+		mv.addObject("pds", pds);
 		mv.setViewName("/tasting/tastinglist");
 		return mv;
 	}
@@ -43,7 +63,8 @@ public class TastingWineController {
 
 	// 시음회 등록
 	@RequestMapping("/TastingWrite")
-	public ModelAndView TastingWrite(TastingVo vo ){
+	public ModelAndView TastingWrite(TastingVo vo){
+	    System.out.println("vo : " + vo);
 		tastingService.insertTaste(vo);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("vo", vo);

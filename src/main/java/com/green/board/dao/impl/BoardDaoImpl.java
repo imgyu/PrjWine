@@ -37,4 +37,9 @@ public class BoardDaoImpl implements BoardDao {
 		sqlSession.delete("Board.BoardDelete", vo);
 	}
 
+	@Override
+	public void updateBoard(BoardVo vo) {
+		sqlSession.update("Board.BoardUpdate", vo);
+	}
+
 }

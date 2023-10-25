@@ -3,66 +3,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>매장용 회원가입</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-	crossorigin="anonymous">
-<script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<style>
-.logintitle {
-	text-align: center;
-	margin-top: 40px;
-}
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
+<script	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>	
+    <style>
+        /* Style for the container */
+        .container1 {
+            margin:  auto;
+            width: 50%; /* Reduced width */
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            
+        }
 
-.container {
-	margin: 0 auto; /* 상하여백 좌우여백 */
-}
+        /* Style for the form */
+        form {
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-table {
-	margin: 0 auto;
-	border: 2px solid;
-	border-collapse: collapse;
-}
+        /* Style for table elements */
+        table {
+            width: 100%;
+            hieght: 700px;
+        }
 
-tr>td:nth-child(1) {
-	text-align: center;
-}
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
-tr, td {
-	border: 2px solid;
-}
+        td {
+            padding: 5px;
+        }
 
-.redFont {
-	color: red;
-	font-size: 12px;
-	font-style: italic;
-}
+        /* Style for required fields (add an asterisk) */
+        .redFont {
+            color: #7A001E; /* Red color */
+        }
 
-textarea {
-	resize: none;
-}
-</style>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-	crossorigin="anonymous"></script>
+        /* Style for buttons */
+        .btn {
+            padding: 10px 20px;
+            background-color: #7A001E; /* Red color */
+            color: #fff;
+            border: none;
+            border-radius: .25rem;
+            cursor: pointer;
+            margin-top: 5px;
+        }
+        
 
+        /* Style for the "뒤로가기" button */
+       .btn ,
+       .btn-secondary {
+           margin : 12px !important;
+        }
 
+        /* Style for text inputs and textareas */
+        input[type="text"], input[type="password"], textarea {
+            width: 100%;
+            padding: 6px;
+            margin: 5px 0;
+            border: 1px solid #7A001E; /* Red border */
+            border-radius: 5px;
+        }
 
+        /* Style for the image preview */
+        #preview {
+            max-width: 300px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-
-	<h2 class="logintitle">매장 회원가입</h2>
-	<div class="container">
-		<form action="/StoreJoin" method="POST" enctype="multipart/form-data">
+<%@include file="/WEB-INF/include/nav.jsp"%>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>매장용 로그인</h1>
+				<br>
+				<p class="subtitle">Store Login</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="container1">
+		<form action="/StoreJoin" method="POST" enctype="multipart/form-data" onsubmit="validateForm()">
 			<table>
 				<colgroup>
 					<col width="25%">
@@ -75,31 +108,31 @@ textarea {
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>아이디:</td>
-					<td><input type="text" name="s_id" id="s_id"
+					<td><input type="text" name="s_id" id="s_id" required
 						style="width: 200px">
-						<button type="button" onclick="checkSId()">중복 체크</button></td>
+						<button type="button" onclick="checkSId()" class="btn btn-dark">중복 체크</button></td>
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>비밀번호:</td>
-					<td><input type="password" id="store_pw1" name="s_pw"
+					<td><input type="password" id="store_pw1" name="s_pw" required
 						style="width: 200px" value=><span id=pwdcheck_1></span></td>
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>비밀번호 확인:</td>
-					<td><input type="password" id="store_pw2" style="width: 200px"
+					<td><input type="password" id="store_pw2" style="width: 200px" required
 						onKeyUp="fn_compare_pwd();"> <span id="pwdcheck_2"></span>
 					</td>
 				</tr>
 				<tr>
 					<td><span class="redFont">*</span>매장이름:</td>
-					<td><input type="text" name="s_name" style="width: 200px">
+					<td><input type="text" name="s_name" style="width: 200px" required>
 					</td>
 				</tr>
 				<tr>
-					<td>사업자 등록 번호:</td>
+					<td><span class="redFont">*</span>사업자 등록 번호:</td>
 					<td>
 						<div>
-							<input type="text" name="s_sn" placeholder="(-)빼고 입력"
+							<input type="text" name="s_sn" placeholder="(-)빼고 입력" required
 								style="width: 200px" class="redFont">
 						</div>
 					</td>
@@ -108,22 +141,22 @@ textarea {
 					<td>주소:</td>
 					<td>
 						<div>
-							<input type="text" id="s_postcode" name="s_postcode"
+							<input type="text" id="s_postcode" name="s_postcode" required
 								placeholder="우편번호"> <input type="button"
 								onclick="s_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text" id="s_address" name="s_address"
-								placeholder="주소"><br> <input type="text"
-								id="s_detailAddress" name="s_detailAddress" placeholder="상세주소">
+							<input type="text" id="s_address" name="s_address" required
+								placeholder="주소"><br> <input type="text" 
+								id="s_detailAddress" name="s_detailAddress" placeholder="상세주소" required>
 							<input type="text" id="s_extraAddress" name="s_extraAddress"
 								placeholder="참고항목">
 						</div>
 					</td>
 				</tr>
 				<tr>
-					<td>연락처:</td>
+					<td><span class="redFont">*</span>연락처:</td>
 					<td>
 						<div>
-							<input type="text" name="s_phone" placeholder="(-)빼고 입력"
+							<input type="text" name="s_phone" placeholder="(-)빼고 입력" required
 								class="redFont">
 						</div>
 					</td>
@@ -149,21 +182,16 @@ textarea {
 				</tr>
 				<tr>
 					<td colspan="2">
-						<div>
-							<button class="btn btn-primary" type="submit">회원가입</button>
-							<a class="btn btn-primary" href="/" role="button">홈으로가기</a>
+						<div style="display: flex; justify-content: center;">
+						<a type="button" class="btn btn-secondary" onclick="location.href='/';" style="margin: auto;">메인
+							화면</a>
+							<button class="btn btn-primary" type="submit" style="margin: auto;">회원가입</button>
 						</div>
 					</td>
 				</tr>
 			</table>
 		</form>
-		<script>
-			
-		</script>
-
 	</div>
-	<input type="button" value="뒤로가기" onclick="location.href='/'"
-		style="margin: auto">
 
 
 
@@ -289,6 +317,19 @@ textarea {
 						store_pw2 = false;
 					}
 				});
+		
+		function validateForm() {
+            var requiredFields = document.querySelectorAll('input[required]');
+            for (var i = 0; i < requiredFields.length; i++) {
+                if (requiredFields[i].value.trim() === '') {
+                    alert("필수 입력란을 작성하세요.");
+                    return false;
+                }
+            }
+            return true;
+        }
+		
+		
 	</script>
 </body>
 </html>

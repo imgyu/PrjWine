@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.green.store.vo.HavingWineVo;
 import com.green.tasting.vo.TastingVo;
 import com.green.user.cart.vo.CartVo;
 import com.green.user.cart.vo.PaymentVo;
@@ -24,13 +25,8 @@ public interface CartService {
    void AddCart(CartVo vo);
 
    String insertPay(PaymentVo pay);
-
-String insertPay(PaymentVo vo);
-
-
-
-
-
+   
+   List<HavingWineVo> selCartList(HavingWineVo vo);
 
 
 }

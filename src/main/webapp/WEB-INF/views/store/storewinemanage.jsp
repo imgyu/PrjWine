@@ -1,171 +1,181 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<title>와인 목록</title>
-<link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
-    crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
-	<!-- fontawesome -->
-	<link rel="stylesheet" href="assets/css/all.min.css">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-	<!-- owl carousel -->
-	<link rel="stylesheet" href="assets/css/owl.carousel.css">
-	<!-- magnific popup -->
-	<link rel="stylesheet" href="assets/css/magnific-popup.css">
-	<!-- animate css -->
-	<link rel="stylesheet" href="assets/css/animate.css">
-	<!-- mean menu css -->
-	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
-	<!-- main style -->
-	<link rel="stylesheet" href="assets/css/main.css">
-	<!-- responsive -->
-	<link rel="stylesheet" href="assets/css/responsive.css">
-<style>
-    /* 전체 페이지 스타일 */
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: Arial, sans-serif;
-    }
-
-    /* 제목 스타일 */
-    h1 {
-        text-align: center;
-        margin-top: 60px;
-        margin-bottom: 60px;
-    }
-
-    /* 검색 폼 스타일 */
-    form#search-form {
-   text-align: center;
-   margin-bottom: 20px;
-}
-
-form#search-form input[type="text"] {
-   width: 218px;
-   padding: 5px;
-   border: 1px solid #ccc;
-   border-radius: 5px;
-   margin-right: 10px;
-}
-
-    .dropdown-group {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    /* 드롭다운 버튼 스타일 */
-    .dropdown {
-        display: inline-block;
-        margin-right: 10px;
-    }
-
-    /* 테이블 스타일 */
-    #table {
-        width: 70%;
-        margin: 0 auto;
-        border-collapse: collapse;
-        margin-bottom: 30px; /* 간격 추가 */
-    }
-
-    /* 테이블 헤더 스타일 */
-    #table th {
-        background-color: #f2f2f2;
-        border: 1px solid #dddddd;
-        padding: 10px;
-        text-align: center;
-        font-weight: bold;
-    }
-
-    /* 테이블 셀 스타일 */
-    #table td {
-        border: 1px solid #dddddd;
-        padding: 10px;
-        text-align: center;
-    }
-
-    /* 수정/삭제 버튼 스타일 */
-    .edit-delete-buttons {
-        display: flex;
-        justify-content: center;
-    }
-
-    .edit-delete-buttons form {
-        display: inline-block;
-        margin-right: 5px;
-    }
-
-    .edit-delete-buttons button {
-        padding: 5px 10px;
-        background-color: #ff0000;
-        color: #ffffff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    /* 매장 홈으로 버튼 스타일 */
-    .back-home-button {
-        text-align: center;
-        margin-top: 20px;
-    }
-</style>
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-    crossorigin="anonymous"></script>
-   <script src="assets/js/jquery-1.11.3.min.js"></script>
-   <!-- bootstrap -->
-   <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-   <!-- count down -->
-   <script src="assets/js/jquery.countdown.js"></script>
-   <!-- isotope -->
-   <script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
-   <!-- waypoints -->
-   <script src="assets/js/waypoints.js"></script>
-   <!-- owl carousel -->
-   <script src="assets/js/owl.carousel.min.js"></script>
-   <!-- magnific popup -->
-   <script src="assets/js/jquery.magnific-popup.min.js"></script>
-   <!-- mean menu -->
-   <script src="assets/js/jquery.meanmenu.min.js"></script>
-   <!-- sticker js -->
-   <script src="assets/js/sticker.js"></script>
-   <!-- main js -->
-   <script src="assets/js/main.js"></script>
+<title>등록한 와인 관리</title>
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 </head>
+<style>
+
+.form-control::placeholder {
+    text-align: left;
+}
+
+
+.search-container input[type="text"] {
+	background-color: #F5F5F5;
+	border: 2px solid #FFA500;
+	color: #333;
+	padding: 9px 40px;
+	border-radius: 5px;
+	font-size: 16px;
+	font-weight: bold;
+	placeholder-color: #FFA500;
+	width: 200px;
+	text-align: right;
+	margin-right: -90px; /* 오른쪽 여백을 주기 위해 margin-right 사용 */
+}
+
+
+.search-container input[type="submit"] {
+	background-color: #FFA500; /* 배경색 */
+	color: #FFF; /* 글자색 */
+	padding: 10px 15px;
+	border-radius: 5px;
+	border: 2px solid #FFA500;
+	margin-left: 100px;
+	/* 원하는 다른 스타일 속성들을 추가할 수 있습니다. */
+}
+
+
+form#search-form {
+    text-align: center;
+    margin: 10px auto; /* 위아래 여백 추가 */
+    max-width: 400px; /* 최대 너비 설정 */
+}
+
+form#search-form .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* 입력 요소 간의 간격 */
+}
+
+form#search-form .col-md-3 {
+    flex: 1; /* 네 개의 컬럼을 동일하게 너비 분배 */
+}
+
+form#search-form select,
+form#search-form input[type="text"],
+form#search-form .btn {
+    width: 100%;
+    padding: 10px;
+}
+
+form#search-form .btn {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+form#search-form .col-md-3 select {
+    width: 100%; /* 넓이를 100%로 설정 */
+    padding: 10px; /* 높이를 조정 */
+}
+
+.dropdown-group {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* 드롭다운 버튼 스타일 */
+.dropdown {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* 테이블 스타일 */
+  #table { 
+         width: 70%; 
+         margin: 0 auto; /* 수평 가운데 정렬 */
+         border-collapse: collapse; /* 테이블 셀 경계를 합칩니다. */
+      }
+      
+      /* 테이블 헤더 스타일 */
+      #table th { 
+         border: 1px solid #dddddd; /* 테두리 선 스타일 */
+         padding: 10px; /* 셀 안 여백 */
+         text-align: center; /* 가운데 정렬 */
+         font-weight: bold; /* 텍스트 굵게 표시 */
+      }
+
+      /* 테이블 내용 스타일 */
+      #table td { 
+         border: 2px solid #dddddd; /* 테두리 선 스타일 */
+         padding: 10px; /* 셀 안 여백 */
+         text-align: center; /* 가운데 정렬 */
+         vertical-align: middle; /* 세로 가운데 정렬 */
+      }
+
+/* 수정/삭제 버튼 스타일 */
+.edit-delete-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.edit-delete-buttons form {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.edit-delete-buttons button {
+    padding: 5px 10px;
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 매장 홈으로 버튼 스타일 */
+.back-home-button {
+    text-align: center;
+    margin-top: 20px;
+}
+
+tr th {
+    background-color: #800021 !important;
+  }
+  
+th {
+      color: #ffffff !important; /* 테이블 헤더 글자색 */
+      text-align: center; /* 헤더 텍스트 중앙 정렬 */
+   }  
+
+.back-home-button {
+    text-align: center; /* 가로 중앙 정렬 */
+    display: flex;
+    justify-content: center; /* 가로 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    height: 100vh; /* 수직 중앙 정렬에 필요한 높이 설정 (옵션) */
+    margin-top: -440px;
+}	
+
+</style>
 
 <body>
 <%@include file="/WEB-INF/include/nav.jsp"%>
-	  <div class="breadcrumb-section breadcrumb-bg">
-      <div class="container">
-         <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-               <div class="breadcrumb-text">
-               <br>
-                  <h1>전체매장</h1>
-                  <br>
-                  <p>Store Information</p>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   <br>
-   <br>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>보유한 와인 관리</h1>
+				<br>
+				<p>My Wine List</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
 
     <main>
         <!-- 버튼 검색 -->
-        <div class="container">
+        <div class="search-container" >
             <form action="/StoreListSearch" method="GET" id="search-form">
                 <input type="hidden" name="s_no" value="${s_no}" />
                 <div class="row">
@@ -178,7 +188,7 @@ form#search-form input[type="text"] {
                         </select>
                     </div>
                     <div class="col-md-3">
-                        <select class="form-select" name="kindOption">
+                        <select class="form-select" name="w_kind">
                             <option value="w_kind">품종</option>
                             <option value="PORT">PORT</option>
                             <option value="DESSERT">DESSERT</option>
@@ -188,25 +198,21 @@ form#search-form input[type="text"] {
                             <option value="SPARKLING">SPARKLING</option>
                         </select>
                     </div>
-                    <div class="col-md-3">
-                        <select class="form-select" name="amountOption">
-                            <option value="choose">선택</option>
-                            <option value="w_amount">수량↑</option>
-                            <option value="w_amountDown">수량↓</option>
-                        </select>
-                    </div>
+                    
                     <div class="col-md-3">
                         <div class="input-group">
-                            <input type="text" class="form-control" name="searchKeyword" placeholder="검색어 입력">
-                                <button type="submit" class="btn btn-primary">검색</button>
+                            <input type="text" class="form-control" name="searchKeyword" placeholder="검색어입력">
                         </div>
+                       </div>
+                        <div class="col-md-3">
+                                <input type="submit"  value="검색">
                     </div>
                 </div>
             </form>
         </div>
         <br> <br>
 
-        <table id="table">
+        <table id="table" class="table table-striped table-hover">
             <tr>
                 <th>와인명</th>
                 <th>국가</th>
@@ -233,6 +239,7 @@ form#search-form input[type="text"] {
                                     <form action="/AddCart" method="POST">
                                         <input type="hidden" name="u_no" value="${loginVo.u_no}">
                                         <input type="hidden" name="w_no" value="${wine.w_no}">
+                                        <input type="hidden" name="wl_idx" value="${wine.wl_idx}">
                                         <input type="hidden" name="s_no" value="${wine.s_no}">
                                         <input id="text1" type="text" name="c_count" placeholder="수량 입력">
                                         <input type="submit" value="장바구니에 추가" onclick="myFunction()">
@@ -263,6 +270,7 @@ form#search-form input[type="text"] {
                                     <form action="/AddCart" method="POST">
                                         <input type="hidden" name="u_no" value="${loginVo.u_no}">
                                         <input type="hidden" name="w_no" value="${Search.w_no}">
+                                        <input type="hidden" name="wl_idx" value="${Search.wl_idx}">
                                         <input type="hidden" name="s_no" value="${Search.s_no}">
                                         <input id="text1" type="text" name="c_count" placeholder="수량 입력">
                                         <input type="submit" value="장바구니에 추가" onclick="myFunction()">
@@ -279,10 +287,29 @@ form#search-form input[type="text"] {
                 </c:forEach>
             </c:if>
         </table>
+        <br>
+        <div class="pagination">
 
+    <c:if test="${not empty pds && pds.startPage != 1 }">
+    <a href="/StoreWineManaget?s_no=${s_no }&nowPage=${pds.startPage - 1 }&cntPerPage=${pds.cntPerPage}">&lt;</a>
+    </c:if>
+    <c:forEach begin="${pds.startPage }" end="${pds.endPage }" var="p">
+      <c:choose>
+       <c:when test="${p == pds.nowPage }">
+         <a>${p}</a> 
+       </c:when>
+        <c:when test="${p != page.nowPage }">
+          <a href="/StoreWineManage?s_no=${s_no }&nowPage=${p }&cntPerPage=${pds.cntPerPage}">${p }</a>
+        </c:when>
+      </c:choose>
+    </c:forEach>
+ <c:if test="${pds.endPage != pds.lastPage }">
+   <a href="/StoreWineManage?s_no=${s_no }&nowPage=${pds.endPage+1 }&cenPerPage${pds.cntPerPage}">&gt;</a>
+ </c:if>
+</div>
         <!-- 매장 홈으로 버튼 -->
         <div class="back-home-button">
-            <a href="/" class="btn btn-primary">매장 홈으로</a>
+            <button class="btn btn-secondary" onclick="history.back();">홈으로</button>
         </div>
     </main>
     <script>

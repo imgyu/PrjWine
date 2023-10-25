@@ -3,87 +3,174 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>매장용 로그인</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/img/favicon.ico">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<link rel="icon" type="image/x-icon" href="/imgpage/favicon.ico">
 <style>
-.logintitle {
-	text-align: center;
-	margin-top: 40px;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+
+.login-user {
+  font-family: 'Noto Sans KR', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+   margin-top: -230px; /* 50px 위로 이동 */
 }
-.container{
-    background-color: #f2f2f2;
-    width: 400px;
-    /* padding-left: 200px;  padding은 안쪽 여백이다. */
-    
-    padding-top: 100px;
-    padding-bottom: 100px;
-    /* margin-left: 20px;  margin은 바깥 여백이다. */
-    margin: 0 auto;  /* 상하여백(0) 좌우여백(auto) 이 태그를 감싸고있는,,*/
-    margin-top: 70px;
-    
-    
-    border-radius: 10px;   /* 테두리이다. */
-    
+
+
+.login-form h1 {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 50px;
 }
-table{
-    border: 1px solid black;
-    border-collapse: collapse;  /* 이중 실선이 하나로 나온다. */
-    width:300px;
-    margin : 0 auto;
-    text-align: center;
+
+.int-area {
+  width: 400px;
+  position: relative;
+  margin-top: 20px;
 }
-tr, td{
-    border: 1px solid black;
+
+.int-area:first-child {
+  margin-top: 0;
 }
- 
+
+.int-area input {
+  width: 100%;
+  padding: 20px 10px 10px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 18px;
+  outline: none;
+}
+
+.int-area label {
+  position: absolute;
+  left: 10px;
+  top: 15px;
+  font-size: 18px;
+  transition: top 0.5s ease;
+}
+
+.int-area label.warning {
+  color: red !important;
+  animation: warning 0.3s ease;
+  animation-iteration-count: 3;
+}
+
+@keyframes warning {
+  0% {
+    transform: translateX(-8px);
+  }
+  25% {
+    transform: translateX(8px);
+  }
+  50% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+.int-area input:focus + label,
+.int-area input:valid + label {
+  top: -2px;
+  font-size: 13px;
+  color: #166caa;
+}
+
+.btn-area {
+  margin-top: 30px;
+}
+
+.btn-area button {
+  width: 100%;
+  height: 50px;
+  margin: 0px 0px;
+  color: #fff;
+  background: #166caa;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.caption {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.caption a {
+  margin: 0 20px;
+  font-size: 15px;
+  color: blue;
+  text-decoration: none;
+}
 </style>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </head>
 <body>
+<%@include file="/WEB-INF/include/nav.jsp"%>
+	<div class="breadcrumb-section breadcrumb-bg">
+		<div class="col-lg-8 offset-lg-2 text-center">
+			<div class="breadcrumb-text">
+				<br>
+				<h1>매장용 회원가입</h1>
+				<br>
+				<p class="subtitle">Store Join</p>
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+<div class="login-user">
+<section class="login-form">
 
-<h2 class="logintitle">매장 로그인</h2>
-<div class="container">
-<!-- div는 크기를 변경할 수도 있지만, 옆에 아무것도 못온다. 무조건 밑줄에나옴. -->
   <form action="/StoreLogin" method="POST" >
-    <table >
-        <colgroup>
-            <col width="30%">
-            <col width="70%">
-        </colgroup>
-        <tr>
-            <td>I D</td>
-            <td><input type="text" name="s_id" placeholder="Input your ID"></td>
-        </tr>
-        <tr>
-            <td>P W</td>
-            <td><input type="password" name="s_pw" placeholder="Input your password"></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-             <button type="submit">로그인</button>
-             <button type="button" onclick="location.href='/StoreJoinForm'"> 회원가입</button>
-            </td>
-            
-        </tr>
-    </table>
-   </form>
- 
+   <div class="int-area">
+            <input type="text" name="s_id" placeholder="Input your ID" autocomplete="off" id="s_id">
+            <label for="id">I D</label>
+      </div>
+      <div class="int-area">   
+            <input type="password" name="s_pw" placeholder="Input your password" autocomplete="off" id="s_pw">
+            <label for="pw">P W</label> 
+       </div>
+       <div class="btn-area">
+            <button type="submit" id="loginButton">로그인</button>
+         </div>
+        </form>
+       <div class="caption">
+            <a href="/StoreJoinForm">회원가입</a>
+       </div>     
+</section>
 </div>
+<script>
 
-		
+document.getElementById("loginButton").addEventListener("click", function(event) {
+    var s_id = document.getElementById("s_id").value;
+    var s_pw = document.getElementById("s_pw").value;
+
+    if (s_id.trim() === "" || s_pw.trim() === "") {
+        alert("아이디와 비밀번호를 정확히 입력해주세요.");
+        event.preventDefault(); // 폼 제출 중단
+    }
+});
 
 
+// URL에서 loginFail 매개변수 추출
+var urlParams = new URLSearchParams(window.location.search);
+var loginFail = urlParams.get('loginFail');
+
+// loginFail 값이 존재하는 경우에만 alert 표시
+if (loginFail) {
+    alert(decodeURIComponent(loginFail)); // URL 디코딩 필요
+}
+
+</script>
+
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

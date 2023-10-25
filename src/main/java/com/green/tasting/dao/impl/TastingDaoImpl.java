@@ -8,9 +8,11 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.vo.RegVo;
 import com.green.tasting.dao.TastingDao;
 import com.green.tasting.vo.TastingVo;
+
 @Repository("tastingDao")
 public class TastingDaoImpl implements TastingDao {
 	@Autowired
@@ -112,6 +114,7 @@ public class TastingDaoImpl implements TastingDao {
 
 	@Override
 	public void insertTaste(TastingVo vo) {
+		
 		sqlSession.insert("Taste.InsertTaste", vo);
 	}
 
@@ -140,8 +143,15 @@ public class TastingDaoImpl implements TastingDao {
 
 	@Override
 	public void tastingRequest(TastingVo vo) {
-		sqlSession.insert("Taste.TastingRequest", vo);
 		
+		int TastingRequestCheck;
+		
+		TastingRequestCheck = sqlSession.selectOne("Taste.TastingRequestCheck", vo);
+		
+		if (TastingRequestCheck == 0) {
+		sqlSession.insert("Taste.TastingRequest", vo);
+		}
+			
 	}
 
 	@Override
@@ -156,6 +166,20 @@ public class TastingDaoImpl implements TastingDao {
 		List<TastingVo> requestList  =  sqlSession.selectList("Taste.RequestList", vo);
 		
 		return requestList;
+	}
+
+	@Override
+	public int countTasting() {
+		
+		return sqlSession.selectOne("Taste.CountTasting");
+	}
+
+	@Override
+	public List<TastingVo> getTastList2(PdsPagingVo pds) {
+		
+		List<TastingVo> tastList2  =  sqlSession.selectList("Taste.TastList2", pds);
+		
+		return tastList2;
 	}
 
 

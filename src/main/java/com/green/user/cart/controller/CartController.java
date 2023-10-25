@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.green.store.vo.HavingWineVo;
 import com.green.user.cart.service.CartService;
 import com.green.user.cart.vo.CartVo;
 import com.green.user.cart.vo.PaymentVo;
@@ -38,23 +39,23 @@ public class CartController {
    @PostMapping("/insertPay")
    @ResponseBody
    public String insertPay(@RequestBody PaymentVo pay) {
-	   
+
 	   System.out.println(pay);
-	    
+
        String view  =  cartService.insertPay(pay);
-       
+
 	   return view;
    }
-   
+
    @GetMapping("Payment")
    public ModelAndView paymentContents(String paynum, HttpSession session  ) {
-	   
+
 	  ModelAndView mv  =  new ModelAndView(); 
-	   
+
 	  // 주문 정보 가져오기
-	  
-	  
-	  
+
+
+
 	  return mv; 
    }
    
@@ -63,6 +64,7 @@ public class CartController {
       public ModelAndView cart(CartVo vo) {
          
         int c_idx  =  vo.getC_idx();
+        int wl_idx  =  vo.getWl_idx();
         int u_no   =  vo.getU_no();      
          List<CartVo> cartList  =  cartService.getCartList(vo);  
          
@@ -71,15 +73,29 @@ public class CartController {
          mv.setViewName("user/cart");
          mv.addObject("cartList", cartList );
          mv.addObject("c_idx", c_idx);
+         mv.addObject("wl_idx", wl_idx);
          mv.addObject("u_no", u_no);
          return mv;
       }
+   
+   @RequestMapping("/AddCartForm")
+   public ModelAndView addCartForm(HavingWineVo vo) {
+	   
+	   List<HavingWineVo> selCartList  =  cartService.selCartList(vo);
+	   
+	   ModelAndView mv  =  new ModelAndView();
+	   mv.setViewName("user/selcartlist");
+	   mv.addObject("wineList", selCartList);
+	   return mv;
+   }
+   
    
    // /AddtoCart?u_no=${wine.u_no}&wl_idx=${wine.wl_idx}
    @RequestMapping("/AddCart")
    public ModelAndView AddCart(CartVo vo) {
 	   
-	   int u_no   =  vo.getU_no();        
+	   int u_no   =  vo.getU_no();
+	   int wl_idx = vo.getWl_idx();
  
        
        cartService.AddCart(vo);
@@ -87,6 +103,7 @@ public class CartController {
        ModelAndView  mv  =  new ModelAndView();
        mv.addObject("vo", vo);
        mv.addObject("u_no", u_no);
+       mv.addObject("wl_idx", wl_idx);
        mv.setViewName("redirect:/CartList");
        mv.addObject("message", "장바구니에 추가되었습니다");
       

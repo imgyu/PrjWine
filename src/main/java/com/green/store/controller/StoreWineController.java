@@ -1,5 +1,6 @@
 package com.green.store.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
@@ -26,41 +28,63 @@ public class StoreWineController {
    public ModelAndView storeListSearch(   HavingWineVo vo,    
          @RequestParam("searchKeyword") String searchKeyword, 
          @RequestParam("searchOption")  String searchOption,
-         @RequestParam("kindOption")    String kindOption,
-         @RequestParam("amountOption")  String amountOption,
          HttpSession session) {
       
-      System.out.println("searchOption:" + searchOption);
       int s_no  =  vo.getS_no();
-      List<RegVo> storeListSearch  =  storeService.getStoreListSearch( s_no, searchKeyword, searchOption, kindOption, amountOption);
+      String w_kind  =  vo.getW_kind();
+      List<RegVo> storeListSearch  =  storeService.getStoreListSearch( s_no, w_kind, searchKeyword, searchOption);
       
-      System.out.println("searchKeyword2:"+searchKeyword);
-      System.out.println("searchOption3:"+searchOption);
       
       ModelAndView mv  =  new ModelAndView();
       mv.setViewName("store/storewinemanage");
       mv.addObject("storeListSearch", storeListSearch);
       mv.addObject("s_no", s_no);
+      mv.addObject("w_kind", w_kind);	
       return mv;
    }
    
    // 와인 리스트 (임규)
    @RequestMapping("/StoreWineManage")
-   public ModelAndView storewinemanage(HavingWineVo vo) {
+   public ModelAndView storewinemanage(HavingWineVo vo,
+		   PdsPagingVo pds,
+		   @RequestParam(value = "nowPage", required = false) String nowPage,
+		   @RequestParam(value="cntPerPage", required = false)String cntPerPage
+		   ) {
       
       String s_name  =  vo.getS_name();
       int s_no       =  vo.getS_no();
+      int wl_idx       =  vo.getWl_idx();
+      
+      
+      int total  =  storeService.countManage(vo);
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "8";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "8";
+		}
+		
+	  
+      pds  =  new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+      
+      
       
       // 각 매장별 보유 와인 조회
       List<HavingWineVo> wineList = storeService.getWineList(vo);
-      System.out.println(s_no);
+      List<HavingWineVo> wineList2 = storeService.wineList2(pds,s_no);
+      
+      System.out.println(wineList2);
       
       ModelAndView mv = new ModelAndView();
       mv.setViewName("store/storewinemanage");
-      mv.addObject("wineList", wineList);
+      mv.addObject("wineList", wineList2);
       mv.addObject("s_name", s_name);
+      mv.addObject("wl_idx", wl_idx);
       mv.addObject("s_no", s_no);
-
+      mv.addObject("pds", pds);
+      
       return mv;
    }
 
@@ -112,7 +136,7 @@ public class StoreWineController {
          ,@RequestParam("searchOption") String searchOption
          ,@RequestParam("kindOption") String kindOption
          ) {
-
+	   
       List<RegVo> searchList = storeService.searchList(searchKeyword, searchOption, kindOption);
       ModelAndView mv = new ModelAndView();
       

@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.green.store.vo.HavingWineVo;
 import com.green.user.cart.dao.CartDao;
 import com.green.user.cart.vo.CartVo;
 import com.green.user.cart.vo.PaymentVo;
@@ -61,16 +62,28 @@ public void addCart(CartVo vo) {
 	
 }
 
+
+@Override
+public List<HavingWineVo> selCartList(HavingWineVo vo) {
+	
+	List<HavingWineVo> selCartList  =  sqlSession.selectList("Cart.SelectCartList", vo);
+	
+	
+	return selCartList;
+}
+
 @Override
 public void insertPay(PaymentVo pay) {
 	
+	
+	
 	sqlSession.insert("Cart.InsertPay", pay);
 	
+	sqlSession.delete("Cart.DeleteCart", pay);
+	
+	sqlSession.update("Cart.UpdatePayWineList", pay);
+	
 }
-
-
-
-
 
 
 } 

@@ -8,12 +8,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.dao.StoreDao;
 import com.green.store.service.StoreService;
 import com.green.store.vo.HavingWineVo;
 import com.green.store.vo.RegVo;
 import com.green.store.vo.StoreVo;
 import com.green.store.vo.WineVo;
+import com.green.tasting.vo.TastingVo;
+import com.green.user.cart.vo.PaymentVo;
 import com.green.user.vo.UserVo;
 
 @Service("storeService")
@@ -103,8 +106,8 @@ public class StoreServiceImpl implements StoreService {
       
    }
    @Override
-   public List<RegVo> getStoreListSearch(int s_no, String searchKeyword, String searchOption, String kindOption, String amountOption ) {
-      List<RegVo> storeListSearch  =  storeDao.getStoreListSearch(s_no, searchKeyword, searchOption, kindOption, amountOption);
+   public List<RegVo> getStoreListSearch(int s_no, String w_kind, String searchKeyword, String searchOption) {
+      List<RegVo> storeListSearch  =  storeDao.getStoreListSearch(s_no, w_kind, searchKeyword, searchOption);
       return storeListSearch;
    }
    
@@ -132,5 +135,52 @@ public class StoreServiceImpl implements StoreService {
 		
 	
    }
+	@Override
+	public List<PaymentVo> salesHistory(PaymentVo vo) {
+		
+		List<PaymentVo> salesHistory  =  storeDao.salesHistory(vo);
+		
+		return salesHistory;
+	}
+	@Override
+	public int countManage(HavingWineVo vo) {
+		
+		return storeDao.countManage(vo);
+	}
+	@Override
+	public List<HavingWineVo> wineList2(PdsPagingVo pds, int s_no) {
+		
+		List<HavingWineVo> wineList2  =  storeDao.wineList2(pds, s_no);
+		
+		return wineList2;
+	}
+	@Override
+	public int countStore(StoreVo vo) {
+		
+		return storeDao.countStore(vo);
+	}
+	@Override
+	public List<StoreVo> storeList2(PdsPagingVo pds) {
+		
+		List<StoreVo> storeList2  =  storeDao.storeList2(pds);
+		
+		return storeList2;
+	}
+	@Override
+	public int countSearchStore(String sname_Search) {
+		
+		return storeDao.countSearchStore(sname_Search);
+	}
+	@Override
+	public List<StoreVo> snameSearch2(PdsPagingVo pds, String sname_Search) {
+		
+		List<StoreVo> snameSearch2  =  storeDao.snameSearch2(pds, sname_Search);
+		
+		return snameSearch2;
+   }
+   
+	public void updateShistory(PaymentVo vo) {
+		storeDao.updateShistory(vo);
+	}
 }
    

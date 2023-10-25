@@ -13,8 +13,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.green.board.service.BoardService;
 import com.green.board.vo.BoardVo;
+import com.green.pds.vo.PdsPagingVo;
 import com.green.store.service.StoreService;
 import com.green.store.vo.StoreVo;
+import com.green.tasting.vo.TastingVo;
+import com.green.user.cart.vo.PaymentVo;
 
 
 
@@ -27,27 +30,65 @@ public class StoreController {
 	
 	//매장 검색
 	@RequestMapping("/SnameSearch")
-    public ModelAndView sname_Search(
+    public ModelAndView sname_Search(PdsPagingVo pds,
+    	  @RequestParam(value="nowPage", required = false)String nowPage,
+ 		  @RequestParam(value="cntPerPage", required = false)String cntPerPage,
           @RequestParam("sname_Search") String sname_Search
           ) {
+		
+		int total  =   storeService.countSearchStore(sname_Search);
+		System.out.println(total);
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "8";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "8";
+		}
+		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+		
        List<StoreVo> snameSearch = storeService.snameSearch(sname_Search);
+       List<StoreVo> snameSearch2  =  storeService.snameSearch2(pds, sname_Search);
        ModelAndView mv = new ModelAndView();
-       mv.addObject("snameSearch",snameSearch);
-       mv.setViewName("/store/storelist");
+       mv.addObject("snameSearch",snameSearch2);
+       mv.setViewName("/store/searchstorelist");
+       mv.addObject("pds", pds);
        return mv;
        
     }
 	
 	
+	
+	
 	//매장리스트
 	@RequestMapping("/StoreList")
-	public ModelAndView storelist(StoreVo vo, BoardVo vo2) {
+	public ModelAndView storelist(StoreVo vo, BoardVo vo2, PdsPagingVo pds,
+		    @RequestParam(value="nowPage", required = false)String nowPage,
+			@RequestParam(value="cntPerPage", required = false)String cntPerPage
+			) {
+		
+		int total  =   storeService.countStore(vo);
+		if (nowPage == null && cntPerPage == null ) {
+			nowPage  = "1";
+			cntPerPage = "8";
+		} else if(nowPage == null) {
+			nowPage = "1";
+		} else if (cntPerPage == null) {
+			cntPerPage = "8";
+		}
+		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		System.out.println(total);
+		
 		List<StoreVo> storeList  =  storeService.storeList(vo);
+		List<StoreVo> storeList2 =  storeService.storeList2(pds);
 		List<BoardVo> boardList  =  boardService.getBoardList(vo2);
 		ModelAndView mv = new ModelAndView();
 		
 		mv.setViewName("/store/storelist");
-		mv.addObject("storeList", storeList );
+		mv.addObject("storeList", storeList2 );
+		mv.addObject("pds", pds);
 		mv.addObject("boardList", boardList);
 		return mv;
 	}
@@ -55,10 +96,13 @@ public class StoreController {
 
 	//판매기록 이동
 	@RequestMapping("/SalesHistory")
-	public ModelAndView saleshistory() {
+	public ModelAndView saleshistory(PaymentVo vo) {
 		
+		List<PaymentVo> salesHistory  =  storeService.salesHistory(vo);
+		System.out.println(salesHistory);
 		ModelAndView  mv  =  new ModelAndView();
 		mv.setViewName("/store/saleshistory");
+		mv.addObject("salesHistory", salesHistory);
 		return mv;
 	}
 	 
@@ -92,6 +136,7 @@ public class StoreController {
 		return mv;
 	}
 	
+	// 매장 정보 업데이트
 	@RequestMapping("StoreCheckUpdate")
 	public ModelAndView storeCheckUpdate(@RequestParam HashMap<String, Object> map, HttpServletRequest request) {
 		
@@ -106,6 +151,7 @@ public class StoreController {
 		return mv;
 	}
 	
+	// 매장정보
 	@RequestMapping("/StoreInfo")
 	public ModelAndView storeinfo(StoreVo vo, BoardVo vo2) {
 		
@@ -118,4 +164,25 @@ public class StoreController {
 		mv.addObject("boardList", boardList);
 		return mv;
 	}
+	
+	@RequestMapping("/SalesHistoryUpdate")
+	public ModelAndView sHistoryUpdate(@RequestParam(value = "valueArr") String[] valueArr, PaymentVo vo) {
+		
+		for (String paynum : valueArr) {
+			vo.setPaynum(paynum);
+	        storeService.updateShistory(vo);
+	    }
+		
+		ModelAndView mv  =  new ModelAndView();
+		mv.setViewName("redirect:/SalesHistory?s_no="+vo.getS_no());
+		return mv;
+	}
+	
 }
+
+	
+	
+	
+	
+	
+	
