@@ -38,15 +38,34 @@ public class CartController {
    
    @PostMapping("/insertPay")
    @ResponseBody
-   public String insertPay(@RequestBody PaymentVo pay) {
+   public String insertPay(@RequestBody List<Map<String, Object>> params) {
+      
+      System.out.println("tq 좀되라 : " + params );
+      
+      if(params.size() == 1) {
+         
+         Map<String, Object> for_map  =  params.get(0);
+         
+         cartService.insertPay(for_map);
+      } else if(params.size() > 1) {
+         for(Map<String, Object> for_map : params) {
+            for_map.get("paynum");
+            for_map.get("c_idx");
+            for_map.get("sh_date");
+            for_map.get("u_no");
+            for_map.get("s_no");
+            for_map.get("p_allprice");
+            for_map.get("w_no");
+            for_map.get("wl_idx");
+            System.out.println("map 이용: " + for_map);
+            cartService.insertPay(for_map);
+         }
+         
+      }
+     
 
-	   System.out.println(pay);
-
-       String view  =  cartService.insertPay(pay);
-
-	   return view;
+      return "success";
    }
-
    @GetMapping("Payment")
    public ModelAndView paymentContents(String paynum, HttpSession session  ) {
 
@@ -130,7 +149,7 @@ public class CartController {
          return 1;
    }
     
-   // map:{u_no=1, cartids=1,2, rowCheck=1}
+// map:{u_no=1, cartids=1,2, rowCheck=1}
    @RequestMapping("/UserPayment")
    public ModelAndView userPayment(@RequestParam HashMap<String, Object> map, CartVo vo) {
       
@@ -147,12 +166,30 @@ public class CartController {
        List<CartVo> selCartList  =  cartService.getSelectList(u_no, cartids);
        // 유저목록 
        List<UserVo> userList  =  userService.getUserList(user);
-       System.out.println("map:" + map);
+       
+       boolean isValid  =  true;
+       for(CartVo cartItem : selCartList) {
+          int selectedQuantity  =  cartItem.getC_count();
+          int availableQuantity  =  cartItem.getW_amount();
+          
+          if(selectedQuantity <=0 || selectedQuantity > availableQuantity) {
+             isValid  =  false;
+             break;
+          }
+       }
+       if(!isValid) {
+          ModelAndView mv  =  new ModelAndView();
+          mv.addObject("error", "선택한 수량이 유효하지 않습니다.");
+          mv.setViewName("redirect:/CartList?u_no=" + vo.getU_no());
+          return mv;
+       }
+       
       ModelAndView mv  =  new ModelAndView();
       mv.setViewName("user/payment");
       mv.addObject("selCartList", selCartList);
       mv.addObject("userList", userList);
       return mv;
    }   
+   
    
 }

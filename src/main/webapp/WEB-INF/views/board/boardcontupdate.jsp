@@ -89,6 +89,7 @@ table.tab1 textarea {
     <br>
     <c:forEach var="board" items="${boardCont}">
         <div class="container1" id="board">
+          <form action="/BoardContUpdate?s_no=${board.s_no}&b_idx=${board.b_idx}" method="POST" id="search-form">
             <h1 style="text-align: center; margin-top: 20px">${board.b_title}</h1>
             <table class="tab1">
                 <tr>
@@ -114,14 +115,13 @@ table.tab1 textarea {
             <div style="text-align: center;">
             <c:choose>
                 <c:when test="${not empty sloginVo.s_no and sloginVo.s_no eq board.s_no}">
-                    <form action="/BoardDelete?s_no=${board.s_no}&b_idx=${board.b_idx}" method="POST" id="search-form">
-                        <a type="submit" class="btn btn-secondary" onclick="goBack()">뒤로가기</a>
-                        <a href="/BoardContUpdateForm?s_no=${board.s_no}&b_idx=${board.b_idx}&b_title=${board.b_title}" class="btn btn-primary" id="update-link">수정</a>
-                        <button type="submit" class="btn btn-danger" id="delete-button">삭제</button>
-                    </form>
+                        <a type="button" class="btn btn-secondary" onclick="goBack()">뒤로가기</a>
+                        <button type="submit" class="btn btn-primary" id="update-link">수정</button>
+                        <a href="/BoardDelete?s_no=${board.s_no}&b_idx=${board.b_idx}" class="btn btn-danger" id="delete-button">삭제</a>
                 </c:when>
             </c:choose>
             </div>
+          </form>
         </div>
     </c:forEach>
 <script>

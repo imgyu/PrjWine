@@ -58,7 +58,7 @@ SELECT C.C_IDX,
 
 </select>
 
-	<insert id="InsertCart" >
+<insert id="InsertCart" parameterType="Map">
 INSERT INTO CART (
 C_IDX, 
 W_NO, 

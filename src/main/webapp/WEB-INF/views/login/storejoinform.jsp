@@ -245,29 +245,35 @@
         }).open();
     }
 		
-		function checkSId() {
-    	    var s_id = $('#s_id').val();
-    	    $.ajax({
-    	        url: '/StoreIdChk',
-    	        type: 'post',
-    	        data: { s_id: s_id },
-    	        success: function (cnt) {
-    	            if (cnt == 0) {
-    	                $('.id_ok').css("display", "inline-block");
-    	                $('.id_already').css("display", "none");
-    	                alert("중복되지 않은 아이디입니다");
-    	            } else {
-    	                $('.id_already').css("display", "inline-block");
-    	                $('.id_ok').css("display", "none");
-    	                alert("아이디를 다시 입력해주세요");
-    	                $('#s_id').val('');
-    	            }
-    	        },
-    	        error: function () {
-    	            alert("에러입니다!");
-    	        }
-    	    });
-    	}
+	function checkSId() {
+		var s_id = $('#s_id').val();
+		$.ajax({
+			url : '/StoreIdChk',
+			type : 'post',
+			data : {
+				s_id : s_id
+			},
+			success : function(cnt) {
+				if (cnt == 0) {
+					$('.id_ok').css("display", "inline-block");
+					$('.id_already').css("display", "none");
+					alert("중복되지 않은 아이디입니다");
+					isIdAvailable = true;
+				} else {
+					$('.id_already').css("display", "inline-block");
+					$('.id_ok').css("display", "none");
+					alert("아이디를 다시 입력해주세요");
+					isIdAvailable = false;
+					$('#s_id').val('');
+					
+				}
+				$('#s_id').prop('readonly', isIdAvailable);
+			},
+			error : function() {
+				alert("에러입니다!");
+			}
+		});
+	}
 		
 
 		function readURL(input) {
@@ -326,7 +332,12 @@
                     return false;
                 }
             }
-            return true;
+            if (!$('#s_id').prop('readonly')){
+		         alert('아이디 중복 체크를 먼저 진행하세요');
+		         event.preventDefault();
+		         return false;
+		      }
+		      return true;
         }
 		
 		
