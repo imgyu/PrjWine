@@ -175,8 +175,8 @@
 					<td>
 						<div>
 							<input type="file" accept="image/*" onchange="readURL(this)"
-								name="upfile" class="upfile" /><br> <img id="preview"
-								style="max-width: 300px;">
+								name="upfile" class="upfile" /><br>
+								 <img id="preview" style="max-width: 300px;">
 						</div>
 					</td>
 				</tr>
@@ -298,6 +298,7 @@
 								store_pw1 = false;
 							} else if (!pwdCheck.test($("#store_pw1").val())) {
 								$("#pwdcheck_1").text("문자,숫자,특수문자를 포함한 8글자 이상 사용하여주세요");
+								$("#store_pw1").val("");
 								store_pw1 = false;
 							} else {
 								$("#pwdcheck_1").text("안전한 비밀번호 입니다")

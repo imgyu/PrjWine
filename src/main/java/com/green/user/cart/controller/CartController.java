@@ -54,8 +54,9 @@ public class CartController {
             for_map.get("sh_date");
             for_map.get("u_no");
             for_map.get("s_no");
-            for_map.get("p_allprice");
+            for_map.get("c_allprice");
             for_map.get("w_no");
+            for_map.get("c_count");
             for_map.get("wl_idx");
             System.out.println("map 이용: " + for_map);
             cartService.insertPay(for_map);

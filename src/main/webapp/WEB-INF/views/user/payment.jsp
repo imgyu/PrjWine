@@ -118,7 +118,8 @@ var selCartList = [
          "wl_idx" : ${sel.wl_idx},
          "c_idx" : ${sel.c_idx},
          "w_amount" : ${sel.w_amount},
-         "c_count" : ${sel.c_count}
+         "c_count" : ${sel.c_count},
+         "c_allprice" : ${sel.c_allprice},
        }<c:if test="${!loop.last}">,</c:if>
      </c:forEach>
    ]
