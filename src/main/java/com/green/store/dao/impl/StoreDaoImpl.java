@@ -169,14 +169,6 @@ public class StoreDaoImpl implements StoreDao {
 	System.out.println(map);
    }
 
-   // 매장검색
-   @Override
-   public List<StoreVo> getSnameSearch(String sname_Search) {
-      List<StoreVo> snameSearch = sqlSession.selectList("Store.SnameSearch", sname_Search);
-        System.out.println(snameSearch);
-      return snameSearch;
-   }
-
    // 매장리스트
    @Override
    public List<StoreVo> storeList(StoreVo vo) {

@@ -81,14 +81,6 @@ public class StoreServiceImpl implements StoreService {
       
    }
    
-   // 매장리스트 검색
-   @Override
-   public List<StoreVo> snameSearch(String sname_Search) {
-      List<StoreVo> snameSearch = storeDao.getSnameSearch(sname_Search);
-      System.out.println(snameSearch);
-      return snameSearch;
-   }
-   
    // 매장리스트
    @Override
    public List<StoreVo> storeList(StoreVo vo) {

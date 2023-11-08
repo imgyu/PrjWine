@@ -39,8 +39,6 @@ public interface StoreService {
    
    void setJoin(HashMap<String, Object> map, HttpServletRequest request);
 
-   List<StoreVo> snameSearch(String sname_Search);
-
    List<StoreVo> storeList(StoreVo vo);
 
    List<StoreVo> getStoreInfo(StoreVo vo);

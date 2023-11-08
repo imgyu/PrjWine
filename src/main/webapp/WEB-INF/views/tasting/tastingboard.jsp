@@ -24,7 +24,7 @@ table.tab1 {
     }
 
     /* 테이블의 th 스타일 */
-    table.tab1 th {
+    table.tab1 tr th {
         border: 1px solid #ccc;
         padding: 10px;
         text-align: center;

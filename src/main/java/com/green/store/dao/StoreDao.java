@@ -32,13 +32,10 @@ public interface StoreDao {
 
    void setJoin(HashMap<String, Object> map);
 
-   List<StoreVo> getSnameSearch(String sname_Search);
-
    List<StoreVo> storeList(StoreVo vo);
 
    List<StoreVo> getStoreInfo(StoreVo vo);
    
-
    List<RegVo> getStoreListSearch(int s_no, String w_kind ,String searchKeyword, String searchOption);
 
    int idCheck(String s_id);

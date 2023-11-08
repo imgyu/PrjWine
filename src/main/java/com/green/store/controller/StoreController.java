@@ -49,7 +49,6 @@ public class StoreController {
 		pds = new PdsPagingVo(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		
 		
-       List<StoreVo> snameSearch = storeService.snameSearch(sname_Search);
        List<StoreVo> snameSearch2  =  storeService.snameSearch2(pds, sname_Search);
        ModelAndView mv = new ModelAndView();
        mv.addObject("snameSearch",snameSearch2);
