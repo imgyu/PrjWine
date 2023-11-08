@@ -4,7 +4,6 @@
 <h3 align="center">조장 :  김영준</h3>
 <h3 align="center">조원 :  조영태</h3>
 <h3 align="center">조원 :  김임규</h3>
-<h3 align="center">조원 :  김병규</h3>
 <br />
 
 # <div align="center"> 📚 Use Main-Stack Skill 📚 </div>
